@@ -1,0 +1,157 @@
+<template>
+  <footer class="bg-white dark:bg-gray-900 mt-8">
+    <div class="mx-auto w-full max-w-screen-3xl p-4 py-6 md:px-24 lg:py-8">
+      <div class="md:flex md:justify-between">
+        <div class="mb-6 md:mb-0">
+          <a href="/" class="flex items-center">
+            <span
+              class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
+            >
+              Tomorrow Luxury Property
+            </span>
+          </a>
+          <div class="flex flex-col space-y-2 mt-2">
+            <p>Contact us</p>
+            <p>Phone: +971 581677220</p>
+            <p>Email: ceo@tomorrowdubai.com</p>
+            <div class="flex space-x-8 !mt-[14px]">
+              <component
+                :is="handle.icon"
+                v-for="(handle, i) in socialMediaHandles"
+                class="cursor-pointer"
+                :key="i"
+                @click="openExternalUrl(handle.handleUrl)"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-wrap justify-between md:space-x-48">
+          <div>
+            <h2
+              class="mb-6 text-sm font-semibold text-gray-900 dark:text-white"
+            >
+              Features
+            </h2>
+            <ul class="text-gray-500 dark:text-gray-400 font-medium">
+              <li class="mb-4" v-for="(feature, i) in features" :key="i">
+                <a
+                  @click="$router.push(feature.route)"
+                  class="hover:underline cursor-pointer"
+                >
+                  {{ feature.name }}
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2
+              class="mb-6 text-sm font-semibold text-gray-900 dark:text-white"
+            >
+              Company
+            </h2>
+            <ul class="text-gray-500 dark:text-gray-400 font-medium">
+              <li class="mb-4" v-for="(item, i) in company" :key="i">
+                <a
+                  @click="$router.push(item.route)"
+                  class="hover:underline cursor-pointer"
+                  >{{ item.name }}</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</template>
+
+<script>
+import facebookIcon from "@/components/svgIcons/facebookIcon.vue";
+import instagramIcon from "@/components/svgIcons/instagramIcon.vue";
+import linkedinIcon from "@/components/svgIcons/linkedinIcon.vue";
+import behanceIcon from "@/components/svgIcons/behanceIcon.vue";
+
+export default {
+  components: {
+    facebookIcon,
+    instagramIcon,
+    linkedinIcon,
+    behanceIcon,
+  },
+  data() {
+    return {
+      socialMediaHandles: [
+        {
+          name: "Facebook",
+          handleUrl: "https://www.facebook.com/tomorrowdubai",
+          icon: facebookIcon,
+        },
+        {
+          name: "LinkedIn",
+          handleUrl: "https://www.linkedin.com/company/tomorrow-dubai",
+          icon: linkedinIcon,
+        },
+        {
+          name: "Instagram",
+          handleUrl: "https://www.instagram.com/tomorrowdubai/",
+          icon: instagramIcon,
+        },
+        {
+          name: "Behance",
+          handleUrl: "https://www.behance.net/tomorrowdubai",
+          icon: behanceIcon,
+        },
+      ],
+      features: [
+        {
+          name: "Home",
+          route: "/",
+        },
+        {
+          name: "Become a agent",
+          route: "/agent",
+        },
+        {
+          name: "Pricing",
+          route: "/pricing",
+        },
+        {
+          name: "News",
+          route: "/news",
+        },
+        {
+          name: "Contact",
+          route: "/contact",
+        },
+      ],
+      company: [
+        {
+          name: "About Us",
+          route: "/about",
+        },
+        {
+          name: "Press",
+          route: "/press",
+        },
+        {
+          name: "Careers",
+          route: "/careers",
+        },
+        {
+          name: "Terms of Service",
+          route: "/terms-of-service",
+        },
+        {
+          name: "Privacy Policy",
+          route: "/privacy-policy",
+        },
+      ],
+    };
+  },
+  methods: {
+    openExternalUrl(url) {
+      window.open(url, "_blank");
+    },
+  },
+};
+</script>
