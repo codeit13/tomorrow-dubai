@@ -1,0 +1,15 @@
+{
+  "style": "new-york",
+  "typescript": false,
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "src/assets/css/tailwind.css",
+    "baseColor": "zinc",
+    "cssVariables": false
+  },
+  "framework": "vite",
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils"
+  }
+}
