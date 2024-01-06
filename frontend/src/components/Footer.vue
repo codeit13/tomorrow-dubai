@@ -66,6 +66,8 @@
 </template>
 
 <script>
+import { markRaw } from "vue";
+
 import facebookIcon from "@/components/svgIcons/facebookIcon.vue";
 import instagramIcon from "@/components/svgIcons/instagramIcon.vue";
 import linkedinIcon from "@/components/svgIcons/linkedinIcon.vue";
@@ -84,22 +86,22 @@ export default {
         {
           name: "Facebook",
           handleUrl: "https://www.facebook.com/tomorrowdubai",
-          icon: facebookIcon,
+          icon: markRaw(facebookIcon),
         },
         {
           name: "LinkedIn",
           handleUrl: "https://www.linkedin.com/company/tomorrow-dubai",
-          icon: linkedinIcon,
+          icon: markRaw(linkedinIcon),
         },
         {
           name: "Instagram",
           handleUrl: "https://www.instagram.com/tomorrowdubai/",
-          icon: instagramIcon,
+          icon: markRaw(instagramIcon),
         },
         {
           name: "Behance",
           handleUrl: "https://www.behance.net/tomorrowdubai",
-          icon: behanceIcon,
+          icon: markRaw(behanceIcon),
         },
       ],
       features: [
@@ -109,15 +111,15 @@ export default {
         },
         {
           name: "Become a agent",
-          route: "/agent",
+          route: "/partner",
         },
         {
           name: "Pricing",
-          route: "/pricing",
+          route: "/partner",
         },
         {
           name: "News",
-          route: "/news",
+          route: "/blogs",
         },
         {
           name: "Contact",

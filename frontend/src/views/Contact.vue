@@ -37,15 +37,15 @@
     </div>
     <div class="mt-8 text-center md:w-[50%] mx-auto">
       <h2 class="text-2xl font-semibold">CONTACT FORM</h2>
-      <form class="mt-4">
+      <div class="mt-4">
         <div class="flex flex-col space-y-4">
-          <Input placeholder="FULL NAME" />
-          <Input placeholder="EMAIL" />
-          <Input placeholder="SUBJECT" />
-          <Input class="h-32" placeholder="MESSAGE" />
+          <Input v-model="name" placeholder="FULL NAME" />
+          <Input v-model="email" placeholder="EMAIL" />
+          <Input v-model="phone" placeholder="MOBILE" />
+          <Input v-model="moreInfo" class="h-32" placeholder="MESSAGE" />
         </div>
-        <Button class="mt-4">Send</Button>
-      </form>
+        <Button @click="submitContactForm" class="mt-4">Send</Button>
+      </div>
     </div>
     <div class="mt-16 md:w-[70%] mx-auto bg-gray-200 px-4 md:px-20 py-6">
       <h3 class="text-xl font-semibold">Head Office</h3>
@@ -70,7 +70,36 @@ export default {
     Input,
   },
   data() {
-    return {};
+    return { name: null, email: null, phone: null, moreInfo: null };
+  },
+  methods: {
+    async submitContactForm() {
+      if (this.name && this.email && this.phone) {
+        const payload = {
+          propertyId: this.propertyId,
+          name: this.name,
+          email: this.email,
+          phone: this.phone,
+          moreInfo: this.moreInfo,
+        };
+
+        const resp = await this.$store.dispatch("submitContactForm", payload);
+
+        if (resp.message) {
+          this.$store.commit("SET_TOASTER_MSG", {
+            title: resp.message,
+          });
+        } else {
+          this.$store.commit("SET_TOASTER_MSG", {
+            title: "Something went wrong. Please try again later.",
+          });
+        }
+      } else {
+        this.$store.commit("SET_TOASTER_MSG", {
+          title: "Please fill al the required fields first.",
+        });
+      }
+    },
   },
 };
 </script>

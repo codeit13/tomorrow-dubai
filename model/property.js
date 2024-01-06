@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const locationSchema = mongoose.Schema({
+  id: { type: String },
   type: {
     type: String,
     enum: ["Point"],
@@ -14,8 +15,10 @@ const locationSchema = mongoose.Schema({
 
 const propertySchema = mongoose.Schema(
   {
+    id: { type: String },
     homeType: { type: String, require: true },
     isBuy: { type: Boolean, default: false }, // It is assumed that properties are created default by sellers
+    isOffPlan: { type: Boolean, default: false },
     bed: { type: Number },
     bath: { type: Number },
     price: { type: Number },

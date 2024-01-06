@@ -3,7 +3,10 @@ import { actions } from "./actions";
 import { mutations } from "./mutations";
 
 const store = createStore({
-  state: {},
+  state: {
+    toasterData: null,
+    properties: null,
+  },
   mutations,
   actions,
 });

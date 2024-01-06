@@ -1,5 +1,8 @@
 export const mutations = {
-  SET_USER_DATA(state, payload) {
-    state.userData = payload;
+  SET_TOASTER_MSG(state, payload) {
+    state.toasterData = payload;
+  },
+  SET_PROPERTIES(state, payload) {
+    state.properties = payload;
   },
 };

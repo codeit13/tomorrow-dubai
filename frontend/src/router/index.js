@@ -7,14 +7,24 @@ const routes = [
     component: () => import("@/views/Home.vue"),
   },
   {
-    path: "/search",
+    path: "/buy",
+    name: "Buy",
+    component: () => import("@/views/Home.vue"),
+  },
+  {
+    path: "/sell",
+    name: "Sell",
+    component: () => import("@/views/Sell.vue"),
+  },
+  {
+    path: "/search/:query",
     name: "Search",
     component: () => import("@/views/Search.vue"),
   },
   {
-    path: "/listing",
-    name: "Listing",
-    component: () => import("@/views/Listing.vue"),
+    path: "/property/:titleSlug",
+    name: "Property",
+    component: () => import("@/views/Property.vue"),
   },
   {
     path: "/contact",
@@ -25,6 +35,26 @@ const routes = [
     path: "/neighbourhood",
     name: "Neighbourhood",
     component: () => import("@/views/Neighbourhood.vue"),
+  },
+  {
+    path: "/offplan",
+    name: "offplan",
+    component: () => import("@/views/OffPlan.vue"),
+  },
+  {
+    path: "/partner",
+    name: "Partner",
+    component: () => import("@/views/Partner.vue"),
+  },
+  {
+    path: "/agents",
+    name: "agents",
+    component: () => import("@/views/Agents.vue"),
+  },
+  {
+    path: "/agent",
+    name: "agent",
+    component: () => import("@/views/Agent.vue"),
   },
 ];
 

@@ -80,17 +80,21 @@
     <div class="max-w-7xl mx-auto mt-8">
       <div class="text-center">
         <h2 class="text-xl font-semibold mb-4">Search Results</h2>
-        <p class="text-lg">PALM JEBEL ALI, DUBAI, UAE</p>
+        <p class="text-lg">{{ searchText }}</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-20">
+      <div
+        class="grid grid-cols-1 md:grid-cols-3 gap-4 my-20"
+        v-if="filteredProperties && filteredProperties.length"
+      >
         <div
+          @click="goToProperty(property)"
           class="relative cursor-pointer"
-          v-for="(property, i) in searchedProperties"
+          v-for="(property, i) in filteredProperties"
           :key="i"
         >
           <img
-            :src="property.image"
+            :src="property.propertyImage"
             alt="Property"
             class="w-full h-auto"
             width="300"
@@ -103,8 +107,8 @@
             {{ property.tag }}
           </div>
           <div class="p-4">
-            <p class="text-lg font-bold">{{ property.price }}</p>
-            <p class="text-sm">{{ property.features }}</p>
+            <p class="text-lg font-bold">AED {{ property.price }}</p>
+            <p class="text-sm">{{ property.featureText }}</p>
             <p class="text-sm">{{ property.location }}</p>
             <p
               class="text-sm font-semibold mt-4 text-blue-600 hover:text-blue-800 cursor-pointer"
@@ -116,8 +120,9 @@
       </div>
       <div class="flex justify-center mb-40">
         <Pagination
+          v-if="false"
           v-slot="{ page }"
-          :total="searchedProperties.length"
+          :total="filteredProperties.length"
           :sibling-count="1"
           show-edges
           :default-page="1"
@@ -172,6 +177,7 @@ import {
   PaginationNext,
   PaginationPrev,
 } from "@/components/ui/pagination";
+import { mapState } from "vuex";
 
 export default {
   components: {
@@ -194,282 +200,103 @@ export default {
 
   data() {
     return {
-      propertyOptions: ["Apartment", "House", "Villa"],
-      minPriceOptions: ["$100,000", "$200,000", "$300,000"],
-      maxPriceOptions: ["$500,000", "$1,000,000", "$1,500,000"],
-      isOffPlanOptions: ["Yes", "No"],
+      propertyOptions: ["Select property type", "Apartment", "House", "Villa"],
+      minPriceOptions: ["Select min price", "$100,000", "$200,000", "$300,000"],
+      maxPriceOptions: [
+        "Select max price",
+        "$500,000",
+        "$1,000,000",
+        "$1,500,000",
+      ],
+      isOffPlanOptions: ["Is it Off Plan", "Yes", "No"],
       property: null,
       minPrice: null,
       maxPrice: null,
       isOffPlan: null,
       searchText: null,
-      searchedProperties: [
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/01.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "New",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/02.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "Off-Plan",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/03.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "Exclusive",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/01.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "New",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/02.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "Off-Plan",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/03.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "Exclusive",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/01.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "New",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/02.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "Off-Plan",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/01.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "New",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/02.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "Off-Plan",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/03.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "Exclusive",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/01.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "New",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/02.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "Off-Plan",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/03.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "Exclusive",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/01.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "New",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/02.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "Off-Plan",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/01.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "New",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/02.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "Off-Plan",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/03.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "Exclusive",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/01.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "New",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/02.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "Off-Plan",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/03.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "Exclusive",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/01.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "New",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/02.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "Off-Plan",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/01.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "New",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/02.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "Off-Plan",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/03.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "Exclusive",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/01.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "New",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/02.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "Off-Plan",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/03.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "Exclusive",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/01.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "New",
-        },
-        {
-          price: "AED 20,000,000",
-          image: require("../assets/images/exclusive/02.png"),
-          features: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-          location: "BURJ KHALIFA, DOWNTOWN, DUBAI UAE",
-          buttonText: "VILLA FOR SALE",
-          tag: "Off-Plan",
-        },
-      ],
+      filteredProperties: [],
     };
+  },
+  computed: {
+    ...mapState(["properties"]),
+  },
+  watch: {
+    properties: {
+      // eslint-disable-next-line
+      handler(newVal) {
+        this.getValues(newVal);
+      },
+      deep: true,
+    },
+    searchText() {
+      this.getValues();
+    },
+    property() {
+      this.getValues();
+    },
+    minPrice() {
+      this.getValues();
+    },
+    maxPrice() {
+      this.getValues();
+    },
+    isOffPlan() {
+      this.getValues();
+    },
   },
   mounted() {
     this.property = this.propertyOptions[0];
     this.minPrice = this.minPriceOptions[0];
     this.maxPrice = this.maxPriceOptions[0];
-    this.isOffPlan = this.isOffPlanOptions[1];
+    this.isOffPlan = this.isOffPlanOptions[0];
 
-    this.searchText = this.$route.query.q;
+    this.searchText = this.$route.params.query;
+
+    this.getValues();
+  },
+  methods: {
+    /* eslint-disable */
+    getValues(newVal = null) {
+      const searchQuery = this.searchText.toLowerCase().trim();
+      let properties = newVal ? newVal : this.properties;
+      if (properties) {
+        properties = properties.filter((property) => {
+          return (
+            property.homeType
+              .toLowerCase()
+              .includes(this.property.toLowerCase()) &&
+            (property.title.toLowerCase().includes(searchQuery) ||
+              property.address.toLowerCase().includes(searchQuery) ||
+              property.homeType.toLowerCase().includes(searchQuery)) &&
+            property.price >= this.minPrice &&
+            property.price <= this.maxPrice &&
+            property.isOffPlan === this.isOffPlan
+          );
+        });
+        this.filteredProperties = properties.map((property) => {
+          return {
+            ...property,
+            title: property.title,
+            location: property.address,
+            featureText: `${property.homeType} | ${property.bed} Beds | ${property.bath} Baths | ${property.sqFt} Sq Ft`,
+            price: property.price,
+            propertyImage: property.img1,
+            description: property.description,
+            amenities: property.amenities,
+            buttonText: "VILLA FOR SALE",
+            tag: "New",
+          };
+        });
+      }
+    },
+    goToProperty(property) {
+      if (property && property.title) {
+        const titleSlug = property.title.toLowerCase();
+        this.$router.push(`/property/${titleSlug}`);
+      } else {
+        console.log("No property found");
+      }
+    },
   },
 };
 </script>

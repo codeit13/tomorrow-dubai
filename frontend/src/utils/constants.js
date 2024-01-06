@@ -1,4 +1,3 @@
-let BASE_URL =
-  process.env.VUE_APP_MODE == "DEV" ? "http://localhost:3000" : "/";
+let BASE_URL = "https://api.tomorrowdubai.com/api";
 
 export { BASE_URL };

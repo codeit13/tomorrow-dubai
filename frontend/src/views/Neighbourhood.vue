@@ -96,7 +96,7 @@ export default {
   },
   methods: {
     goToProperty(property) {
-      this.$router.push("/listing", { query: property });
+      this.$router.push("/property", { query: property });
     },
   },
 };

@@ -1,14 +1,13 @@
 const mongoose = require("mongoose");
 
 const blogSchema = mongoose.Schema({
-  id: { type: String, require: true },
+  id: { type: String },
   title: { type: String },
-  content: {type: JSON},
+  content: { type: JSON },
   status: { type: String },
   createdAt: { type: Date },
   updatedAt: { type: Date, default: Date.now },
 });
-
 
 blogSchema.method("transform", () => {
   const obj = this.toObject();

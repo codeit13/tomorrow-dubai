@@ -1,20 +1,45 @@
 <template>
-  <Header v-if="$route.path != '/'" />
-  <router-view v-slot="{ Component }">
-    <transition name="slide-fade">
-      <component :is="Component" />
-    </transition>
-  </router-view>
-  <Footer />
+  <div>
+    <Header v-if="!['/', '/buy'].includes($route.path)" />
+    <router-view v-slot="{ Component }">
+      <transition name="slide-fade">
+        <component :is="Component" />
+      </transition>
+    </router-view>
+    <Footer />
+    <Toaster />
+  </div>
 </template>
 
 <script>
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
+import Toaster from "@/components/ui/toast/Toaster.vue";
+import { useToast } from "@/components/ui/toast/use-toast";
+import { mapState } from "vuex";
+const { toast } = useToast();
 
 export default {
   name: "App",
-  components: { Header, Footer },
+  components: { Header, Footer, Toaster },
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapState(["toasterData"]),
+  },
+  watch: {
+    toasterData: {
+      deep: true,
+      handler(toasterData) {
+        toast(toasterData);
+      },
+    },
+  },
+  async mounted() {
+    const exclusiveProperties = await this.$store.dispatch("fetchProperties");
+    this.$store.commit("SET_PROPERTIES", exclusiveProperties);
+  },
 };
 </script>
 
