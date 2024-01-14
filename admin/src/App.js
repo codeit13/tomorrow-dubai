@@ -54,7 +54,8 @@ class App extends Component {
               <Blog />
             </Route>
             <Route path="/" exact>
-              <Home />
+              {/* <Home /> */}
+              {isAuthenticated ? <Admin /> : <Redirect to="/login" />}
             </Route>
           </Switch>
         </Router>

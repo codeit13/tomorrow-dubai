@@ -77,12 +77,12 @@
             </SelectContent>
           </Select>
         </div>
-        <!-- <div class="w-fit px-2 mb-4">
+        <div class="w-fit px-2 mb-4">
           <Button
             class="w-full bg-blue-600 text-[1rem] rounded-none px-6 text-white"
             >Update</Button
           >
-        </div> -->
+        </div>
       </div>
     </div>
     <hr class="bg-black h-[2px] w-full" />
