@@ -28,8 +28,11 @@ app.use(express.json());
 // app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
-// server dist files, on / route
+// server main website
 app.use(express.static("./frontend/dist"));
+
+// server admin panel
+app.use(express.static("./admin/build"));
 
 const corsOptions = {
   origin: [
