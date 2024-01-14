@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
 const connect = () => {
   mongoose
-    .connect("mongodb://localhost:27017/tomorrowdubai", {
+    .connect("mongodb://127.0.0.1/tomorrowdubai", {
       useNewUrlParser: true,
+      useFindAndModify: false,
       useUnifiedTopology: true,
     })
     .then(() => {
