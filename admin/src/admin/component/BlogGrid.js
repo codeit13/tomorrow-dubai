@@ -22,7 +22,6 @@ import { tableCellClasses } from "@mui/material/TableCell";
 import { alpha, styled } from "@mui/material/styles";
 import { visuallyHidden } from "@mui/utils";
 
-
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.primary.dark,
@@ -63,8 +62,6 @@ const headCells = [
     disablePadding: false,
     label: "Update Date",
   },
-
-
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -106,15 +103,14 @@ function EnhancedTableHead(props) {
     onRequestSort(event, property);
   };
 
-
-
   return (
     <TableHead>
       <StyledTableRow>
-          {/* Render the radio button column */}
-          <StyledTableCell padding="checkbox">
-          <InputLabel sx={{ color: "white", fontSize: 14, paddingLeft: 2 }}>
-          </InputLabel>
+        {/* Render the radio button column */}
+        <StyledTableCell padding="checkbox">
+          <InputLabel
+            sx={{ color: "white", fontSize: 14, paddingLeft: 2 }}
+          ></InputLabel>
         </StyledTableCell>
         {headCells.map((headCell) => (
           <StyledTableCell
@@ -151,7 +147,7 @@ function EnhancedTableHead(props) {
   );
 }
 
-const BlogGrid = ({rows, title, onItemSelect }) => {
+const BlogGrid = ({ rows, title, onItemSelect }) => {
   console.log("Rows::", rows);
 
   const [order, setOrder] = useState("asc");
@@ -166,14 +162,14 @@ const BlogGrid = ({rows, title, onItemSelect }) => {
     setOrder(isAsc ? "desc" : "asc");
     setOrderBy(item);
   };
-// Format the date
-const formatDate = (dateToFormat) => {
+  // Format the date
+  const formatDate = (dateToFormat) => {
     return new Intl.DateTimeFormat("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     }).format(new Date(dateToFormat));
-}
+  };
   const handleClick = (event, row) => {
     setSelectedRow(row); // Update the selected row
     onItemSelect(row);
@@ -249,20 +245,18 @@ const formatDate = (dateToFormat) => {
                       role="radio"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={?}
+                      key={row.id}
                       selected={isItemSelected}
                     >
-                        {/* Render the radio button */}
-                        <StyledTableCell scope="row"
-                        padding="none">
+                      {/* Render the radio button */}
+                      <StyledTableCell scope="row" padding="none">
                         <Radio
                           checked={isItemSelected}
                           onChange={(event) => handleClick(event, row)}
                           inputProps={{ "aria-labelledby": labelId }}
                         />
                       </StyledTableCell>
-                      <StyledTableCell scope="row"
-                        padding="none">
+                      <StyledTableCell scope="row" padding="none">
                         #{row.id?.slice(18)}
                       </StyledTableCell>
                       <StyledTableCell
@@ -273,11 +267,10 @@ const formatDate = (dateToFormat) => {
                       >
                         {row.title}
                       </StyledTableCell>
-                     
+
                       <StyledTableCell align="right">
                         {formatDate(row.updatedAt)}
                       </StyledTableCell>
-                    
                     </StyledTableRow>
                   );
                 })}
