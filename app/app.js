@@ -28,6 +28,9 @@ app.use(express.json());
 // app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
+// server dist files, on / route
+app.use(express.static("./frontend/dist"));
+
 const corsOptions = {
   origin: [
     "http://tomorrowdubai.com",
