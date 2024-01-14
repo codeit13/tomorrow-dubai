@@ -1,6 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
+const path = require("path");
+
 const session = require("express-session");
 const passport = require("../config/passport");
 
@@ -29,10 +31,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // server main website
-app.use(express.static("./frontend/dist"));
+app.use("/", express.static(path.join(__dirname, "../frontend/dist")));
 
 // server admin panel
-app.use(express.static("./admin/build"));
+app.use("/admin", express.static(path.join(__dirname, "../admin/build")));
 
 const corsOptions = {
   origin: [
@@ -85,5 +87,11 @@ app.use("/api/logout", logoutRoutes);
 app.use("/api/login", loginRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/blogs", blogRoutes);
+
+// This middleware catches all other routes and returns a 404 error
+app.use((req, res, next) => {
+  const indexPath = path.join(__dirname, "../frontend/dist", "index.html");
+  res.status(200).sendFile(indexPath);
+});
 
 module.exports = app;
