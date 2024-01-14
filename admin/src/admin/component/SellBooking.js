@@ -10,9 +10,7 @@ import TableCell from "@mui/material/TableCell";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
-import {
-  fetchProductsForSell,
-} from "../../store/adminAction";
+import { fetchProductsForSell } from "../../store/adminAction";
 import { grey } from "@mui/material/colors";
 import { useState } from "react";
 
@@ -23,7 +21,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const SellBooking = ({onItemSelect}) => {
+const SellBooking = ({ onItemSelect }) => {
   const dispatch = useDispatch();
   const rows = useSelector((state) => state.admin.sellProducts);
 
@@ -39,29 +37,28 @@ const SellBooking = ({onItemSelect}) => {
   };
 
   return (
-   
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead sx={{background: grey[400], fontWeight: "bold"}}>
-            <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell>Price</TableCell>
-              <TableCell>Type</TableCell>
-              <TableCell>Status</TableCell>
+    <TableContainer component={Paper}>
+      <Table>
+        <TableHead sx={{ background: grey[400], fontWeight: "bold" }}>
+          <TableRow>
+            <TableCell>ID</TableCell>
+            <TableCell>Price</TableCell>
+            <TableCell>Type</TableCell>
+            <TableCell>Status</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.slice(0, 3).map((row) => (
+            <TableRow key={row.id} onClick={(event) => handleClick(event, row)}>
+              <TableCell>...{row.id?.slice(18)}</TableCell>
+              <TableCell>{row.price}</TableCell>
+              <TableCell>{row.homeType}</TableCell>
+              <TableCell>{row.status ? row.status : "DRAFT"}</TableCell>
             </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.slice(0, 3).map((row) => (
-              <TableRow key={row.id}  onClick={(event) => handleClick(event, row)}>
-                <TableCell>...{row.id.slice(18)}</TableCell>
-                <TableCell>{row.price}</TableCell>
-                <TableCell>{row.homeType}</TableCell>
-                <TableCell>{row.status ? row.status : "DRAFT"}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 };
 

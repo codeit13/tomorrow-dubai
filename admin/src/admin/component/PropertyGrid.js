@@ -133,9 +133,9 @@ const EnhancedTableHead = (props) => {
       <StyledTableRow>
         {/* Render the radio button column */}
         <StyledTableCell padding="checkbox">
-          <InputLabel sx={{ color: "white", fontSize: 14, paddingLeft: 2 }}>
-           
-          </InputLabel>
+          <InputLabel
+            sx={{ color: "white", fontSize: 14, paddingLeft: 2 }}
+          ></InputLabel>
         </StyledTableCell>
         {/* Render the other table header cells */}
         {headCells.map((headCell) => (
@@ -263,8 +263,7 @@ const PropertyGrid = ({ rows, title, type, onPropertySelect }) => {
                       selected={isItemSelected}
                     >
                       {/* Render the radio button */}
-                      <StyledTableCell  scope="row"
-                        padding="none">
+                      <StyledTableCell scope="row" padding="none">
                         <Radio
                           checked={isItemSelected}
                           onChange={(event) => handleClick(event, row)}
@@ -273,7 +272,7 @@ const PropertyGrid = ({ rows, title, type, onPropertySelect }) => {
                       </StyledTableCell>
                       {/* Remove the checkbox column */}
                       <StyledTableCell align="right">
-                        #{row.id.slice(18)}
+                        #{row.id?.slice(18)}
                       </StyledTableCell>
                       <StyledTableCell
                         component="th"
@@ -287,7 +286,11 @@ const PropertyGrid = ({ rows, title, type, onPropertySelect }) => {
                         {row.address}
                       </StyledTableCell>
                       <StyledTableCell align="right">
-                       {row.priceOnApplication ? "POA" :  <Currency value={row.price} hideSymbol />}
+                        {row.priceOnApplication ? (
+                          "POA"
+                        ) : (
+                          <Currency value={row.price} hideSymbol />
+                        )}
                       </StyledTableCell>
                       <StyledTableCell align="right">
                         {row.sqFt}

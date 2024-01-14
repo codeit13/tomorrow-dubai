@@ -22,7 +22,6 @@ import { tableCellClasses } from "@mui/material/TableCell";
 import { alpha, styled } from "@mui/material/styles";
 import { visuallyHidden } from "@mui/utils";
 
-
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.primary.dark,
@@ -81,7 +80,6 @@ const headCells = [
     disablePadding: false,
     label: "Status",
   },
-
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -126,10 +124,11 @@ function EnhancedTableHead(props) {
   return (
     <TableHead>
       <StyledTableRow>
-          {/* Render the radio button column */}
-          <StyledTableCell padding="checkbox">
-          <InputLabel sx={{ color: "white", fontSize: 14, paddingLeft: 2 }}>
-          </InputLabel>
+        {/* Render the radio button column */}
+        <StyledTableCell padding="checkbox">
+          <InputLabel
+            sx={{ color: "white", fontSize: 14, paddingLeft: 2 }}
+          ></InputLabel>
         </StyledTableCell>
         {headCells.map((headCell) => (
           <StyledTableCell
@@ -166,7 +165,7 @@ function EnhancedTableHead(props) {
   );
 }
 
-const AgentGrid = ({rows, title, onItemSelect }) => {
+const AgentGrid = ({ rows, title, onItemSelect }) => {
   console.log("Rows::", rows);
 
   const [order, setOrder] = useState("asc");
@@ -260,18 +259,16 @@ const AgentGrid = ({rows, title, onItemSelect }) => {
                       key={row.id}
                       selected={isItemSelected}
                     >
-                        {/* Render the radio button */}
-                        <StyledTableCell scope="row"
-                        padding="none">
+                      {/* Render the radio button */}
+                      <StyledTableCell scope="row" padding="none">
                         <Radio
                           checked={isItemSelected}
                           onChange={(event) => handleClick(event, row)}
                           inputProps={{ "aria-labelledby": labelId }}
                         />
                       </StyledTableCell>
-                      <StyledTableCell scope="row"
-                        padding="none">
-                        #{row.id.slice(18)}
+                      <StyledTableCell scope="row" padding="none">
+                        #{row.id?.slice(18)}
                       </StyledTableCell>
                       <StyledTableCell
                         component="th"

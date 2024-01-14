@@ -249,7 +249,7 @@ const formatDate = (dateToFormat) => {
                       role="radio"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row.id}
+                      key={?}
                       selected={isItemSelected}
                     >
                         {/* Render the radio button */}
@@ -263,7 +263,7 @@ const formatDate = (dateToFormat) => {
                       </StyledTableCell>
                       <StyledTableCell scope="row"
                         padding="none">
-                        #{row.id.slice(18)}
+                        #{row.id?.slice(18)}
                       </StyledTableCell>
                       <StyledTableCell
                         component="th"
