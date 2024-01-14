@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const blogSchema = mongoose.Schema({
   id: { type: String },
   title: { type: String },
-  content: { type: JSON },
+  content: { type: String },
   status: { type: String },
   createdAt: { type: Date },
   updatedAt: { type: Date, default: Date.now },
@@ -14,7 +14,7 @@ blogSchema.method("transform", () => {
 
   //Rename fields
   obj.id = obj._id;
-  //delete obj._id;
+  delete obj._id;
 
   return obj;
 });

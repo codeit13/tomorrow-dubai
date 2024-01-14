@@ -1,19 +1,21 @@
 <template>
-  <div class="bg-white p-4 md:p-8">
-    <div class="text-center">
-      <h1 class="text-2xl font-semibold">All neighborhood DUBAI , UAE</h1>
+  <div class="bg-white px-6 md:px-28 md:p-8">
+    <div class="text-center my-20">
+      <h1 class="text-3xl josefin-slab font-extrabold">
+        All neighborhood DUBAI , UAE
+      </h1>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-12 md:w-[75%] mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-12">
       <div
-        v-for="(card, i) in neighbourhoodProperties"
-        @click="goToProperty(property)"
+        v-for="(property, i) in neighbourhoodProperties"
+        @click="goToNeighborhoodProperty(property)"
         :key="i"
-        class="rounded-lg border bg-card text-card-foreground shadow-sm relative w-full cursor-pointer"
+        class="rounded-lg border bg-card shadow-sm relative w-full cursor-pointer"
         data-v0-t="card"
       >
-        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="absolute inset-0 bg-black opacity-30"></div>
         <img
-          :src="card.image"
+          :src="property.image"
           alt="DUBAILAND"
           class="w-full h-36 object-cover"
           width="350"
@@ -21,9 +23,9 @@
           style="aspect-ratio: 350 / 150; object-fit: cover"
         />
         <h3
-          class="absolute bottom-0 w-full text-center font-semibold text-lg text-white p-4"
+          class="absolute bottom-0 w-full text-center font-bold text-2xl text-white p-4 pb-3 montserrat-font"
         >
-          {{ card.title }}
+          {{ property.title }}
         </h3>
       </div>
     </div>
@@ -59,44 +61,16 @@ export default {
           title: "DUBAI HILLS",
           image: require("../assets/images/neighbourhood/06.png"),
         },
-        {
-          title: "DUBAI ISLAND",
-          image: require("../assets/images/neighbourhood/01.png"),
-        },
-        {
-          title: "PALM JEBEL ALI",
-          image: require("../assets/images/neighbourhood/02.png"),
-        },
-        {
-          title: "PALM JUMEIRAH",
-          image: require("../assets/images/neighbourhood/03.png"),
-        },
-        {
-          title: "DOWNTOWN DUBAI",
-          image: require("../assets/images/neighbourhood/04.png"),
-        },
-        {
-          title: "EMIRATES HILL",
-          image: require("../assets/images/neighbourhood/05.png"),
-        },
-        {
-          title: "DUBAI HILLS",
-          image: require("../assets/images/neighbourhood/06.png"),
-        },
-        {
-          title: "DUBAI ISLAND",
-          image: require("../assets/images/neighbourhood/01.png"),
-        },
-        {
-          title: "PALM JEBEL ALI",
-          image: require("../assets/images/neighbourhood/02.png"),
-        },
       ],
     };
   },
   methods: {
-    goToProperty(property) {
-      this.$router.push("/property", { query: property });
+    goToNeighborhoodProperty(property) {
+      if (property && property.title) {
+        this.$router.push(`/search/${property.title}`);
+      } else {
+        alert(property);
+      }
     },
   },
 };

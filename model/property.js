@@ -5,11 +5,11 @@ const locationSchema = mongoose.Schema({
   type: {
     type: String,
     enum: ["Point"],
-    required: true,
+    required: false,
   },
   coordinates: {
     type: [Number], // [longitude, latitude]
-    required: true,
+    required: false,
   },
 });
 
@@ -29,6 +29,7 @@ const propertySchema = mongoose.Schema(
     city: { type: String },
     state: { type: String },
     title: { type: String },
+    propertyName: { type: String },
     description: { type: String },
     images: [{ type: String }],
     img1: { type: String },
@@ -40,9 +41,13 @@ const propertySchema = mongoose.Schema(
     isListed: { type: String },
     sellDuration: { type: String },
     amenities: [{ type: String }],
+    details: { type: JSON },
+    units: { type: JSON },
+    paymentPlans: { type: JSON },
     location: {
-      type: locationSchema,
-      index: "2dsphere", // Geospatial index
+      type: JSON,
+      // index: "2dsphere", // Geospatial index,
+      required: false,
     },
     agent: { type: mongoose.Schema.Types.ObjectId, ref: "agentdbs" }, // Reference to the Agent model
     status: { type: String },

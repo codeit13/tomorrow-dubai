@@ -1,14 +1,19 @@
 <template>
-  <div class="bg-white p-4">
-    <div class="max-w-7xl mx-auto">
+  <div class="bg-white">
+    <div class="mx-auto mt-6 px-6 md:px-28">
       <div class="flex flex-wrap -mx-2">
-        <div class="w-full sm:w-1/2 md:w-1/6 px-2 mb-4">
+        <div
+          class="w-full sm:w-1/2 md:w-1/1.5 px-2 mb-4"
+          :style="{
+            width: 'revert-layer',
+          }"
+        >
           <Input
             v-model="searchText"
             placeholder="Search By Title, Location,"
           />
         </div>
-        <div class="w-full sm:w-1/2 md:w-1/6 px-2 mb-4">
+        <div class="w-fit px-2 mb-4">
           <Select v-model="property">
             <SelectTrigger id="property-type">
               <SelectValue placeholder="Property Type" />
@@ -24,7 +29,7 @@
             </SelectContent>
           </Select>
         </div>
-        <div class="w-full sm:w-1/2 md:w-1/6 px-2 mb-4">
+        <div class="w-fit px-2 mb-4">
           <Select v-model="minPrice">
             <SelectTrigger id="min-price">
               <SelectValue placeholder="Min Price" />
@@ -40,7 +45,7 @@
             </SelectContent>
           </Select>
         </div>
-        <div class="w-full sm:w-1/2 md:w-1/6 px-2 mb-4">
+        <div class="w-fit px-2 mb-4">
           <Select v-model="maxPrice">
             <SelectTrigger id="max-price">
               <SelectValue placeholder="Max Price" />
@@ -56,7 +61,7 @@
             </SelectContent>
           </Select>
         </div>
-        <div class="w-full sm:w-1/2 md:w-1/6 px-2 mb-4">
+        <div class="w-fit px-2 mb-4">
           <Select v-model="isOffPlan">
             <SelectTrigger id="off-plan">
               <SelectValue placeholder="Off-Plan" />
@@ -72,24 +77,38 @@
             </SelectContent>
           </Select>
         </div>
-        <div class="w-fit sm:w-1/2 md:w-1/6 px-2 mb-4">
-          <Button class="w-full">Update</Button>
-        </div>
+        <!-- <div class="w-fit px-2 mb-4">
+          <Button
+            class="w-full bg-blue-600 text-[1rem] rounded-none px-6 text-white"
+            >Update</Button
+          >
+        </div> -->
       </div>
     </div>
-    <div class="max-w-7xl mx-auto mt-8">
-      <div class="text-center">
-        <h2 class="text-xl font-semibold mb-4">Search Results</h2>
-        <p class="text-lg">{{ searchText }}</p>
+    <hr class="bg-black h-[2px] w-full" />
+    <div class="mx-auto mt-24 px-6 md:px-28">
+      <div class="text-center mb-28">
+        <h2 class="text-lg mb-2">Search Results</h2>
+        <p class="text-2xl font-semibold" v-if="searchText">
+          {{ searchText.toUpperCase() }}
+        </p>
       </div>
 
       <div
-        class="grid grid-cols-1 md:grid-cols-3 gap-4 my-20"
+        class="text-center mb-28"
+        v-if="!(filteredProperties && filteredProperties.length)"
+      >
+        <h2 class="text-lg mb-2">No matching result</h2>
+        <p class="text-2xl font-semibold">Try changing your Search...</p>
+      </div>
+
+      <div
+        class="grid grid-cols-1 md:grid-cols-3 gap-12 my-20"
         v-if="filteredProperties && filteredProperties.length"
       >
         <div
           @click="goToProperty(property)"
-          class="relative cursor-pointer"
+          class="relative cursor-pointer hover:bg-gray-100 rounded-sm border-[1px] border-[#00000062]"
           v-for="(property, i) in filteredProperties"
           :key="i"
         >
@@ -97,24 +116,62 @@
             :src="property.propertyImage"
             alt="Property"
             class="w-full h-auto"
-            width="300"
-            height="200"
             style="aspect-ratio: 300 / 200; object-fit: cover"
           />
           <div
-            class="inline-flex items-center border px-2.5 py-0.5 w-fit text-xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white hover:text-black bg-black/20 text-secondary-foreground hover:bg-white/80 absolute top-2 right-2"
+            class="inline-flex items-center border px-2.5 py-0.5 w-fit text-xl josefin-slab font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white hover:text-black bg-black/20 text-secondary-foreground hover:bg-white/80 absolute top-4 right-4"
           >
             {{ property.tag }}
           </div>
           <div class="p-4">
+            <!-- <div class="flex align-center justify-between"> -->
             <p class="text-lg font-bold">AED {{ property.price }}</p>
             <p class="text-sm">{{ property.featureText }}</p>
-            <p class="text-sm">{{ property.location }}</p>
+            <!-- </div> -->
+            <p class="text-sm mt-2">{{ property.location }}</p>
             <p
-              class="text-sm font-semibold mt-4 text-blue-600 hover:text-blue-800 cursor-pointer"
+              class="text-sm mt-4 text-blue-600 hover:text-blue-800 cursor-pointer"
             >
               {{ property.buttonText }}
             </p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-16" v-else>
+        <h2 class="text-3xl font-semibold mt-32 mb-20">Similar Properties</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div
+            @click="goToProperty(property)"
+            class="relative cursor-pointer hover:bg-gray-100 rounded-sm border-[1px] border-[#00000062]"
+            v-for="(property, i) in similarProperties"
+            :key="i"
+          >
+            <img
+              :src="property.image"
+              alt="Property"
+              class="w-full h-auto"
+              width="300"
+              height="200"
+              style="aspect-ratio: 300 / 200; object-fit: cover"
+            />
+            <div
+              class="inline-flex items-center border px-2.5 py-0.5 w-fit josefin-slab text-xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/10 absolute top-4 right-4"
+            >
+              {{ property.tag }}
+            </div>
+            <div class="p-4">
+              <!-- <div class="flex align-center justify-between"> -->
+              <p class="text-lg font-bold">{{ property.priceText }}</p>
+              <p class="text-sm">{{ property.featureText }}</p>
+              <!-- </div> -->
+
+              <p class="text-sm mt-2">{{ property.locationText }}</p>
+              <p
+                class="text-sm mt-4 text-blue-600 hover:text-blue-800 cursor-pointer"
+              >
+                {{ property.buttonText }}
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -200,21 +257,30 @@ export default {
 
   data() {
     return {
-      propertyOptions: ["Select property type", "Apartment", "House", "Villa"],
-      minPriceOptions: ["Select min price", "$100,000", "$200,000", "$300,000"],
-      maxPriceOptions: [
-        "Select max price",
-        "$500,000",
-        "$1,000,000",
-        "$1,500,000",
+      propertyOptions: ["Property Type", "Apartment", "House", "Villa"],
+      minPriceOptions: [
+        "Min Price",
+        "0",
+        "5000000",
+        "10000000",
+        "20000000",
+        "30000000",
       ],
-      isOffPlanOptions: ["Is it Off Plan", "Yes", "No"],
+      maxPriceOptions: [
+        "Max Price",
+        "40000000",
+        "50000000",
+        "60000000",
+        "150000000",
+      ],
+      isOffPlanOptions: ["Off Plan", "Yes", "No"],
       property: null,
       minPrice: null,
       maxPrice: null,
       isOffPlan: null,
       searchText: null,
       filteredProperties: [],
+      similarProperties: [],
     };
   },
   computed: {
@@ -257,20 +323,46 @@ export default {
   methods: {
     /* eslint-disable */
     getValues(newVal = null) {
-      const searchQuery = this.searchText.toLowerCase().trim();
+      let searchQuery = this.searchText.toLowerCase().trim().split(",");
+
+      searchQuery = searchQuery[1]
+        ? searchQuery[1].trim()
+        : this.searchText.toLowerCase().trim();
+      let minPrice =
+        this.minPrice == this.minPriceOptions[0] ? false : this.minPrice;
+      let maxPrice =
+        this.maxPrice == this.maxPriceOptions[0] ? false : this.maxPrice;
+      let offPlan =
+        this.isOffPlan == this.isOffPlanOptions[0] ? false : this.isOffPlan;
+      let selectedProperty =
+        this.property == this.propertyOptions[0] ? false : this.property;
+
+      console.log(
+        `${searchQuery} ${minPrice} ${maxPrice} ${offPlan} ${selectedProperty}`
+      );
       let properties = newVal ? newVal : this.properties;
       if (properties) {
+        this.similarProperties = properties
+          .map((property) => {
+            property.priceText = `AED ${property.price}`;
+            property.locationText = property.address;
+            property.image = property.img1;
+            property.buttonText = `${property.homeType.toUpperCase()} FOR SALE`;
+            property.tag = property.isOffPlan ? "Off Plan" : "Exclusive";
+            property.featureText = `${property.bed} BEDS | ${property.bath} BATHS | ${property.sqFt} SQ FT`;
+            return property;
+          })
+          .slice(0, 3);
+
         properties = properties.filter((property) => {
           return (
-            property.homeType
-              .toLowerCase()
-              .includes(this.property.toLowerCase()) &&
             (property.title.toLowerCase().includes(searchQuery) ||
               property.address.toLowerCase().includes(searchQuery) ||
               property.homeType.toLowerCase().includes(searchQuery)) &&
-            property.price >= this.minPrice &&
-            property.price <= this.maxPrice &&
-            property.isOffPlan === this.isOffPlan
+            (minPrice ? property.price >= minPrice : true) &&
+            (maxPrice ? property.price <= maxPrice : true) &&
+            (offPlan ? property.isOffPlan == offPlan : true) &&
+            (selectedProperty ? property.homeType == selectedProperty : true)
           );
         });
         this.filteredProperties = properties.map((property) => {
@@ -283,7 +375,7 @@ export default {
             propertyImage: property.img1,
             description: property.description,
             amenities: property.amenities,
-            buttonText: "VILLA FOR SALE",
+            buttonText: `${property.homeType?.toUpperCase()} FOR SALE`,
             tag: "New",
           };
         });
@@ -291,7 +383,11 @@ export default {
     },
     goToProperty(property) {
       if (property && property.title) {
-        const titleSlug = property.title.toLowerCase();
+        const titleSlug = property.title
+          .toLowerCase()
+          .replace(/ /g, "-")
+          .replace(/-$/g, "");
+
         this.$router.push(`/property/${titleSlug}`);
       } else {
         console.log("No property found");

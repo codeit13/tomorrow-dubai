@@ -5,4 +5,7 @@ export const mutations = {
   SET_PROPERTIES(state, payload) {
     state.properties = payload;
   },
+  SET_BLOGS(state, payload) {
+    state.blogs = payload;
+  },
 };

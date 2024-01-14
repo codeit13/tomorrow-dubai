@@ -1,19 +1,53 @@
 <template>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" v-if="title">
-    <div class="pt-10 pb-12">
-      <div class="flex flex-wrap justify-between items-center sticky">
-        <div>
-          <h1 class="text-3xl font-semibold">{{ title }}</h1>
-          <p class="text-sm text-gray-500">
+  <div v-if="title">
+    <div class="mx-auto px-4 md:px-28 pt-10">
+      <div
+        class="flex flex-wrap justify-between items-start md:items-end sticky"
+        v-if="isOffPlan"
+      >
+        <span
+          class="text-sm md:text-xl font-extrabold josefin-slab mb-20 cursor-pointer uppercase"
+          @click="$router.go(-1)"
+          >{{ `< Off Plan` }}</span
+        >
+        <div class="text-center">
+          <h1 class="text-2xl md:text-4xl montserrat-font mb-3">
+            {{ title }}
+          </h1>
+          <p class="text-sm md:text-xl mb-3">
             {{ subtitle }}
           </p>
-          <p class="text-sm">{{ featureText }}</p>
+          <!-- <p class="text-lg">{{ featureText }}</p> -->
+
+          <!-- <p class="text-lg text-gray-700 mt-4">STARTING FROM</p> -->
+          <p class="text-sm md:text-xl" v-if="startingPrice">
+            STARTING FROM AED {{ startingPrice.toLocaleString("en-US") }}
+          </p>
         </div>
-        <div v-if="startingPrice">
-          <p class="text-sm text-gray-500">STARTING FROM</p>
-          <p class="text-2xl font-semibold">AED {{ startingPrice }}</p>
+        <span></span>
+      </div>
+      <div
+        class="flex flex-wrap justify-between items-start gap-10 md:items-end sticky"
+        v-else
+      >
+        <div>
+          <h1 class="text-2xl md:text-3xl montserrat-font mb-4">
+            {{ title }}
+          </h1>
+          <p class="text-sm md:text-lg mb-4">
+            {{ subtitle }}
+          </p>
+          <p class="text-sm md:text-lg">{{ featureText }}</p>
+        </div>
+        <div v-if="startingPrice" class="md:text-right">
+          <p class="text-lg text-gray-700">STARTING FROM</p>
+          <p class="text-3xl font-semibold">
+            AED {{ startingPrice.toLocaleString("en-US") }}
+          </p>
         </div>
       </div>
+    </div>
+    <div class="px-2">
       <div class="my-10">
         <img
           alt="Property"
@@ -27,23 +61,46 @@
           width="640"
         />
       </div>
+    </div>
+    <div class="mx-auto px-6 md:px-28 py-12">
       <div
         class="flex flex-wrap md:flex-nowrap space-y-12 md:space-y-0 md:space-x-24"
       >
-        <div class="flex flex-col space-y-10 md:w-[70%]">
-          <div class="">
-            <h2 class="text-xl font-semibold mb-4">Property Descriptions</h2>
-            <p class="text-justify">
-              {{ shortDescription }}
-            </p>
-            <Button class="mt-3" variant="outline"> {{ `More >` }} </Button>
+        <div
+          class="flex flex-col space-y-20 w-[100%] md:w-[65%] md:min-w-[65%]"
+        >
+          <div v-if="isOffPlan && details">
+            <h2 class="text-xl md:text-3xl font-semibold mb-6">Details</h2>
+            <div class="grid grid-cols-3 gap-4">
+              <div v-for="(item, i) in details" :key="i">
+                <h1 class="text-md md:text-xl font-bold">{{ item }}</h1>
+                <span class="text-xs">{{ i }}</span>
+              </div>
+            </div>
           </div>
 
-          <div class="md:w-[70%]">
-            <h2 class="text-lg font-semibold mb-4 mt-2">Amenities</h2>
+          <div class="pt-6">
+            <h2 class="text-xl md:text-3xl font-semibold mb-6">
+              Property Descriptions
+            </h2>
+            <p
+              class="text-sm md:text-lg text-justify"
+              v-html="shortDescription"
+            ></p>
+            <p
+              v-if="showMoreBtn"
+              class="mt-12 border-0 underline underline-offset-4 hover:bg-white cursor-pointer"
+              @click="showMore"
+            >
+              {{ `More >` }}
+            </p>
+          </div>
+
+          <div class="md:w-[70%] pt-4">
+            <h2 class="text-xl md:text-3xl font-semibold mb-8">Amenities</h2>
             <div class="grid grid-cols-3 gap-4">
               <div
-                class="bg-gray-200 p-2 text-left text-xs"
+                class="bg-gray-200 p-2 text-left text-xs md:text-md"
                 :key="i"
                 v-for="(item, i) in amenities"
               >
@@ -51,95 +108,188 @@
               </div>
             </div>
           </div>
+
+          <div v-if="isOffPlan && units" class="md:w-[50%] pt-4">
+            <h2 class="text-xl md:text-3xl font-semibold mb-8">Units</h2>
+            <div class="flex flex-col space-y-4">
+              <div
+                class="flex justify-between text-center"
+                v-for="(unit, i) in units"
+                :key="i"
+              >
+                <h1 v-if="unit.sqFt" class="font-bold text-sm md:text-md">
+                  {{ i }}
+                </h1>
+                <span
+                  v-if="unit.sqFt"
+                  class="text-sm md:text-md josefin-slab font-[600]"
+                >
+                  {{ unit.sqFt }} Sq Ft
+                </span>
+                <span v-if="unit.price" class="text-sm md:text-md">
+                  AED {{ unit.price.toLocaleString("en-US") }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div v-if="isOffPlan && paymentPlans" class="md:w-[70%] pt-4">
+            <h2 class="text-xl md:text-3xl font-semibold mb-8">Payment Plan</h2>
+            <div class="flex justify-between">
+              <div v-for="(plan, i) in paymentPlans" :key="i">
+                <p class="text-xl md:text-xl font-bold">{{ plan }}</p>
+                <h1 class="text-sm">{{ i }}</h1>
+              </div>
+            </div>
+          </div>
         </div>
         <div
-          class="flex flex-col space-y-5 md:space-y-10 w-full md:w-[30%] md:items-end"
+          class="flex flex-col flex-wrap space-y-5 md:space-y-10 w-full md:w-[40%] md:items-end"
         >
-          <div class="flex items-center justify-start gap-8" v-if="agent">
-            <div class="rounded-full bg-gray-200 w-24 h-24 mb-4">
+          <div
+            class="flex items-center md:items-start flex-wrap md:flex-nowrap justify-start gap-8 md:p-8"
+            v-if="agent"
+          >
+            <div class="rounded-full bg-gray-200 mb-4">
               <img
                 alt="Agent"
-                class="w-full h-full rounded-full"
-                height="96"
+                class="w-[200px] h-full rounded-full"
                 :src="agent.img"
                 :style="{
-                  aspectRatio: '96/96',
+                  aspectRatio: '1/1',
                   objectFit: 'cover',
                 }"
-                width="96"
               />
             </div>
-            <div>
-              <h3 class="text-lg font-semibold">LISTING AGENT</h3>
-              <p class="font-semibold">{{ agent.name }}</p>
-              <a :href="`mailto:${agent.email}`" class="text-sm">
-                {{ agent.email }}
-              </a>
-              <br />
-              <a :href="`tel:${agent.phone}`" class="text-sm">
-                {{ agent.phone }}
-              </a>
-              <br />
-              <Button
-                @click="goToWhatsapp(agent.phone)"
+            <div class="w-full">
+              <h3 class="text-lg montserrat-font mb-3">LISTING AGENT</h3>
+              <p class="font-semibold montserrat-font mb-3">{{ agent.name }}</p>
+              <p class="mb-3">
+                <a
+                  :href="`mailto:${agent.email}`"
+                  class="text-sm montserrat-font"
+                >
+                  {{ agent.email }}
+                </a>
+              </p>
+              <p class="mb-3">
+                <a :href="`tel:${agent.phone}`" class="text-sm montserrat-font">
+                  {{ agent.phone }}
+                </a>
+              </p>
+
+              <div class="flex mt-6">
+                <Button
+                  class="rounded-none border-2 transition-all border-[#000] bg-white text-sm font-semibold text-[#25D366] mt-2"
+                  variant="outline"
+                  @click="goToWhatsapp(agent.phone)"
+                >
+                  WhatsApp
+                </Button>
+                <Button
+                  @click="goToCall(agent.phone)"
+                  class="rounded-none border-2 transition-all border-[#000] bg-black text-sm font-semibold text-[#e3e3e3] mt-2 ml-0 md:ml-2"
+                  variant="outline"
+                  >Call Now</Button
+                >
+              </div>
+
+              <!-- <Button
+               
                 class="mt-2"
                 variant="outline"
               >
                 WhatsApp
               </Button>
               <Button
-                @click="goToCall(agent.phone)"
+                
                 class="mt-2 ml-0 md:ml-2"
                 variant="outline"
               >
                 Call Now
-              </Button>
+              </Button> -->
             </div>
           </div>
-          <div class="w-[92%]">
-            <h2 class="text-xl font-semibold mb-4">Contact form</h2>
-            <div class="space-y-4">
+          <div class="w-[92%] p-6 md:p-8 bg-gray-100 bg-opacity-50">
+            <h2 class="text-xl font-semibold mb-4">Register your interest</h2>
+            <div class="space-y-4 text-right">
               <Input v-model="name" placeholder="Full Name" />
               <Input v-model="email" placeholder="Email" />
               <Input v-model="phone" placeholder="+971 | Mobile" />
               <Textarea
+                class="rounded-none border-[#000]"
                 v-model="moreInfo"
                 placeholder="Tell us more about what you want to know"
               />
-              <Button @click="submitContactForm">Submit</Button>
+              <Button
+                class="rounded-none border-[1px] px-6 border-[#000] bg-white text-black hover:bg-black hover:text-white"
+                @click="submitContactForm"
+                >Submit</Button
+              >
             </div>
           </div>
         </div>
       </div>
 
       <div>
-        <h2 class="text-xl font-semibold mb-4 mt-12">Location Map</h2>
-        <!-- <img
-          alt="Location Map"
-          class="w-full h-auto"
-          height="200"
-          src="/placeholder.svg"
-          :style="{ aspectRatio: '300/200', objectFit: 'cover' }"
-          width="300"
-        /> -->
-        <div class="mapouter">
+        <h2 class="text-3xl font-semibold mb-8 mt-28">Location Map</h2>
+        <!-- <div class="mapouter">
           <div class="gmap_canvas">
             <iframe
               src="https://maps.google.com/maps?q=dubai&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
               frameborder="0"
               scrolling="no"
-              class="w-[96vw] h-[50vh] md:h-[400px]"
+              class="w-[100%] h-[50vh] md:w-[65%] md:h-[400px]"
             ></iframe>
           </div>
+        </div> -->
+        <div
+          v-if="coordinates && coordinates.length > 0"
+          class="w-[100%] h-[50vh] md:w-[65%] md:h-[400px]"
+        >
+          <ol-map
+            :loadTilesWhileAnimating="true"
+            :loadTilesWhileInteracting="true"
+            style="height: 400px"
+          >
+            <ol-view
+              ref="view"
+              :center="coordinates"
+              :rotation="rotation"
+              :zoom="zoom"
+              :projection="projection"
+            />
+
+            <ol-tile-layer>
+              <ol-source-osm />
+            </ol-tile-layer>
+
+            <ol-vector-layer>
+              <ol-source-vector>
+                <ol-feature>
+                  <ol-geom-point :coordinates="coordinates"></ol-geom-point>
+                  <ol-style>
+                    <ol-style-circle :radius="radius">
+                      <ol-style-fill :color="fillColor"></ol-style-fill>
+                      <ol-style-stroke
+                        :color="strokeColor"
+                        :width="strokeWidth"
+                      ></ol-style-stroke>
+                    </ol-style-circle>
+                  </ol-style>
+                </ol-feature>
+              </ol-source-vector>
+            </ol-vector-layer>
+          </ol-map>
         </div>
       </div>
 
-      <div class="my-8">
-        <h2 class="text-xl font-semibold mb-4">Similar Properties</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-20">
+      <div class="mt-16">
+        <h2 class="text-3xl font-semibold mt-32 mb-20">Similar Properties</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div
             @click="goToProperty(property)"
-            class="relative cursor-pointer"
+            class="relative cursor-pointer hover:bg-gray-100 rounded-sm border-[1px] border-[#00000062]"
             v-for="(property, i) in similarProperties"
             :key="i"
           >
@@ -152,16 +302,19 @@
               style="aspect-ratio: 300 / 200; object-fit: cover"
             />
             <div
-              class="inline-flex items-center border px-2.5 py-0.5 w-fit text-xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white hover:text-black bg-black/20 text-secondary-foreground hover:bg-white/80 absolute top-2 right-2"
+              class="inline-flex items-center border px-2.5 py-0.5 w-fit josefin-slab text-xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/10 absolute top-4 right-4"
             >
               {{ property.tag }}
             </div>
             <div class="p-4">
+              <!-- <div class="flex align-center justify-between"> -->
               <p class="text-lg font-bold">{{ property.priceText }}</p>
-              <p class="text-sm">{{ property.featuresText }}</p>
-              <p class="text-sm">{{ property.locationText }}</p>
+              <p class="text-sm">{{ property.featureText }}</p>
+              <!-- </div> -->
+
+              <p class="text-sm mt-2">{{ property.locationText }}</p>
               <p
-                class="text-sm font-semibold mt-4 text-blue-600 hover:text-blue-800 cursor-pointer"
+                class="text-sm mt-4 text-blue-600 hover:text-blue-800 cursor-pointer"
               >
                 {{ property.buttonText }}
               </p>
@@ -177,6 +330,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { fromLonLat } from "ol/proj";
 
 import { mapState } from "vuex";
 
@@ -197,7 +351,11 @@ export default {
       description: null,
       shortDescription: null,
       amenities: [],
+      details: null,
+      units: null,
+      paymentPlans: null,
       agent: {},
+      isOffPlan: false,
       similarProperties: [
         // {
         //   price: "AED 20,000,000",
@@ -228,6 +386,16 @@ export default {
       email: null,
       phone: null,
       moreInfo: null,
+      coordinates: [],
+      center: [40, 40],
+      projection: "EPSG:4326",
+      zoom: 8,
+      rotation: 0,
+      radius: 15,
+      strokeWidth: 5,
+      strokeColor: "black",
+      fillColor: "white",
+      showMoreBtn: true,
     };
   },
   computed: {
@@ -241,12 +409,30 @@ export default {
       },
       deep: true,
     },
+    async subtitle(address) {
+      // address = "Bazpur, Uttarakhand, India";
+      if (address) {
+        const data = await this.$store.dispatch("fetchCordinatesFromAddress", {
+          address: address,
+        });
+
+        if (data && data.length > 0) {
+          const [lon, lat] = [parseFloat(data[0].lon), parseFloat(data[0].lat)];
+
+          this.coordinates.push(lon);
+          this.coordinates.push(lat);
+        }
+      }
+    },
   },
   mounted() {
     console.log("mounted getValues");
     this.getValues();
   },
   methods: {
+    fromLonLat(coordinates) {
+      return fromLonLat(coordinates);
+    },
     goToProperty(property) {
       if (property && property.title) {
         const titleSlug = property.title
@@ -258,6 +444,10 @@ export default {
       } else {
         console.log("No property found");
       }
+    },
+    showMore() {
+      this.shortDescription = this.description;
+      this.showMoreBtn = false;
     },
     getValues(newVal = null) {
       const title = this.$route.params.titleSlug.replace(/-/g, " ");
@@ -286,16 +476,22 @@ export default {
         if (property) {
           this.propertyId = property.id;
           this.title = property.title;
-          this.subtitle = property.address;
+          this.subtitle = `${property.propertyName}, ${property.address}`;
 
           this.featureText = `${property.homeType} | ${property.bed} Beds | ${property.bath} Baths | ${property.sqFt} Sq Ft`;
           this.startingPrice = property.price;
           this.propertyImage = property.img1;
           this.description = property.description;
-          this.shortDescription = property.description.slice(0, 170) + "...";
+          this.shortDescription = property.description.slice(0, 1000) + "...";
           this.amenities = property.amenities;
 
+          this.details = property.details;
+          this.units = property.units;
+          this.paymentPlans = property.paymentPlans;
+
           this.agent = property.agent;
+
+          this.isOffPlan = property.isOffPlan;
 
           this.moreInfo = `Hi, I found your property. Please contact me. Thank you`;
         }

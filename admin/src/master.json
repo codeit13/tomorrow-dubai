@@ -1,0 +1,452 @@
+{
+  "propertyType": [
+    {
+      "id": "Villa",
+      "name": "Villa"
+    },
+    {
+      "id": "Apartment",
+      "name": "Apartment"
+    },
+    {
+      "id": "Penthouse",
+      "name": "Penthouse"
+    },
+    {
+      "id": "Townhouse",
+      "name": "Townhouse"
+    },
+    {
+      "id": "Plot",
+      "name": "Plot"
+    },
+    {
+      "id": "Other",
+      "name": "Other"
+    }
+  ],
+  "offPlan": [
+    {
+      "id": 1,
+      "name": "Yes"
+    },
+    {
+      "id": 2,
+      "name": "No"
+    }
+  ],
+  "beds": [
+    {
+      "id": 1,
+      "name": 1
+    },
+    {
+      "id": 2,
+      "name": 2
+    },
+    {
+      "id": 3,
+      "name": 3
+    },
+    {
+      "id": 4,
+      "name": 4
+    },
+    {
+      "id": 5,
+      "name": 5
+    },
+    {
+      "id": 6,
+      "name": 6
+    },
+    {
+      "id": 7,
+      "name": 7
+    },
+    {
+      "id": 8,
+      "name": 8
+    },
+    {
+      "id": 9,
+      "name": 9
+    },
+    {
+      "id": 10,
+      "name": 10
+    },
+    {
+      "id": 11,
+      "name": 11
+    },
+    {
+      "id": 12,
+      "name": 12
+    },
+    {
+      "id": 13,
+      "name": 13
+    },
+    {
+      "id": 14,
+      "name": 14
+    },
+    {
+      "id": 15,
+      "name": 15
+    }
+  ],
+  "baths": [
+    {
+      "id": 1,
+      "name": 1
+    },
+    {
+      "id": 2,
+      "name": 2
+    },
+    {
+      "id": 3,
+      "name": 3
+    },
+    {
+      "id": 4,
+      "name": 4
+    },
+    {
+      "id": 5,
+      "name": 5
+    },
+    {
+      "id": 6,
+      "name": 6
+    },
+    {
+      "id": 7,
+      "name": 7
+    },
+    {
+      "id": 8,
+      "name": 8
+    },
+    {
+      "id": 9,
+      "name": 9
+    },
+    {
+      "id": 10,
+      "name": 10
+    },
+    {
+      "id": 11,
+      "name": 11
+    },
+    {
+      "id": 12,
+      "name": 12
+    },
+    {
+      "id": 13,
+      "name": 13
+    },
+    {
+      "id": 14,
+      "name": 14
+    },
+    {
+      "id": 15,
+      "name": 15
+    }
+
+  ],
+  "minPrice": [
+    {
+      "id": 1000000,
+      "name": 1000000
+    },
+    {
+      "id": 2000000,
+      "name": 2000000
+    },
+    {
+      "id": 5000000,
+      "name": 5000000
+    },
+
+    {
+      "id": 10000000,
+      "name": 10000000
+    },
+    {
+      "id": 20000000,
+      "name": 20000000
+    },
+    {
+      "id": 50000000,
+      "name": 50000000
+    },
+    {
+      "id": 100000000,
+      "name": 100000000
+    }
+  ],
+  "maxPrice": [
+    {
+      "id": 1000000,
+      "name": 1000000
+    },
+    {
+      "id": 2000000,
+      "name": 2000000
+    },
+    {
+      "id": 5000000,
+      "name": 5000000
+    },
+
+    {
+      "id": 10000000,
+      "name": 10000000
+    },
+    {
+      "id": 20000000,
+      "name": 20000000
+    },
+    {
+      "id": 50000000,
+      "name": 50000000
+    },
+    {
+      "id": 100000000,
+      "name": 100000000
+    },
+    {
+      "id": 200000000,
+      "name": 200000000
+    },
+    {
+      "id": 300000000,
+      "name": 300000000
+    },
+    {
+      "id": 500000000,
+      "name": 500000000
+    },
+    {
+      "id": 1000000000,
+      "name": 1000000000
+    }
+  ],
+  "sortBy": [
+    {
+      "id": "Recommended",
+      "name": "Recommended"
+    },
+    {
+      "id": "Popular",
+      "name": "Popular"
+    },
+    {
+      "id": "High",
+      "name": "High To Low"
+    },
+    {
+      "id": "Low",
+      "name": "Low to High"
+    }
+  ],
+  "neighbourhood": {
+    "cityNames": [
+      "Dubai Hills",
+      "Downtown Dubai",
+      "Emirates Hills",
+      "Dubai Marina",
+      "Jumeirah",
+      "Palm Jumeirah"
+    ]
+  },
+  "amenities": [
+    "Club House",
+    "Swimming Pool",
+    "Gym",
+    "Nearby Highways",
+    "Shopping Centers",
+    "Covered Parking",
+    "Lounge Terrace",
+    "Finished Basement",
+    "Terrace Garden",
+    "24 * 7 Electricity",
+    "Kids Playarea",
+    "Pet Garden",
+    "Maid’s room ",
+    "Private gym",
+    "Study room",
+    "Private pool ",
+    "Equipped kitchen ",
+    "Built in wardrobes ",
+    "Walk-in closet ",
+    "Private garden ",
+    "Covered parking ",
+    "Pool ",
+    "Concierge service ",
+    "Balcony ",
+    "Spa",
+    "Private cinema"
+  ],
+  "details": [
+   "Completion Date",
+   "Developer",
+   "Lifestyle",
+   "Property Type",
+   "Available Unit",
+   "Price Range"
+  ],
+  "units": [
+    "2 Bedrooms",
+    "3 Bedrooms",
+    "4 Bedrooms",
+    "5 Bedrooms"
+   ],
+   "paymentPlans": [
+    "On Booking",
+    "During Construction",
+    "Completion"
+   ],
+  "isListed": ["Yes", "No"],
+  "duration": ["ASAP", "2-4 Weeks", "4-6 Weeks", "Check Estimate Offer"],
+  "agentSalesVolume": [
+    "50K AED - 100K AED",
+    "100K AED - 200K AED",
+    "200K AED - 300K AED",
+    "300K AED - 400K AED",
+    "400K AED - 500K AED",
+    "Above 500K AED"
+  ],
+  "locations": [
+    "BLVD Heights",
+    "Burj Khalifa Area",
+    "The Address Sky View Towers",
+    "The Address Residence Fountain Views",
+    "The Address Residences Dubai Opera",
+    "The Address The BLVD",
+    "The Residence | Burj Khalifa",
+    "W Dubai Downtown Residences",
+    "29 Burj Boulevard",
+    "BLVD Crescent",
+    "St Regis Residences",
+    "The Sterling",
+    "Jumeirah Living Business Bay",
+    "Bugatti Residences by Binghatti",
+    "The Edge",
+    "The Quayside by Ellington",
+    "Vela",
+    "DG 1 Living",
+    "Peninsula Three",
+    "SLS Dubai Hotel & Residences",
+    "The Paragon by IGO",
+    "Dorchester Collection Dubai",
+    "Marriott Residences Dubai Business Bay",
+    "Safa Two",
+    "UPSIDE",
+    "Volante",
+    "Majestine",
+    "Marquise Square",
+    "Paramount Hotels & Resorts",
+    "Peninsula Four",
+    "Peninsula One",
+    "Peninsula Two",
+    "Reva Residences",
+    "The Opus",
+    "The Pad",
+    "Vera Residences",
+    "Zada Residence",
+    "La Mer",
+    "Safa",
+    "Jumeirah 2",
+    "Jumeirah Bay Island",
+    "Jumeirah Villas",
+    "Umm Al Sheif",
+    "The Crescent",
+    "Oceana",
+    "Garden Homes",
+    "Marina Residences",
+    "Kingdom of Sheba",
+    "Signature Villas",
+    "Como Residences",
+    "Shoreline Apartments",
+    "The Fairmont Palm Residences",
+    "Palm Beach Towers",
+    "Serenia Living",
+    "Anantara Residences",
+    "Ellington Beach House",
+    "Palma Residences",
+    "Atlantis The Royal Residences",
+    "Ava At Palm Jumeirah",
+    "Canal Cove Villas",
+    "Golden Mile",
+    "ORLA Dorchester Collection Dubai",
+    "Palm Flower",
+    "Serenia Residences The Palm",
+    "Six Senses Residences The Palm",
+    "Th8",
+    "Tiara Residences",
+    "Custom Villas",
+    "FIVE Palm Jumeirah",
+    "W Residences",
+    "Azure Residences",
+    "Dukes The Palm",
+    "Seven Palm",
+    "Sidra Villas",
+    "Address Villas - Hillcrest",
+    "Dubai Hills",
+    "Golf Place",
+    "Maple At Dubai Hills Estate",
+    "Golf Grand",
+    "Majestic Vistas",
+    "Parkway Vistas",
+    "Club Villas at Dubai Hills",
+    "Ellington House",
+    "Executive Residences",
+    "Executive Residences II",
+    "Hills Park",
+    "Palm Hills",
+    "Park Heights",
+    "Park Horizon",
+    "Pinnacle",
+    "Cavalli Tower",
+    "Marina Gate",
+    "Marina Shores",
+    "Emaar 6 Towers",
+    "Silverene Towers",
+    "Emirates Crown",
+    "Torch Tower",
+    "23 Marina",
+    "5242",
+    "Ciel Tower",
+    "Elite Residence",
+    "LIV Residence",
+    "La Riviera",
+    "Le Reve",
+    "Marina Promenade",
+    "Marina Quays",
+    "Marinascape Avant",
+    "No. 9",
+    "Ocean Heights",
+    "Orra Marina",
+    "Stella Maris",
+    "Trident Bayside",
+    "Trident Grand Residence",
+    "Meadows",
+    "Golf Heights",
+    "The Springs",
+    "Pearl Jumeirah Villas",
+    "Sobha Hartland",
+    "District One West",
+    "District 11",
+    "District One",
+    "Sobha Hartland II",
+    "The Residences at District One",
+    "Wilton Park Residences"
+  ]
+}

@@ -87,12 +87,9 @@ const processQueryParams = (req, res, next) => {
   //  Ensure 'status' parameter is valid
   const validStatuses = ["approved", "draft", "rejected"];
   if (status && !validStatuses.includes(status.toLowerCase())) {
-    return res
-      .status(400)
-      .json({
-        error:
-          "Invalid status parameter. Possible Values are: " + validStatuses,
-      });
+    return res.status(400).json({
+      error: "Invalid status parameter. Possible Values are: " + validStatuses,
+    });
   }
 
   // Continue to the next middleware or route handler

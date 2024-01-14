@@ -6,6 +6,7 @@ const store = createStore({
   state: {
     toasterData: null,
     properties: null,
+    blogs: null,
   },
   mutations,
   actions,

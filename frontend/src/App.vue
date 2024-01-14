@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header v-if="!['/', '/buy'].includes($route.path)" />
+    <Header v-if="!['/', '/buy', '/sell'].includes($route.path)" />
     <router-view v-slot="{ Component }">
       <transition name="slide-fade">
         <component :is="Component" />
@@ -37,8 +37,8 @@ export default {
     },
   },
   async mounted() {
-    const exclusiveProperties = await this.$store.dispatch("fetchProperties");
-    this.$store.commit("SET_PROPERTIES", exclusiveProperties);
+    await this.$store.dispatch("fetchProperties");
+    await this.$store.dispatch("fetchBlogs");
   },
 };
 </script>

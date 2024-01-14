@@ -18,7 +18,9 @@
             <p class="text-lg">{{ agentTitle }}</p>
             <p class="text-sm">EMAIL ID : {{ agentEmail }}</p>
             <p class="text-sm">MOBILE : {{ agnetPhone }}</p>
-            <Button class="bg-blue-600 text-white">
+            <Button
+              class="bg-blue-600 text-lg rounded-none px-12 py-8 text-white"
+            >
               Work With {{ agentName }}
             </Button>
           </div>

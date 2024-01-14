@@ -1,6 +1,6 @@
 <template>
-  <footer class="bg-white dark:bg-gray-900 mt-8">
-    <div class="mx-auto w-full max-w-screen-3xl p-4 py-6 md:px-24 lg:py-8">
+  <footer class="bg-white dark:bg-gray-900 mt-40">
+    <div class="mx-auto w-full p-4 py-6 md:px-24 lg:py-8">
       <div class="md:flex md:justify-between">
         <div class="mb-6 md:mb-0">
           <a href="/" class="flex items-center">
@@ -10,7 +10,7 @@
               Tomorrow Luxury Property
             </span>
           </a>
-          <div class="flex flex-col space-y-2 mt-2">
+          <div class="flex flex-col space-y-3 mt-2">
             <p>Contact us</p>
             <p>Phone: +971 581677220</p>
             <p>Email: ceo@tomorrowdubai.com</p>
@@ -23,6 +23,7 @@
                 @click="openExternalUrl(handle.handleUrl)"
               />
             </div>
+            <p class="mt-8">© 2024 tomm luxury real estate llc</p>
           </div>
         </div>
         <div class="flex flex-wrap justify-between md:space-x-48">
@@ -32,7 +33,7 @@
             >
               Features
             </h2>
-            <ul class="text-gray-500 dark:text-gray-400 font-medium">
+            <ul class="text-black-900 dark:text-gray-400 font-medium">
               <li class="mb-4" v-for="(feature, i) in features" :key="i">
                 <a
                   @click="$router.push(feature.route)"
@@ -49,7 +50,7 @@
             >
               Company
             </h2>
-            <ul class="text-gray-500 dark:text-gray-400 font-medium">
+            <ul class="text-black-900 dark:text-black-900 font-medium">
               <li class="mb-4" v-for="(item, i) in company" :key="i">
                 <a
                   @click="$router.push(item.route)"

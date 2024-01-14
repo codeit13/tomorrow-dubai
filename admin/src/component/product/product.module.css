@@ -1,0 +1,290 @@
+
+.ProductDetailContainer{
+
+border-top: 2px solid lightgray;
+padding-top: 0%;
+
+
+}
+/* prperty detail styling    */
+.ProperryTytle{
+  margin:0% 5%;
+  padding-top: 0%;
+  text-align: left;
+
+
+}
+
+.propertyDetail{
+
+font-size: x-large;
+font-weight: bold;
+color: black;
+
+}
+
+.ProperryTytle h2{
+  padding-bottom: 0.5%;
+  color: black;
+  font-size:x-large;
+
+}
+
+.ProperryTytle p{
+ 
+  color: black;
+
+}
+.carouselStyle{
+  width: 100%;
+  height: 700px;
+  padding: 0%;
+
+ 
+}
+.agent img{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+
+}
+
+
+.agentContainer{
+
+  padding: 0% 0%;
+
+}
+
+.gridStyling{
+  text-align: left;
+  padding-left: 8%;
+  padding-right: 5%;
+  padding-bottom: 10%;
+}
+ 
+.agentBorder{
+
+border-bottom: 1px solid grey;
+
+}
+
+
+
+.headinExclusive{
+
+  padding: 2% 10% 5% 10%;
+  };
+
+
+
+ 
+
+
+.rounded {
+  margin-left: 1%;
+}
+.proTtile {
+  font-size: 16px;
+  margin-top: inherit;
+  font-weight: 500;
+  color: #282c3f;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.proTtile a {
+  color: #282c3f;
+}
+.proText {
+  font-size: 16px;
+  font-weight: 400;
+  color: #535766;
+  float: left;
+}
+.colpadding {
+  padding: 0% 1% 0% 1%;
+}
+.pro {
+  font-size: 16px;
+  font-weight: 400;
+  color: #535766;
+  float: right;
+}
+
+.thin {
+  border: none !important;
+ 
+}
+
+.feed {
+  text-align: center;
+}
+
+.about {
+  margin-top: 8%;
+}
+
+.imageHeight {
+  height: 500px;
+  width: 150px;
+}
+.cardImage {
+ 
+width: 100%;
+display: block; 
+height: auto;
+margin: 0 auto;
+padding: 0%;
+border-radius: 0% !important;
+}
+.imgInside {
+  width: 100%;
+  max-height: 200px;
+}
+.produtCont h2 {
+ font-weight: bold;
+ margin-bottom: 5%;
+ padding-left: 1%;
+
+}
+
+
+.produtRow {
+ padding: 0% 10%;
+}
+
+.cardI{
+
+  border-radius: 0px !important;
+}
+
+
+
+
+@media only screen and (min-width: 960px) {
+  /* styles for browsers larger than 960px; */
+  .agent img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  
+  }
+}
+@media only screen and (min-width: 1440px) {
+  /* styles for browsers larger than 1440px; */
+}
+@media only screen and (min-width: 2000px) {
+  /* for sumo sized (mac) screens */
+}
+@media only screen and (max-device-width: 480px) {
+ /* styles for mobile browsers smaller than 480px; (iPhone) */
+
+.responsiveTeam{
+justify-content: left !important;
+
+}
+
+ .responsiveExclusisivePadding{
+  margin-bottom: 15%;
+ }
+ .responsiveTeamButton{
+  justify-content:left
+
+
+ }
+ .carouselStyle{ 
+  width: 100%;
+  height: 250px !important;
+  object-fit: cover;
+}
+
+.agent img{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+
+}
+
+.headinExclusive{
+
+  padding: 2% 5% 5% 5%;
+  };
+
+  .ProperryTytle h2{
+  padding: 0%;
+
+  
+  }
+
+  .headinExclusive h2{
+   
+  
+    font-size: x-large
+    };
+  
+    .ProperryTytle{
+      margin:0% !important;
+      padding: 0% !important;
+    }
+
+    .ProperryTytle{
+      margin:0%;
+      padding: 0% 3% 2% 3%!important;
+    }
+    
+
+
+    .agentContainer{
+
+      padding: 0%;
+    
+    }
+
+    .gridStyling{
+      text-align: left;
+     padding: 0% 2%;
+    }
+     
+
+
+    .propertyDetail{
+
+      font-size: medium;
+      font-weight: bold;
+    
+      
+      }
+      
+}
+@media only screen and (device-width: 768px) {
+ /* default iPad screens */
+ .responsiveTeam{
+  justify-content: left !important;
+  
+  }
+}
+/* different techniques for iPad screening */
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+
+/* For portrait layouts only */
+.responsiveTeam{
+  justify-content: left !important;
+  
+  }
+  .agentMob{
+    justify-content:center !important;
+  }
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+/* For landscape layouts only */
+.responsiveTeam{
+  justify-content: left !important;
+  
+  }
+  .agentMob{
+    justify-content: center !important;
+  }
+}
+

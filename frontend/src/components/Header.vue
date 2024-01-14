@@ -1,20 +1,71 @@
 <template>
   <nav
-    class="flex justify-between items-center py-4 px-6 md:px-24 border-b"
+    class="flex justify-between items-center py-4 px-2 md:px-28 border-[1px] border-t-0 border-x-0 border-black"
     :class="{
-      'text-white bg-black bg-opacity-50': ['/', '/buy'].includes($route.path),
+      'text-white bg-black bg-opacity-50 border-white': [
+        '/',
+        '/buy',
+        '/sell',
+      ].includes($route.path),
     }"
   >
-    <h1 class="text-xl font-semibold cursor-pointer" @click="$router.push('/')">
-      Tomorrow Luxury Property
-    </h1>
-    <div class="flex space-x-4">
+    <div @click="$router.push('/')">
+      <span
+        class="text-sm md:text-xl font-extrabold josefin-slab cursor-pointer"
+        :style="{ fontSize: '30px' }"
+        >Tomorrow.
+      </span>
+      <span
+        class="text-sm md:text-xl cursor-pointer josefin-slab"
+        :style="{ fontSize: '16px' }"
+      >
+        Luxury Property</span
+      >
+    </div>
+
+    <Popover>
+      <PopoverTrigger as-child>
+        <div class="space-y-2 block md:hidden">
+          <div
+            class="w-8 h-0.5 bg-black"
+            :class="{
+              'bg-white': ['/', '/buy', '/sell'].includes($route.path),
+            }"
+          ></div>
+          <div
+            class="w-8 h-0.5 bg-black"
+            :class="{
+              'bg-white': ['/', '/buy', '/sell'].includes($route.path),
+            }"
+          ></div>
+          <div
+            class="w-8 h-0.5 bg-black"
+            :class="{
+              'bg-white': ['/', '/buy', '/sell'].includes($route.path),
+            }"
+          ></div>
+        </div>
+      </PopoverTrigger>
+      <PopoverContent class="w-100 rounded-sm mt-4 px-8">
+        <div class="flex flex-col space-y-4 md:space-x-12">
+          <div
+            v-for="(item, i) in menuItems"
+            :key="i"
+            @click="$router.push(item.route)"
+            class="text-white-600 cursor-pointer underline underline-offset-2"
+          >
+            {{ item.name }}
+          </div>
+        </div>
+      </PopoverContent>
+    </Popover>
+
+    <div class="flex space-x-4 md:space-x-12">
       <div
         v-for="(item, i) in menuItems"
         :key="i"
         @click="$router.push(item.route)"
-        class="text-white-600 cursor-pointer"
-        href="#"
+        class="text-white-600 cursor-pointer hidden md:block"
       >
         {{ item.name }}
       </div>
@@ -23,7 +74,21 @@
 </template>
 
 <script>
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+// import { Label } from "@/components/ui/label";
+// import { Input } from "@/components/ui/input";
 export default {
+  components: {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+    // Label,
+    // Input,
+  },
   data() {
     return {
       menuItems: [
@@ -34,6 +99,10 @@ export default {
         {
           name: "Sell",
           route: "/sell",
+        },
+        {
+          name: "Off Plan",
+          route: "/offplan",
         },
         {
           name: "Agents",

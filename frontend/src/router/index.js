@@ -56,6 +56,16 @@ const routes = [
     name: "agent",
     component: () => import("@/views/Agent.vue"),
   },
+  {
+    path: "/blog/:titleSlug",
+    name: "Blog",
+    component: () => import("@/views/Blog.vue"),
+  },
+  {
+    path: "/house-worth-calculator/:address?",
+    name: "HouseWorthCalculator",
+    component: () => import("@/views/HouseWorthCalculator.vue"),
+  },
 ];
 
 const router = createRouter({
