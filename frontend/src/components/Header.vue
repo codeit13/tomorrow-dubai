@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="flex justify-between items-center py-4 px-2 md:px-28 border-[1px] border-t-0 border-x-0 border-black"
+    class="flex justify-between items-center py-4 px-4 md:px-28 border-[1px] border-t-0 border-x-0 border-black"
     :class="{
       'text-white bg-black bg-opacity-50 border-white': [
         '/',
@@ -25,7 +25,7 @@
 
     <Popover>
       <PopoverTrigger as-child>
-        <div class="space-y-2 block md:hidden">
+        <div class="space-y-2 cursor-pointer block md:hidden">
           <div
             class="w-8 h-0.5 bg-black"
             :class="{
@@ -60,12 +60,12 @@
       </PopoverContent>
     </Popover>
 
-    <div class="flex space-x-4 md:space-x-12">
+    <div class="space-x-4 md:space-x-12 hidden md:flex">
       <div
         v-for="(item, i) in menuItems"
         :key="i"
         @click="$router.push(item.route)"
-        class="text-white-600 cursor-pointer hidden md:block"
+        class="text-white-600 cursor-pointer"
       >
         {{ item.name }}
       </div>
