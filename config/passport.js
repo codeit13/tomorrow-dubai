@@ -21,6 +21,7 @@ passport.use(
 
         // If passwords match, return the user
         if (passwordMatch) {
+          console.log("password matched");
           return done(null, user);
         } else {
           return done(null, false, { message: "Invalid email or password" });
@@ -33,7 +34,7 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-  done(null, user.id);
+  done(null, user._id);
 });
 
 passport.deserializeUser(async (id, done) => {
