@@ -30,11 +30,7 @@
               @keyup.enter="searchClick"
             /> -->
 
-            <Popover
-              v-model="open"
-              :searchTerm="searchTerm"
-              @searchTerm="(e) => (query = e)"
-            >
+            <Popover v-model="open">
               <PopoverTrigger as-child>
                 <Button
                   variant="input"
@@ -545,7 +541,6 @@ export default {
       open: false,
       value: "next.js",
       query: null,
-      searchTerm: "",
     };
   },
   computed: {
@@ -582,20 +577,24 @@ export default {
         try {
           return properties
             .map((property) => {
-              property.name = property.title;
-              property.heading = property.price
-                ? `STARTING PRICE - AED ${property.details["Price Range"]}`
-                : "Exclusive Prices";
-              property.image =
-                property.img1 || require("../assets/images/exclusive/02.png");
-              property.completionText = property.yearBuilt
-                ? `Completion ${property.yearBuilt}`
-                : "Completed";
+              if (property.isOffPlan) {
+                property.name = property.title;
+                property.heading = property.price
+                  ? `STARTING PRICE - AED ${property.details["Price Range"]}`
+                  : "Exclusive Prices";
+                property.image =
+                  property.img1 || require("../assets/images/exclusive/02.png");
+                property.completionText = property.yearBuilt
+                  ? `Completion ${property.yearBuilt}`
+                  : "Completed";
+              }
               return property;
             })
-
-            .filter((property) => property.isOffPlan)
-            .slice(0, 3);
+            .filter((property) => {
+              console.log(property.isOffPlan);
+              return property.isOffPlan;
+            });
+          // .slice(0, 3);
         } catch (error) {
           console.log(error);
           return [];
