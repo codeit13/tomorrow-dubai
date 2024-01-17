@@ -10,7 +10,7 @@
       <div class="absolute top-0 left-0 right-0 bottom-0">
         <Header />
         <div
-          class="absolute top-[58px] md:top-[64px] left-0 right-0 bottom-0 flex flex-col justify-center items-start text-left text-white bg-black bg-opacity-50 px-6 md:px-28"
+          class="absolute top-[58px] md:top-[68px] left-0 right-0 bottom-0 flex flex-col justify-center items-start text-left text-white bg-black bg-opacity-50 px-6 md:px-28"
         >
           <h2
             class="text-xl md:text-2xl font-bold uppercase tracking-wide montserrat-font"
@@ -30,7 +30,11 @@
               @keyup.enter="searchClick"
             /> -->
 
-            <Popover v-model="open">
+            <Popover
+              v-model="open"
+              :searchTerm="searchTerm"
+              @searchTerm="(e) => (query = e)"
+            >
               <PopoverTrigger as-child>
                 <Button
                   variant="input"
@@ -48,14 +52,21 @@
                 </Button>
               </PopoverTrigger>
               <PopoverContent
-                class="w-[80vw] md:w-[40vw] ml-6 md:ml-20 p-0 relative md:bottom-[48px]"
+                class="w-[80vw] md:w-[40vw] md:h-[350px] ml-6 md:ml-20 p-0 relative md:bottom-[48px]"
               >
                 <Command>
                   <CommandInput
                     class="h-9"
                     placeholder="Search location, project..."
                   />
-                  <CommandEmpty>No location found.</CommandEmpty>
+                  <CommandEmpty>
+                    <button
+                      @click="searchClick"
+                      class="inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white"
+                    >
+                      Search
+                    </button>
+                  </CommandEmpty>
                   <CommandList>
                     <CommandGroup>
                       <CommandItem
@@ -65,8 +76,6 @@
                         :label="location.label"
                         @select="
                           (ev) => {
-                            console.log('select ev: ', ev);
-
                             if (typeof ev.detail.value === 'string') {
                               query = ev.detail.value;
                               this.searchClick();
@@ -536,6 +545,7 @@ export default {
       open: false,
       value: "next.js",
       query: null,
+      searchTerm: "",
     };
   },
   computed: {

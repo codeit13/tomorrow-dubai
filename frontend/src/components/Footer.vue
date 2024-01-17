@@ -115,8 +115,8 @@ export default {
           route: "/partner",
         },
         {
-          name: "Pricing",
-          route: "/partner",
+          name: "Neighborhood",
+          route: "/neighbourhood",
         },
         {
           name: "News",

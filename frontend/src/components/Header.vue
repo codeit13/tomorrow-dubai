@@ -19,8 +19,8 @@
         class="text-sm md:text-xl cursor-pointer josefin-slab"
         :style="{ fontSize: '16px' }"
       >
-        Luxury Property</span
-      >
+        Luxury Property
+      </span>
     </div>
 
     <Popover>

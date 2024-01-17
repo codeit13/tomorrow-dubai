@@ -40,7 +40,7 @@
           <p class="text-sm md:text-lg">{{ featureText }}</p>
         </div>
         <div v-if="startingPrice" class="md:text-right">
-          <p class="text-lg text-gray-700">STARTING FROM</p>
+          <p class="text-lg text-gray-700">ASKING PRICE</p>
           <p class="text-3xl font-semibold">
             AED {{ startingPrice.toLocaleString("en-US") }}
           </p>
@@ -100,7 +100,7 @@
             <h2 class="text-xl md:text-3xl font-semibold mb-8">Amenities</h2>
             <div class="grid grid-cols-3 gap-4">
               <div
-                class="bg-gray-200 p-2 text-left text-xs md:text-md"
+                class="bg-gray-200 p-2 text-left text-xs md:text-[1rem]"
                 :key="i"
                 v-for="(item, i) in amenities"
               >

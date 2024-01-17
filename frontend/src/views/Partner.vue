@@ -1,41 +1,46 @@
 <template>
   <div class="bg-white text-gray-900 px-4">
     <header
-      class="pt-12 md:pt-72 px-6 md:px-28 pb-32 text-left bg-gray-100 bg-opacity-50"
+      class="pt-48 md:pt-64 md:px-28 md:pl-40 pb-32 text-left bg-gray-100 bg-opacity-50"
     >
-      <div class="flex flex-col">
-        <div>
-          <div>
-            <p class="text-4xl font-bold">We're Looking</p>
-            <p class="text-7xl font-bold mt-4">For Partners</p>
+      <div class="flex flex-col gap-32 items-center md:items-end w-fit">
+        <div class="w-fit">
+          <div class="w-fit">
+            <p class="text-2xl md:text-4xl font-bold w-fit">We're Looking</p>
+            <p class="text-5xl md:text-7xl font-bold w-fit mt-2 md:mt-4">
+              For Partners
+            </p>
           </div>
-          <p class="mt-6 text-4xl font-semibold">
+          <p class="mt-6 text-xl md:text-4xl w-fit font-semibold">
             We Made Real Estate
-            <span class="text-5xl font-extrabold">Brokerage</span> Simple, Plug
-            And Play
+            <span class="text-2xl md:text-5xl w-fit font-extrabold"
+              >Brokerage</span
+            >
+            Simple, Plug And Play
           </p>
         </div>
-
-        <svg
-          width="40"
-          height="40"
-          viewBox="0 0 66 58"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          class="relative mt-28 left-[60%]"
-        >
-          <path
-            d="M19.664 0.240001L33.104 22.896L46.544 0.240001L65.872 0.240001L33.104 57.2L0.208 0.240001L19.664 0.240001Z"
-            fill="#302CFF"
-          />
-        </svg>
+        <div class="w-fit mt-2 md:mt-8 relative">
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 66 58"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="text-right"
+          >
+            <path
+              d="M19.664 0.240001L33.104 22.896L46.544 0.240001L65.872 0.240001L33.104 57.2L0.208 0.240001L19.664 0.240001Z"
+              fill="#302CFF"
+            />
+          </svg>
+        </div>
       </div>
     </header>
     <section class="py-12">
-      <h2 class="text-3xl font-bold text-center">
+      <h2 class="text-2xl md:text-3xl font-bold text-center">
         Join the Future of Real Estate
       </h2>
-      <p class="mt-3 text-center text-gray-600 text-xl josefin-slab">
+      <p class="mt-3 text-center text-gray-600 text-lg md:text-xl josefin-slab">
         Partner with Tomorrow Luxury property. Simplifying Success in Real
         Estate
       </p>
@@ -93,7 +98,7 @@
           <div class="w-[98%] mx-auto">
             <p class="mt-8 text-lg text-left">
               Enjoy the flexibility of working remotely with a one-time fee of
-              AED 30,000 and no favorable commission split, without the need for
+              AED 30,000 and a favorable commission split, without the need for
               a full-time commitment.
             </p>
             <p class="mt-4 text-lg text-center">
@@ -110,7 +115,7 @@
         >
       </div>
     </section>
-    <section class="px-6 md:px-28 py-24 bg-gray-100">
+    <section class="px-4 md:px-28 py-24 bg-gray-100/50 md:bg-gray-100">
       <div class="flex flex-wrap justify-between">
         <div class="flex flex-col justify-between">
           <div>

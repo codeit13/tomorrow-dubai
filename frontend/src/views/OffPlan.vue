@@ -1,14 +1,14 @@
 <template>
   <div class="bg-white px-6 md:px-28 py-6 md:py-8">
-    <div class="flex justify-between text-center">
-      <span
+    <div class="mt-6">
+      <!-- <span
         class="text-xl font-extrabold josefin-slab mb-20 cursor-pointer"
         @click="$router.go(-1)"
         >{{ `< Back` }}</span
-      >
+      > -->
 
       <h1 class="text-3xl font-extrabold josefin-slab mb-20">OFF PLAN</h1>
-      <h1></h1>
+      <!-- <h1></h1> -->
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-14 mt-12 mx-auto">
       <div

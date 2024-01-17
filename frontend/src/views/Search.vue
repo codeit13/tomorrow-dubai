@@ -125,7 +125,9 @@
           </div>
           <div class="p-4">
             <!-- <div class="flex align-center justify-between"> -->
-            <p class="text-lg font-bold">AED {{ property.price }}</p>
+            <p class="text-lg font-bold">
+              AED {{ property.price.toLocaleString("en-us") }}
+            </p>
             <p class="text-sm">{{ property.featureText }}</p>
             <!-- </div> -->
             <p class="text-sm mt-2">{{ property.location }}</p>
@@ -370,7 +372,7 @@ export default {
             ...property,
             title: property.title,
             location: property.address,
-            featureText: `${property.homeType} | ${property.bed} Beds | ${property.bath} Baths | ${property.sqFt} Sq Ft`,
+            featureText: `${property.bed} Beds | ${property.bath} Baths | ${property.sqFt} Sq Ft`,
             price: property.price,
             propertyImage: property.img1,
             description: property.description,

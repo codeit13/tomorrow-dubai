@@ -132,7 +132,7 @@ const PropertyForm = ({ selectedProperty, editable, direct, handleClose }) => {
     id: "",
     homeType: "",
     isBuy: true, // Significance of property directly listed for Buying.
-    isOffPlan: "No",
+    isOffPlan: false,
     bed: "",
     bath: "",
     price: "",
@@ -287,7 +287,7 @@ const PropertyForm = ({ selectedProperty, editable, direct, handleClose }) => {
     } else if (name == "isOffPlan") {
       setFormData((prevFormData) => ({
         ...prevFormData,
-        isOffPlan: newValue == "Yes" ? true : false,
+        isOffPlan: newValue == "Yes" || newValue == true ? true : false,
       }));
     } else if (name.split("-")[0] === "details") {
       let newName = name.split("-")[1];
@@ -877,7 +877,11 @@ const PropertyForm = ({ selectedProperty, editable, direct, handleClose }) => {
               </InputLabel>
               <Select
                 name="isOffPlan"
-                value={formData.isOffPlan == true ? "Yes" : "No"}
+                value={
+                  formData.isOffPlan == true || formData.isOffPlan == "Yes"
+                    ? "Yes"
+                    : "No"
+                }
                 onChange={handleChange}
                 required
                 size="small"
