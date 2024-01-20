@@ -30,7 +30,7 @@
               @keyup.enter="searchClick"
             /> -->
 
-            <Popover v-model="open">
+            <Popover v-model="open" :autoFocus="false">
               <PopoverTrigger as-child>
                 <Button
                   variant="input"
@@ -53,6 +53,7 @@
                 <Command>
                   <CommandInput
                     class="h-9"
+                    :autoFocus="false"
                     placeholder="Search location, project..."
                   />
                   <CommandEmpty>
