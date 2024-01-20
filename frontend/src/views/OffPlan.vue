@@ -29,7 +29,6 @@
           <div
             class="items-center gap-6 border px-4 w-full text-xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/50 py-6 montserrat-font absolute bottom-0 overflow-hidden text-ellipsis"
           >
-            <!-- absolute bottom-[102px] md:bottom-[115px] -->
             <p class="text-sm md:text-2xl font-extrabold">
               {{ property.name }}
             </p>
