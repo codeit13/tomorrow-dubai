@@ -297,8 +297,6 @@
               :src="property.image"
               alt="Property"
               class="w-full h-auto"
-              width="300"
-              height="200"
               style="aspect-ratio: 300 / 200; object-fit: cover"
             />
             <div
@@ -307,14 +305,26 @@
               {{ property.tag }}
             </div>
             <div class="p-4">
-              <!-- <div class="flex align-center justify-between"> -->
-              <p class="text-lg font-bold">{{ property.priceText }}</p>
-              <p class="text-sm">{{ property.featureText }}</p>
-              <!-- </div> -->
-
-              <p class="text-sm mt-2">{{ property.locationText }}</p>
+              <p class="text-lg md:text-2xl font-bold">
+                {{ property.priceText }}
+              </p>
+              <p class="text-sm mt-2">{{ property.featureText }}</p>
+              <div class="flex items-start gap-1 mt-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="18"
+                  viewBox="0 -960 960 960"
+                  fill="#000"
+                  width="18"
+                >
+                  <path
+                    d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"
+                  />
+                </svg>
+                <p class="text-sm">{{ property.locationText }}</p>
+              </div>
               <p
-                class="text-sm mt-4 text-blue-600 hover:text-blue-800 cursor-pointer"
+                class="text-sm mt-4 text-[#302CFF] hover:text-[#302CFF] cursor-pointer"
               >
                 {{ property.buttonText }}
               </p>
@@ -457,7 +467,9 @@ export default {
       if (properties && properties.length) {
         this.similarProperties = properties
           .map((property) => {
-            property.priceText = `AED ${property.price}`;
+            property.priceText = `AED ${property.price.toLocaleString(
+              "en-us"
+            )}`;
             property.locationText = property.address;
             property.image = property.img1;
             property.buttonText = `${property.homeType.toUpperCase()} FOR SALE`;

@@ -178,12 +178,10 @@
             {{ property.tag }}
           </div>
           <div class="p-4">
-            <!-- <div class="flex align-center justify-between"> -->
-            <p class="text-2xl font-bold">
+            <p class="text-lg md:text-2xl font-bold">
               AED {{ property.price.toLocaleString("en-us") }}
             </p>
             <p class="text-sm mt-2">{{ property.features }}</p>
-            <!-- </div> -->
 
             <div class="flex items-start gap-1 mt-2">
               <svg
@@ -638,7 +636,6 @@ export default {
     goToBlog(blog) {
       if (blog && blog.title) {
         const titleSlug = blog.title.toLowerCase().replaceAll(" ", "-");
-
 
         this.$router.push(`/blog/${titleSlug}`);
       } else {
