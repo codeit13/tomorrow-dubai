@@ -85,7 +85,7 @@
             <div class="flex space-x-8">
               <Select v-model="propertyType">
                 <SelectTrigger class="w-[60%] text-lg">
-                  <SelectValue placeholder="Property Type" />
+                  <SelectValue placeholder="Type" />
                 </SelectTrigger>
                 <SelectContent position="popper">
                   <SelectItem
@@ -98,11 +98,11 @@
                 </SelectContent>
               </Select>
               <Select v-model="noOfBeds">
-                <SelectTrigger class="w-[60%] text-lg">
+                <SelectTrigger class="md:w-[60%] text-lg">
                   <SelectValue placeholder="No of Beds" />
                 </SelectTrigger>
                 <SelectContent position="popper">
-                  <SelectItem value="0"> Number of Bedrooms </SelectItem>
+                  <SelectItem value="0"> Bedrooms </SelectItem>
                   <SelectItem :value="`${i}`" :key="i" v-for="i in 15">
                     {{ i }}
                   </SelectItem>
@@ -111,30 +111,30 @@
             </div>
             <div class="flex space-x-8">
               <Select v-model="noOfBaths">
-                <SelectTrigger class="w-[62%] text-lg">
+                <SelectTrigger class="md:w-[62%] text-lg">
                   <SelectValue placeholder="No. of Bathrooms" />
                 </SelectTrigger>
                 <SelectContent position="popper">
-                  <SelectItem value="0"> Number of Bathrooms </SelectItem>
+                  <SelectItem value="0"> Bathrooms </SelectItem>
                   <SelectItem :value="`${i}`" :key="i" v-for="i in 15">
                     {{ i }}
                   </SelectItem>
                 </SelectContent>
               </Select>
               <Input
-                class="w-[60%] text-lg"
+                class="md:w-[60%] text-lg"
                 v-model="propertySize"
                 placeholder="Property Size"
               />
             </div>
             <div class="flex space-x-8">
               <Input
-                class="w-[60%] text-lg"
+                class="md:w-[60%] text-lg"
                 v-model="yearBuilt"
                 placeholder="Year Built"
               />
               <Input
-                class="w-[60%] text-lg"
+                class="md:w-[60%] text-lg"
                 v-model="askPrice"
                 placeholder="Ask Price"
               />
@@ -302,7 +302,7 @@ export default {
       ],
       propertyType: null,
       propertyTypeOptions: [
-        "Property Type",
+        "Type",
         "Villa",
         "Apartment",
         "Penthouse",
