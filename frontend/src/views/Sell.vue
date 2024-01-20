@@ -109,7 +109,7 @@ export default {
             .map((property) => {
               property.image =
                 property.img1 || require("../assets/images/exclusive/02.png");
-              property.buttonText = "VILLA FOR SALE";
+              property.buttonText = `${property.homeType} FOR SALE`;
               property.tag = "Exclusive";
               property.features = `${property.bed} BEDS | ${property.bath} BATHS | ${property.sqFt} SQ FT`;
               return property;
@@ -122,7 +122,7 @@ export default {
   methods: {
     searchClick() {
       if (this.houseAddress) {
-        this.$router.push(`/house-worth-calculator/${this.houseAddress}`);
+        this.$router.push(`/house-worth/${this.houseAddress}`);
       } else {
         this.$store.commit("SET_TOASTER_MSG", {
           title: "Please type your house address first.",

@@ -57,14 +57,19 @@ const routes = [
     component: () => import("@/views/Agent.vue"),
   },
   {
+    path: "/blogs",
+    name: "Blogs",
+    component: () => import("@/views/Blogs.vue"),
+  },
+  {
     path: "/blog/:titleSlug",
     name: "Blog",
     component: () => import("@/views/Blog.vue"),
   },
   {
-    path: "/house-worth-calculator/:address?",
-    name: "HouseWorthCalculator",
-    component: () => import("@/views/HouseWorthCalculator.vue"),
+    path: "/house-worth/:address?",
+    name: "HouseWorth",
+    component: () => import("@/views/HouseWorth.vue"),
   },
 ];
 

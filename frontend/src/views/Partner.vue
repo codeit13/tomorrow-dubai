@@ -59,7 +59,7 @@
             Full-Time
           </h3>
           <p class="mt-4 text-lg font-bold">
-            AED 2500 <span class="text-sm font-normal">/billed annually</span>
+            AED 2,500 <span class="text-sm font-normal">/billed annually</span>
           </p>
           <div class="w-[98%] mx-auto text-center">
             <p class="mt-8 text-lg text-left">

@@ -2,7 +2,7 @@
   <div class="bg-white p-4 md:p-20">
     <div class="text-center">
       <div>
-        <span class="text-2xl font-semibold">HOUSE WORTH</span>
+        <span class="text-2xl font-semibold" v-if="address">{{ address }}</span>
       </div>
       <p class="text-lg text-black mt-1">
         Is this the correct address? If not
@@ -102,7 +102,7 @@
                   <SelectValue placeholder="No of Beds" />
                 </SelectTrigger>
                 <SelectContent position="popper">
-                  <SelectItem value="DEFAULT"> Number of Bedrooms </SelectItem>
+                  <SelectItem value="0"> Number of Bedrooms </SelectItem>
                   <SelectItem :value="`${i}`" :key="i" v-for="i in 15">
                     {{ i }}
                   </SelectItem>
@@ -115,7 +115,7 @@
                   <SelectValue placeholder="No. of Bathrooms" />
                 </SelectTrigger>
                 <SelectContent position="popper">
-                  <SelectItem value="DEFAULT"> Number of Bathrooms </SelectItem>
+                  <SelectItem value="0"> Number of Bathrooms </SelectItem>
                   <SelectItem :value="`${i}`" :key="i" v-for="i in 15">
                     {{ i }}
                   </SelectItem>
@@ -162,17 +162,11 @@
         </div>
 
         <Button
-          v-if="currentStep == 4"
           class="bg-white text-left text-[#302CFF] rounded-none border-[1px] border-[#302CFF] hover:text-white px-8 mt-4"
           @click="submitForm"
-          >I'am interested</Button
         >
-        <Button
-          v-else-if="showButton"
-          class="bg-white text-left text-[#302CFF] rounded-none border-[1px] border-[#302CFF] hover:text-white px-8 mt-4"
-          @click="submitForm"
-          >Next</Button
-        >
+          {{ currentStep == 4 ? "I'am interested" : "Next" }}
+        </Button>
       </div>
     </div>
   </div>
@@ -222,6 +216,61 @@ export default {
         this.showButton = true;
       }
     },
+    noOfBeds() {
+      if (
+        this.noOfBeds != "0" &&
+        this.noOfBaths != "0" &&
+        this.propertySize &&
+        this.yearBuilt &&
+        this.askPrice
+      ) {
+        this.showButton = true;
+      } else this.showButton = false;
+    },
+    noOfBaths() {
+      if (
+        this.noOfBeds != "0" &&
+        this.noOfBaths != "0" &&
+        this.propertySize &&
+        this.yearBuilt &&
+        this.askPrice
+      ) {
+        this.showButton = true;
+      } else this.showButton = false;
+    },
+    propertySize() {
+      if (
+        this.noOfBeds != "0" &&
+        this.noOfBaths != "0" &&
+        this.propertySize &&
+        this.yearBuilt &&
+        this.askPrice
+      ) {
+        this.showButton = true;
+      } else this.showButton = false;
+    },
+    yearBuilt() {
+      if (
+        this.noOfBeds != "0" &&
+        this.noOfBaths != "0" &&
+        this.propertySize &&
+        this.yearBuilt &&
+        this.askPrice
+      ) {
+        this.showButton = true;
+      } else this.showButton = false;
+    },
+    askPrice() {
+      if (
+        this.noOfBeds != "0" &&
+        this.noOfBaths != "0" &&
+        this.propertySize &&
+        this.yearBuilt &&
+        this.askPrice
+      ) {
+        this.showButton = true;
+      } else this.showButton = false;
+    },
   },
   data() {
     return {
@@ -236,10 +285,10 @@ export default {
       stepOneOptions: [
         {
           label: "I am the owner of this home",
-          value: "I am the owner of this home",
+          value: "Owner",
         },
-        { label: "I am a realtor or agent", value: "I am a realtor or agent" },
-        { label: "Other", value: "other" },
+        { label: "I am a realtor or agent", value: "Realtor/ Agent" },
+        { label: "Other", value: "Other" },
       ],
       stepTwoOptions: [
         { label: "Yes", value: "Yes" },
@@ -266,28 +315,28 @@ export default {
       fullName: null,
       email: null,
       phone: null,
+      address: null,
     };
   },
   computed: {
-    isLastStepCompleted() {
-      if (
-        this.propertyType != this.propertyTypeOptions[0] &&
-        this.noOfBeds != "DEFAULT" &&
-        this.noOfBaths != "DEFAULT" &&
-        this.propertySize &&
-        this.yearBuilt &&
-        this.askPrice
-      ) {
-        this.showButton = true;
-        return true;
-      } else return false;
-    },
+    // isLastStepCompleted() {
+    //   if (
+    //     this.noOfBeds != "0" &&
+    //     this.noOfBaths != "0" &&
+    //     this.propertySize &&
+    //     this.yearBuilt &&
+    //     this.askPrice
+    //   ) {
+    //     this.showButton = true;
+    //     return true;
+    //   } else return false;
+    // },
   },
   mounted() {
     this.address = this.$route.params.address;
     this.propertyType = this.propertyTypeOptions[0];
-    this.noOfBeds = "DEFAULT";
-    this.noOfBaths = "DEFAULT";
+    this.noOfBeds = "0";
+    this.noOfBaths = "0";
   },
   methods: {
     async submitForm() {
@@ -316,8 +365,12 @@ export default {
 
         return;
       }
+      if (this.stepOne == "Owner") {
+        this.currentStep = 4;
+      } else {
+        this.currentStep += 1;
+      }
 
-      this.currentStep = this.currentStep + 1;
       this.showButton = false;
     },
   },

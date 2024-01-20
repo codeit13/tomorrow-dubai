@@ -1,19 +1,19 @@
 <template>
-  <div class="mx-auto px-6 md:px-28 pt-10">
+  <div class="mx-auto px-6 md:px-28 pt-10" v-if="selectedBlog">
     <div class="flex flex-wrap justify-between items-start md:items-end sticky">
       <span
         class="text-xl font-extrabold josefin-slab mb-20 cursor-pointer uppercase"
       ></span>
       <div class="text-center">
         <h1 class="text-2xl md:text-4xl montserrat-font mb-20">
-          {{ title }}
+          {{ selectedBlog.title }}
         </h1>
       </div>
       <span></span>
     </div>
 
     <div class="px-1 md:px-4 min-h-[60vh]">
-      <p class="text-lg text-justify" v-html="content"></p>
+      <p class="text-lg text-justify" v-html="selectedBlog.content"></p>
     </div>
 
     <div class="my-16">
@@ -56,7 +56,7 @@ import { mapState } from "vuex";
 
 export default {
   computed: {
-    ...mapState(["blogs"]),
+    ...mapState(["blogs", "selectedBlog"]),
   },
   data() {
     return {
@@ -68,11 +68,12 @@ export default {
   },
   mounted() {
     this.getValues();
+    // console.log("blog mounted called");
   },
   watch: {
     blogs: {
       handler(newVal) {
-        console.log("watcher getValues: ", newVal);
+        // console.log("watcher getValues: ", newVal);
         this.getValues(newVal);
       },
       deep: true,
@@ -80,34 +81,42 @@ export default {
   },
   methods: {
     getValues(newVal = null) {
-      const title = this.$route.params.titleSlug.replace(/-/g, " ");
+      const title = this.$route.params.titleSlug.replaceAll("-", " ");
       let blogs = newVal ? newVal : JSON.parse(JSON.stringify(this.blogs));
       if (blogs && blogs.length) {
         this.similarBlogs = blogs.length > 1 ? blogs.slice(0, 3) : [];
 
         let blog = blogs.filter((blog) => {
-          return blog.title.toLowerCase().trim() == title.toLowerCase().trim();
+          return (
+            blog.title.replaceAll("-", " ").toLowerCase().trim() ==
+            title.replaceAll("-", " ").toLowerCase().trim()
+          );
         })[0];
 
         if (blog) {
-          this.blogId = blog.id;
-          this.title = blog.title;
+          this.$store.commit("SET_SELECTED_BLOG", {
+            id: blog.id,
+            title: blog.title,
+            content: blog.content,
+          });
+          // this.blogId = blog.id;
+          // this.title = blog.title;
 
-          this.content = blog.content;
+          // this.content = blog.content;
+        } else {
+          console.log("No blog found: ", title);
         }
       }
     },
     goToBlog(blog) {
       if (blog && blog.title) {
-        const titleSlug = blog.title
-          .toLowerCase()
-          .replace(/ /g, "-")
-          .replace(/-$/g, "");
+        const titleSlug = blog.title.toLowerCase().replaceAll(" ", "-");
 
-        if (this.$route.path.includes("/blog/")) {
-          this.getValues();
-        }
+        // if (this.$route.path.includes("/blog/")) {
+        // this.getValues();
+        // }
 
+        this.$store.commit("SET_SELECTED_BLOG", null);
         this.$router.push(`/blog/${titleSlug}`);
       } else {
         console.log("No property found");

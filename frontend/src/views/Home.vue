@@ -179,7 +179,9 @@
           </div>
           <div class="p-4">
             <!-- <div class="flex align-center justify-between"> -->
-            <p class="text-2xl font-bold">AED {{ property.price }}</p>
+            <p class="text-2xl font-bold">
+              AED {{ property.price.toLocaleString("en-us") }}
+            </p>
             <p class="text-sm mt-2">{{ property.features }}</p>
             <!-- </div> -->
 
@@ -281,7 +283,10 @@
       </div>
     </div>
 
-    <div class="px-6 md:px-28 py-4 mt-24" v-if="blogs && blogs.length">
+    <div
+      class="px-6 md:px-28 py-4 mt-24"
+      v-if="filteredBlogs && filteredBlogs.length"
+    >
       <h2
         class="text-2xl md:text-4xl font-extrabold josefin-slab mb-12 md:mb-24"
       >
@@ -290,7 +295,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
         <div
           class="relative cursor-pointer w-fit hover:bg-gray-100 rounded-sm border-[1px] border-[#00000062]"
-          v-for="(blog, i) in blogs"
+          v-for="(blog, i) in filteredBlogs"
           :key="i"
           @click="goToBlog(blog)"
         >
@@ -554,6 +559,9 @@ export default {
         return location;
       });
     },
+    filteredBlogs() {
+      return this.blogs?.slice(1, 4);
+    },
     exclusiveProperties() {
       let properties = JSON.parse(JSON.stringify(this.properties));
       return properties
@@ -561,7 +569,7 @@ export default {
             .map((property) => {
               property.image =
                 property.img1 || require("../assets/images/exclusive/02.png");
-              property.buttonText = "VILLA FOR SALE";
+              property.buttonText = `${property.homeType} FOR SALE`;
               property.tag = "Exclusive";
               property.features = `${property.bed} BEDS | ${property.bath} BATHS | ${property.sqFt} SQ FT`;
               return property;
@@ -629,10 +637,8 @@ export default {
     },
     goToBlog(blog) {
       if (blog && blog.title) {
-        const titleSlug = blog.title
-          .toLowerCase()
-          .replace(/ /g, "-")
-          .replace(/-$/g, "");
+        const titleSlug = blog.title.toLowerCase().replaceAll(" ", "-");
+
 
         this.$router.push(`/blog/${titleSlug}`);
       } else {

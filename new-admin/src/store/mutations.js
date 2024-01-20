@@ -8,7 +8,4 @@ export const mutations = {
   SET_BLOGS(state, payload) {
     state.blogs = payload;
   },
-  SET_SELECTED_BLOG(state, payload) {
-    state.selectedBlog = payload;
-  },
 };

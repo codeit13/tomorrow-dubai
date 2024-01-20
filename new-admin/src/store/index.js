@@ -7,7 +7,6 @@ const store = createStore({
     toasterData: null,
     properties: null,
     blogs: null,
-    selectedBlog: null,
   },
   mutations,
   actions,
