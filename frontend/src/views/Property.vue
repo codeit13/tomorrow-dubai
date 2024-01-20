@@ -467,9 +467,9 @@ export default {
       if (properties && properties.length) {
         this.similarProperties = properties
           .map((property) => {
-            property.priceText = `AED ${property.price.toLocaleString(
-              "en-us"
-            )}`;
+            property.priceText = property.price
+              ? `AED ${property.price.toLocaleString("en-us")}`
+              : "Amazing Prices";
             property.locationText = property.address;
             property.image = property.img1;
             property.buttonText = `${property.homeType.toUpperCase()} FOR SALE`;
