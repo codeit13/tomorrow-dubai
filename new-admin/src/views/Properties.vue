@@ -13,7 +13,7 @@
       tabindex="-1"
       aria-modal="true"
       role="dialog"
-      class="flex overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-[9999] justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+      class="flex overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-[999] justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
     >
       <div class="relative p-4 w-full max-w-3xl max-h-full">
         <!-- Modal content -->
@@ -530,6 +530,7 @@
                     >
                       Project Name
                     </th>
+
                     <th
                       class="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white"
                     >
@@ -552,9 +553,24 @@
                     <td
                       class="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11"
                     >
-                      <h5 class="font-medium text-black dark:text-white">
-                        {{ property.title }}
-                      </h5>
+                      <div class="flex items-center gap-3">
+                        <h5 class="font-medium text-black dark:text-white">
+                          {{ property.title }}
+                        </h5>
+                        <svg
+                          class="fill-primary cursor-pointer"
+                          @click="openPropertyUrl(property.slug)"
+                          xmlns="http://www.w3.org/2000/svg"
+                          height="24"
+                          viewBox="0 -960 960 960"
+                          width="24"
+                        >
+                          <path
+                            d="M440-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h160v80H280q-50 0-85 35t-35 85q0 50 35 85t85 35h160v80ZM320-440v-80h320v80H320Zm200 160v-80h160q50 0 85-35t35-85q0-50-35-85t-85-35H520v-80h160q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H520Z"
+                          />
+                        </svg>
+                      </div>
+
                       <p class="text-sm">{{ property.address }}</p>
                     </td>
                     <td
@@ -900,11 +916,14 @@ export default {
     removeImage(i) {
       this.images.splice(i, 1);
     },
-
+    openPropertyUrl(slug) {
+      window.open(`https://tomorrowluxuryproperty.com/property/${slug}`);
+    },
     openPropertyModal(property) {
       console.log(property);
 
       this.propertyId = property._id;
+      this.propertySlug = property.slug;
       this.propertyTitle = property.title;
       this.propertyName = property.propertyName;
       this.propertyFullAddress = property.address;
@@ -919,28 +938,31 @@ export default {
       this.images = property.images;
       this.agent = property.agent._id;
 
-      property.amenities.map((i) => {
-        this.ammenities.map((j) => {
-          if (i == j.name) {
-            j.value = true;
-          }
+      if (property.amenities)
+        property.amenities.map((i) => {
+          this.ammenities.map((j) => {
+            if (i == j.name) {
+              j.value = true;
+            }
+          });
         });
-      });
 
-      this.details = Object.keys(property.details).map((key) => {
-        return {
-          name: key,
-          value: property.details[key],
-        };
-      });
+      if (property.details)
+        this.details = Object.keys(property.details).map((key) => {
+          return {
+            name: key,
+            value: property.details[key],
+          };
+        });
 
-      this.units = Object.keys(property.units).map((key) => {
-        return {
-          name: key,
-          sqFt: property.units[key]["sqFt"],
-          price: property.units[key]["price"],
-        };
-      });
+      if (property.units)
+        this.units = Object.keys(property.units).map((key) => {
+          return {
+            name: key,
+            sqFt: property.units[key]["sqFt"],
+            price: property.units[key]["price"],
+          };
+        });
 
       this.paymentPlans = property.paymentPlans;
 
@@ -969,11 +991,10 @@ export default {
         this.propertyPrice &&
         this.propertyDescription &&
         this.isOffPlan &&
-        this.agent != "DEFAULT" &&
-        this.images.length > 0
+        this.agent != "DEFAULT"
       ) {
         const property = {
-          slug: this.propertySlug,
+          slug: this.propertySlug?.toLowerCase(),
           title: this.propertyTitle,
           propertyName: this.propertyName,
           address: this.propertyFullAddress,

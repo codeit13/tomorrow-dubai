@@ -385,13 +385,8 @@ export default {
       }
     },
     goToProperty(property) {
-      if (property && property.title) {
-        const titleSlug = property.title
-          .toLowerCase()
-          .replace(/ /g, "-")
-          .replace(/-$/g, "");
-
-        this.$router.push(`/property/${titleSlug}`);
+      if (property && property.slug) {
+        this.$router.push(`/property/${property.slug}`);
       } else {
         console.log("No property found");
       }

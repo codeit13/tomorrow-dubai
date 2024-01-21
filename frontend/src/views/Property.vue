@@ -444,13 +444,8 @@ export default {
       return fromLonLat(coordinates);
     },
     goToProperty(property) {
-      if (property && property.title) {
-        const titleSlug = property.title
-          .toLowerCase()
-          .replace(/ /g, "-")
-          .replace(/-$/g, "");
-
-        this.$router.push(`/property/${titleSlug}`);
+      if (property && property.slug) {
+        this.$router.push(`/property/${property.slug}`);
       } else {
         console.log("No property found");
       }
@@ -460,7 +455,7 @@ export default {
       this.showMoreBtn = false;
     },
     getValues(newVal = null) {
-      const title = this.$route.params.titleSlug.replace(/-/g, " ");
+      const slug = this.$route.params.slug;
       let properties = newVal
         ? newVal
         : JSON.parse(JSON.stringify(this.properties));
@@ -481,7 +476,7 @@ export default {
 
         let property = properties.filter((property) => {
           return (
-            property.title.toLowerCase().trim() == title.toLowerCase().trim()
+            property.slug?.toLowerCase().trim() == slug.toLowerCase().trim()
           );
         })[0];
 

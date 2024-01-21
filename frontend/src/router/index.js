@@ -22,7 +22,7 @@ const routes = [
     component: () => import("@/views/Search.vue"),
   },
   {
-    path: "/property/:titleSlug",
+    path: "/property/:slug",
     name: "Property",
     component: () => import("@/views/Property.vue"),
   },
