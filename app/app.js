@@ -42,6 +42,7 @@ const corsOptions = {
     "https://tomorrowdubai.com",
     "http://www.tomorrowdubai.com",
     "https://www.tomorrowdubai.com",
+    "https://tomorrowluxuryproperty.com",
     "http://localhost:8080",
     "http://localhost:3000",
   ],
