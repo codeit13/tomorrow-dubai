@@ -5,8 +5,10 @@ import { mutations } from "./mutations";
 const store = createStore({
   state: {
     toasterData: null,
-    properties: null,
-    blogs: null,
+    isLoading: false,
+    properties: [],
+    blogs: [],
+    agents: [],
   },
   mutations,
   actions,

@@ -16,6 +16,7 @@ const locationSchema = mongoose.Schema({
 const propertySchema = mongoose.Schema(
   {
     id: { type: String },
+    slug: { type: String, unique: true },
     homeType: { type: String, require: true },
     isBuy: { type: Boolean, default: false }, // It is assumed that properties are created default by sellers
     isOffPlan: { type: Boolean, default: false },

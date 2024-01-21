@@ -21,7 +21,7 @@
 
           <!-- <p class="text-lg text-gray-700 mt-4">STARTING FROM</p> -->
           <p class="text-sm md:text-xl" v-if="startingPrice">
-            STARTING FROM AED {{ startingPrice.toLocaleString("en-US") }}
+            STARTING FROM AED {{ startingPrice?.toLocaleString("en-US") }}
           </p>
         </div>
         <span></span>
@@ -42,7 +42,7 @@
         <div v-if="startingPrice" class="md:text-right">
           <p class="text-lg text-gray-700">ASKING PRICE</p>
           <p class="text-3xl font-semibold">
-            AED {{ startingPrice.toLocaleString("en-US") }}
+            AED {{ startingPrice?.toLocaleString("en-US") }}
           </p>
         </div>
       </div>
@@ -127,7 +127,7 @@
                   {{ unit.sqFt }} Sq Ft
                 </span>
                 <span v-if="unit.price" class="text-sm md:text-md">
-                  AED {{ unit.price.toLocaleString("en-US") }}
+                  AED {{ unit.price?.toLocaleString("en-US") }}
                 </span>
               </div>
             </div>
@@ -468,7 +468,7 @@ export default {
         this.similarProperties = properties
           .map((property) => {
             property.priceText = property.price
-              ? `AED ${property.price.toLocaleString("en-us")}`
+              ? `AED ${property.price?.toLocaleString("en-us")}`
               : "Amazing Prices";
             property.locationText = property.address;
             property.image = property.img1;

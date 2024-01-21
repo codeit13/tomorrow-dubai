@@ -23,13 +23,13 @@
           <img
             :src="property.image"
             alt="Property"
-            class="w-[513px] h-auto"
+            class="w-[613px] h-auto"
             style="aspect-ratio: 3/4; object-fit: cover"
           />
           <div
             class="items-center gap-6 border px-4 w-full text-xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/50 py-6 montserrat-font absolute bottom-0 overflow-hidden text-ellipsis"
           >
-            <p class="text-sm md:text-2xl font-extrabold">
+            <p class="text-sm md:text-2xl font-extrabold montserrat-font mr-10">
               {{ property.name }}
             </p>
             <div class="flex items-start gap-1">
@@ -131,10 +131,7 @@ export default {
       return properties
         ? properties
             .map((property) => {
-              property.name = property.address
-                .toUpperCase()
-                .replaceAll("-", " ")
-                .replaceAll(".", " ");
+              property.name = property.title;
               property.subtitle = property.price
                 ? `STARTING PRICE - AED ${property.price.toLocaleString(
                     "en-US"

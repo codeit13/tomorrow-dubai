@@ -2,12 +2,7 @@
   <div class="bg-white">
     <div class="mx-auto mt-6 px-6 md:px-28">
       <div class="flex flex-wrap -mx-2">
-        <div
-          class="w-full sm:w-1/2 md:w-1/1.5 px-2 mb-4"
-          :style="{
-            width: 'revert-layer',
-          }"
-        >
+        <div class="w-[40%] px-2 mb-4">
           <Input
             v-model="searchText"
             placeholder="Search By Title, Location,"
@@ -126,7 +121,7 @@
           <div class="p-4">
             <!-- <div class="flex align-center justify-between"> -->
             <p class="text-lg font-bold">
-              AED {{ property.price.toLocaleString("en-us") }}
+              AED {{ property.price?.toLocaleString("en-us") }}
             </p>
             <p class="text-sm">{{ property.featureText }}</p>
             <!-- </div> -->
@@ -259,7 +254,13 @@ export default {
 
   data() {
     return {
-      propertyOptions: ["Property Type", "Apartment", "House", "Villa"],
+      propertyOptions: [
+        "Property Type",
+        "Apartment",
+        "Penthouse",
+        "Townhouse",
+        "Plot",
+      ],
       minPriceOptions: [
         "Min Price",
         "0",
