@@ -81,13 +81,13 @@ export default {
   },
   methods: {
     getValues(newVal = null) {
-      const slug = this.$route.params.slug.trim();
+      const slug = this.$route.params.slug;
       let blogs = newVal ? newVal : JSON.parse(JSON.stringify(this.blogs));
       if (blogs && blogs.length) {
         this.similarBlogs = blogs.length > 1 ? blogs.slice(0, 3) : [];
 
         let blog = blogs.filter((blog) => {
-          return slug.toLowerCase().trim() == blog.slug.toLowerCase().trim();
+          return slug?.toLowerCase().trim() == blog.slug?.toLowerCase().trim();
         })[0];
 
         if (blog) {

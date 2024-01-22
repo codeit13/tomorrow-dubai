@@ -62,7 +62,7 @@ export const actions = {
     commit("SET_IS_LOADING", true);
     try {
       const { id, blog } = payload;
-      const { data } = await axios.put(`${BASE_URL}/blog/${id}`, blog);
+      const { data } = await axios.put(`${BASE_URL}/blogs/${id}`, blog);
       if (data.message) {
         commit("SET_TOASTER_MSG", { type: "success", message: data.message });
         dispatch("fetchBlogs");
