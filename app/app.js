@@ -34,7 +34,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", express.static(path.join(__dirname, "../frontend/dist")));
 
 // server admin panel
-app.use("/admin", express.static(path.join(__dirname, "../admin/build")));
+app.use("/old-admin", express.static(path.join(__dirname, "../admin/build")));
 
 const corsOptions = {
   origin: [
