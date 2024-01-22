@@ -90,6 +90,11 @@ app.use("/api/login", loginRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/blogs", blogRoutes);
 
+app.get("/portal", (req, res, next) => {
+  const indexPath = path.join(__dirname, "../new-admin/dist", "index.html");
+  res.status(200).sendFile(indexPath);
+});
+
 // This middleware catches all other routes and returns a 404 error
 app.use((req, res, next) => {
   const indexPath = path.join(__dirname, "../frontend/dist", "index.html");
