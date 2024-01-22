@@ -475,10 +475,18 @@
             class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600"
           >
             <button
-              @click="updateProperty"
+              @click="
+                () => {
+                  if (this.buttonText.toLowerCase() == 'create') {
+                    this.createProperty();
+                  } else {
+                    this.updateProperty();
+                  }
+                }
+              "
               class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              Update
+              {{ buttonText }}
             </button>
             <!-- <button
               @click="isModalOpen = false"
@@ -502,6 +510,13 @@
           <h2 class="font-semibold text-title-md2 text-black dark:text-white">
             {{ properties.length }} Properties
           </h2>
+
+          <button
+            @click="resetPopupModal()"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            CREATE
+          </button>
 
           <nav>
             <ol class="flex items-center gap-2">
@@ -893,6 +908,7 @@ export default {
       agent: "DEFAULT",
       quillEditor: null,
       images: [],
+      buttonText: "UPDATE",
     };
   },
   components: {
@@ -921,6 +937,7 @@ export default {
     },
     openPropertyModal(property) {
       console.log(property);
+      this.buttonText = "UPDATE";
 
       this.propertyId = property._id;
       this.propertySlug = property.slug;
@@ -976,8 +993,102 @@ export default {
       this.isModalOpen = true;
     },
 
-    async updateProperty() {
+    resetPopupModal() {
+      this.isModalOpen = true;
+      this.buttonText = "CREATE";
+
+      this.propertySlug = null;
+      this.propertyId = null;
+      this.propertyTitle = null;
+      this.propertyName = null;
+      this.propertyFullAddress = null;
+      this.homeType = "DEFAULT";
+      this.propertySize = null;
+      this.noOfBeds = null;
+      this.noOfBaths = null;
+      this.propertyPrice = null;
+      this.propertyDescription = "";
+      this.newPropertyDescription = "";
+      this.isOffPlan = "NO";
+      this.agent = "DEFAULT";
+      this.images = [];
+
+      this.ammenities.map((i) => {
+        i.value = false;
+      });
+
+      this.details.map((i) => {
+        i.value = "";
+      });
+
+      this.units.map((i) => {
+        i.sqFt = "";
+        i.price = "";
+      });
+
+      Object.keys(this.paymentPlans).map((i) => {
+        this.paymentPlans[`${i}`] = "";
+      });
+    },
+
+    async createProperty() {
       console.log(this.quillEditor.root.innerHTML);
+      if (
+        this.propertySlug &&
+        this.propertyTitle &&
+        this.propertyName &&
+        this.propertyFullAddress &&
+        this.homeType != "DEFAULT" &&
+        this.propertySize &&
+        this.noOfBeds &&
+        this.noOfBaths &&
+        this.propertyPrice &&
+        this.propertyDescription &&
+        this.isOffPlan &&
+        this.agent != "DEFAULT"
+      ) {
+        const property = {
+          slug: this.propertySlug?.toLowerCase(),
+          title: this.propertyTitle,
+          propertyName: this.propertyName,
+          address: this.propertyFullAddress,
+          homeType: this.homeType,
+          sqFt: this.propertySize,
+          bed: this.noOfBeds,
+          bath: this.noOfBaths,
+          price: this.propertyPrice,
+          description: this.quillEditor.root.innerHTML,
+          isOffPlan: this.isOffPlan == "YES" ? true : false,
+          amenities: this.ammenities.filter((i) => i.value).map((i) => i.name),
+          details: this.details.reduce((obj, item) => {
+            obj[item.name] = item.value;
+            return obj;
+          }, {}),
+          units: this.units.reduce((obj, item) => {
+            obj[item.name] = {
+              sqFt: item.sqFt,
+              price: item.price,
+            };
+            return obj;
+          }, {}),
+          paymentPlans: this.paymentPlans,
+          agent: this.agents.filter((agent) => agent._id == this.agent)[0],
+          images: this.images,
+        };
+        console.log(property);
+        await this.$store.dispatch("createProperty", {
+          property: property,
+        });
+        this.isModalOpen = false;
+      } else {
+        this.$store.commit("SET_TOASTER_MSG", {
+          type: "error",
+          message: "Please make sure all the details are correct.",
+        });
+      }
+    },
+
+    async updateProperty() {
       if (
         this.propertySlug &&
         this.propertyId &&

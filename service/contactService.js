@@ -35,4 +35,21 @@ contactRouter.post("", async (req, res, next) => {
   });
 });
 
+contactRouter.get("/", async (req, res, next) => {
+  console.log("Fetching Contacts...");
+  try {
+    const results = await contactDB.find({});
+    console.log("Contact Result::", results);
+    res.status(200).json({
+      message: "Contacts fetched successfully",
+      contacts: results,
+    });
+  } catch (error) {
+    console.error("Error fetching contact:", error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching contacts" });
+  }
+});
+
 module.exports = contactRouter;

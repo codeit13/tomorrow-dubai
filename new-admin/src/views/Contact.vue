@@ -25,7 +25,7 @@
             class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
           >
             <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-              Bllog Details
+              Contact Details
             </h3>
             <button
               @click="isModalOpen = false"
@@ -198,17 +198,17 @@
               {{ buttonText }}
             </button>
             <!-- <button
-              @click="isModalOpen = false"
-              class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-boxdark dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
-            >
-              Delete
-            </button> -->
+                @click="isModalOpen = false"
+                class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-boxdark dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+              >
+                Delete
+              </button> -->
           </div>
         </div>
       </div>
     </div>
 
-    <main v-if="blogs.length">
+    <main v-if="contacts.length">
       <div class="w-[100vw] h-[100%] z-[1000] backdrop-blur-lg"></div>
 
       <div class="max-w-screen-2xl mx-auto p-4 md:p-6 2xl:p-10">
@@ -217,7 +217,7 @@
           class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6"
         >
           <h2 class="font-semibold text-title-md2 text-black dark:text-white">
-            {{ blogs.length }} News Articles
+            {{ contacts.length }} Contacts
           </h2>
 
           <button
@@ -234,7 +234,7 @@
                   Dashboard /
                 </a>
               </li>
-              <li class="text-primary">Blogs</li>
+              <li class="text-primary">Contacts</li>
             </ol>
           </nav>
         </div>
@@ -427,7 +427,7 @@ export default {
     // QuillEditor,
   },
   computed: {
-    ...mapState(["properties", "blogs", "agents"]),
+    ...mapState(["properties", "blogs", "agents", "contacts"]),
   },
   mounted() {},
   methods: {

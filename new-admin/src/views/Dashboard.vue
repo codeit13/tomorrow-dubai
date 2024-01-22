@@ -46,7 +46,7 @@
               <span class="text-sm font-medium">Total Properties</span>
             </div>
 
-            <span
+            <!-- <span
               class="flex items-center gap-1 text-sm font-medium text-meta-3"
             >
               0.43%
@@ -63,7 +63,7 @@
                   fill=""
                 />
               </svg>
-            </span>
+            </span> -->
           </div>
         </div>
         <!-- Card Item End -->
@@ -114,7 +114,7 @@
               <span class="text-sm font-medium">Total News/ Blogs</span>
             </div>
 
-            <span
+            <!-- <span
               class="flex items-center gap-1 text-sm font-medium text-meta-3"
             >
               4.35%
@@ -131,7 +131,7 @@
                   fill=""
                 />
               </svg>
-            </span>
+            </span> -->
           </div>
         </div>
         <!-- Card Item End -->
@@ -170,7 +170,7 @@
               <span class="text-sm font-medium">Total Product</span>
             </div>
 
-            <span
+            <!-- <span
               class="flex items-center gap-1 text-sm font-medium text-meta-3"
             >
               2.59%
@@ -187,7 +187,7 @@
                   fill=""
                 />
               </svg>
-            </span>
+            </span> -->
           </div>
         </div>
         <!-- Card Item End -->
@@ -230,7 +230,7 @@
               <span class="text-sm font-medium">Total Agents</span>
             </div>
 
-            <span
+            <!-- <span
               class="flex items-center gap-1 text-sm font-medium text-meta-5"
             >
               0.95%
@@ -247,7 +247,7 @@
                   fill=""
                 />
               </svg>
-            </span>
+            </span> -->
           </div>
         </div>
         <!-- Card Item End -->

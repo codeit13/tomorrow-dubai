@@ -150,6 +150,10 @@ export default {
           name: "News",
           route: "/news",
         },
+        {
+          name: "Contact",
+          route: "/contact",
+        },
       ],
     };
   },

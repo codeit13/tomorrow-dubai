@@ -14,4 +14,7 @@ export const mutations = {
   SET_AGENTS(state, payload) {
     state.agents = payload;
   },
+  SET_CONTACTS(state, payload) {
+    state.contacts = payload;
+  },
 };

@@ -12,7 +12,7 @@ propertyRouter.post("", async (req, res, next) => {
   try {
     const property = new propertyDB({
       ...req.body,
-      isOffPlan: req.body.isOffPlan == "Yes" ? true : false,
+      isOffPlan: req.body.isOffPlan,
       contactName: req.body.name,
       contactEmail: req.body.email,
       contactPhone: req.body.phone,

@@ -7,7 +7,9 @@ export const actions = {
     commit("SET_IS_LOADING", true);
     try {
       commit("SET_PROPERTIES", []);
-      const { data } = await axios.get(`${BASE_URL}/property?status=APPROVED`);
+      const { data } = await axios.get(
+        `${BASE_URL}/property?status=APPROVED&size=30`
+      );
       let properties = data ? data.property : [];
 
       commit("SET_PROPERTIES", properties);
@@ -21,11 +23,33 @@ export const actions = {
       commit("SET_IS_LOADING", false);
     }
   },
+  async createProperty({ commit, dispatch }, payload) {
+    commit("SET_IS_LOADING", true);
+    try {
+      const { property } = payload;
+      const { data } = await axios.post(`${BASE_URL}/property/`, {
+        status: "APPROVED",
+        ...property,
+      });
+      if (data.message) {
+        commit("SET_TOASTER_MSG", { type: "success", message: data.message });
+        dispatch("fetchProperties");
+      }
+    } catch (e) {
+      console.log(e);
+      commit("SET_TOASTER_MSG", { type: "error", message: e.message });
+    } finally {
+      commit("SET_IS_LOADING", false);
+    }
+  },
   async updateProperty({ commit, dispatch }, payload) {
     commit("SET_IS_LOADING", true);
     try {
       const { id, property } = payload;
-      const { data } = await axios.put(`${BASE_URL}/property/${id}`, property);
+      const { data } = await axios.put(`${BASE_URL}/property/${id}`, {
+        status: "APPROVED",
+        ...property,
+      });
       if (data.message) {
         commit("SET_TOASTER_MSG", { type: "success", message: data.message });
         dispatch("fetchProperties");
@@ -58,6 +82,23 @@ export const actions = {
     }
   },
 
+  async createBlog({ commit, dispatch }, payload) {
+    commit("SET_IS_LOADING", true);
+    try {
+      const { blog } = payload;
+      const { data } = await axios.post(`${BASE_URL}/blogs/`, blog);
+      if (data.message) {
+        commit("SET_TOASTER_MSG", { type: "success", message: data.message });
+        dispatch("fetchBlogs");
+      }
+    } catch (e) {
+      console.log(e);
+      commit("SET_TOASTER_MSG", { type: "error", message: e.message });
+    } finally {
+      commit("SET_IS_LOADING", false);
+    }
+  },
+
   async updateBlog({ commit, dispatch }, payload) {
     commit("SET_IS_LOADING", true);
     try {
@@ -79,7 +120,7 @@ export const actions = {
     commit("SET_IS_LOADING", true);
     try {
       const { id } = payload;
-      const { data } = await axios.delete(`${BASE_URL}/blog/${id}`);
+      const { data } = await axios.delete(`${BASE_URL}/blogs/${id}`);
       dispatch("fetchBlogs");
       if (data.message) {
         commit("SET_TOASTER_MSG", {
@@ -110,6 +151,23 @@ export const actions = {
   },
 
   async fetchBlogs({ commit }) {
+    commit("SET_IS_LOADING", true);
+    try {
+      const { data } = await axios.get(`${BASE_URL}/blogs`);
+      const blogs = data ? data.blogs : [];
+      commit("SET_BLOGS", blogs);
+      return;
+    } catch (e) {
+      console.log(e);
+      commit("SET_TOASTER_MSG", { type: "error", message: e.message });
+
+      return [];
+    } finally {
+      commit("SET_IS_LOADING", false);
+    }
+  },
+
+  async fetchContacts({ commit }) {
     commit("SET_IS_LOADING", true);
     try {
       const { data } = await axios.get(`${BASE_URL}/blogs`);

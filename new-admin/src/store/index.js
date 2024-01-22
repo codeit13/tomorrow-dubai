@@ -9,6 +9,7 @@ const store = createStore({
     properties: [],
     blogs: [],
     agents: [],
+    contacts: [],
   },
   mutations,
   actions,
