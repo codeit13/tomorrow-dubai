@@ -2,22 +2,22 @@ import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
   {
-    path: "/portal",
+    path: "/",
     name: "dashboard",
     component: () => import("@/views/Dashboard.vue"),
   },
   {
-    path: "/portal/properties",
+    path: "/properties",
     name: "Properties",
     component: () => import("@/views/Properties.vue"),
   },
   {
-    path: "/portal/news",
+    path: "/news",
     name: "News",
     component: () => import("@/views/News.vue"),
   },
   {
-    path: "/portal/contact",
+    path: "/contact",
     name: "Contact",
     component: () => import("@/views/Contact.vue"),
   },
