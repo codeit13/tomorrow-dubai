@@ -152,19 +152,19 @@ export default {
       tabItems: [
         {
           name: "Dashboard",
-          route: "/",
+          route: "/portal",
         },
         {
           name: "Properties",
-          route: "/properties",
+          route: "/portal/properties",
         },
         {
           name: "News",
-          route: "/news",
+          route: "/portal/news",
         },
         {
           name: "Contact",
-          route: "/contact",
+          route: "/portal/contact",
         },
       ],
     };

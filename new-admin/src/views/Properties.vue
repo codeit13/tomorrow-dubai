@@ -521,7 +521,7 @@
           <nav>
             <ol class="flex items-center gap-2">
               <li>
-                <a class="cursor-pointer" @click="$router.push('/')">
+                <a class="cursor-pointer" @click="$router.push('/portal')">
                   Dashboard /
                 </a>
               </li>
