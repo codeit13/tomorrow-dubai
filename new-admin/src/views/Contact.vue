@@ -252,13 +252,13 @@
                     <th
                       class="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11"
                     >
-                      Blog Title
+                      Contact Details
                     </th>
 
                     <th
                       class="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white"
                     >
-                      Created At
+                      Property Name
                     </th>
                     <th
                       class="py-4 px-4 font-medium text-black dark:text-white"
@@ -268,33 +268,22 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(blog, i) in blogs" :key="i">
+                  <tr v-for="(contact, i) in contacts" :key="i">
                     <td
                       class="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11"
                     >
-                      <div class="flex items-center gap-3">
+                      <div class="flex flex-col items-start gap-3">
                         <h5 class="font-medium text-black dark:text-white">
-                          {{ blog.title }}
+                          {{ contact.buyerName }} ( {{ contact.buyerPhone }} )
                         </h5>
-                        <svg
-                          class="fill-primary cursor-pointer"
-                          @click="openBlogUrl(blog.slug)"
-                          xmlns="http://www.w3.org/2000/svg"
-                          height="24"
-                          viewBox="0 -960 960 960"
-                          width="24"
-                        >
-                          <path
-                            d="M440-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h160v80H280q-50 0-85 35t-35 85q0 50 35 85t85 35h160v80ZM320-440v-80h320v80H320Zm200 160v-80h160q50 0 85-35t35-85q0-50-35-85t-85-35H520v-80h160q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H520Z"
-                          />
-                        </svg>
+                        <p>{{ contact.buyerEmail }}</p>
                       </div>
                     </td>
                     <td
                       class="border-b border-[#eee] py-5 px-4 dark:border-strokedark"
                     >
                       <p class="text-black dark:text-white">
-                        {{ blog.createdAt }}
+                        {{ contact.propertyId }}
                       </p>
                     </td>
                     <td
@@ -303,7 +292,7 @@
                       <div class="flex items-center space-x-3.5">
                         <button
                           class="hover:text-primary"
-                          @click="openBlogModal(blog)"
+                          @click="openBlogModal(contact)"
                         >
                           <svg
                             class="fill-current"
@@ -325,7 +314,7 @@
                         </button>
                         <button
                           class="hover:text-primary"
-                          @click="deleteBlog(blog)"
+                          @click="deleteBlog(contact)"
                         >
                           <svg
                             class="fill-current"

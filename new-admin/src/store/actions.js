@@ -170,9 +170,9 @@ export const actions = {
   async fetchContacts({ commit }) {
     commit("SET_IS_LOADING", true);
     try {
-      const { data } = await axios.get(`${BASE_URL}/blogs`);
-      const blogs = data ? data.blogs : [];
-      commit("SET_BLOGS", blogs);
+      const { data } = await axios.get(`${BASE_URL}/contact`);
+      const contacts = data ? data.contacts : [];
+      commit("SET_CONTACTS", contacts);
       return;
     } catch (e) {
       console.log(e);
