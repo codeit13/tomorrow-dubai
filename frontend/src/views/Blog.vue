@@ -101,7 +101,7 @@ export default {
 
           // this.content = blog.content;
         } else {
-          console.log("No blog found: ", title);
+          console.log("No blog found: ", slug);
         }
       }
     },
