@@ -2,7 +2,9 @@ const mongoose = require("mongoose");
 
 const blogSchema = mongoose.Schema({
   id: { type: String },
+  slug: { type: String, unique: true },
   title: { type: String },
+  imageUrl: { type: String },
   content: { type: String },
   status: { type: String },
   createdAt: { type: Date },

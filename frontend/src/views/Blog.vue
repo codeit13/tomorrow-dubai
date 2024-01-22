@@ -81,16 +81,13 @@ export default {
   },
   methods: {
     getValues(newVal = null) {
-      const title = this.$route.params.titleSlug.replaceAll("-", " ");
+      const slug = this.$route.params.slug.trim();
       let blogs = newVal ? newVal : JSON.parse(JSON.stringify(this.blogs));
       if (blogs && blogs.length) {
         this.similarBlogs = blogs.length > 1 ? blogs.slice(0, 3) : [];
 
         let blog = blogs.filter((blog) => {
-          return (
-            blog.title.replaceAll("-", " ").toLowerCase().trim() ==
-            title.replaceAll("-", " ").toLowerCase().trim()
-          );
+          return slug.toLowerCase().trim() == blog.slug.toLowerCase().trim();
         })[0];
 
         if (blog) {
@@ -109,17 +106,11 @@ export default {
       }
     },
     goToBlog(blog) {
-      if (blog && blog.title) {
-        const titleSlug = blog.title.toLowerCase().replaceAll(" ", "-");
-
-        // if (this.$route.path.includes("/blog/")) {
-        // this.getValues();
-        // }
-
+      if (blog && blog.slug) {
         this.$store.commit("SET_SELECTED_BLOG", null);
-        this.$router.push(`/blog/${titleSlug}`);
+        this.$router.push(`/blog/${blog.slug}`);
       } else {
-        console.log("No property found");
+        console.log("No blog found");
       }
     },
   },

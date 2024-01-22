@@ -58,6 +58,43 @@ export const actions = {
     }
   },
 
+  async updateBlog({ commit, dispatch }, payload) {
+    commit("SET_IS_LOADING", true);
+    try {
+      const { id, blog } = payload;
+      const { data } = await axios.put(`${BASE_URL}/blog/${id}`, blog);
+      if (data.message) {
+        commit("SET_TOASTER_MSG", { type: "success", message: data.message });
+        dispatch("fetchBlogs");
+      }
+    } catch (e) {
+      console.log(e);
+      commit("SET_TOASTER_MSG", { type: "error", message: e.message });
+    } finally {
+      commit("SET_IS_LOADING", false);
+    }
+  },
+
+  async deleteBlog({ commit, dispatch }, payload) {
+    commit("SET_IS_LOADING", true);
+    try {
+      const { id } = payload;
+      const { data } = await axios.delete(`${BASE_URL}/blog/${id}`);
+      dispatch("fetchBlogs");
+      if (data.message) {
+        commit("SET_TOASTER_MSG", {
+          type: "success",
+          message: "Blog deleted successfully!",
+        });
+      }
+    } catch (e) {
+      console.log(e);
+      commit("SET_TOASTER_MSG", { type: "error", message: e.message });
+    } finally {
+      commit("SET_IS_LOADING", false);
+    }
+  },
+
   async fetchAgents({ commit }) {
     commit("SET_IS_LOADING", true);
     try {

@@ -55,15 +55,9 @@ export default {
   },
   methods: {
     goToBlog(blog) {
-      if (blog && blog.title) {
-        const titleSlug = blog.title.toLowerCase().replaceAll(" ", "-");
-
-        // if (this.$route.path.includes("/blog/")) {
-        // this.getValues();
-        // }
-
+      if (blog && blog.slug) {
         this.$store.commit("SET_SELECTED_BLOG", null);
-        this.$router.push(`/blog/${titleSlug}`);
+        this.$router.push(`/blog/${blog.slug}`);
       } else {
         console.log("No Blog found");
       }

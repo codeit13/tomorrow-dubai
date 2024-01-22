@@ -632,12 +632,10 @@ export default {
       }
     },
     goToBlog(blog) {
-      if (blog && blog.title) {
-        const titleSlug = blog.title.toLowerCase().replaceAll(" ", "-");
-
-        this.$router.push(`/blog/${titleSlug}`);
+      if (blog && blog.slug) {
+        this.$router.push(`/blog/${blog.slug}`);
       } else {
-        console.log("No property found");
+        console.log("No blog found");
       }
     },
     goToNeighborhoodProperty(property) {
