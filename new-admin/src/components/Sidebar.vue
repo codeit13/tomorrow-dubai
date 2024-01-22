@@ -12,7 +12,7 @@
     <!-- SIDEBAR HEADER -->
 
     <div
-      class="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear"
+      class="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear border-t-[1px] border-r-[1px] border-[#0d0d0d] dark:border-[#a0a0ff] h-full"
     >
       <!-- Sidebar Menu -->
       <nav
@@ -116,6 +116,18 @@
                   <path
                     d="M16.875 16.1156H1.77187C1.43438 16.1156 1.125 16.3969 1.125 16.7625C1.125 17.1281 1.40625 17.4094 1.77187 17.4094H16.875C17.2125 17.4094 17.5219 17.1281 17.5219 16.7625C17.5219 16.3969 17.2125 16.1156 16.875 16.1156Z"
                     fill="white"
+                  />
+                </svg>
+                <svg
+                  v-else-if="tab.name.toLowerCase().includes('contact')"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 -960 960 960"
+                  width="24"
+                  fill="#d3d3d3"
+                >
+                  <path
+                    d="M160-40v-80h640v80H160Zm0-800v-80h640v80H160Zm320 400q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35ZM160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm70-80q45-56 109-88t141-32q77 0 141 32t109 88h70v-480H160v480h70Zm118 0h264q-29-20-62.5-30T480-280q-36 0-69.5 10T348-240Zm132-280q-17 0-28.5-11.5T440-560q0-17 11.5-28.5T480-600q17 0 28.5 11.5T520-560q0 17-11.5 28.5T480-520Zm0 40Z"
                   />
                 </svg>
 

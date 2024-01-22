@@ -13,12 +13,12 @@
       tabindex="-1"
       aria-modal="true"
       role="dialog"
-      class="flex overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-[999] justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+      class="overflow-y-auto overflow-x-hidden fixed z-[999] w-[80%] h-[calc(100%-1rem)] max-h-full"
     >
-      <div class="relative p-4 w-full max-w-3xl max-h-full">
+      <div class="relative p-4 w-fit mx-auto max-h-full">
         <!-- Modal content -->
         <div
-          class="relative bg-white rounded-lg shadow dark:bg-boxdark w-[50vw]"
+          class="relative bg-white rounded-lg shadow dark:bg-boxdark w-[60vw]"
         >
           <!-- Modal header -->
           <div
@@ -534,7 +534,7 @@
         <!-- Main Table Starts -->
         <div class="flex flex-col gap-10">
           <div
-            class="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1"
+            class="rounded-sm bg-white px-5 pt-6 pb-2.5 shadow-default dark:bg-boxdark sm:px-7.5 xl:pb-1"
           >
             <div class="max-w-full overflow-x-auto">
               <table class="w-full table-auto">
@@ -573,6 +573,7 @@
                           {{ property.title }}
                         </h5>
                         <svg
+                          v-if="property?.slug"
                           class="fill-primary cursor-pointer"
                           @click="openPropertyUrl(property.slug)"
                           xmlns="http://www.w3.org/2000/svg"

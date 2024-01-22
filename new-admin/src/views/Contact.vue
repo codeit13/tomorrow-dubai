@@ -13,7 +13,7 @@
       tabindex="-1"
       aria-modal="true"
       role="dialog"
-      class="flex overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-[999] justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+      class="absolute overflow-y-auto overflow-x-hidden top-0 right-0 left-0 z-[999] justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
     >
       <div class="relative p-4 w-full max-w-3xl max-h-full">
         <!-- Modal content -->
@@ -220,13 +220,6 @@
             {{ contacts.length }} Contacts
           </h2>
 
-          <button
-            @click="resetPopupModal()"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            CREATE
-          </button>
-
           <nav>
             <ol class="flex items-center gap-2">
               <li>
@@ -256,15 +249,21 @@
                     </th>
 
                     <th
+                      class="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11"
+                    >
+                      Mesage
+                    </th>
+
+                    <th
                       class="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white"
                     >
                       Property Name
                     </th>
-                    <th
+                    <!-- <th
                       class="py-4 px-4 font-medium text-black dark:text-white"
                     >
                       Actions
-                    </th>
+                    </th> -->
                   </tr>
                 </thead>
                 <tbody>
@@ -276,17 +275,39 @@
                         <h5 class="font-medium text-black dark:text-white">
                           {{ contact.buyerName }} ( {{ contact.buyerPhone }} )
                         </h5>
-                        <p>{{ contact.buyerEmail }}</p>
+                        <p class="">{{ contact.buyerEmail }}</p>
                       </div>
                     </td>
+
+                    <td
+                      class="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11"
+                    >
+                      <div class="flex flex-col items-start gap-3">
+                        <p class="">{{ contact.moreInfo }}</p>
+                      </div>
+                    </td>
+
                     <td
                       class="border-b border-[#eee] py-5 px-4 dark:border-strokedark"
                     >
-                      <p class="text-black dark:text-white">
-                        {{ contact.propertyId }}
-                      </p>
+                      <div class="flex gap-2 text-black dark:text-white">
+                        {{ contact.propertyId?.title }}
+                        <svg
+                          class="fill-primary cursor-pointer"
+                          v-if="contact.propertyId?.slug"
+                          @click="openPropertyUrl(contact.propertyId.slug)"
+                          xmlns="http://www.w3.org/2000/svg"
+                          height="24"
+                          viewBox="0 -960 960 960"
+                          width="24"
+                        >
+                          <path
+                            d="M440-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h160v80H280q-50 0-85 35t-35 85q0 50 35 85t85 35h160v80ZM320-440v-80h320v80H320Zm200 160v-80h160q50 0 85-35t35-85q0-50-35-85t-85-35H520v-80h160q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H520Z"
+                          />
+                        </svg>
+                      </div>
                     </td>
-                    <td
+                    <!-- <td
                       class="border-b border-[#eee] py-5 px-4 dark:border-strokedark"
                     >
                       <div class="flex items-center space-x-3.5">
@@ -343,7 +364,7 @@
                           </svg>
                         </button>
                       </div>
-                    </td>
+                    </td> -->
                   </tr>
                 </tbody>
               </table>
@@ -426,8 +447,8 @@ export default {
     removeImage(i) {
       this.images.splice(i, 1);
     },
-    openBlogUrl(slug) {
-      window.open(`https://tomorrowluxuryproperty.com/blog/${slug}`);
+    openPropertyUrl(slug) {
+      window.open(`https://tomorrowluxuryproperty.com/property/${slug}`);
     },
     openBlogModal(blog) {
       this.buttonText = "UPDATE";

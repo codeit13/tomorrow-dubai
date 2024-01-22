@@ -1,9 +1,9 @@
 <template>
   <header
-    class="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none"
+    class="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none border-b-[1px] border-[#0d0d0d] dark:border-[#a0a0ff]"
   >
     <div
-      class="flex flex-grow items-center justify-between py-4 px-4 shadow-2 md:px-6 2xl:px-11"
+      class="flex flex-grow items-center justify-between py-3.5 px-4 shadow-2 md:px-6 2xl:px-11"
     >
       <div class="hidden sm:block"></div>
 
@@ -76,9 +76,11 @@
           >
             <span class="hidden text-right lg:block">
               <span class="block text-sm font-medium text-black dark:text-white"
-                >Thomas Anree</span
+                >Arush</span
               >
-              <span class="block text-xs font-medium">UX Designer</span>
+              <span class="block text-xs font-medium"
+                >Real Estate Contractor</span
+              >
             </span>
 
             <span class="h-12 w-12 rounded-full overflow-hidden">
