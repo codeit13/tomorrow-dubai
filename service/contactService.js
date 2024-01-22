@@ -41,6 +41,7 @@ contactRouter.get("/", async (req, res, next) => {
     const results = await contactDB
       .find({})
       .populate("propertyId")
+      .exec()
       .console.log("Contact Result::", results);
     res.status(200).json({
       message: "Contacts fetched successfully",
