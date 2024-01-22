@@ -20,7 +20,7 @@
         @click="goToBlog(blog)"
       >
         <img
-          :src="require('@/assets/images/blogs/01.png')"
+          :src="blog.imageUrl"
           alt="Property"
           class="w-full h-auto"
           style="aspect-ratio: 1/1; object-fit: cover"
