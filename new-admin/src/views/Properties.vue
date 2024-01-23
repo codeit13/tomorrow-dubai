@@ -13,7 +13,7 @@
       tabindex="-1"
       aria-modal="true"
       role="dialog"
-      class="overflow-y-auto overflow-x-hidden fixed z-[999] w-[80%] h-[calc(100%-1rem)] max-h-full"
+      class="overflow-y-auto overflow-x-hidden fixed top-0 z-[999] w-[80%] h-[calc(100%-1rem)] max-h-full"
     >
       <div class="relative p-4 w-fit mx-auto max-h-full">
         <!-- Modal content -->
