@@ -11,4 +11,7 @@ export const mutations = {
   SET_SELECTED_BLOG(state, payload) {
     state.selectedBlog = payload;
   },
+  SET_SEARCHABLE_LOCATIONS(state, payload) {
+    state.searchableLocations = payload;
+  },
 };

@@ -5,7 +5,9 @@ import { BASE_URL } from "@/utils/constants";
 export const actions = {
   async fetchProperties({ commit }) {
     try {
-      const { data } = await axios.get(`${BASE_URL}/property?status=APPROVED`);
+      const { data } = await axios.get(
+        `${BASE_URL}/property?status=APPROVED&size=30`
+      );
       let properties = data ? data.property : [];
 
       // await Promise.all(
@@ -22,6 +24,18 @@ export const actions = {
       //     }
       //   })
       // );
+
+      const searchableLocations = properties
+        ? properties.map((p) => {
+            return {
+              address: p.address,
+              title: p.title,
+              name: p.propertyName,
+            };
+          })
+        : [];
+
+      commit("SET_SEARCHABLE_LOCATIONS", searchableLocations);
 
       commit("SET_PROPERTIES", properties);
 

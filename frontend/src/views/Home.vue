@@ -10,7 +10,7 @@
       <div class="absolute top-0 left-0 right-0 bottom-0">
         <Header />
         <div
-          class="absolute top-[58px] md:top-[68px] left-0 right-0 bottom-0 flex flex-col justify-center items-start text-left text-white bg-black bg-opacity-50 px-6 md:px-28"
+          class="absolute top-[58px] md:top-[64px] left-0 right-0 bottom-0 flex flex-col justify-center items-start text-left text-white bg-black bg-opacity-50 px-6 md:px-28"
         >
           <h2
             class="text-xl md:text-2xl font-bold uppercase tracking-wide montserrat-font"
@@ -22,87 +22,109 @@
           >
             Dream Home
           </h2>
-          <div class="flex space-x-2 mt-8">
-            <!-- <input
-              v-model="query"
-              class="flex w-[62vw] md:w-[20vw] border border-input bg-background px-3 py-2 text-sm text-black ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-              placeholder="Search Community, Building, or City"
-              @keyup.enter="searchClick"
-            /> -->
 
-            <Popover v-model="open" :autoFocus="false">
-              <PopoverTrigger as-child>
-                <Button
-                  variant="input"
-                  role="combobox"
-                  :aria-expanded="open"
-                  class="justify-between cursor-text flex h-10 w-[62vw] md:w-[30vw] rounded-none border border-input px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          <div class="mt-3">
+            <div
+              class="inline-flex flex-col justify-center relative text-gray-500"
+            >
+              <div class="relative">
+                <!-- <svg
+                  class="w-4 h-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
-                  {{
-                    query
-                      ? computedLocations.find(
-                          (location) => location.value === query
-                        )?.label
-                      : "Search location, project..."
-                  }}
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent
-                class="w-[80vw] md:w-[40vw] md:h-[350px] ml-6 md:ml-20 p-0 relative md:bottom-[48px]"
-              >
-                <Command>
-                  <CommandInput
-                    class="h-9"
-                    :autoFocus="false"
-                    placeholder="Search location, project..."
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                   />
-                  <CommandEmpty>
-                    <button
-                      @click="searchClick"
-                      class="inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white"
+                </svg>
+                <input
+                  v-model="query"
+                  class="flex w-[62vw] md:w-[20vw] border border-input bg-background px-3 py-2 text-sm text-black ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  placeholder="Search Community, Building, or City"
+                  @keyup.enter="searchClick"
+                /> -->
+
+                <div class="relative flex gap-4">
+                  <div class="relative">
+                    <div
+                      class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
                     >
-                      Search
-                    </button>
-                  </CommandEmpty>
-                  <CommandList>
-                    <CommandGroup>
-                      <CommandItem
-                        v-for="location in computedLocations"
-                        :key="location.i"
-                        :value="location.value"
-                        :label="location.label"
-                        @select="
-                          (ev) => {
-                            if (typeof ev.detail.value === 'string') {
-                              query = ev.detail.value;
-                              this.searchClick();
-                            }
-                            open = false;
-                          }
-                        "
+                      <svg
+                        class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 20 20"
                       >
-                        {{ location.label }}
-                      </CommandItem>
-                    </CommandGroup>
-                  </CommandList>
-                </Command>
-              </PopoverContent>
-            </Popover>
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                        />
+                      </svg>
+                    </div>
+                    <input
+                      type="text"
+                      v-model="query"
+                      class="block p-4 ps-10 focus:outline-none rounded-sm bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white w-[62vw] md:w-[25vw] h-10 bg-background px-3 py text-sm text-black placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+                      placeholder="Search Community, Building, or City"
+                      @keyup.enter="searchClick"
+                    />
+                  </div>
 
-            <!-- <Button
-              @click="searchClick"
-              variant="outline"
-              :aria-expanded="open"
-            >
-              Search
-            </Button> -->
-
-            <button
-              @click="searchClick"
-              class="inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white"
-            >
-              Search
-            </button>
+                  <button
+                    @click="searchClick"
+                    class="rounded-sm dark:bg-blue-500 dark:hover:bg-blue-500 dark:focus:ring-blue-800 inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors disabled:pointer-events-none disabled:opacity-50 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white"
+                  >
+                    Search
+                  </button>
+                </div>
+              </div>
+              <!-- <h3 class="mt-2 text-sm">Gevonden:</h3> -->
+              <ul
+                class="bg-white border border-gray-100 w-full mt-2"
+                v-if="filteredLocations && filteredLocations.length"
+              >
+                <li
+                  v-for="(location, i) in filteredLocations.slice(0, 6)"
+                  :key="i"
+                  @click="searchClick(location)"
+                  class="pl-8 pr-2 py-1 border-b-2 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900"
+                >
+                  <svg
+                    v-if="location.name"
+                    class="stroke-current absolute w-4 h-4 left-2 top-2"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                    />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+                  <span v-if="location.name">
+                    {{ location.name }}, {{ location.address }}
+                  </span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -302,7 +324,7 @@
         >
           <img
             :src="blog.imageUrl"
-            alt="Property"
+            alt="News"
             class="w-auto h-auto"
             style="aspect-ratio: 1/1; object-fit: cover"
           />
@@ -329,34 +351,10 @@ import Header from "@/components/Header.vue";
 import { mapState } from "vuex";
 
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 
 export default {
   components: {
     Header,
-    Button,
-    Command,
-    CommandEmpty,
-    CommandGroup,
-    CommandInput,
-    CommandItem,
-    CommandList,
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
   },
   data() {
     return {
@@ -547,19 +545,39 @@ export default {
       open: false,
       value: "next.js",
       query: null,
+      filteredLocations: [],
     };
   },
-  computed: {
-    ...mapState(["properties", "blogs"]),
-    computedLocations() {
-      return this.locations.map((location) => {
-        let newString = `${location.label}, ${location.value}`;
-        location.label = newString;
-        location.value = newString;
-
-        return location;
-      });
+  watch: {
+    query() {
+      if (this.query) {
+        this.filteredLocations = [];
+        this.searchableLocations.map((location) => {
+          if (
+            location.address
+              ?.toLowerCase()
+              .trim()
+              .includes(this.query.toLowerCase().trim()) ||
+            location.title
+              ?.toLowerCase()
+              .trim()
+              .includes(this.query.toLowerCase().trim()) ||
+            location.name
+              ?.toLowerCase()
+              .trim()
+              .includes(this.query.toLowerCase().trim())
+          ) {
+            this.filteredLocations.push(location);
+          }
+          return location;
+        });
+      } else {
+        this.filteredLocations = [];
+      }
     },
+  },
+  computed: {
+    ...mapState(["properties", "blogs", "searchableLocations"]),
     filteredBlogs() {
       return this.blogs?.slice(1, 4);
     },
@@ -615,13 +633,17 @@ export default {
   },
   async mounted() {},
   methods: {
-    searchClick() {
-      if (this.query) {
+    searchClick(location = null) {
+      if (location != null && location.name) {
+        console.log("location: ", location);
+        this.$router.push(`/search/${location?.name}`);
+      } else if (this.query) {
         this.$router.push(`/search/${this.query}`);
       } else {
-        this.$store.commit("SET_TOASTER_MSG", {
-          title: "Please select your search location first.",
-        });
+        // this.$store.commit("SET_TOASTER_MSG", {
+        //   title: "Please select your search location first.",
+        // });
+        this.$router.push(`/search/ `);
       }
     },
     goToProperty(property) {
