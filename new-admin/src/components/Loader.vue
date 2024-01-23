@@ -1,5 +1,8 @@
 <template>
-  <div class="bg-black/90 w-full h-full absolute z-[999999]" v-if="isLoading">
+  <div
+    class="bg-black/90 w-full h-full absolute z-[999999999]"
+    v-if="isLoading"
+  >
     <div role="status" class="absolute top-1/2 left-1/2 z-[99999999]">
       <svg
         aria-hidden="true"

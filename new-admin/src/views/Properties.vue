@@ -270,7 +270,7 @@
                             <path d="M18.153 6h-.009v5.342H23.5v-.002z"></path>
                           </g>
                         </svg>
-                        <p>Select a file</p>
+                        <p class="text-black dark:text-white">Select a file</p>
                       </label>
                       <input
                         @change="handleImageUpload"
@@ -292,7 +292,7 @@
                     >
                       <img :src="image" />
                       <span
-                        class="cursor-pointer absolute top-0 right-0 rounded-full bg-black px-[16px] py-[8px]"
+                        class="cursor-pointer absolute top-0 right-0 rounded-full bg-black text-white px-[10px] py-[1px] mt-2 mr-2"
                         @click="removeImage(i)"
                         >x</span
                       >
@@ -1044,7 +1044,6 @@ export default {
         this.noOfBeds &&
         this.noOfBaths &&
         this.propertyPrice &&
-        this.propertyDescription &&
         this.isOffPlan &&
         this.agent != "DEFAULT"
       ) {
@@ -1179,7 +1178,9 @@ export default {
   height: 200px;
   width: 250px;
   border-radius: 10px;
-  box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 4px 4px 30px hsl(0, 0%, 0%);
+  background: rgb(0, 0, 0);
+  color: #e3e3e3;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1194,6 +1195,7 @@ export default {
   border: 2px dashed royalblue;
   border-radius: 10px;
   display: flex;
+  color: #e3e3e3;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -1222,18 +1224,18 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  color: white;
+  color: #e3e3e3;
   border: none;
 }
 
 .input-file-footer svg {
   height: 100%;
   fill: royalblue;
-  background-color: rgba(70, 66, 66, 0.103);
+  background-color: rgb(70, 66, 66);
   border-radius: 50%;
   padding: 2px;
   cursor: pointer;
-  box-shadow: 0 2px 30px rgba(0, 0, 0, 0.205);
+  box-shadow: 0 2px 30px rgb(0, 0, 0);
 }
 
 .input-file-footer p {
