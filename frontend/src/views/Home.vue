@@ -76,6 +76,7 @@
                       class="block p-4 ps-10 focus:outline-none rounded-sm bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white w-[62vw] md:w-[25vw] h-10 bg-background px-3 py text-sm text-black placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
                       placeholder="Search Community, Building, or City"
                       @keyup.enter="searchClick"
+                      @change="searchInputChange"
                     />
                   </div>
 
@@ -633,6 +634,33 @@ export default {
   },
   async mounted() {},
   methods: {
+    searchInputChange(e) {
+      let query = e.target.value;
+      if (query) {
+        this.filteredLocations = [];
+        this.searchableLocations.map((location) => {
+          if (
+            location.address
+              ?.toLowerCase()
+              .trim()
+              .includes(query.toLowerCase().trim()) ||
+            location.title
+              ?.toLowerCase()
+              .trim()
+              .includes(query.toLowerCase().trim()) ||
+            location.name
+              ?.toLowerCase()
+              .trim()
+              .includes(query.toLowerCase().trim())
+          ) {
+            this.filteredLocations.push(location);
+          }
+          return location;
+        });
+      } else {
+        this.filteredLocations = [];
+      }
+    },
     searchClick(location = null) {
       if (location != null && location.name) {
         console.log("location: ", location);
