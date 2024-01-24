@@ -549,23 +549,23 @@ export default {
     };
   },
   watch: {
-    query() {
-      if (this.query) {
+    query(query) {
+      if (query) {
         this.filteredLocations = [];
         this.searchableLocations.map((location) => {
           if (
             location.address
               ?.toLowerCase()
               .trim()
-              .includes(this.query.toLowerCase().trim()) ||
+              .includes(query.toLowerCase().trim()) ||
             location.title
               ?.toLowerCase()
               .trim()
-              .includes(this.query.toLowerCase().trim()) ||
+              .includes(query.toLowerCase().trim()) ||
             location.name
               ?.toLowerCase()
               .trim()
-              .includes(this.query.toLowerCase().trim())
+              .includes(query.toLowerCase().trim())
           ) {
             this.filteredLocations.push(location);
           }
