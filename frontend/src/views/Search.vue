@@ -287,10 +287,10 @@ export default {
     };
   },
   computed: {
-    ...mapState(["properties"]),
+    ...mapState(["listings"]),
   },
   watch: {
-    properties: {
+    listings: {
       // eslint-disable-next-line
       handler(newVal) {
         this.getValues(newVal);
@@ -343,7 +343,7 @@ export default {
       console.log(
         `${searchQuery} ${minPrice} ${maxPrice} ${offPlan} ${selectedProperty}`
       );
-      let properties = newVal ? newVal : this.properties;
+      let properties = newVal ? newVal : this.listings;
       if (properties) {
         this.similarProperties = properties
           .map((property) => {
@@ -384,9 +384,9 @@ export default {
         });
       }
     },
-    goToProperty(property) {
-      if (property && property.slug) {
-        this.$router.push(`/listing/${property.slug}`);
+    goToProperty(listing) {
+      if (listing && listing.slug) {
+        this.$router.push(`/listing/${listing.slug}`);
       } else {
         console.log("No listing found");
       }

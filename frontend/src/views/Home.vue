@@ -578,14 +578,14 @@ export default {
     },
   },
   computed: {
-    ...mapState(["properties", "blogs", "searchableLocations"]),
+    ...mapState(["listings", "blogs", "searchableLocations"]),
     filteredBlogs() {
       return this.blogs?.slice(1, 4);
     },
     exclusiveProperties() {
-      let properties = JSON.parse(JSON.stringify(this.properties));
-      return properties
-        ? properties
+      let listings = JSON.parse(JSON.stringify(this.listings));
+      return listings
+        ? listings
             .map((property) => {
               property.image = property.img1 || property.images[0];
               property.buttonText = `${property.homeType.toUpperCase()} FOR SALE`;
@@ -598,11 +598,11 @@ export default {
         : [];
     },
     offPlanProperties() {
-      let properties = JSON.parse(JSON.stringify(this.properties));
+      let listings = JSON.parse(JSON.stringify(this.listings));
 
-      if (properties) {
+      if (listings) {
         try {
-          return properties
+          return listings
             .map((property) => {
               if (property.isOffPlan) {
                 property.name = property.title;

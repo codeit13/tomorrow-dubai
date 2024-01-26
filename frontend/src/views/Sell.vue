@@ -101,11 +101,11 @@ export default {
     };
   },
   computed: {
-    ...mapState(["properties", "blogs"]),
+    ...mapState(["listings", "blogs"]),
     exclusiveProperties() {
-      let properties = JSON.parse(JSON.stringify(this.properties));
-      return properties
-        ? properties
+      let listings = JSON.parse(JSON.stringify(this.listings));
+      return listings
+        ? listings
             .map((property) => {
               property.image = property.img1 || property.images[0];
               property.buttonText = `${property.homeType} FOR SALE`;

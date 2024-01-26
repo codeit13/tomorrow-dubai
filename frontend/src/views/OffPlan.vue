@@ -125,11 +125,11 @@ export default {
     };
   },
   computed: {
-    ...mapState(["properties"]),
+    ...mapState(["listing"]),
     offPlanProperties() {
-      let properties = JSON.parse(JSON.stringify(this.properties));
-      return properties
-        ? properties
+      let listings = JSON.parse(JSON.stringify(this.listings));
+      return listings
+        ? listings
             .map((property) => {
               property.name = property.title;
               property.subtitle = property.price
@@ -149,11 +149,11 @@ export default {
     },
   },
   methods: {
-    goToProperty(property) {
-      if (property && property.slug) {
-        this.$router.push(`/listing/${property.slug}`);
+    goToProperty(listing) {
+      if (listing && listing.slug) {
+        this.$router.push(`/listing/${listing.slug}`);
       } else {
-        console.log("No property found");
+        console.log("No listing found");
       }
     },
   },

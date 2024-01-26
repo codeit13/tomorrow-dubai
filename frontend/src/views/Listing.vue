@@ -426,10 +426,10 @@ export default {
     };
   },
   computed: {
-    ...mapState(["properties"]),
+    ...mapState(["listings"]),
   },
   watch: {
-    properties: {
+    listings: {
       handler(newVal) {
         console.log("watcher getValues: ", newVal);
         this.getValues(newVal);
@@ -460,9 +460,9 @@ export default {
     fromLonLat(coordinates) {
       return fromLonLat(coordinates);
     },
-    goToProperty(property) {
-      if (property && property.slug) {
-        this.$router.push(`/listing/${property.slug}`);
+    goToProperty(listing) {
+      if (listing && listing.slug) {
+        this.$router.push(`/listing/${listing.slug}`);
       } else {
         console.log("No listing found");
       }
@@ -473,11 +473,9 @@ export default {
     },
     getValues(newVal = null) {
       const slug = this.$route.params.slug;
-      let properties = newVal
-        ? newVal
-        : JSON.parse(JSON.stringify(this.properties));
-      if (properties && properties.length) {
-        this.similarProperties = properties
+      let listings = newVal ? newVal : JSON.parse(JSON.stringify(this.listing));
+      if (listings && listings.length) {
+        this.similarProperties = listings
           .map((property) => {
             property.priceText = property.price
               ? `AED ${property.price?.toLocaleString("en-us")}`
@@ -491,7 +489,7 @@ export default {
           })
           .slice(0, 3);
 
-        let property = properties.filter((property) => {
+        let property = listings.filter((property) => {
           return (
             property.slug?.toLowerCase().trim() == slug.toLowerCase().trim()
           );
