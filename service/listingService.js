@@ -2,7 +2,7 @@ const listingRouter = require("express").Router();
 const { listingDB } = require("../model/listing");
 const agentDB = require("../model/agent");
 const { sendEmail } = require("../config/email");
-const listingSearchRouter = require("./propertySearchService");
+const listingSearchRouter = require("./listingSearchService");
 
 /**
  * Creates a new listing.
