@@ -152,7 +152,7 @@
         <!-- Main Table Starts -->
         <div class="flex flex-col gap-10">
           <div
-            class="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1"
+            class="rounded-sm bg-white px-5 pt-6 pb-2.5 shadow-default dark:bg-boxdark sm:px-7.5 xl:pb-1"
           >
             <div class="max-w-full overflow-x-auto">
               <table class="w-full table-auto">
@@ -179,7 +179,7 @@
                 <tbody>
                   <tr v-for="(property, i) in properties" :key="i">
                     <td
-                      class="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11"
+                      class="border-t border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11"
                     >
                       <div class="flex items-center gap-3">
                         <h5 class="font-medium text-black dark:text-white">
@@ -188,14 +188,14 @@
                       </div>
                     </td>
                     <td
-                      class="border-b border-[#eee] py-5 px-4 dark:border-strokedark"
+                      class="border-t border-[#eee] py-5 px-4 dark:border-strokedark"
                     >
                       <p class="text-black dark:text-white">
                         {{ property.location }}
                       </p>
                     </td>
                     <td
-                      class="border-b border-[#eee] py-5 px-4 dark:border-strokedark"
+                      class="border-t border-[#eee] py-5 px-4 dark:border-strokedark"
                     >
                       <div class="flex items-center space-x-3.5">
                         <button

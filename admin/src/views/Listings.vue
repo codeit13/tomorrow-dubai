@@ -58,7 +58,7 @@
               class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
             >
               <div class="p-8">
-                <div class="mb-6 relative z-0">
+                <!-- <div class="mb-6 relative z-0">
                   <input
                     type="text"
                     v-model="listingSlug"
@@ -70,7 +70,7 @@
                   >
                     Slug
                   </label>
-                </div>
+                </div> -->
 
                 <div class="mb-6 relative z-0">
                   <input
@@ -616,7 +616,7 @@
                         <svg
                           v-if="listing?.slug"
                           class="fill-primary cursor-pointer"
-                          @click="openListingUrl(listing.slug)"
+                          @click="openListingUrl(listing)"
                           xmlns="http://www.w3.org/2000/svg"
                           height="24"
                           viewBox="0 -960 960 960"
@@ -932,7 +932,7 @@ export default {
         "image",
         "video",
       ],
-      listingSlug: null,
+      listingSlug: "DEFAULT",
       listingId: null,
       propertyId: null,
       listingTitle: null,
@@ -991,8 +991,35 @@ export default {
     removeImage(i) {
       this.images.splice(i, 1);
     },
-    openListingUrl(slug) {
-      window.open(`https://tomorrowluxuryproperty.com/listing/${slug}`);
+    openListingUrl(listing) {
+      if (listing && listing.propertyName && listing.title && listing.address) {
+        const propertyName = listing.propertyName
+          .trim()
+          .replaceAll(" ", "-")
+          .replaceAll(",", "")
+          .replaceAll(".", "")
+          .toLowerCase();
+        const listingName = listing.title
+          .trim()
+          .replaceAll(" ", "-")
+          .replaceAll(",", "")
+          .replaceAll(".", "")
+          .toLowerCase()
+          .trim();
+        const address = listing.address
+          .trim()
+          .replaceAll(" ", "-")
+          .replaceAll(",", "")
+          .replaceAll(".", "")
+          .toLowerCase()
+          .trim();
+
+        window.open(
+          `https://tomorrowluxuryproperty.com/listing/${address}/${propertyName}/${listingName}`
+        );
+      } else {
+        console.log("No listing found");
+      }
     },
     openListingModal(listing) {
       console.log(listing);
@@ -1224,8 +1251,8 @@ export default {
 
     async createListing() {
       console.log(this.quillEditor.root.innerHTML);
+      this.listingSlug = String(parseInt(Date.now()));
       if (
-        this.listingSlug &&
         this.listingTitle &&
         this.propertyName &&
         this.listingFullAddress &&
