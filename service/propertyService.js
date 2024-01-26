@@ -2,7 +2,7 @@ const propertyRouter = require("express").Router();
 const { propertyDB } = require("../model/property");
 
 propertyRouter.get("", async (req, res, next) => {
-  const results = await propertyDB.find({ filter }).exec();
+  const results = await propertyDB.find({}).exec();
 
   res.status(200).json({
     message: "Properties data fetched successfully",
