@@ -6,7 +6,7 @@ const contactSchema = mongoose.Schema({
   buyerEmail: { type: String, require: true },
   buyerPhone: { type: String, require: true },
   moreInfo: { type: String },
-  propertyId: { type: mongoose.Schema.Types.ObjectId, ref: "propertydbs" }, // Reference to the Agent model
+  listingId: { type: mongoose.Schema.Types.ObjectId, ref: "listingdbs" }, // Reference to the Agent model
   status: { type: String },
   createdAt: { type: Date },
   updatedAt: { type: Date, default: Date.now },

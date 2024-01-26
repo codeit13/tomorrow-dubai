@@ -132,7 +132,7 @@ export default {
       if (listing && listing.slug) {
         this.$router.push(`/listing/${listing.slug}`);
       } else {
-        console.log("No property found");
+        console.log("No listing found");
       }
     },
   },
