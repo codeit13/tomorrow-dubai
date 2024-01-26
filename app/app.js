@@ -11,6 +11,7 @@ const app = express();
 const categoryRoutes = require("../service/categoryService");
 const listingRoutes = require("../service/listingService");
 const listingSearchRoutes = require("../service/listingSearchService");
+const propertyRoutes = require("../service/propertyService");
 const neighbourRoutes = require("../service/neighbourService");
 const exclusiveRoutes = require("../service/exclusiveService");
 const contactRoutes = require("../service/contactService");
@@ -78,6 +79,7 @@ app.use((req, res, next) => {
 
 app.use("/api/categories", categoryRoutes);
 app.use("/api/listing", listingRoutes);
+app.use("/api/property", propertyRoutes);
 app.use("/api/search", listingSearchRoutes);
 app.use("/api/neighbour", neighbourRoutes);
 app.use("/api/exclusive", exclusiveRoutes);
