@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header v-if="!['/', '/buy', '/sell'].includes($route.path)" />
-    <router-view v-slot="{ Component }">
+    <router-view :key="$route.fullPath" v-slot="{ Component }">
       <transition name="slide-fade">
         <component :is="Component" />
       </transition>

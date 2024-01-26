@@ -460,9 +460,35 @@ export default {
     fromLonLat(coordinates) {
       return fromLonLat(coordinates);
     },
-    goToProperty(listing) {
-      if (listing && listing.slug) {
-        this.$router.push(`/listing/${listing.slug}`);
+    goToProperty(property) {
+      if (
+        property &&
+        property.propertyName &&
+        property.title &&
+        property.address
+      ) {
+        const propertyName = property.propertyName
+          .trim()
+          .replaceAll(" ", "-")
+          .replaceAll(",", "")
+          .replaceAll(".", "")
+          .toLowerCase();
+        const listingName = property.title
+          .trim()
+          .replaceAll(" ", "-")
+          .replaceAll(",", "")
+          .replaceAll(".", "")
+          .toLowerCase()
+          .trim();
+        const address = property.address
+          .trim()
+          .replaceAll(" ", "-")
+          .replaceAll(",", "")
+          .replaceAll(".", "")
+          .toLowerCase()
+          .trim();
+
+        this.$router.push(`/listing/${address}/${propertyName}/${listingName}`);
       } else {
         console.log("No listing found");
       }
@@ -472,7 +498,21 @@ export default {
       this.showMoreBtn = false;
     },
     getValues(newVal = null) {
-      const slug = this.$route.params.slug;
+      // const slug = this.$route.params.slug;
+
+      const propertyName = this.$route.params.propertyName
+        .toLowerCase()
+        .replaceAll("-", " ")
+        .trim();
+      const listingName = this.$route.params.listingName
+        .toLowerCase()
+        .replaceAll("-", " ")
+        .trim();
+      const address = this.$route.params.address
+        .toLowerCase()
+        .replaceAll("-", " ")
+        .trim();
+
       let listings = newVal
         ? newVal
         : JSON.parse(JSON.stringify(this.listings));
@@ -493,7 +533,25 @@ export default {
 
         let property = listings.filter((property) => {
           return (
-            property.slug?.toLowerCase().trim() == slug.toLowerCase().trim()
+            // property.slug?.toLowerCase().trim() == slug.toLowerCase().trim()
+            property.propertyName
+              ?.trim()
+              .replaceAll(",", "")
+              .replaceAll(".", "")
+              .toLowerCase()
+              .trim() == propertyName &&
+            property.title
+              ?.trim()
+              .replaceAll(",", "")
+              .replaceAll(".", "")
+              .toLowerCase()
+              .trim() == listingName &&
+            property.address
+              ?.trim()
+              .replaceAll(",", "")
+              .replaceAll(".", "")
+              .toLowerCase()
+              .trim() == address
           );
         })[0];
 

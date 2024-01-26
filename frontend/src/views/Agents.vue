@@ -6,7 +6,7 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-12 md:w-[75%] mx-auto">
       <div
-        @click="goToProperty(agent)"
+        @click="goToAgent(agent)"
         class="relative cursor-pointer"
         v-for="(agent, i) in agents"
         :key="i"
@@ -96,7 +96,7 @@ export default {
     };
   },
   methods: {
-    goToProperty(agent) {
+    goToAgent(agent) {
       this.$router.push("/agent", { query: agent });
     },
   },

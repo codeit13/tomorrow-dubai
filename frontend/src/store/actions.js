@@ -5,6 +5,8 @@ import { BASE_URL } from "@/utils/constants";
 export const actions = {
   async fetchListings({ commit }) {
     try {
+      commit("SET_LISTINGS", []);
+
       const { data } = await axios.get(
         `${BASE_URL}/listing?status=APPROVED&size=30`
       );
@@ -37,11 +39,12 @@ export const actions = {
 
       commit("SET_SEARCHABLE_LOCATIONS", searchableLocations);
 
-      commit("SET_LISTINGS", listings);
+      commit("SET_LISTINGS", listings || []);
 
       return listings;
     } catch (e) {
       console.log(e);
+      commit("SET_LISTINGS", []);
       return [];
     }
   },

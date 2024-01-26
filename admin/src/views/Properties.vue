@@ -96,9 +96,9 @@
               @click="
                 () => {
                   if (this.buttonText.toLowerCase() == 'create') {
-                    this.createBlog();
+                    this.createProperty();
                   } else {
-                    this.updateBlog();
+                    this.updateProperty();
                   }
                 }
               "

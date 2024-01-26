@@ -92,26 +92,54 @@
                   </label>
 
                   <div class="relative searchable-list">
-                    <input
-                      type="text"
-                      v-model="propertyName"
-                      class="data-list py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 pee"
-                      spellcheck="false"
-                      placeholder="Select a fruit"
-                    />
+                    <div class="flex" @click="propertyNameArrowClicked">
+                      <input
+                        type="text"
+                        v-model="propertyName"
+                        @blur="propertyNameBlur"
+                        class="data-list py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 pee"
+                        spellcheck="false"
+                        placeholder="Select a fruit"
+                      />
 
-                    <svg
-                      class="outline-none cursor-pointer fill-gray-400 absolute transition-all duration-200 h-full w-4 -rotate-90 right-2 top-[50%] -translate-y-[50%]"
-                      viewBox="0 0 1024 1024"
-                      version="1.1"
-                      xmlns="http://www.w3.org/2000/svg"
-                      xmlns:xlink="http://www.w3.org/1999/xlink"
-                    >
-                      <path d="M0 256l512 512L1024 256z"></path>
-                    </svg>
+                      <svg
+                        class="outline-none cursor-pointer fill-gray-400 transition-all duration-200 w-4"
+                        :class="{
+                          'rotate-90': propertyNameListOpened,
+                          'rotate-0': !propertyNameListOpened,
+                        }"
+                        viewBox="0 0 1024 1024"
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                      >
+                        <path d="M0 256l512 512L1024 256z"></path>
+                      </svg>
+                    </div>
                     <ul
-                      class="hidden option-list overflow-y-scroll max-h-64 min-h-[0px] flex-col top-12 left-0 z-[9999999999] bg-white rounded-sm scale-0 opacity-0 transition-all duration-200"
-                    ></ul>
+                      class="option-list overflow-y-scroll max-h-64 min-h-[0px] flex-col top-12 left-0 z-[9999999999] bg-white rounded-sm scale-0 opacity-0 transition-all duration-200"
+                      :class="{
+                        'scale-100 opacity-100': propertyNameListOpened,
+                        'scale-0 opacity-0': !propertyNameListOpened,
+                        hidden: !propertyNameListOpened,
+                        flex: propertyNameListOpened,
+                      }"
+                    >
+                      <li
+                        v-for="(property, i) in filteredProperties"
+                        :key="i"
+                        @click="selectPropertyName(property)"
+                        class="data-option z-[999999999999999] select-none break-words inline-block text-sm text-gray-500 bg-gray-100 odd:bg-gray-200 hover:bg-gray-300 hover:text-gray-700 transition-all duration-200 font-bold p-3 cursor-pointer max-w-full"
+                      >
+                        {{ property.name }}
+                      </li>
+                      <li
+                        v-if="filteredProperties.length == 0"
+                        class="data-option z-[999999999999999] select-none break-words inline-block text-sm text-gray-500 bg-gray-100 odd:bg-gray-200 transition-all duration-200 p-3 cursor-pointer max-w-full"
+                      >
+                        No Property Found.
+                      </li>
+                    </ul>
                   </div>
                 </div>
 
@@ -690,8 +718,6 @@
 
 <script>
 import { mapState } from "vuex";
-// import { QuillEditor } from "@vueup/vue-quill";
-// import "@vueup/vue-quill/dist/vue-quill.snow.css";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "@/utils/Firebase";
 
@@ -908,6 +934,7 @@ export default {
       ],
       listingSlug: null,
       listingId: null,
+      propertyId: null,
       listingTitle: null,
       propertyName: null,
       listingFullAddress: null,
@@ -923,6 +950,8 @@ export default {
       quillEditor: null,
       images: [],
       buttonText: "UPDATE",
+      propertyNameListOpened: false,
+      filteredProperties: [],
     };
   },
   components: {
@@ -931,7 +960,23 @@ export default {
   computed: {
     ...mapState(["listings", "properties", "agents"]),
   },
-  mounted() {},
+  watch: {
+    propertyName() {
+      if (this.propertyName) {
+        this.filteredProperties = this.properties.filter(
+          (i) => i.name == this.propertyName
+        );
+      } else {
+        this.filteredProperties = this.properties;
+      }
+    },
+    properties() {
+      this.filteredProperties = this.properties;
+    },
+  },
+  mounted() {
+    this.filteredProperties = this.properties;
+  },
   methods: {
     updateAmmenities(item) {
       this.ammenities.map((i) => {
@@ -1005,136 +1050,138 @@ export default {
       // });
 
       this.isModalOpen = true;
+      console.log("this.properties: ", this.properties);
+      this.filteredProperties = this.properties;
 
-      const _this = this;
+      // const _this = this;
 
-      setTimeout(() => {
-        // see how to use at the end of the script
-        const domParser = new DOMParser();
-        const dataList = {
-          el: document.querySelector(".data-list"),
-          listEl: document.querySelector(".option-list"),
-          arrow: document.querySelector(".searchable-list>svg"),
-          currentValue: null,
-          listOpened: false,
-          optionTemplate: `
-        <li
-			class='data-option z-[999999999999999] select-none break-words inline-block text-sm text-gray-500 bg-gray-100 odd:bg-gray-200 hover:bg-gray-300 hover:text-gray-700 transition-all duration-200 font-bold p-3 cursor-pointer max-w-full '>
-				[[REPLACEMENT]]
-        </li>
-        `,
-          optionElements: [],
-          options: [],
-          find(str) {
-            for (let i = 0; i < dataList.options.length; i++) {
-              const option = dataList.options[i];
-              if (!option.toLowerCase().includes(str.toLowerCase())) {
-                dataList.optionElements[i].classList.remove("block");
-                dataList.optionElements[i].classList.add("hidden");
-              } else {
-                dataList.optionElements[i].classList.remove("hidden");
-                dataList.optionElements[i].classList.add("block");
-              }
-            }
-          },
-          remove(value) {
-            const foundIndex = dataList.options.findIndex((v) => v === value);
-            if (foundIndex !== -1) {
-              dataList.listEl.removeChild(dataList.optionElements[foundIndex]);
-              dataList.optionElements.splice(foundIndex, 1);
-              dataList.options.splice(value, 1);
-            }
-          },
-          append(value) {
-            if (
-              !value ||
-              typeof value === "object" ||
-              typeof value === "symbol" ||
-              typeof value === "function"
-            )
-              return;
-            value = value.toString().trim();
-            if (value.length === 0) return;
-            if (dataList.options.includes(value)) return;
+      // setTimeout(() => {
+      //   // see how to use at the end of the script
+      //   const domParser = new DOMParser();
+      //   const dataList = {
+      //     el: document.querySelector(".data-list"),
+      //     listEl: document.querySelector(".option-list"),
+      //     arrow: document.querySelector(".searchable-list>svg"),
+      //     currentValue: null,
+      //     listOpened: false,
+      //     optionTemplate: `
+      //   <li
+      // class='data-option z-[999999999999999] select-none break-words inline-block text-sm text-gray-500 bg-gray-100 odd:bg-gray-200 hover:bg-gray-300 hover:text-gray-700 transition-all duration-200 font-bold p-3 cursor-pointer max-w-full '>
+      // 	[[REPLACEMENT]]
+      //   </li>
+      //   `,
+      //     optionElements: [],
+      //     options: [],
+      //     find(str) {
+      //       for (let i = 0; i < dataList.options.length; i++) {
+      //         const option = dataList.options[i];
+      //         if (!option.toLowerCase().includes(str.toLowerCase())) {
+      //           dataList.optionElements[i].classList.remove("block");
+      //           dataList.optionElements[i].classList.add("hidden");
+      //         } else {
+      //           dataList.optionElements[i].classList.remove("hidden");
+      //           dataList.optionElements[i].classList.add("block");
+      //         }
+      //       }
+      //     },
+      //     remove(value) {
+      //       const foundIndex = dataList.options.findIndex((v) => v === value);
+      //       if (foundIndex !== -1) {
+      //         dataList.listEl.removeChild(dataList.optionElements[foundIndex]);
+      //         dataList.optionElements.splice(foundIndex, 1);
+      //         dataList.options.splice(value, 1);
+      //       }
+      //     },
+      //     append(value) {
+      //       if (
+      //         !value ||
+      //         typeof value === "object" ||
+      //         typeof value === "symbol" ||
+      //         typeof value === "function"
+      //       )
+      //         return;
+      //       value = value.toString().trim();
+      //       if (value.length === 0) return;
+      //       if (dataList.options.includes(value)) return;
 
-            const html = dataList.optionTemplate.replace(
-              "[[REPLACEMENT]]",
-              value
-            );
-            const targetEle = domParser
-              .parseFromString(html, "text/html")
-              .querySelector("li");
-            targetEle.innerHTML = targetEle.innerHTML.trim();
-            dataList.listEl.appendChild(targetEle);
-            dataList.optionElements.push(targetEle);
-            dataList.options.push(value);
+      //       const html = dataList.optionTemplate.replace(
+      //         "[[REPLACEMENT]]",
+      //         value
+      //       );
+      //       const targetEle = domParser
+      //         .parseFromString(html, "text/html")
+      //         .querySelector("li");
+      //       targetEle.innerHTML = targetEle.innerHTML.trim();
+      //       dataList.listEl.appendChild(targetEle);
+      //       dataList.optionElements.push(targetEle);
+      //       dataList.options.push(value);
 
-            if (!dataList.currentValue) dataList.setValue(value);
+      //       if (!dataList.currentValue) dataList.setValue(value);
 
-            targetEle.onmousedown = (e) => {
-              dataList.optionElements.forEach((el, index) => {
-                if (e.target === el) {
-                  dataList.setValue(dataList.options[index]);
-                  dataList.hideList();
-                  return;
-                }
-              });
-            };
-          },
-          setValue(value) {
-            dataList.el.value = value;
-            dataList.currentValue = value;
-          },
-          showList() {
-            dataList.listOpened = true;
-            dataList.listEl.classList.add("opacity-100");
-            dataList.listEl.classList.add("scale-100");
-            dataList.arrow.classList.add("rotate-0");
-            dataList.listEl.classList.remove("hidden");
-            dataList.listEl.classList.add("flex");
-          },
-          hideList() {
-            dataList.listOpened = false;
-            dataList.listEl.classList.remove("opacity-100");
-            dataList.listEl.classList.remove("scale-100");
-            dataList.arrow.classList.remove("rotate-0");
-            dataList.listEl.classList.remove("flex");
-            dataList.listEl.classList.add("hidden");
-          },
-          init() {
-            dataList.arrow.onclick = () => {
-              dataList.listOpened ? dataList.hideList() : dataList.showList();
-            };
-            dataList.el.oninput = (e) => {
-              dataList.find(e.target.value);
-            };
-            dataList.el.onclick = () => {
-              dataList.showList();
-              for (let el of dataList.optionElements) {
-                el.classList.remove("hidden");
-              }
-            };
-            dataList.el.onblur = () => {
-              dataList.hideList();
-              dataList.setValue(dataList.currentValue);
-            };
-          },
-        };
+      //       targetEle.onmousedown = (e) => {
+      //         dataList.optionElements.forEach((el, index) => {
+      //           if (e.target === el) {
+      //             dataList.setValue(dataList.options[index]);
+      //             dataList.hideList();
+      //             return;
+      //           }
+      //         });
+      //       };
+      //     },
+      //     setValue(value) {
+      //       dataList.el.value = value;
+      //       dataList.currentValue = value;
+      //     },
+      //     showList() {
+      //       dataList.listOpened = true;
+      //       dataList.listEl.classList.add("opacity-100");
+      //       dataList.listEl.classList.add("scale-100");
+      //       dataList.arrow.classList.add("rotate-0");
+      //       dataList.listEl.classList.remove("hidden");
+      //       dataList.listEl.classList.add("flex");
+      //     },
+      //     hideList() {
+      //       dataList.listOpened = false;
+      //       dataList.listEl.classList.remove("opacity-100");
+      //       dataList.listEl.classList.remove("scale-100");
+      //       dataList.arrow.classList.remove("rotate-0");
+      //       dataList.listEl.classList.remove("flex");
+      //       dataList.listEl.classList.add("hidden");
+      //     },
+      //     init() {
+      //       dataList.arrow.onclick = () => {
+      //         dataList.listOpened ? dataList.hideList() : dataList.showList();
+      //       };
+      //       dataList.el.oninput = (e) => {
+      //         dataList.find(e.target.value);
+      //       };
+      //       dataList.el.onclick = () => {
+      //         dataList.showList();
+      //         for (let el of dataList.optionElements) {
+      //           el.classList.remove("hidden");
+      //         }
+      //       };
+      //       dataList.el.onblur = () => {
+      //         dataList.hideList();
+      //         dataList.setValue(dataList.currentValue);
+      //       };
+      //     },
+      //   };
 
-        // how to use
-        dataList.init();
-        // add items
-        const properties = _this.properties.length
-          ? this.properties.map((p) => p.name)
-          : [];
-        properties.forEach((v) => dataList.append(v));
+      //   // how to use
+      //   dataList.init();
+      //   // add items
+      //   const properties = _this.properties.length
+      //     ? this.properties.map((p) => p.name)
+      //     : [];
+      //   properties.forEach((v) => dataList.append(v));
 
-        // remove item
-        // dataList.remove("Peach");
+      //   // remove item
+      //   // dataList.remove("Peach");
 
-        // get selected value
-        // dataList.currentvalue;
-      }, 500);
+      //   // get selected value
+      //   // dataList.currentvalue;
+      // }, 500);
     },
 
     resetPopupModal() {
@@ -1305,6 +1352,21 @@ export default {
 
         this.images.push(imageUrl);
       }
+    },
+
+    propertyNameArrowClicked() {
+      this.propertyNameListOpened = true;
+    },
+    selectPropertyName(property) {
+      this.propertyName = property.name;
+      this.listingFullAddress = property.location;
+      this.propertyId = property._id;
+      this.propertyNameListOpened = false;
+    },
+    propertyNameBlur() {
+      setTimeout(() => {
+        this.propertyNameListOpened = false;
+      }, 200);
     },
   },
 };

@@ -106,6 +106,64 @@ export const actions = {
     }
   },
 
+  async createProperty({ commit, dispatch }, payload) {
+    commit("SET_IS_LOADING", true);
+    try {
+      const { property } = payload;
+      const { data } = await axios.post(`${BASE_URL}/property/`, {
+        ...property,
+      });
+      if (data.message) {
+        commit("SET_TOASTER_MSG", { type: "success", message: data.message });
+        dispatch("fetchProperties");
+      }
+    } catch (e) {
+      console.log(e);
+      commit("SET_TOASTER_MSG", { type: "error", message: e.message });
+    } finally {
+      commit("SET_IS_LOADING", false);
+    }
+  },
+  async updateProperty({ commit, dispatch }, payload) {
+    commit("SET_IS_LOADING", true);
+    try {
+      const { id, property } = payload;
+      const { data } = await axios.put(`${BASE_URL}/property/${id}`, {
+        status: "APPROVED",
+        ...property,
+      });
+      if (data.message) {
+        commit("SET_TOASTER_MSG", { type: "success", message: data.message });
+        dispatch("fetchProperties");
+      }
+    } catch (e) {
+      console.log(e);
+      commit("SET_TOASTER_MSG", { type: "error", message: e.message });
+    } finally {
+      commit("SET_IS_LOADING", false);
+    }
+  },
+
+  async deleteProperty({ commit, dispatch }, payload) {
+    commit("SET_IS_LOADING", true);
+    try {
+      const { id } = payload;
+      const { data } = await axios.delete(`${BASE_URL}/property/${id}`);
+      dispatch("fetchProperties");
+      if (data.message) {
+        commit("SET_TOASTER_MSG", {
+          type: "success",
+          message: "Property deleted successfully!",
+        });
+      }
+    } catch (e) {
+      console.log(e);
+      commit("SET_TOASTER_MSG", { type: "error", message: e.message });
+    } finally {
+      commit("SET_IS_LOADING", false);
+    }
+  },
+
   async createBlog({ commit, dispatch }, payload) {
     commit("SET_IS_LOADING", true);
     try {

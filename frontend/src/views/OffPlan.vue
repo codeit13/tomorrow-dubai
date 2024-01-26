@@ -125,7 +125,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["listing"]),
+    ...mapState(["listings"]),
     offPlanProperties() {
       let listings = JSON.parse(JSON.stringify(this.listings));
       return listings
@@ -149,9 +149,35 @@ export default {
     },
   },
   methods: {
-    goToProperty(listing) {
-      if (listing && listing.slug) {
-        this.$router.push(`/listing/${listing.slug}`);
+    goToProperty(property) {
+      if (
+        property &&
+        property.propertyName &&
+        property.title &&
+        property.address
+      ) {
+        const propertyName = property.propertyName
+          .trim()
+          .replaceAll(" ", "-")
+          .replaceAll(",", "")
+          .replaceAll(".", "")
+          .toLowerCase();
+        const listingName = property.title
+          .trim()
+          .replaceAll(" ", "-")
+          .replaceAll(",", "")
+          .replaceAll(".", "")
+          .toLowerCase()
+          .trim();
+        const address = property.address
+          .trim()
+          .replaceAll(" ", "-")
+          .replaceAll(",", "")
+          .replaceAll(".", "")
+          .toLowerCase()
+          .trim();
+
+        this.$router.push(`/listing/${address}/${propertyName}/${listingName}`);
       } else {
         console.log("No listing found");
       }
