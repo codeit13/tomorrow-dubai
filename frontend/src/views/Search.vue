@@ -319,18 +319,15 @@ export default {
     this.maxPrice = this.maxPriceOptions[0];
     this.isOffPlan = this.isOffPlanOptions[0];
 
-    this.searchText = this.$route.params.query;
+    this.searchText = this.$route.params.query.replaceAll("-", " ");
 
     this.getValues();
   },
   methods: {
     /* eslint-disable */
     getValues(newVal = null) {
-      let searchQuery = this.searchText.toLowerCase().trim().split(",");
+      let searchQuery = this.searchText.toLowerCase().trim();
 
-      searchQuery = searchQuery[1]
-        ? searchQuery[1].trim()
-        : this.searchText.toLowerCase().trim();
       let minPrice =
         this.minPrice == this.minPriceOptions[0] ? false : this.minPrice;
       let maxPrice =

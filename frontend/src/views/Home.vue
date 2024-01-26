@@ -714,7 +714,7 @@ export default {
     },
     goToNeighborhoodProperty(property) {
       if (property && property.title) {
-        this.$router.push(`/search/${property.title}`);
+        this.$router.push(`/search/${property.title.replaceAll(" ", "-")}`);
       } else {
         alert(property);
       }
