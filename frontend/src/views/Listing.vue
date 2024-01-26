@@ -473,7 +473,9 @@ export default {
     },
     getValues(newVal = null) {
       const slug = this.$route.params.slug;
-      let listings = newVal ? newVal : JSON.parse(JSON.stringify(this.listing));
+      let listings = newVal
+        ? newVal
+        : JSON.parse(JSON.stringify(this.listings));
       if (listings && listings.length) {
         this.similarProperties = listings
           .map((property) => {

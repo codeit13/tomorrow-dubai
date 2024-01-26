@@ -6,17 +6,19 @@ export const actions = {
   async fetchProperties({ commit }) {
     commit("SET_IS_LOADING", true);
     try {
-      commit("SET_LISTINGS", []);
+      commit("SET_PROPERTIES", []);
       const { data } = await axios.get(
         `${BASE_URL}/property?status=APPROVED&size=30`
       );
+      console.log(data.property);
       let properties = data ? data.property : [];
 
-      commit("SET_PROPERTIES", properties);
+      commit("SET_PROPERTIES", properties || []);
 
       return properties;
     } catch (e) {
       console.log(e);
+      commit("SET_PROPERTIES", []);
       commit("SET_TOASTER_MSG", { type: "error", message: e.message });
       return [];
     } finally {
@@ -32,11 +34,13 @@ export const actions = {
       );
       let listings = data ? data.listing : [];
 
-      commit("SET_LISTINGS", listings);
+      commit("SET_LISTINGS", listings || []);
 
       return listings;
     } catch (e) {
       console.log(e);
+      commit("SET_LISTINGS", []);
+
       commit("SET_TOASTER_MSG", { type: "error", message: e.message });
       return [];
     } finally {

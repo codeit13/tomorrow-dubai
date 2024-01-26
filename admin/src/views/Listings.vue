@@ -86,34 +86,47 @@
                   </label>
                 </div>
 
-                <div class="mb-6 flex flex-col gap-6 xl:flex-row">
-                  <div class="w-full xl:w-1/2 relative z-0">
-                    <input
-                      type="text"
-                      v-model="listingName"
-                      placeholder=""
-                      class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                    />
-                    <label
-                      class="mb-2.5 absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
-                    >
-                      Listing Name
-                    </label>
-                  </div>
+                <div class="mb-6 relative z-0">
+                  <label class="block text-gray-500 dark:text-gray-400 text-xs">
+                    Property Name
+                  </label>
 
-                  <div class="w-full xl:w-1/2 relative z-0">
+                  <div class="relative searchable-list">
                     <input
                       type="text"
-                      v-model="listingFullAddress"
-                      placeholder=""
-                      class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                      v-model="propertyName"
+                      class="data-list py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 pee"
+                      spellcheck="false"
+                      placeholder="Select a fruit"
                     />
-                    <label
-                      class="mb-2.5 absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+
+                    <svg
+                      class="outline-none cursor-pointer fill-gray-400 absolute transition-all duration-200 h-full w-4 -rotate-90 right-2 top-[50%] -translate-y-[50%]"
+                      viewBox="0 0 1024 1024"
+                      version="1.1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
                     >
-                      Listing Full Address
-                    </label>
+                      <path d="M0 256l512 512L1024 256z"></path>
+                    </svg>
+                    <ul
+                      class="hidden option-list overflow-y-scroll max-h-64 min-h-[0px] flex-col top-12 left-0 z-[9999999999] bg-white rounded-sm scale-0 opacity-0 transition-all duration-200"
+                    ></ul>
                   </div>
+                </div>
+
+                <div class="mb-6 relative z-0">
+                  <input
+                    type="text"
+                    v-model="listingFullAddress"
+                    placeholder=""
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  />
+                  <label
+                    class="mb-2.5 absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+                  >
+                    Listing Full Address
+                  </label>
                 </div>
 
                 <div
@@ -499,7 +512,7 @@
       </div>
     </div>
 
-    <main v-if="properties.length">
+    <main v-if="listings.length">
       <div class="w-[100vw] h-[100%] z-[1000] backdrop-blur-lg"></div>
 
       <div class="max-w-screen-2xl mx-auto p-4 md:p-6 2xl:p-10">
@@ -508,7 +521,7 @@
           class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6"
         >
           <h2 class="font-semibold text-title-md2 text-black dark:text-white">
-            {{ properties.length }} Properties
+            {{ listings.length }} Listings
           </h2>
 
           <button
@@ -525,7 +538,7 @@
                   Dashboard /
                 </a>
               </li>
-              <li class="text-primary">Properties</li>
+              <li class="text-primary">Listings</li>
             </ol>
           </nav>
         </div>
@@ -896,7 +909,7 @@ export default {
       listingSlug: null,
       listingId: null,
       listingTitle: null,
-      listingName: null,
+      propertyName: null,
       listingFullAddress: null,
       homeType: "DEFAULT",
       listingSize: null,
@@ -916,7 +929,7 @@ export default {
     // QuillEditor,
   },
   computed: {
-    ...mapState(["listings", "agents"]),
+    ...mapState(["listings", "properties", "agents"]),
   },
   mounted() {},
   methods: {
@@ -943,7 +956,7 @@ export default {
       this.listingId = listing._id;
       this.listingSlug = listing.slug;
       this.listingTitle = listing.title;
-      this.listingName = listing.propertyName;
+      this.propertyName = listing.propertyName;
       this.listingFullAddress = listing.address;
       this.homeType = listing.homeType;
       this.listingSize = listing.sqFt;
@@ -992,6 +1005,136 @@ export default {
       // });
 
       this.isModalOpen = true;
+
+      const _this = this;
+
+      setTimeout(() => {
+        // see how to use at the end of the script
+        const domParser = new DOMParser();
+        const dataList = {
+          el: document.querySelector(".data-list"),
+          listEl: document.querySelector(".option-list"),
+          arrow: document.querySelector(".searchable-list>svg"),
+          currentValue: null,
+          listOpened: false,
+          optionTemplate: `
+        <li
+			class='data-option z-[999999999999999] select-none break-words inline-block text-sm text-gray-500 bg-gray-100 odd:bg-gray-200 hover:bg-gray-300 hover:text-gray-700 transition-all duration-200 font-bold p-3 cursor-pointer max-w-full '>
+				[[REPLACEMENT]]
+        </li>
+        `,
+          optionElements: [],
+          options: [],
+          find(str) {
+            for (let i = 0; i < dataList.options.length; i++) {
+              const option = dataList.options[i];
+              if (!option.toLowerCase().includes(str.toLowerCase())) {
+                dataList.optionElements[i].classList.remove("block");
+                dataList.optionElements[i].classList.add("hidden");
+              } else {
+                dataList.optionElements[i].classList.remove("hidden");
+                dataList.optionElements[i].classList.add("block");
+              }
+            }
+          },
+          remove(value) {
+            const foundIndex = dataList.options.findIndex((v) => v === value);
+            if (foundIndex !== -1) {
+              dataList.listEl.removeChild(dataList.optionElements[foundIndex]);
+              dataList.optionElements.splice(foundIndex, 1);
+              dataList.options.splice(value, 1);
+            }
+          },
+          append(value) {
+            if (
+              !value ||
+              typeof value === "object" ||
+              typeof value === "symbol" ||
+              typeof value === "function"
+            )
+              return;
+            value = value.toString().trim();
+            if (value.length === 0) return;
+            if (dataList.options.includes(value)) return;
+
+            const html = dataList.optionTemplate.replace(
+              "[[REPLACEMENT]]",
+              value
+            );
+            const targetEle = domParser
+              .parseFromString(html, "text/html")
+              .querySelector("li");
+            targetEle.innerHTML = targetEle.innerHTML.trim();
+            dataList.listEl.appendChild(targetEle);
+            dataList.optionElements.push(targetEle);
+            dataList.options.push(value);
+
+            if (!dataList.currentValue) dataList.setValue(value);
+
+            targetEle.onmousedown = (e) => {
+              dataList.optionElements.forEach((el, index) => {
+                if (e.target === el) {
+                  dataList.setValue(dataList.options[index]);
+                  dataList.hideList();
+                  return;
+                }
+              });
+            };
+          },
+          setValue(value) {
+            dataList.el.value = value;
+            dataList.currentValue = value;
+          },
+          showList() {
+            dataList.listOpened = true;
+            dataList.listEl.classList.add("opacity-100");
+            dataList.listEl.classList.add("scale-100");
+            dataList.arrow.classList.add("rotate-0");
+            dataList.listEl.classList.remove("hidden");
+            dataList.listEl.classList.add("flex");
+          },
+          hideList() {
+            dataList.listOpened = false;
+            dataList.listEl.classList.remove("opacity-100");
+            dataList.listEl.classList.remove("scale-100");
+            dataList.arrow.classList.remove("rotate-0");
+            dataList.listEl.classList.remove("flex");
+            dataList.listEl.classList.add("hidden");
+          },
+          init() {
+            dataList.arrow.onclick = () => {
+              dataList.listOpened ? dataList.hideList() : dataList.showList();
+            };
+            dataList.el.oninput = (e) => {
+              dataList.find(e.target.value);
+            };
+            dataList.el.onclick = () => {
+              dataList.showList();
+              for (let el of dataList.optionElements) {
+                el.classList.remove("hidden");
+              }
+            };
+            dataList.el.onblur = () => {
+              dataList.hideList();
+              dataList.setValue(dataList.currentValue);
+            };
+          },
+        };
+
+        // how to use
+        dataList.init();
+        // add items
+        const properties = _this.properties.length
+          ? this.properties.map((p) => p.name)
+          : [];
+        properties.forEach((v) => dataList.append(v));
+
+        // remove item
+        // dataList.remove("Peach");
+
+        // get selected value
+        // dataList.currentvalue;
+      }, 500);
     },
 
     resetPopupModal() {
@@ -1001,7 +1144,7 @@ export default {
       this.listingSlug = null;
       this.listingId = null;
       this.listingTitle = null;
-      this.listingName = null;
+      this.propertyName = null;
       this.listingFullAddress = null;
       this.homeType = "DEFAULT";
       this.listingSize = null;
@@ -1037,7 +1180,7 @@ export default {
       if (
         this.listingSlug &&
         this.listingTitle &&
-        this.listingName &&
+        this.propertyName &&
         this.listingFullAddress &&
         this.homeType != "DEFAULT" &&
         this.listingSize &&
@@ -1050,7 +1193,7 @@ export default {
         const listing = {
           slug: this.listingSlug?.toLowerCase(),
           title: this.listingTitle,
-          listingName: this.listingName,
+          propertyName: this.propertyName,
           address: this.listingFullAddress,
           homeType: this.homeType,
           sqFt: this.listingSize,
@@ -1092,7 +1235,7 @@ export default {
         this.listingSlug &&
         this.listingId &&
         this.listingTitle &&
-        this.listingName &&
+        this.propertyName &&
         this.listingFullAddress &&
         this.homeType != "DEFAULT" &&
         this.listingSize &&
@@ -1106,7 +1249,7 @@ export default {
         const listing = {
           slug: this.listingSlug?.toLowerCase(),
           title: this.listingTitle,
-          listingName: this.listingName,
+          propertyName: this.propertyName,
           address: this.listingFullAddress,
           homeType: this.homeType,
           sqFt: this.listingSize,

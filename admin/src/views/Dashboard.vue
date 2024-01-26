@@ -38,12 +38,12 @@
             </svg>
           </div>
 
-          <div class="mt-4 flex items-end justify-between" v-if="properties">
+          <div class="mt-4 flex items-end justify-between" v-if="listings">
             <div>
               <h4 class="text-title-md font-bold text-black dark:text-white">
-                {{ properties.length }}
+                {{ listings.length }}
               </h4>
-              <span class="text-sm font-medium">Total Properties</span>
+              <span class="text-sm font-medium">Total Listings</span>
             </div>
 
             <!-- <span
@@ -464,7 +464,7 @@ import { mapState } from "vuex";
 
 export default {
   computed: {
-    ...mapState(["properties", "blogs", "agents", "contacts"]),
+    ...mapState(["listings", "blogs", "agents", "contacts"]),
   },
   data() {
     return {};

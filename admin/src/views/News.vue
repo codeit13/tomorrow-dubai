@@ -15,10 +15,10 @@
       role="dialog"
       class="overflow-y-auto overflow-x-hidden fixed top-0 z-[999] w-[80%] h-[calc(100%-1rem)] max-h-full"
     >
-      <div class="relative p-4 w-full max-w-3xl max-h-full">
+      <div class="relative p-4 w-fit mx-auto max-h-full">
         <!-- Modal content -->
         <div
-          class="relative bg-white rounded-lg shadow dark:bg-boxdark w-[50vw]"
+          class="relative bg-white rounded-lg shadow dark:bg-boxdark w-[60vw]"
         >
           <!-- Modal header -->
           <div

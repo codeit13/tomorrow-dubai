@@ -3,7 +3,7 @@ export const mutations = {
     state.toasterData = payload;
   },
   SET_LISTINGS(state, payload) {
-    state.properties = payload;
+    state.listings = payload;
   },
   SET_BLOGS(state, payload) {
     state.blogs = payload;

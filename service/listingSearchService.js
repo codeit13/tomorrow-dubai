@@ -109,7 +109,7 @@ listingSearchRouter.get("/", async (req, res) => {
 
     // Send the results as the response
     res.status(200).json({
-      message: "listing data fetched successfully",
+      message: "Listings data fetched successfully",
       page: page,
       pageSize: limit,
       records: results.length,

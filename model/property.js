@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const propertySchema = mongoose.Schema(
   {
     id: { type: String },
-    propertyName: { type: String },
+    name: { type: String },
     location: { type: String },
     createdAt: { type: Date },
     updatedAt: { type: Date, default: Date.now },

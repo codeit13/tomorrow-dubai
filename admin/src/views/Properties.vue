@@ -15,10 +15,10 @@
       role="dialog"
       class="overflow-y-auto overflow-x-hidden fixed top-0 z-[999] w-[80%] h-[calc(100%-1rem)] max-h-full"
     >
-      <div class="relative p-4 w-full max-w-3xl max-h-full">
+      <div class="relative p-4 w-fit mx-auto max-h-full">
         <!-- Modal content -->
         <div
-          class="relative bg-white rounded-lg shadow dark:bg-boxdark w-[50vw]"
+          class="relative bg-white rounded-lg shadow dark:bg-boxdark w-[60vw]"
         >
           <!-- Modal header -->
           <div
@@ -61,120 +61,29 @@
                 <div class="mb-6 relative z-0">
                   <input
                     type="text"
-                    v-model="blogSlug"
+                    v-model="propertyName"
                     placeholder=""
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   />
                   <label
                     class="mb-2.5 absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
                   >
-                    Slug
+                    Property Name
                   </label>
                 </div>
 
                 <div class="mb-6 relative z-0">
                   <input
                     type="text"
-                    v-model="blogTitle"
+                    v-model="propertyLocation"
                     placeholder=""
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   />
                   <label
                     class="mb-2.5 absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
                   >
-                    Blog Title
+                    Property Location
                   </label>
-                </div>
-
-                <div class="mb-6">
-                  <label class="mb-2.5 block text-black dark:text-white">
-                    Blog Content
-                  </label>
-
-                  <QuillEditor
-                    v-if="modules && formats"
-                    theme="snow"
-                    contentType="html"
-                    :content="blogContent"
-                    @ready="quillEditorReady"
-                  />
-                </div>
-
-                <div class="mb-6 flex">
-                  <div class="w-[30%]">
-                    <label class="mb-2.5 block text-black dark:text-white">
-                      Image
-                    </label>
-
-                    <div class="file-input-container">
-                      <div class="file-input-header">
-                        <svg
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                          <g
-                            id="SVGRepo_tracerCarrier"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          ></g>
-                          <g id="SVGRepo_iconCarrier">
-                            <path
-                              d="M7 10V9C7 6.23858 9.23858 4 12 4C14.7614 4 17 6.23858 17 9V10C19.2091 10 21 11.7909 21 14C21 15.4806 20.1956 16.8084 19 17.5M7 10C4.79086 10 3 11.7909 3 14C3 15.4806 3.8044 16.8084 5 17.5M7 10C7.43285 10 7.84965 10.0688 8.24006 10.1959M12 12V21M12 12L15 15M12 12L9 15"
-                              stroke="#e3e3e3"
-                              stroke-width="1.5"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            ></path>
-                          </g>
-                        </svg>
-                        <p>Browse File to upload!</p>
-                      </div>
-                      <label for="file" class="input-file-footer">
-                        <svg
-                          fill="#000000"
-                          viewBox="0 0 32 32"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                          <g
-                            id="SVGRepo_tracerCarrier"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          ></g>
-                          <g id="SVGRepo_iconCarrier">
-                            <path d="M15.331 6H8.5v20h15V14.154h-8.169z"></path>
-                            <path d="M18.153 6h-.009v5.342H23.5v-.002z"></path>
-                          </g>
-                        </svg>
-                        <p>Select a file</p>
-                      </label>
-                      <input
-                        @change="handleImageUpload"
-                        id="file"
-                        type="file"
-                      />
-                    </div>
-                  </div>
-                  <div
-                    class="overflow-x-auto overflow-y-hidden ml-10"
-                    :style="{
-                      whiteSpace: 'nowrap',
-                    }"
-                  >
-                    <div
-                      v-if="imageUrl"
-                      class="max-w-[50%] max-h-[100%] mr-6 inline-block relative"
-                    >
-                      <img :src="imageUrl" />
-                      <span
-                        class="cursor-pointer absolute top-0 right-0 rounded-full bg-black px-[16px] py-[8px]"
-                        @click="removeImage(i)"
-                        >x</span
-                      >
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -208,7 +117,7 @@
       </div>
     </div>
 
-    <main v-if="blogs.length">
+    <main v-if="properties">
       <div class="w-[100vw] h-[100%] z-[1000] backdrop-blur-lg"></div>
 
       <div class="max-w-screen-2xl mx-auto p-4 md:p-6 2xl:p-10">
@@ -274,7 +183,7 @@
                     >
                       <div class="flex items-center gap-3">
                         <h5 class="font-medium text-black dark:text-white">
-                          {{ property.title }}
+                          {{ property.name }}
                         </h5>
                       </div>
                     </td>
@@ -291,7 +200,7 @@
                       <div class="flex items-center space-x-3.5">
                         <button
                           class="hover:text-primary"
-                          @click="openBlogModal(property)"
+                          @click="openPropertyModal(property)"
                         >
                           <svg
                             class="fill-current"
@@ -313,7 +222,7 @@
                         </button>
                         <button
                           class="hover:text-primary"
-                          @click="deleteBlog(property)"
+                          @click="deleteProperty(property)"
                         >
                           <svg
                             class="fill-current"
@@ -357,87 +266,29 @@
 
 <script>
 import { mapState } from "vuex";
-// import { QuillEditor } from "@vueup/vue-quill";
-// import "@vueup/vue-quill/dist/vue-quill.snow.css";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { storage } from "@/utils/Firebase";
 
 export default {
   data() {
     return {
       isModalOpen: false,
-
-      modules: {
-        toolbar: [
-          [{ header: "1" }, { header: "2" }, { font: [] }],
-          [{ size: [] }],
-          ["bold", "italic", "underline", "strike", "blockquote"],
-          [
-            { list: "ordered" },
-            { list: "bullet" },
-            { indent: "-1" },
-            { indent: "+1" },
-          ],
-          ["link", "image", "video"],
-          ["clean"],
-        ],
-        clipboard: {
-          // toggle to add extra line breaks when pasting HTML:
-          matchVisual: false,
-        },
-      },
-      formats: [
-        "header",
-        "font",
-        "size",
-        "bold",
-        "italic",
-        "underline",
-        "strike",
-        "blockquote",
-        "list",
-        "bullet",
-        "indent",
-        "link",
-        "image",
-        "video",
-      ],
-      blogSlug: null,
-      blogId: null,
-      blogTitle: null,
-      blogContent: "as",
-      quillEditor: null,
-      imageUrl: null,
+      propertyId: null,
+      propertyName: null,
+      propertyLocation: null,
       buttonText: "UPDATE",
     };
   },
-  components: {
-    // QuillEditor,
-  },
+  components: {},
   computed: {
-    ...mapState(["properties", "blogs", "agents"]),
+    ...mapState(["properties"]),
   },
   mounted() {},
   methods: {
-    quillEditorReady(editor) {
-      this.quillEditor = editor;
-    },
-    removeImage(i) {
-      this.images.splice(i, 1);
-    },
-    openBlogUrl(slug) {
-      window.open(`https://tomorrowluxuryproperty.com/blog/${slug}`);
-    },
-    openBlogModal(blog) {
+    openPropertyModal(property) {
       this.buttonText = "UPDATE";
 
-      this.blogId = blog._id;
-      this.blogSlug = blog.slug;
-      this.blogTitle = blog.title;
-
-      this.blogContent = blog.content;
-
-      this.image = blog.image;
+      this.propertyId = property._id;
+      this.propertyName = property.name;
+      this.propertyLocation = property.location;
 
       this.isModalOpen = true;
     },
@@ -445,23 +296,18 @@ export default {
     resetPopupModal() {
       this.isModalOpen = true;
       this.buttonText = "CREATE";
-      this.blogSlug = null;
-      this.blogId = null;
-      this.blogTitle = null;
-      this.blogContent = "";
-      this.imageUrl = null;
+      this.propertyName = null;
+      this.propertyLocation = null;
     },
 
-    async createBlog() {
-      if (this.blogSlug && this.blogTitle && this.imageUrl) {
-        const blog = {
-          slug: this.blogSlug?.toLowerCase(),
-          title: this.blogTitle,
-          content: this.quillEditor.root.innerHTML,
-          imageUrl: this.imageUrl,
+    async createProperty() {
+      if (this.propertyName && this.propertyLocation) {
+        const property = {
+          name: this.propertyName,
+          location: this.propertyLocation,
         };
-        await this.$store.dispatch("createBlog", {
-          blog: blog,
+        await this.$store.dispatch("createProperty", {
+          property,
         });
         this.isModalOpen = false;
       } else {
@@ -472,20 +318,14 @@ export default {
       }
     },
 
-    async updateBlog() {
-      if (
-        this.blogSlug &&
-        this.blogTitle
-        // && this.imageUrl
-      ) {
-        const blog = {
-          slug: this.blogSlug?.toLowerCase(),
-          title: this.blogTitle,
-          content: this.quillEditor.root.innerHTML,
-          imageUrl: this.imageUrl,
+    async updateProperty() {
+      if (this.propertyName && this.propertyLocation) {
+        const property = {
+          name: this.propertyName,
+          location: this.propertyLocation,
         };
-        await this.$store.dispatch("updateBlog", {
-          blog: blog,
+        await this.$store.dispatch("updateProperty", {
+          property,
         });
         this.isModalOpen = false;
       } else {
@@ -496,23 +336,12 @@ export default {
       }
     },
 
-    async deleteBlog(blog) {
-      const status = confirm("Are you sure? You want to delete this blog?");
+    async deleteProperty(property) {
+      const status = confirm("Are you sure? You want to delete this property?");
       if (status) {
-        await this.$store.dispatch("deleteBlog", {
-          id: blog._id,
+        await this.$store.dispatch("deleteProperty", {
+          id: property._id,
         });
-      }
-    },
-
-    async handleImageUpload(event) {
-      const file = event.target.files[0];
-      if (file) {
-        const storageRef = ref(storage, file.name); // Create a reference to the storage location
-        await uploadBytes(storageRef, file); // Upload the file to the storage location
-        const imageUrl = await getDownloadURL(storageRef); // G
-
-        this.imageUrl = imageUrl;
       }
     },
   },
