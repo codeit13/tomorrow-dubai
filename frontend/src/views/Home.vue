@@ -587,8 +587,7 @@ export default {
       return properties
         ? properties
             .map((property) => {
-              property.image =
-                property.img1 || require("../assets/images/exclusive/02.png");
+              property.image = property.img1 || property.images[0];
               property.buttonText = `${property.homeType.toUpperCase()} FOR SALE`;
               property.tag = "Exclusive";
               property.features = `${property.bed} BEDS | ${property.bath} BATHS | ${property.sqFt} SQ FT`;
@@ -610,8 +609,7 @@ export default {
                 property.heading = property.price
                   ? `STARTING PRICE - AED ${property.details["Price Range"]}`
                   : "Exclusive Prices";
-                property.image =
-                  property.img1 || require("../assets/images/exclusive/02.png");
+                property.image = property.img1 || property.images[0];
                 property.completionText = property.yearBuilt
                   ? `Completion ${property.yearBuilt}`
                   : "Completed";
@@ -676,9 +674,9 @@ export default {
     },
     goToProperty(property) {
       if (property && property.slug) {
-        this.$router.push(`/property/${property.slug}`);
+        this.$router.push(`/listing/${property.slug}`);
       } else {
-        console.log("No property found");
+        console.log("No listing found");
       }
     },
     goToBlog(blog) {

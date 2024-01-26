@@ -137,8 +137,7 @@ export default {
                     "en-US"
                   )}`
                 : `AMAZING STARTING PRICES`;
-              property.image =
-                property.img1 || require("../assets/images/exclusive/02.png");
+              property.image = property.img1 || property.images[0];
               property.completionText = property.yearBuilt
                 ? `Completed in ${property.yearBuilt}`
                 : `Completed`;
@@ -152,7 +151,7 @@ export default {
   methods: {
     goToProperty(property) {
       if (property && property.slug) {
-        this.$router.push(`/property/${property.slug}`);
+        this.$router.push(`/listing/${property.slug}`);
       } else {
         console.log("No property found");
       }

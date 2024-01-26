@@ -107,8 +107,7 @@ export default {
       return properties
         ? properties
             .map((property) => {
-              property.image =
-                property.img1 || require("../assets/images/exclusive/02.png");
+              property.image = property.img1 || property.images[0];
               property.buttonText = `${property.homeType} FOR SALE`;
               property.tag = "Exclusive";
               property.features = `${property.bed} BEDS | ${property.bath} BATHS | ${property.sqFt} SQ FT`;
@@ -129,9 +128,9 @@ export default {
         });
       }
     },
-    goToProperty(property) {
-      if (property && property.slug) {
-        this.$router.push(`/property/${property.slug}`);
+    goToProperty(listing) {
+      if (listing && listing.slug) {
+        this.$router.push(`/listing/${listing.slug}`);
       } else {
         console.log("No property found");
       }

@@ -755,7 +755,7 @@ export default (await import("vue")).defineComponent({
           .replace(/ /g, "-")
           .replace(/-$/g, "");
 
-        this.$router.push(`/property/${titleSlug}`);
+        this.$router.push(`/listing/${titleSlug}`);
       } else {
         console.log("No property found");
       }

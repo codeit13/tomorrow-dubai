@@ -9,8 +9,8 @@ const passport = require("../config/passport");
 const app = express();
 
 const categoryRoutes = require("../service/categoryService");
-const propertyRoutes = require("../service/propertyService");
-const propertySearchRoutes = require("../service/propertySearchService");
+const listingRoutes = require("../service/listingService");
+const listingSearchRoutes = require("../service/listingSearchService");
 const neighbourRoutes = require("../service/neighbourService");
 const exclusiveRoutes = require("../service/exclusiveService");
 const contactRoutes = require("../service/contactService");
@@ -33,9 +33,6 @@ app.use(express.urlencoded({ extended: true }));
 // server main website
 app.use("/", express.static(path.join(__dirname, "../frontend/dist")));
 
-// server admin panel
-app.use("/old-admin", express.static(path.join(__dirname, "../admin/build")));
-
 const corsOptions = {
   origin: [
     "http://tomorrowdubai.com",
@@ -45,6 +42,7 @@ const corsOptions = {
     "https://tomorrowluxuryproperty.com",
     "https://www.tomorrowluxuryproperty.com",
     "http://localhost:8080",
+    "http://localhost:8081",
     "http://localhost:3000",
   ],
   credentials: true, // Allow cookies to be sent
@@ -79,8 +77,8 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/categories", categoryRoutes);
-app.use("/api/property", propertyRoutes);
-app.use("/api/search", propertySearchRoutes);
+app.use("/api/listing", listingRoutes);
+app.use("/api/search", listingSearchRoutes);
 app.use("/api/neighbour", neighbourRoutes);
 app.use("/api/exclusive", exclusiveRoutes);
 app.use("/api/contact", contactRoutes);

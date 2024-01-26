@@ -1,57 +1,10 @@
 const mongoose = require("mongoose");
 
-const locationSchema = mongoose.Schema({
-  id: { type: String },
-  type: {
-    type: String,
-    enum: ["Point"],
-    required: false,
-  },
-  coordinates: {
-    type: [Number], // [longitude, latitude]
-    required: false,
-  },
-});
-
 const propertySchema = mongoose.Schema(
   {
     id: { type: String },
-    slug: { type: String, unique: true },
-    homeType: { type: String, require: true },
-    isBuy: { type: Boolean, default: false }, // It is assumed that properties are created default by sellers
-    isOffPlan: { type: Boolean, default: false },
-    bed: { type: Number },
-    bath: { type: Number },
-    price: { type: Number },
-    priceOnApplication: { type: Boolean },
-    currency: { type: String },
-    sqFt: { type: Number },
-    address: { type: String, text: true },
-    city: { type: String },
-    state: { type: String },
-    title: { type: String },
     propertyName: { type: String },
-    description: { type: String },
-    images: [{ type: String }],
-    img1: { type: String },
-    yearBuilt: { type: Number },
-    contactName: { type: String },
-    contactEmail: { type: String },
-    contactPhone: { type: String },
-    sellerType: { type: String },
-    isListed: { type: String },
-    sellDuration: { type: String },
-    amenities: [{ type: String }],
-    details: { type: JSON },
-    units: { type: JSON },
-    paymentPlans: { type: JSON },
-    location: {
-      type: JSON,
-      // index: "2dsphere", // Geospatial index,
-      required: false,
-    },
-    agent: { type: mongoose.Schema.Types.ObjectId, ref: "agentdbs" }, // Reference to the Agent model
-    status: { type: String },
+    location: { type: String },
     createdAt: { type: Date },
     updatedAt: { type: Date, default: Date.now },
   },
@@ -72,15 +25,6 @@ const propertySchema = mongoose.Schema(
     },
   }
 );
-
-// Define a text index on the name and description fields
-propertySchema.index({
-  //homeType: "text",
-  //description: "text",
-  city: "text",
-  //address: "text",
-  //state: "text",
-});
 
 const propertyDB = mongoose.model("propertydbs", propertySchema);
 

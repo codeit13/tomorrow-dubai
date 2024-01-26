@@ -2,7 +2,7 @@ const registrationRouter = require("express").Router();
 const bcrypt = require("bcrypt");
 const User = require("../model/user");
 /**
- * Creates a new property.
+ * Creates a new user.
  */
 registrationRouter.post("/", async (req, res) => {
   console.log(req.body);

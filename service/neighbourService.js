@@ -1,16 +1,13 @@
-const propertyRouter = require('express').Router(),
-  propertyDB = require('../model/property');
-  const axios = require('axios');
-  const haversine = require('haversine');
-  
-
+const listingRouter = require("express").Router();
+const listingDB = require("../model/listing");
+const axios = require("axios");
+const haversine = require("haversine");
 
 /**
- * Returns list of propertys
+ * Returns list of listings
  */
-propertyRouter.get('/', async (req, res, next) => {
-    
-  console.log("Fetching...", req.query)
+listingRouter.get("/", async (req, res, next) => {
+  console.log("Fetching...", req.query);
   const { latitude, longitude } = req.query;
 
   // Use a geocoding API to get the user's city and country
@@ -21,18 +18,18 @@ propertyRouter.get('/', async (req, res, next) => {
   // Use a database of cities to find nearby cities
   const cities = await City.find({
     country: country.long_name,
-    name: { $ne: city.long_name }
+    name: { $ne: city.long_name },
   });
 
   // Calculate the distance between each city and the user's current location
-  const nearbyCities = cities.filter(city => {
+  const nearbyCities = cities.filter((city) => {
     const cityCoordinates = {
       latitude: city.latitude,
-      longitude: city.longitude
+      longitude: city.longitude,
     };
     const userCoordinates = {
       latitude: parseFloat(latitude),
-      longitude: parseFloat(longitude)
+      longitude: parseFloat(longitude),
     };
     const distance = haversine(cityCoordinates, userCoordinates);
     return distance <= 100; // 100km radius
@@ -41,4 +38,4 @@ propertyRouter.get('/', async (req, res, next) => {
   res.json(nearbyCities);
 });
 
-module.exports = propertyRouter;
+module.exports = listingRouter;

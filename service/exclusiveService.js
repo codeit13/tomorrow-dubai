@@ -1,13 +1,13 @@
-const exclusiveRouter = require("express").Router(),
-  { propertyDB } = require("../model/property");
+const exclusiveRouter = require("express").Router();
+const { listingDB } = require("../model/listing");
 
 /**
- * Returns list of propertys
+ * Returns list of listings
  */
 exclusiveRouter.get("/", (req, res, next) => {
   console.log("Fetching...");
 
-  propertyDB
+  listingDB
     .aggregate([{ $sample: { size: 3 } }])
     .then((results) => {
       // Modify the output to convert _id to id and remove __v field
@@ -16,7 +16,7 @@ exclusiveRouter.get("/", (req, res, next) => {
         return { id: _id, _id, ...rest };
       });
       res.status(200).json({
-        property: modifiedResults,
+        listing: modifiedResults,
       });
     })
     .catch((error) => {
@@ -27,12 +27,12 @@ exclusiveRouter.get("/", (req, res, next) => {
 });
 
 /**
- * Returns a property by id.
+ * Returns a listing by id.
  */
 exclusiveRouter.get("/:id", (req, res, next) => {
-  propertyDB.findById(req.params.id).then((propertydb) => {
+  listingDB.findById(req.params.id).then((listingdb) => {
     res.status(200).json({
-      property: propertydb,
+      listing: listingdb,
     });
   });
 });

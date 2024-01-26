@@ -3,12 +3,12 @@ import axios from "axios";
 import { BASE_URL } from "@/utils/constants";
 
 export const actions = {
-  async fetchProperties({ commit }) {
+  async fetchListings({ commit }) {
     try {
       const { data } = await axios.get(
-        `${BASE_URL}/property?status=APPROVED&size=30`
+        `${BASE_URL}/listing?status=APPROVED&size=30`
       );
-      let properties = data ? data.property : [];
+      let listings = data ? data.listing : [];
 
       // await Promise.all(
       //   properties.map(async (property) => {
@@ -25,8 +25,8 @@ export const actions = {
       //   })
       // );
 
-      const searchableLocations = properties
-        ? properties.map((p) => {
+      const searchableLocations = listings
+        ? listings.map((p) => {
             return {
               address: p.address,
               title: p.title,
@@ -37,9 +37,9 @@ export const actions = {
 
       commit("SET_SEARCHABLE_LOCATIONS", searchableLocations);
 
-      commit("SET_PROPERTIES", properties);
+      commit("SET_LISTINGS", listings);
 
-      return properties;
+      return listings;
     } catch (e) {
       console.log(e);
       return [];
@@ -135,7 +135,7 @@ export const actions = {
 
   async submitSellForm(store, payload) {
     try {
-      const { data } = await axios.post(`${BASE_URL}/property/`, payload);
+      const { data } = await axios.post(`${BASE_URL}/listing/`, payload);
       return data;
     } catch (e) {
       console.log(e);

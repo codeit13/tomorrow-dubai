@@ -349,7 +349,7 @@ export default {
           .map((property) => {
             property.priceText = `AED ${property.price}`;
             property.locationText = property.address;
-            property.image = property.img1;
+            property.image = property.img1 || property.images[0];
             property.buttonText = `${property.homeType.toUpperCase()} FOR SALE`;
             property.tag = property.isOffPlan ? "Off Plan" : "Exclusive";
             property.featureText = `${property.bed} BEDS | ${property.bath} BATHS | ${property.sqFt} SQ FT`;
@@ -375,7 +375,7 @@ export default {
             location: property.address,
             featureText: `${property.bed} Beds | ${property.bath} Baths | ${property.sqFt} Sq Ft`,
             price: property.price,
-            propertyImage: property.img1,
+            propertyImage: property.img1 || property.images[0],
             description: property.description,
             amenities: property.amenities,
             buttonText: `${property.homeType?.toUpperCase()} FOR SALE`,
@@ -386,9 +386,9 @@ export default {
     },
     goToProperty(property) {
       if (property && property.slug) {
-        this.$router.push(`/property/${property.slug}`);
+        this.$router.push(`/listing/${property.slug}`);
       } else {
-        console.log("No property found");
+        console.log("No listing found");
       }
     },
   },
