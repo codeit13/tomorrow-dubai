@@ -171,7 +171,7 @@
       class="px-6 md:px-28 pb-40"
       v-if="exclusiveProperties && exclusiveProperties.length"
     >
-      <div class="flex justify-between items-baseline mb-6">
+      <div class="flex justify-between items-baseline mb-0">
         <h2
           class="text-2xl md:text-4xl font-extrabold josefin-slab mb-8 md:mb-12"
         >
@@ -183,6 +183,7 @@
           >More ></span
         > -->
       </div>
+
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div
           class="relative cursor-pointer hover:bg-gray-100 rounded-sm border-[1px] border-[#00000062]"
@@ -238,9 +239,9 @@
       class="px-6 md:px-28 py-4"
       v-if="offPlanProperties && offPlanProperties.length"
     >
-      <div class="flex justify-between items-baseline mb-4">
+      <div class="flex justify-between items-baseline mb-0">
         <h2
-          class="text-2xl md:text-4xl font-extrabold josefin-slab mb-12 md:mb-20"
+          class="text-2xl md:text-4xl font-extrabold josefin-slab mb-12 md:mb-12"
         >
           Off Plan
         </h2>
@@ -311,11 +312,17 @@
       class="px-6 md:px-28 py-4 mt-24"
       v-if="filteredBlogs && filteredBlogs.length"
     >
-      <h2
-        class="text-2xl md:text-4xl font-extrabold josefin-slab mb-12 md:mb-24"
-      >
-        News and Updates
-      </h2>
+      <div class="flex justify-between items-baseline mb-12">
+        <h2 class="text-2xl md:text-4xl font-extrabold josefin-slab">
+          News & Updates
+        </h2>
+        <span
+          class="text-sm md:text-lg font-semibold cursor-pointer"
+          @click="$router.push('/blogs')"
+          >More ></span
+        >
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
         <div
           class="relative cursor-pointer w-fit hover:bg-gray-100 rounded-sm border-[1px] border-[#00000062]"
@@ -324,7 +331,10 @@
           @click="goToBlog(blog)"
         >
           <img
-            :src="blog.imageUrl"
+            :src="
+              blog.imageUrl ||
+              `https://firebasestorage.googleapis.com/v0/b/sellanyhome-66c20.appspot.com/o/Mercedes-Benz-Places-Binghatti.webp?alt=media&token=8e6cb0bb-e057-418e-8c1e-8cf677a09b8f`
+            "
             alt="News"
             class="w-auto h-auto"
             style="aspect-ratio: 1/1; object-fit: cover"
@@ -385,26 +395,6 @@ export default {
           image: require("../assets/images/neighbourhood/05.png"),
         },
       ],
-      // offPlanProperties: [
-      //   {
-      //     name: "RIXOS HOTELS & RESIDENCES, DUBAI ISLAND",
-      //     heading: "STARTING PRICE - AED 8M",
-      //     completionText: "Completion 2027",
-      //     image: require("../assets/images/offPlan/01.png"),
-      //   },
-      //   {
-      //     name: "RIXOS HOTELS & RESIDENCES, DUBAI ISLAND",
-      //     heading: "STARTING PRICE - AED 8M",
-      //     completionText: "Completion 2027",
-      //     image: require("../assets/images/offPlan/01.png"),
-      //   },
-      //   {
-      //     name: "RIXOS HOTELS & RESIDENCES, DUBAI ISLAND",
-      //     heading: "STARTING PRICE - AED 8M",
-      //     completionText: "Completion 2027",
-      //     image: require("../assets/images/offPlan/01.png"),
-      //   },
-      // ],
       locations: [
         {
           label: "Palm Beach Towers",
@@ -580,7 +570,7 @@ export default {
   computed: {
     ...mapState(["listings", "blogs", "searchableLocations"]),
     filteredBlogs() {
-      return this.blogs?.slice(1, 4);
+      return this.blogs?.slice(0, 3);
     },
     exclusiveProperties() {
       let listings = JSON.parse(JSON.stringify(this.listings));
@@ -669,7 +659,7 @@ export default {
         // this.$store.commit("SET_TOASTER_MSG", {
         //   title: "Please select your search location first.",
         // });
-        this.$router.push(`/search/ `);
+        this.$router.push(`/search/dubai`);
       }
     },
     goToProperty(property) {

@@ -87,6 +87,9 @@
         <p class="text-2xl font-semibold" v-if="searchText">
           {{ searchText.toUpperCase() }}
         </p>
+        <p class="text-2xl font-semibold" v-else>
+          {{ "DUBAI" }}
+        </p>
       </div>
 
       <div
@@ -98,7 +101,7 @@
       </div>
 
       <div
-        class="grid grid-cols-1 md:grid-cols-3 gap-12 my-20"
+        class="grid grid-cols-1 md:grid-cols-3 gap-4 my-20"
         v-if="filteredProperties && filteredProperties.length"
       >
         <div
@@ -319,14 +322,14 @@ export default {
     this.maxPrice = this.maxPriceOptions[0];
     this.isOffPlan = this.isOffPlanOptions[0];
 
-    this.searchText = this.$route.params.query.replaceAll("-", " ");
+    this.searchText = this.$route.params.query.replaceAll("-", " ") || "dubai";
 
     this.getValues();
   },
   methods: {
     /* eslint-disable */
     getValues(newVal = null) {
-      let searchQuery = this.searchText.toLowerCase().trim();
+      let searchQuery = this.searchText.toLowerCase().trim() || "dubai";
 
       let minPrice =
         this.minPrice == this.minPriceOptions[0] ? false : this.minPrice;

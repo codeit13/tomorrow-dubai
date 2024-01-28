@@ -108,7 +108,7 @@ export default {
         ? listings
             .map((property) => {
               property.image = property.img1 || property.images[0];
-              property.buttonText = `${property.homeType} FOR SALE`;
+              property.buttonText = `${property.homeType?.toUpperCase()} FOR SALE`;
               property.tag = "Exclusive";
               property.features = `${property.bed} BEDS | ${property.bath} BATHS | ${property.sqFt} SQ FT`;
               return property;

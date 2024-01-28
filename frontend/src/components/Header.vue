@@ -52,7 +52,10 @@
             v-for="(item, i) in menuItems"
             :key="i"
             @click="$router.push(item.route)"
-            class="text-white-600 cursor-pointer underline underline-offset-2"
+            class="text-white-600 cursor-pointer"
+            :class="{
+              'underline underline-offset-2': $route.path === item.route,
+            }"
           >
             {{ item.name }}
           </div>
@@ -66,6 +69,9 @@
         :key="i"
         @click="$router.push(item.route)"
         class="text-white-600 cursor-pointer"
+        :class="{
+          'underline underline-offset-2': $route.path === item.route,
+        }"
       >
         {{ item.name }}
       </div>

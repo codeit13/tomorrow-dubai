@@ -7,7 +7,7 @@
       >
         <span
           class="text-sm md:text-xl font-extrabold josefin-slab mb-20 cursor-pointer uppercase"
-          @click="$router.go(-1)"
+          @click="$router.push('/offplan')"
           >{{ `< Off Plan` }}</span
         >
         <div class="text-center">
@@ -47,10 +47,10 @@
         </div>
       </div>
     </div>
-    <div class="px-2">
+    <div class="px-0.5">
       <div class="my-10">
         <!--  -->
-        <carousel :items-to-show="1" :wrapAround="true">
+        <carousel :items-to-show="1" :wrapAround="true" :autoplay="2500">
           <slide v-for="(url, i) in propertyImages" :key="i">
             <img
               alt="Property"
@@ -58,7 +58,7 @@
               height="400"
               :src="url"
               :style="{
-                aspectRatio: '640/400',
+                aspectRatio: '840/400',
                 objectFit: 'cover',
               }"
               width="640"
