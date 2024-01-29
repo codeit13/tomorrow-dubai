@@ -15,12 +15,14 @@
       </span>
       <div class="flex justify-center gap-10 my-12">
         <Button
+          @click="openWhatsapp"
           class="rounded-none px-6 md:px-10 py-6 border-2 transition-all hover:text-xl border-[#000] bg-white text-sm md:text-lg font-semibold text-[#25D366]"
           variant="outline"
         >
           WhatsApp
         </Button>
         <Button
+          @click="openCall"
           class="rounded-none px-6 md:px-10 py-6 border-2 transition-all hover:text-xl border-[#000] bg-black text-nowrap text-sm md:text-lg font-semibold text-[#e3e3e3]"
           variant="outline"
           >Call Now</Button
@@ -103,7 +105,7 @@ export default {
     async submitContactForm() {
       if (this.name && this.email && this.phone) {
         const payload = {
-          propertyId: this.propertyId,
+          listingId: this.propertyId,
           name: this.name,
           email: this.email,
           phone: this.phone,
@@ -126,6 +128,14 @@ export default {
           title: "Please fill al the required fields first.",
         });
       }
+    },
+    openWhatsapp() {
+      window.open(
+        `https://wa.me/+971581677220?text=Hi, I am interested in your property.`
+      );
+    },
+    openCall() {
+      window.open(`tel:+971581677220`, "_blank");
     },
   },
 };

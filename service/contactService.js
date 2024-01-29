@@ -26,7 +26,7 @@ contactRouter.post("", async (req, res, next) => {
   //console.log(listing);
   const fetchedListing = await listingDB.findById(req.body.listingId);
 
-  await sendContactEmail(contact, fetchedListing);
+  // await sendContactEmail(contact, fetchedListing);
 
   res.status(201).json({
     message: "Buyer Interest Submitted successfully",

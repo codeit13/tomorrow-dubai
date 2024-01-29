@@ -34,7 +34,7 @@
           <h1 class="text-2xl md:text-3xl montserrat-font mb-4">
             {{ title }}
           </h1>
-          <p class="text-sm md:text-lg mb-4">
+          <p class="text-sm md:text-lg mb-4 josefin-slab font-semibold">
             {{ subtitle }}
           </p>
           <p class="text-sm md:text-lg">{{ featureText }}</p>
@@ -589,7 +589,7 @@ export default {
     async submitContactForm() {
       if (this.name && this.email && this.phone) {
         const payload = {
-          propertyId: this.propertyId,
+          listingId: this.propertyId,
           name: this.name,
           email: this.email,
           phone: this.phone,
