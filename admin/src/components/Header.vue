@@ -64,15 +64,10 @@
         </ul>
 
         <!-- User Area -->
-        <div
-          class="relative"
-          x-data="{ dropdownOpen: false }"
-          @click="dropdownOpen = !dropdownOpen"
-        >
+        <div class="relative">
           <a
-            class="flex items-center gap-4"
-            href="#"
-            @click.prevent="dropdownOpen = !dropdownOpen"
+            class="flex items-center gap-4 cursor-pointer"
+            @click="dropdownOpen = !dropdownOpen"
           >
             <span class="hidden text-right lg:block">
               <span class="block text-sm font-medium text-black dark:text-white"
@@ -110,10 +105,10 @@
 
           <!-- Dropdown Start -->
           <div
-            x-show="dropdownOpen"
+            v-if="dropdownOpen"
             class="absolute right-0 mt-4 flex w-62.5 flex-col rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
           >
-            <ul
+            <!-- <ul
               class="flex flex-col gap-5 border-b border-stroke px-6 py-7.5 dark:border-strokedark"
             >
               <li>
@@ -187,7 +182,7 @@
                   Account Settings
                 </a>
               </li>
-            </ul>
+            </ul> -->
             <button
               class="flex items-center gap-3.5 py-4 px-6 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
             >
@@ -233,14 +228,20 @@ export default {
         if (this.darkMode) {
           document.querySelector("body").classList +=
             "dark text-bodydark bg-boxdark-2";
+          localStorage.setItem("darkMode", 1);
         } else {
           document.querySelector("body").classList = "";
+          localStorage.setItem("darkMode", 0);
         }
       },
     },
   },
   mounted() {
-    this.darkMode = true;
+    if (localStorage.getItem("darkMode")) {
+      this.darkMode = Boolean(parseInt(localStorage.getItem("darkMode")));
+    } else {
+      this.darkMode = false;
+    }
   },
 };
 </script>

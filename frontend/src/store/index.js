@@ -10,6 +10,7 @@ const store = createStore({
     blogs: null,
     selectedBlog: null,
     searchableLocations: [],
+    searchPriority: null,
   },
   mutations,
   actions,

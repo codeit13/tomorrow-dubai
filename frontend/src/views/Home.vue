@@ -94,34 +94,39 @@
                 v-if="filteredLocations && filteredLocations.length"
               >
                 <li
-                  v-for="(location, i) in filteredLocations.slice(0, 6)"
+                  v-for="(entry, i) in filteredLocations.slice(0, 6)"
                   :key="i"
-                  @click="searchClick(location)"
-                  class="pl-8 pr-2 py-1 border-b-2 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900"
+                  @click="searchClick(entry)"
+                  class="pl-8 pr-2 py-1 border-b-2 border-gray-100 relative cursor-pointer hover:bg-gray-50 hover:text-gray-900"
                 >
                   <svg
-                    v-if="location.name"
+                    v-if="entry.type == 'PROPERTY'"
                     class="stroke-current absolute w-4 h-4 left-2 top-2"
                     xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+                    height="24"
+                    viewBox="0 -960 960 960"
+                    width="24"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                    />
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                      d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"
                     />
                   </svg>
-                  <span v-if="location.name">
-                    {{ location.name }}, {{ location.address }}
+
+                  <svg
+                    v-else-if="entry.type == 'LISTING'"
+                    class="stroke-current absolute w-4 h-4 left-2 top-2"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24"
+                    viewBox="0 -960 960 960"
+                    width="24"
+                  >
+                    <path
+                      d="M120-120v-560h160v-160h400v320h160v400H520v-160h-80v160H120Zm80-80h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm160 160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm160 320h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm160 480h80v-80h-80v80Zm0-160h80v-80h-80v80Z"
+                    />
+                  </svg>
+
+                  <span v-if="entry.name">
+                    {{ entry.name }}, {{ entry.location }}
                   </span>
                 </li>
               </ul>
@@ -649,10 +654,14 @@ export default {
         this.filteredLocations = [];
       }
     },
-    searchClick(location = null) {
-      if (location != null && location.name) {
-        console.log("location: ", location);
-        this.$router.push(`/search/${location?.name}`);
+    searchClick(entry = null) {
+      if (entry != null && entry.name) {
+        if (entry.type == "LISTING") {
+          this.$router.push(`/search/${entry?.name}`);
+          this.goToProperty(entry);
+        } else {
+          this.$router.push(`/search/${entry?.name}`);
+        }
       } else if (this.query) {
         this.$router.push(`/search/${this.query}`);
       } else {

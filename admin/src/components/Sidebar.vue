@@ -4,7 +4,10 @@
   >
     <!-- SIDEBAR HEADER -->
     <div class="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
-      <a @click="$router.push('/')">
+      <a
+        @click="$router.push('/')"
+        class="cursor-pointer text-white dark:text-whit underline underline-offset-4"
+      >
         <!-- <img :src="require('@/assets/images/logo/logo.svg')" alt="Logo" /> -->
         Tomorrow. Luxury Property
       </a>

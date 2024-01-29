@@ -1,9 +1,9 @@
 <template>
-  <footer class="bg-white dark:bg-gray-900 mt-40">
+  <footer class="bg-black text-white mt-40">
     <div class="mx-auto w-full p-4 py-6 md:px-24 lg:py-8">
       <div class="md:flex md:justify-between">
         <div class="mb-6 md:mb-0">
-          <a href="/" class="flex items-center">
+          <a href="/" class="flex items-center mb-4">
             <span
               class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
             >
@@ -18,21 +18,17 @@
               <component
                 :is="handle.icon"
                 v-for="(handle, i) in socialMediaHandles"
-                class="cursor-pointer"
+                class="cursor-pointer fill-white"
                 :key="i"
                 @click="openExternalUrl(handle.handleUrl)"
               />
             </div>
-            <p class="mt-8">© 2024 tomm luxury real estate llc</p>
+            <p class="!mt-6">© 2024 tomm luxury real estate llc</p>
           </div>
         </div>
         <div class="flex flex-wrap justify-between md:space-x-48">
           <div>
-            <h2
-              class="mb-6 text-sm font-semibold text-gray-900 dark:text-white"
-            >
-              Features
-            </h2>
+            <h2 class="mb-4 text-lg font-semibold">Features</h2>
             <ul class="text-black-900 dark:text-gray-400 font-medium">
               <li class="mb-4" v-for="(feature, i) in features" :key="i">
                 <a
@@ -45,11 +41,7 @@
             </ul>
           </div>
           <div>
-            <h2
-              class="mb-6 text-sm font-semibold text-gray-900 dark:text-white"
-            >
-              Company
-            </h2>
+            <h2 class="mb-4 text-lg font-semibold">Company</h2>
             <ul class="text-black-900 dark:text-black-900 font-medium">
               <li class="mb-4" v-for="(item, i) in company" :key="i">
                 <a

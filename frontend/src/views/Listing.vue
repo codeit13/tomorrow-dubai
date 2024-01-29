@@ -14,7 +14,7 @@
           <h1 class="text-2xl md:text-4xl montserrat-font mb-3">
             {{ title }}
           </h1>
-          <p class="text-sm md:text-xl mb-3">
+          <p class="text-sm md:text-xl mb-3 josefin-slab font-[600] uppercase">
             {{ subtitle }}
           </p>
           <!-- <p class="text-lg">{{ featureText }}</p> -->
@@ -34,10 +34,10 @@
           <h1 class="text-2xl md:text-3xl montserrat-font mb-4">
             {{ title }}
           </h1>
-          <p class="text-sm md:text-lg mb-4 josefin-slab font-semibold">
+          <p class="text-sm md:text-lg mb-4 josefin-slab font-[600] uppercase">
             {{ subtitle }}
           </p>
-          <p class="text-sm md:text-lg">{{ featureText }}</p>
+          <p class="text-sm md:text-lg font-bold">{{ featureText }}</p>
         </div>
         <div v-if="startingPrice" class="md:text-right">
           <p class="text-lg text-gray-700">ASKING PRICE</p>
@@ -416,7 +416,7 @@ export default {
       coordinates: [],
       center: [40, 40],
       projection: "EPSG:4326",
-      zoom: 8,
+      zoom: 16,
       rotation: 0,
       radius: 15,
       strokeWidth: 5,

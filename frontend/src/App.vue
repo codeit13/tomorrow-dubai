@@ -37,6 +37,7 @@ export default {
     },
   },
   async mounted() {
+    await this.$store.dispatch("fetchProperties");
     await this.$store.dispatch("fetchListings");
     await this.$store.dispatch("fetchBlogs");
   },

@@ -5,6 +5,9 @@ export const mutations = {
   SET_LISTINGS(state, payload) {
     state.listings = payload;
   },
+  SET_PROPERTIES(state, payload) {
+    state.properties = payload;
+  },
   SET_BLOGS(state, payload) {
     state.blogs = payload;
   },
@@ -13,5 +16,8 @@ export const mutations = {
   },
   SET_SEARCHABLE_LOCATIONS(state, payload) {
     state.searchableLocations = payload;
+  },
+  SET_SEARCH_PRIORITY(state, payload) {
+    state.searchPriority = payload;
   },
 };

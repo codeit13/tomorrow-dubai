@@ -18,7 +18,7 @@
       <div class="relative p-4 w-fit mx-auto max-h-full">
         <!-- Modal content -->
         <div
-          class="relative bg-white rounded-lg shadow dark:bg-boxdark w-[60vw]"
+          class="relative bg-white rounded-lg shadow-default dark:bg-boxdark w-[60vw]"
         >
           <!-- Modal header -->
           <div
@@ -55,7 +55,7 @@
           <div class="flex flex-col gap-9 h-[75vh] overflow-y-auto">
             <!-- Contact Form -->
             <div
-              class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
+              class="rounded-sm border border-stroke bg-white dark:border-strokedark dark:bg-boxdark"
             >
               <div class="p-8">
                 <div class="mb-6 relative z-0">
@@ -152,7 +152,7 @@
         <!-- Main Table Starts -->
         <div class="flex flex-col gap-10">
           <div
-            class="rounded-sm bg-white px-5 pt-6 pb-2.5 shadow-default dark:bg-boxdark sm:px-7.5 xl:pb-1"
+            class="rounded-sm bg-white px-5 pt-6 pb-2.5 dark:bg-boxdark sm:px-7.5 xl:pb-1"
           >
             <div class="max-w-full overflow-x-auto">
               <table class="w-full table-auto">

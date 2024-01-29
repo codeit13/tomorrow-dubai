@@ -13,7 +13,6 @@
   </svg> -->
 
   <svg
-    fill="#000000"
     width="20px"
     height="20px"
     viewBox="0 0 512 512"
