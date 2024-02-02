@@ -423,6 +423,7 @@ export default {
       strokeColor: "black",
       fillColor: "white",
       showMoreBtn: true,
+      isMetaTagsAdded: false,
     };
   },
   computed: {
@@ -457,6 +458,20 @@ export default {
     this.getValues();
   },
   methods: {
+    addMetaTags({ title, description }) {
+      if (!this.isMetaTagsAdded) {
+        this.isMetaTagsAdded = true;
+        const titleMetaTag = document.createElement("meta");
+        titleMetaTag.setAttribute("name", "title");
+        titleMetaTag.setAttribute("content", title);
+        document.querySelector("head").appendChild(titleMetaTag);
+
+        const descrMetaTag = document.createElement("meta");
+        descrMetaTag.setAttribute("name", "description");
+        descrMetaTag.setAttribute("content", description);
+        document.querySelector("head").appendChild(descrMetaTag);
+      }
+    },
     fromLonLat(coordinates) {
       return fromLonLat(coordinates);
     },
@@ -577,6 +592,15 @@ export default {
           this.isOffPlan = property.isOffPlan;
 
           this.moreInfo = `Hi, I found your property. Please contact me. Thank you`;
+
+          const descriptionDiv = document.createElement("div");
+          descriptionDiv.innerHTML = this.description;
+          const descriptionText = descriptionDiv.innerText;
+
+          this.addMetaTags({
+            title: `${property.title} | Tomorrow Luxury Property`,
+            description: descriptionText,
+          });
         }
       }
     },

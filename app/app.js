@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const fs = require("fs");
 
 const path = require("path");
 
@@ -7,6 +8,9 @@ const session = require("express-session");
 const passport = require("../config/passport");
 
 const app = express();
+
+const { CronJob } = require("cron");
+var generateSitemap = require("vue-router-tiny-sitemap");
 
 const categoryRoutes = require("../service/categoryService");
 const listingRoutes = require("../service/listingService");
@@ -24,12 +28,28 @@ const cors = require("cors");
 
 const mongo = require("../config/app-mongo.js");
 
+const { generateSiteMap } = require("../service/siteMapGenerator");
+
+const job = new CronJob(
+  "0 0 * * *",
+  function () {
+    generateSiteMap();
+  }, // onTick
+  null, // onComplete
+  true, // start
+  "America/Los_Angeles" // timeZone
+);
+
 mongo.connect();
 
 app.use(express.json());
 
 // app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.get("/sitemap.xml", (req, res) => {
+  res.sendFile(path.join(__dirname, "../sitemap.xml"));
+});
 
 // server main website
 app.use("/", express.static(path.join(__dirname, "../frontend/dist")));

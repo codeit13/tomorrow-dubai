@@ -45,6 +45,20 @@
 <script>
 import { mapState } from "vuex";
 export default {
+  head: {
+    meta: [
+      {
+        name: "title",
+        content:
+          "News and Insights - Tomorrow Luxury Property Real Estate in Dubai UAE",
+      },
+      {
+        name: "description",
+        content:
+          "Learn about with Tomorrow Luxury Property the recent updates in Dubai property investments by visiting our news and insights page",
+      },
+    ],
+  },
   data() {
     return {
       // blogs

@@ -33,36 +33,14 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   data() {
-    return {
-      neighbourhoodProperties: [
-        {
-          title: "DUBAI ISLAND",
-          image: require("../assets/images/neighbourhood/01.png"),
-        },
-        {
-          title: "PALM JEBEL ALI",
-          image: require("../assets/images/neighbourhood/02.png"),
-        },
-        {
-          title: "PALM JUMEIRAH",
-          image: require("../assets/images/neighbourhood/03.png"),
-        },
-        {
-          title: "DOWNTOWN DUBAI",
-          image: require("../assets/images/neighbourhood/04.png"),
-        },
-        {
-          title: "EMIRATES HILL",
-          image: require("../assets/images/neighbourhood/05.png"),
-        },
-        {
-          title: "DUBAI HILLS",
-          image: require("../assets/images/neighbourhood/06.png"),
-        },
-      ],
-    };
+    return {};
+  },
+  computed: {
+    ...mapState(["neighbourhoodProperties"]),
   },
   methods: {
     goToNeighborhoodProperty(property) {

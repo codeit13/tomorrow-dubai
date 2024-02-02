@@ -27,6 +27,7 @@
     "tailwindcss": "^3",
     "tailwindcss-animate": "^1.0.7",
     "vue": "^3.2.13",
+    "vue-head": "github:MKGaru/vue-head#vue3",
     "vue-router": "^4.2.5",
     "vue3-carousel": "^0.3.1",
     "vue3-openlayers": "^4.0.1",

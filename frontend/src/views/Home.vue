@@ -149,7 +149,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div
-          v-for="(property, i) in neighbourhoodProperties"
+          v-for="(property, i) in neighbourhoodProperties.slice(0, 6)"
           @click="goToNeighborhoodProperty(property)"
           :key="i"
           class="rounded-lg border bg-card shadow-sm relative w-full cursor-pointer"
@@ -372,172 +372,21 @@ export default {
   components: {
     Header,
   },
+  head: {
+    meta: [
+      {
+        name: "title",
+        content: "Tomorrow Luxury Property Dubai | Buy and Sell Real Estate",
+      },
+      {
+        name: "description",
+        content:
+          "Enhance your property journey with Tomorrow Luxury Property. Collaborate with our expert real estate agents to discover the perfect luxury home or apartment for you.",
+      },
+    ],
+  },
   data() {
     return {
-      neighbourhoodProperties: [
-        {
-          title: "DUBAI ISLAND",
-          image: require("../assets/images/neighbourhood/02.png"),
-        },
-        {
-          title: "PALM JEBEL ALI",
-          image: require("../assets/images/neighbourhood/01.png"),
-        },
-        {
-          title: "PALM JUMEIRAH",
-          image: require("../assets/images/neighbourhood/06.png"),
-        },
-        {
-          title: "DOWNTOWN DUBAI",
-          image: require("../assets/images/neighbourhood/03.png"),
-        },
-        {
-          title: "EMIRATES HILL",
-          image: require("../assets/images/neighbourhood/04.png"),
-        },
-        {
-          title: "DUBAI HILLS",
-          image: require("../assets/images/neighbourhood/05.png"),
-        },
-      ],
-      locations: [
-        {
-          label: "Palm Beach Towers",
-          value: "Palm Jumeirah",
-        },
-        {
-          label: "Emaar Beachfront",
-          value: "Dubai Harbour",
-        },
-        {
-          label: "Serenia Living",
-          value: "Palm Jumeirah",
-        },
-        {
-          label: "The Crescent",
-          value: "Palm Jumeirah",
-        },
-        {
-          label: "Raffles The Palm",
-          value: "Palm Jumeirah",
-        },
-        {
-          label: "Golf Place",
-          value: "Dubai Hills",
-        },
-        {
-          label: "Palm Beach Towers 1",
-          value: "Palm Jumeirah",
-        },
-        {
-          label: "Atlantis The Royal Residences",
-          value: "Palm Jumeirah",
-        },
-        {
-          label: "Garden Homes",
-          value: "Palm Jumeirah",
-        },
-        {
-          label: "Jumeirah Zabeel Saray",
-          value: "Palm Jumeirah",
-        },
-        {
-          label: "W Residences",
-          value: "Palm Jumeirah",
-        },
-        {
-          label: "Harmony",
-          value: "Tilal Al Ghaf",
-        },
-        {
-          label: "Palm Hills",
-          value: "Dubai Hills",
-        },
-        {
-          label: "Jouri Hills",
-          value: "Jumeirah Golf Estates",
-        },
-        {
-          label: "Six Senses Residences",
-          value: "Palm Jumeirah",
-        },
-        {
-          label: "Anantara Residences",
-          value: "Palm Jumeirah",
-        },
-        {
-          label: "District One",
-          value: "Mohammed Bin Rashid City",
-        },
-        {
-          label: "Liv Lux",
-          value: "Dubai Marina",
-        },
-        {
-          label: "Signature Villas",
-          value: "Palm Jumeirah",
-        },
-        {
-          label: "Central Park At City Walk",
-          value: "City Walk",
-        },
-        {
-          label: "Shams",
-          value: "Jumeirah Beach Residence",
-        },
-        {
-          label: "Burj Khalifa Tower",
-          value: "Downtown Dubai",
-        },
-        {
-          label: "The Address Residence The Blvd",
-          value: "Downtown Dubai",
-        },
-        {
-          label: "Sanctuary Falls",
-          value: "Jumeirah Golf Estates",
-        },
-        {
-          label: "Anantara Residences South",
-          value: "Palm Jumeirah",
-        },
-        {
-          label: "Alaya",
-          value: "Tilal Al Ghaf",
-        },
-        {
-          label: "Elysian Mansions",
-          value: "Tilal Al Ghaf",
-        },
-        {
-          label: "Baccarat Hotel And Residences",
-          value: "Downtown Dubai",
-        },
-        {
-          label: "Terra Golf Collection",
-          value: "Jumeirah Golf Estates",
-        },
-        {
-          label: "Aura Gardens",
-          value: "Tilal Al Ghaf",
-        },
-        {
-          label: "Jumeira Bay",
-          value: "Jumeirah",
-        },
-        {
-          label: "Como Residences",
-          value: "Palm Jumeirah",
-        },
-        {
-          label: "European Clusters",
-          value: "Jumeirah Islands",
-        },
-        {
-          label: "Palm Beach Towers 3",
-          value: "Palm Jumeirah",
-        },
-      ],
       open: false,
       value: "next.js",
       query: null,
@@ -573,7 +422,12 @@ export default {
     },
   },
   computed: {
-    ...mapState(["listings", "blogs", "searchableLocations"]),
+    ...mapState([
+      "neighbourhoodProperties",
+      "listings",
+      "blogs",
+      "searchableLocations",
+    ]),
     filteredBlogs() {
       return this.blogs?.slice(0, 3);
     },
@@ -657,17 +511,18 @@ export default {
     searchClick(entry = null) {
       if (entry != null && entry.name) {
         if (entry.type == "LISTING") {
-          this.$router.push(`/search/${entry?.name}`);
+          this.$router.push(
+            `/search/${entry?.name.trim().replaceAll(" ", "-").toLowerCase()}`
+          );
           this.goToProperty(entry);
         } else {
-          this.$router.push(`/search/${entry?.name}`);
+          this.$router.push(
+            `/search/${entry?.name.trim().replaceAll(" ", "-").toLowerCase()}`
+          );
         }
       } else if (this.query) {
         this.$router.push(`/search/${this.query}`);
       } else {
-        // this.$store.commit("SET_TOASTER_MSG", {
-        //   title: "Please select your search location first.",
-        // });
         this.$router.push(`/search/dubai`);
       }
     },
@@ -713,7 +568,9 @@ export default {
     },
     goToNeighborhoodProperty(property) {
       if (property && property.title) {
-        this.$router.push(`/search/${property.title.replaceAll(" ", "-")}`);
+        this.$router.push(
+          `/search/${property.title.trim().replaceAll(" ", "-").toLowerCase()}`
+        );
       } else {
         alert(property);
       }

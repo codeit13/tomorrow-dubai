@@ -207,6 +207,19 @@ export default {
     SelectContent,
     Select,
   },
+  head: {
+    meta: [
+      {
+        name: "title",
+        content: "Dubai Real Estate Agent Partners",
+      },
+      {
+        name: "description",
+        content:
+          "Experience the industry's first-ever contact-to-close platform and transform your business with the nation's #1 residential brokerage.",
+      },
+    ],
+  },
   data() {
     return {
       fullName: null,

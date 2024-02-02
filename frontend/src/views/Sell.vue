@@ -94,6 +94,19 @@ export default {
   components: {
     Header,
   },
+  head: {
+    meta: [
+      {
+        name: "title",
+        content: "Sell Your Home With Tomorrow Luxury Property",
+      },
+      {
+        name: "description",
+        content:
+          "Whether you're preparing to sell or seeking guidance, we offer data-driven insights and expert advice tailored to your local area.",
+      },
+    ],
+  },
   data() {
     return {
       open: false,

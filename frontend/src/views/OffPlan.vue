@@ -64,65 +64,22 @@
 <script>
 import { mapState } from "vuex";
 export default {
+  head: {
+    meta: [
+      {
+        name: "title",
+        content:
+          "Exclusive Off-Plan Investment Opportunities in Dubai's Thriving Real Estate Market",
+      },
+      {
+        name: "description",
+        content:
+          "At Tomorrow Luxury Property, you will receive comprehensive information on the latest off-plan projects and developments in Palm Jebel Ali, Palm Jumeirah, Dubai Island, and Downtown Dubai, UAE",
+      },
+    ],
+  },
   data() {
-    return {
-      // offPlanProperties: [
-      //   {
-      //     name: "RIXOS HOTELS & RESIDENCES, DUBAI ISLAND",
-      //     title: "STARTING PRICE - AED 8M",
-      //     subtitle: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-      //     image: require("../assets/images/offPlan/01.png"),
-      //   },
-      //   {
-      //     name: "RIXOS HOTELS & RESIDENCES, DUBAI ISLAND",
-      //     title: "STARTING PRICE - AED 8M",
-      //     subtitle: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-      //     image: require("../assets/images/offPlan/01.png"),
-      //   },
-      //   {
-      //     name: "RIXOS HOTELS & RESIDENCES, DUBAI ISLAND",
-      //     title: "STARTING PRICE - AED 8M",
-      //     subtitle: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-      //     image: require("../assets/images/offPlan/01.png"),
-      //   },
-      //   {
-      //     name: "RIXOS HOTELS & RESIDENCES, DUBAI ISLAND",
-      //     title: "STARTING PRICE - AED 8M",
-      //     subtitle: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-      //     image: require("../assets/images/offPlan/01.png"),
-      //   },
-      //   {
-      //     name: "RIXOS HOTELS & RESIDENCES, DUBAI ISLAND",
-      //     title: "STARTING PRICE - AED 8M",
-      //     subtitle: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-      //     image: require("../assets/images/offPlan/01.png"),
-      //   },
-      //   {
-      //     name: "RIXOS HOTELS & RESIDENCES, DUBAI ISLAND",
-      //     title: "STARTING PRICE - AED 8M",
-      //     subtitle: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-      //     image: require("../assets/images/offPlan/01.png"),
-      //   },
-      //   {
-      //     name: "RIXOS HOTELS & RESIDENCES, DUBAI ISLAND",
-      //     title: "STARTING PRICE - AED 8M",
-      //     subtitle: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-      //     image: require("../assets/images/offPlan/01.png"),
-      //   },
-      //   {
-      //     name: "RIXOS HOTELS & RESIDENCES, DUBAI ISLAND",
-      //     title: "STARTING PRICE - AED 8M",
-      //     subtitle: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-      //     image: require("../assets/images/offPlan/01.png"),
-      //   },
-      //   {
-      //     name: "RIXOS HOTELS & RESIDENCES, DUBAI ISLAND",
-      //     title: "STARTING PRICE - AED 8M",
-      //     subtitle: "3 BEDS | 4 BATHS | 1,200 SQ FT",
-      //     image: require("../assets/images/offPlan/01.png"),
-      //   },
-      // ],
-    };
+    return {};
   },
   computed: {
     ...mapState(["listings"]),

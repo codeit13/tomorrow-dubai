@@ -98,6 +98,19 @@ export default {
     Button,
     Input,
   },
+  head: {
+    meta: [
+      {
+        name: "title",
+        content: "Contact Us – Tomorrow Luxury Property",
+      },
+      {
+        name: "description",
+        content:
+          "Get in contact with Tomorrow Luxury Property Real Estate today by filling in the form and a member of our team will get back to you shortly",
+      },
+    ],
+  },
   data() {
     return { name: null, email: null, phone: null, moreInfo: null };
   },
