@@ -7,7 +7,7 @@
         >{{ `< Back` }}</span
       > -->
 
-      <h1 class="text-2xl md:text-4xl font-extrabold josefin-slab mb-20">
+      <h1 class="text-2xl md:text-2xl font-extrabold montserrat-font mb-20">
         OFF PLAN
       </h1>
       <!-- <h1></h1> -->

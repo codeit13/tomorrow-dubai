@@ -287,7 +287,7 @@ export default {
           label: "I am the owner of this home",
           value: "Owner",
         },
-        { label: "I am a realtor or agent", value: "Realtor/ Agent" },
+        { label: "I am a realtor or agent", value: "Realtor" },
         { label: "Other", value: "Other" },
       ],
       stepTwoOptions: [
@@ -365,7 +365,7 @@ export default {
 
         return;
       }
-      if (this.stepOne == "Owner") {
+      if (this.stepOne == "Realtor") {
         this.currentStep = 4;
       } else {
         this.currentStep += 1;

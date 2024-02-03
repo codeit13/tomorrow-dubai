@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 function generateSiteMap() {
   // Read the content of the router.js file
   const fileContent = fs.readFileSync("./frontend/src/router/index.js", "utf8");
@@ -30,7 +32,6 @@ function generateSiteMap() {
 
       // Generate the sitemap
       const { create } = require("xmlbuilder2");
-      var xml = require("xml");
 
       const root = create().ele("urlset", {
         xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9",

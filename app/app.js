@@ -1,6 +1,5 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const fs = require("fs");
 
 const path = require("path");
 
@@ -10,7 +9,6 @@ const passport = require("../config/passport");
 const app = express();
 
 const { CronJob } = require("cron");
-var generateSitemap = require("vue-router-tiny-sitemap");
 
 const categoryRoutes = require("../service/categoryService");
 const listingRoutes = require("../service/listingService");
@@ -48,6 +46,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/sitemap.xml", (req, res) => {
+  res.sendFile(path.join(__dirname, "../sitemap.xml"));
+});
+
+app.get("/sitemap", (req, res) => {
+  generateSiteMap();
   res.sendFile(path.join(__dirname, "../sitemap.xml"));
 });
 

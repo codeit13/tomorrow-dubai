@@ -165,7 +165,7 @@
             style="aspect-ratio: 350 / 150; object-fit: cover"
           />
           <h3
-            class="absolute bottom-0 w-full text-center font-bold text-2xl text-white p-4 pb-3 montserrat-font"
+            class="absolute bottom-0 w-full text-center font-bold text-xl text-white p-4 pb-3 montserrat-font"
           >
             {{ property.title }}
           </h3>
@@ -454,7 +454,8 @@ export default {
           return listings
             .map((property) => {
               if (property.isOffPlan) {
-                property.name = property.title;
+                console.log(property);
+                property.name = property.propertyName;
                 property.heading = property.price
                   ? `STARTING PRICE - AED ${property.details["Price Range"]}`
                   : "Exclusive Prices";
