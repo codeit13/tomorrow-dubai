@@ -72,12 +72,12 @@
         </carousel>
       </div>
     </div>
-    <div class="mx-auto px-6 md:px-28 py-12">
+    <div class="mx-auto px-6 md:px-24 py-12">
       <div
         class="flex flex-wrap md:flex-nowrap space-y-12 md:space-y-0 md:space-x-24"
       >
         <div
-          class="flex flex-col space-y-20 w-[100%] md:w-[65%] md:min-w-[65%]"
+          class="flex flex-col space-y-20 w-[100%] md:w-[60%] md:min-w-[60%]"
         >
           <div v-if="isOffPlan && details">
             <h2 class="text-xl md:text-3xl font-semibold mb-6">Details</h2>
@@ -154,7 +154,7 @@
           </div>
         </div>
         <div
-          class="flex flex-col flex-wrap space-y-5 md:space-y-10 w-full md:w-[40%] md:items-end"
+          class="flex flex-col flex-wrap space-y-5 md:space-y-10 w-full md:w-[45%] md:items-end"
         >
           <div
             class="flex items-center md:items-start flex-wrap md:flex-nowrap justify-start gap-8 md:p-8"
@@ -220,7 +220,7 @@
               </Button> -->
             </div>
           </div>
-          <div class="w-[92%] p-6 md:p-8 bg-gray-100 bg-opacity-50">
+          <div class="w-[92%] p-6 md:py-6 md:px-4 bg-gray-100 bg-opacity-50">
             <h2 class="text-xl font-semibold mb-4">Register your interest</h2>
             <div class="space-y-4 text-right">
               <Input v-model="name" placeholder="Full Name" />
@@ -241,8 +241,12 @@
         </div>
       </div>
 
-      <div>
-        <h2 class="text-3xl font-semibold mb-8 mt-28">Location Map</h2>
+      <div v-if="coordinates && coordinates.length > 0">
+        <div class="mb-8 mt-28">
+          <h2 class="text-3xl font-semibold mb-1.5">Location Map</h2>
+          <span class="text-sm" v-if="address">{{ address }}</span>
+        </div>
+
         <!-- <div class="mapouter">
           <div class="gmap_canvas">
             <iframe
@@ -377,6 +381,7 @@ export default {
       propertyImage: null,
       description: null,
       shortDescription: null,
+      address: null,
       amenities: [],
       details: null,
       units: null,
@@ -461,6 +466,7 @@ export default {
     addMetaTags({ title, description }) {
       if (!this.isMetaTagsAdded) {
         this.isMetaTagsAdded = true;
+        document.title = title;
         const titleMetaTag = document.createElement("meta");
         titleMetaTag.setAttribute("name", "title");
         titleMetaTag.setAttribute("content", title);
@@ -581,6 +587,7 @@ export default {
           this.propertyImages = property.images;
           this.description = property.description;
           this.shortDescription = property.description.slice(0, 1000) + "...";
+          this.address = property.address;
           this.amenities = property.amenities;
 
           this.details = property.details;
@@ -633,7 +640,7 @@ export default {
         }
       } else {
         this.$store.commit("SET_TOASTER_MSG", {
-          title: "Please fill al the required fields first.",
+          title: "Please fill all the required fields first.",
         });
       }
     },

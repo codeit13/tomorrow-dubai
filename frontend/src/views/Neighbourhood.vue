@@ -15,7 +15,7 @@
       >
         <div class="absolute inset-0 bg-black opacity-30"></div>
         <img
-          :src="property.image"
+          :src="require(`../assets/images/neighbourhood/${i + 1}.png`)"
           alt="DUBAILAND"
           class="w-full h-36 object-cover"
           width="350"
@@ -45,7 +45,9 @@ export default {
   methods: {
     goToNeighborhoodProperty(property) {
       if (property && property.title) {
-        this.$router.push(`/search/${property.title}`);
+        this.$router.push(
+          `/search/${property.title.trim().replaceAll(" ", "-").toLowerCase()}`
+        );
       } else {
         alert(property);
       }

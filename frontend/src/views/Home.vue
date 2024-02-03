@@ -157,7 +157,7 @@
         >
           <div class="absolute inset-0 bg-black opacity-30"></div>
           <img
-            :src="property.image"
+            :src="require(`../assets/images/neighbourhood/${i + 1}.png`)"
             alt="DUBAILAND"
             class="w-full h-36 object-cover border-0 border-r-4 border-b-1 border-[#00000020]"
             width="350"

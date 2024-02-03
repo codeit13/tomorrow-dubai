@@ -3,10 +3,74 @@
     <div class="mx-auto mt-6 px-6 md:px-28">
       <div class="flex flex-wrap -mx-2">
         <div class="w-[40%] px-2 mb-4">
-          <Input
-            v-model="searchText"
-            placeholder="Search By Title, Location,"
-          />
+          <div class="relative">
+            <div
+              class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
+            >
+              <svg
+                class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                />
+              </svg>
+            </div>
+            <Input
+              v-model="searchText"
+              @input="searchTextChange"
+              class="block p-4 ps-10"
+              placeholder="Search By Title, Location,"
+            />
+          </div>
+          <ul
+            class="absolute md:max-w-[30vw] bg-white border border-gray-100 w-full mt-2"
+            v-if="filteredLocations && filteredLocations.length"
+          >
+            <li
+              v-for="(entry, i) in filteredLocations.slice(0, 6)"
+              :key="i"
+              @click="searchClick(entry)"
+              class="pl-8 pr-2 py-1 border-b-2 border-gray-100 relative cursor-pointer hover:bg-gray-50 hover:text-gray-900"
+            >
+              <svg
+                v-if="entry.type == 'PROPERTY'"
+                class="stroke-current absolute w-4 h-4 left-2 top-2"
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                viewBox="0 -960 960 960"
+                width="24"
+              >
+                <path
+                  d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"
+                />
+              </svg>
+
+              <svg
+                v-else-if="entry.type == 'LISTING'"
+                class="stroke-current absolute w-4 h-4 left-2 top-2"
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                viewBox="0 -960 960 960"
+                width="24"
+              >
+                <path
+                  d="M120-120v-560h160v-160h400v320h160v400H520v-160h-80v160H120Zm80-80h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm160 160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm160 320h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm160 480h80v-80h-80v80Zm0-160h80v-80h-80v80Z"
+                />
+              </svg>
+
+              <span v-if="entry.name">
+                {{ entry.name }}, {{ entry.location }}
+              </span>
+            </li>
+          </ul>
         </div>
         <div class="w-fit px-2 mb-4">
           <Select v-model="property">
@@ -35,7 +99,12 @@
                 :key="i"
                 v-for="(option, i) in minPriceOptions"
               >
-                {{ option }}
+                {{ parseInt(option) ? "AED" : null }}
+                {{
+                  parseInt(option)
+                    ? parseInt(option).toLocaleString("en-us")
+                    : option
+                }}
               </SelectItem>
             </SelectContent>
           </Select>
@@ -51,7 +120,12 @@
                 :key="i"
                 v-for="(option, i) in maxPriceOptions"
               >
-                {{ option }}
+                {{ parseInt(option) ? "AED" : null }}
+                {{
+                  parseInt(option)
+                    ? parseInt(option).toLocaleString("en-us")
+                    : option
+                }}
               </SelectItem>
             </SelectContent>
           </Select>
@@ -67,7 +141,7 @@
                 :key="i"
                 v-for="(option, i) in isOffPlanOptions"
               >
-                {{ option }}
+                {{ option == "Yes" ? "Ready" : "Off-Plan" }}
               </SelectItem>
             </SelectContent>
           </Select>
@@ -75,8 +149,10 @@
         <div class="w-fit px-2 mb-4">
           <Button
             class="w-full bg-blue-600 text-[1rem] rounded-none px-6 text-white"
-            >Update</Button
+            @click="getValues"
           >
+            Update
+          </Button>
         </div>
       </div>
     </div>
@@ -84,8 +160,8 @@
     <div class="mx-auto mt-24 px-6 md:px-28">
       <div class="text-center mb-28">
         <h2 class="text-lg mb-2">Search Results</h2>
-        <p class="text-2xl font-semibold" v-if="searchText">
-          Properties for Sale {{ searchText.toUpperCase() }}
+        <p class="text-2xl font-semibold" v-if="displaySearchText">
+          <span>Properties for Sale</span> {{ displaySearchText.toUpperCase() }}
         </p>
         <p class="text-2xl font-semibold" v-else>
           {{ "DUBAI" }}
@@ -122,13 +198,27 @@
             {{ property.tag }}
           </div>
           <div class="p-4">
-            <!-- <div class="flex align-center justify-between"> -->
-            <p class="text-lg font-bold">
+            <p class="text-lg md:text-2xl font-bold">
               AED {{ property.price?.toLocaleString("en-us") }}
             </p>
             <p class="text-sm">{{ property.featureText }}</p>
-            <!-- </div> -->
-            <p class="text-sm mt-2">{{ property.location }}</p>
+
+            <div class="flex items-start gap-1 mt-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="18"
+                viewBox="0 -960 960 960"
+                fill="#000"
+                width="18"
+              >
+                <path
+                  d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"
+                />
+              </svg>
+
+              <p class="text-sm">{{ property.location }}</p>
+            </div>
+
             <p
               class="text-sm mt-4 text-blue-600 hover:text-blue-800 cursor-pointer"
             >
@@ -266,32 +356,43 @@ export default {
       ],
       minPriceOptions: [
         "Min Price",
-        "0",
+        "1000000",
+        "2000000",
         "5000000",
         "10000000",
         "20000000",
-        "30000000",
+        "50000000",
+        "100000000",
       ],
       maxPriceOptions: [
         "Max Price",
-        "40000000",
+        "1000000",
+        "2000000",
+        "5000000",
+        "10000000",
+        "20000000",
         "50000000",
-        "60000000",
-        "150000000",
+        "100000000",
+        "200000000",
+        "300000000",
+        "500000000",
+        "1000000000",
       ],
-      isOffPlanOptions: ["Off Plan", "Yes", "No"],
+      isOffPlanOptions: ["Yes", "No"],
       property: null,
       minPrice: null,
       maxPrice: null,
       isOffPlan: null,
       searchText: null,
+      displaySearchText: null,
       filteredProperties: [],
       similarProperties: [],
       isMetaTagsAdded: false,
+      filteredLocations: [],
     };
   },
   computed: {
-    ...mapState(["listings", "neighbourhoodProperties"]),
+    ...mapState(["listings", "neighbourhoodProperties", "searchableLocations"]),
   },
   watch: {
     listings: {
@@ -301,9 +402,9 @@ export default {
       },
       deep: true,
     },
-    searchText() {
-      this.getValues();
-    },
+    // searchText() {
+    //   // this.getValues();
+    // },
     property() {
       this.getValues();
     },
@@ -350,6 +451,7 @@ export default {
   methods: {
     addMetaTags({ title, description }) {
       if (!this.isMetaTagsAdded) {
+        document.title = title;
         this.isMetaTagsAdded = true;
         const titleMetaTag = document.createElement("meta");
         titleMetaTag.setAttribute("name", "title");
@@ -362,16 +464,65 @@ export default {
         document.querySelector("head").appendChild(descrMetaTag);
       }
     },
+    searchTextChange() {
+      if (this.searchText) {
+        this.filteredLocations = [];
+        this.searchableLocations.map((location) => {
+          if (
+            location.address
+              ?.toLowerCase()
+              .trim()
+              .includes(this.searchText.toLowerCase().trim()) ||
+            location.title
+              ?.toLowerCase()
+              .trim()
+              .includes(this.searchText.toLowerCase().trim()) ||
+            location.name
+              ?.toLowerCase()
+              .trim()
+              .includes(this.searchText.toLowerCase().trim())
+          ) {
+            this.filteredLocations.push(location);
+          }
+          return location;
+        });
+      } else {
+        this.filteredLocations = [];
+      }
+    },
+    searchClick(entry = null) {
+      this.filteredLocations = [];
+      if (entry != null && entry.name) {
+        if (entry.type == "LISTING") {
+          this.$router.push(
+            `/search/${entry?.name.trim().replaceAll(" ", "-").toLowerCase()}`
+          );
+          this.goToProperty(entry);
+        } else {
+          this.$router.push(
+            `/search/${entry?.name.trim().replaceAll(" ", "-").toLowerCase()}`
+          );
+        }
+      } else if (this.query) {
+        this.$router.push(`/search/${this.query}`);
+      } else {
+        this.$router.push(`/search/dubai`);
+      }
+    },
     /* eslint-disable */
     getValues(newVal = null) {
+      this.displaySearchText = this.searchText || "dubai";
       let searchQuery = this.searchText.toLowerCase().trim() || "dubai";
 
       let minPrice =
-        this.minPrice == this.minPriceOptions[0] ? false : this.minPrice;
+        this.minPrice == this.minPriceOptions[0]
+          ? false
+          : parseInt(this.minPrice);
       let maxPrice =
-        this.maxPrice == this.maxPriceOptions[0] ? false : this.maxPrice;
-      let offPlan =
-        this.isOffPlan == this.isOffPlanOptions[0] ? false : this.isOffPlan;
+        this.maxPrice == this.maxPriceOptions[0]
+          ? false
+          : parseInt(this.maxPrice);
+      let offPlan = this.isOffPlan == this.isOffPlanOptions[0] ? false : true;
       let selectedProperty =
         this.property == this.propertyOptions[0] ? false : this.property;
 
@@ -411,7 +562,7 @@ export default {
             description: property.description,
             amenities: property.amenities,
             buttonText: `${property.homeType?.toUpperCase()} FOR SALE`,
-            tag: "New",
+            tag: property.isOffPlan ? "Off Plan" : "Exclusive",
           };
         });
       }

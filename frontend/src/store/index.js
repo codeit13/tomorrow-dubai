@@ -15,147 +15,122 @@ const store = createStore({
       {
         title: "DUBAI ISLAND",
         description:
-          "Discover Premium Villas and Residences for Sale in Dubai's prestigious Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-        image: require("../assets/images/neighbourhood/02.png"),
+          "Explore luxury homes for sale on Dubai Islands. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
       },
       {
         title: "PALM JEBEL ALI",
         description:
-          "Discover Premium Villas and Residences for Sale in Dubai's prestigious Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-        image: require("../assets/images/neighbourhood/01.png"),
+          "Explore luxury homes for sale in Palm Jebel Ali, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
       },
       {
         title: "PALM JUMEIRAH",
         description:
-          "Discover Premium Villas and Residences for Sale in Dubai's prestigious Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-        image: require("../assets/images/neighbourhood/06.png"),
+          "Explore luxury homes for sale in Palm Jumeirah, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
       },
       {
         title: "DOWNTOWN DUBAI",
         description:
-          "Discover Premium Villas and Residences for Sale in Dubai's prestigious Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-        image: require("../assets/images/neighbourhood/03.png"),
+          "Explore luxury homes for sale in Downtown Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
       },
       {
         title: "EMIRATES HILL",
         description:
-          "Discover Premium Villas and Residences for Sale in Dubai's prestigious Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-        image: require("../assets/images/neighbourhood/04.png"),
+          "Explore luxury homes for sale in Emirates Hills, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
       },
       {
         title: "DUBAI HILLS",
         description:
-          "Discover Premium Villas and Residences for Sale in Dubai's prestigious Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-        image: require("../assets/images/neighbourhood/05.png"),
+          "Explore luxury homes for sale in Dubai Hills, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
       },
-
       {
         title: "JUMERIAH",
         description:
-          "Discover Premium Villas and Residences for Sale in Dubai's prestigious Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-        image: require("../assets/images/neighbourhood/02.png"),
+          " luxury homes for sale in Jumeirah Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
       },
       {
         title: "JUMERIAH PARK",
         description:
-          "Discover Premium Villas and Residences for Sale in Dubai's prestigious Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-        image: require("../assets/images/neighbourhood/01.png"),
+          "Explore luxury homes for sale in Jumeirah Park, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today",
       },
       {
         title: "DUBAI CREEK HARBOUR",
         description:
-          "Discover Premium Villas and Residences for Sale in Dubai's prestigious Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-        image: require("../assets/images/neighbourhood/06.png"),
+          "Explore luxury homes for sale in Jumeirah Park, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today",
       },
       {
         title: "CITY WALK",
         description:
-          "Discover Premium Villas and Residences for Sale in Dubai's prestigious Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-        image: require("../assets/images/neighbourhood/03.png"),
+          "Explore luxury homes for sale in City Walk, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
       },
       {
-        title: "MBR CITY - MEYDAN",
+        title: "MOHAMMED BIN RASHID CITY",
         description:
-          "Discover Premium Villas and Residences for Sale in Dubai's prestigious Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-        image: require("../assets/images/neighbourhood/04.png"),
+          "Explore luxury homes for sale in Mohammed Bin Rashid City, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
       },
       {
         title: "EMAAR BEACHFRONT",
         description:
-          "Discover Premium Villas and Residences for Sale in Dubai's prestigious Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-        image: require("../assets/images/neighbourhood/05.png"),
+          "Explore luxury homes for sale in Emaar Beachfront, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
       },
       {
         title: "DUBAI MARINA",
         description:
-          "Discover Premium Villas and Residences for Sale in Dubai's prestigious Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-        image: require("../assets/images/neighbourhood/02.png"),
+          "Explore luxury homes for sale in Dubai Marina. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
       },
       {
         title: "DUBAI SOUTH",
         description:
-          "Discover Premium Villas and Residences for Sale in Dubai's prestigious Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-        image: require("../assets/images/neighbourhood/01.png"),
+          "Explore luxury homes for sale in Dubai South. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
       },
       {
         title: "AL BARARI",
         description:
-          "Discover Premium Villas and Residences for Sale in Dubai's prestigious Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-        image: require("../assets/images/neighbourhood/06.png"),
+          "Explore luxury homes for sale in Al Barari, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
       },
       {
         title: "TILAL AL GHAF",
         description:
-          "Discover Premium Villas and Residences for Sale in Dubai's prestigious Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-        image: require("../assets/images/neighbourhood/03.png"),
+          "Explore luxury homes for sale in Tilal Al Ghaf, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
       },
       {
         title: " JUMERIAH LAKE TOWER",
         description:
-          "Discover Premium Villas and Residences for Sale in Dubai's prestigious Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-        image: require("../assets/images/neighbourhood/04.png"),
+          "Explore luxury homes for sale in Jumeirah Lake Tower, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
       },
       {
-        title: "DISTRICT ONE",
+        title: "BUSINESS BAY",
         description:
-          "Discover Premium Villas and Residences for Sale in Dubai's prestigious Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-        image: require("../assets/images/neighbourhood/05.png"),
+          "Explore luxury homes for sale in Business Bay, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
       },
       {
-        title: "DIFC",
+        title: "ZABEEL",
         description:
-          "Discover Premium Villas and Residences for Sale in Dubai's prestigious Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-        image: require("../assets/images/neighbourhood/02.png"),
+          "Explore luxury homes for sale in Zabeel Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
       },
       {
-        title: "JBR",
+        title: "JUMEIRIAH BEACH RESIDENCES",
         description:
-          "Discover Premium Villas and Residences for Sale in Dubai's prestigious Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-        image: require("../assets/images/neighbourhood/01.png"),
+          "Explore luxury homes for sale in Jumeirah Beach Residences, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
       },
       {
-        title: "SPRINGS",
+        title: "JUMERIA BAY ISLAND",
         description:
-          "Discover Premium Villas and Residences for Sale in Dubai's prestigious Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-        image: require("../assets/images/neighbourhood/06.png"),
+          "Explore luxury homes for sale on Jumeira Bay Island, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
       },
       {
-        title: "AL BARSHA",
+        title: "PEARL JUMERIAH",
         description:
-          "Discover Premium Villas and Residences for Sale in Dubai's prestigious Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-        image: require("../assets/images/neighbourhood/03.png"),
+          "Explore luxury homes for sale in Pearl Jumeirah, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
       },
       {
         title: "UMM SUQEIM",
         description:
-          "Discover Premium Villas and Residences for Sale in Dubai's prestigious Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-        image: require("../assets/images/neighbourhood/04.png"),
+          "Explore luxury homes for sale in Umm Suqeim, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
       },
       {
-        title: "THE LAKES",
+        title: "THE WORLD ISLANDS",
         description:
-          "Discover Premium Villas and Residences for Sale in Dubai's prestigious Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-        image: require("../assets/images/neighbourhood/05.png"),
+          "Explore luxury homes for sale on The World Islands, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
       },
     ],
   },

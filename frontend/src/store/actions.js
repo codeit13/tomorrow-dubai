@@ -66,6 +66,7 @@ export const actions = {
       const searchableLocations = properties
         ? properties.map((l) => {
             return {
+              address: l.location,
               location: l.location,
               name: l.name,
               type: "PROPERTY",

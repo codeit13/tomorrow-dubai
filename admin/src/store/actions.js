@@ -253,7 +253,7 @@ export const actions = {
     commit("SET_IS_LOADING", true);
     try {
       const { data } = await axios.get(`${BASE_URL}/contact`);
-      const contacts = data ? data.contacts : [];
+      const contacts = data ? data.contacts.reverse() : [];
       commit("SET_CONTACTS", contacts);
       return;
     } catch (e) {
