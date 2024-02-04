@@ -483,7 +483,7 @@ export default {
   },
   async mounted() {
     this.addMetaTags({
-      title: "Tomorrow Luxury Property Dubai | Buy and Sell Real Estate",
+      title: "Exclusive Dubai Luxury Real Estate - Tomorrow Luxury Property",
       description:
         "Enhance your property journey with Tomorrow Luxury Property. Collaborate with our expert real estate agents to discover the perfect luxury home or apartment for you",
     });

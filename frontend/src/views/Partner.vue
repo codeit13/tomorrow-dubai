@@ -241,7 +241,7 @@ export default {
     this.salesVolume = this.salesVolumeOptions[0];
 
     this.addMetaTags({
-      title: "Dubai Real Estate Agent Partners ",
+      title: "Dubai Real Estate Agent Partners",
       description:
         "Experience the industry's first-ever contact-to-close platform and transform your business with the nation's #1 residential brokerage.",
     });
