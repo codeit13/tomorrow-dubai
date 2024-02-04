@@ -108,7 +108,7 @@ export default {
         },
         {
           name: "Neighborhood",
-          route: "/neighbourhood",
+          route: "/neighborhood",
         },
         {
           name: "News",

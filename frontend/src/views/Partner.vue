@@ -239,8 +239,28 @@ export default {
   },
   mounted() {
     this.salesVolume = this.salesVolumeOptions[0];
+
+    this.addMetaTags({
+      title: "Dubai Real Estate Agent Partners ",
+      description:
+        "Experience the industry's first-ever contact-to-close platform and transform your business with the nation's #1 residential brokerage.",
+    });
   },
   methods: {
+    addMetaTags({ title, description }) {
+      if (!this.isMetaTagsAdded) {
+        document.title = title;
+        const titleMetaTag = document.createElement("meta");
+        titleMetaTag.setAttribute("name", "title");
+        titleMetaTag.setAttribute("content", title);
+        document.querySelector("head").appendChild(titleMetaTag);
+
+        const descrMetaTag = document.createElement("meta");
+        descrMetaTag.setAttribute("name", "description");
+        descrMetaTag.setAttribute("content", description);
+        document.querySelector("head").appendChild(descrMetaTag);
+      }
+    },
     async submitForm() {
       if (this.fullName && this.email && this.phone && this.salesVolume) {
         const resp = await this.$store.dispatch("joinAsAgent", {

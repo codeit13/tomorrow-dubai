@@ -161,7 +161,8 @@
       <div class="text-center mb-28">
         <h2 class="text-lg mb-2">Search Results</h2>
         <p class="text-2xl font-semibold" v-if="displaySearchText">
-          <span>Properties for Sale</span> {{ displaySearchText.toUpperCase() }}
+          <span>Properties for Sale in </span>
+          <span class="capitalize">{{ displaySearchText.toUpperCase() }}</span>
         </p>
         <p class="text-2xl font-semibold" v-else>
           {{ "DUBAI" }}

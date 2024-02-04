@@ -64,24 +64,16 @@
 <script>
 import { mapState } from "vuex";
 export default {
-  head: {
-    title:
-      "Exclusive Off-Plan Investment Opportunities in Dubai's Thriving Real Estate Market",
-    meta: [
-      {
-        name: "title",
-        content:
-          "Exclusive Off-Plan Investment Opportunities in Dubai's Thriving Real Estate Market",
-      },
-      {
-        name: "description",
-        content:
-          "At Tomorrow Luxury Property, you will receive comprehensive information on the latest off-plan projects and developments in Palm Jebel Ali, Palm Jumeirah, Dubai Island, and Downtown Dubai, UAE",
-      },
-    ],
-  },
   data() {
     return {};
+  },
+  mounted() {
+    this.addMetaTags({
+      title:
+        "Exclusive Off-Plan Investment Opportunities in Dubai's Thriving Real Estate Market",
+      description:
+        "At Tomorrow Luxury Property, you will receive comprehensive information on the latest off-plan projects and developments in Palm Jebel Ali, Palm Jumeirah, Dubai Island, and Downtown Dubai, UAE",
+    });
   },
   computed: {
     ...mapState(["listings"]),
@@ -108,6 +100,20 @@ export default {
     },
   },
   methods: {
+    addMetaTags({ title, description }) {
+      if (!this.isMetaTagsAdded) {
+        document.title = title;
+        const titleMetaTag = document.createElement("meta");
+        titleMetaTag.setAttribute("name", "title");
+        titleMetaTag.setAttribute("content", title);
+        document.querySelector("head").appendChild(titleMetaTag);
+
+        const descrMetaTag = document.createElement("meta");
+        descrMetaTag.setAttribute("name", "description");
+        descrMetaTag.setAttribute("content", description);
+        document.querySelector("head").appendChild(descrMetaTag);
+      }
+    },
     goToProperty(property) {
       if (
         property &&

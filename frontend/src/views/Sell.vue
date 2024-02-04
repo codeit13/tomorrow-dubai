@@ -94,20 +94,7 @@ export default {
   components: {
     Header,
   },
-  head: {
-    title: "Sell Your Home With Tomorrow Luxury Property",
-    meta: [
-      {
-        name: "title",
-        content: "Sell Your Home With Tomorrow Luxury Property",
-      },
-      {
-        name: "description",
-        content:
-          "Whether you're preparing to sell or seeking guidance, we offer data-driven insights and expert advice tailored to your local area.",
-      },
-    ],
-  },
+
   data() {
     return {
       open: false,
@@ -132,9 +119,27 @@ export default {
     },
   },
   async mounted() {
-    console.log("mounted");
+    this.addMetaTags({
+      title: "Sell Your Home With Tomorrow Luxury Property",
+      description:
+        "Whether you're preparing to sell or seeking guidance, we offer data-driven insights and expert advice tailored to your local area.",
+    });
   },
   methods: {
+    addMetaTags({ title, description }) {
+      if (!this.isMetaTagsAdded) {
+        document.title = title;
+        const titleMetaTag = document.createElement("meta");
+        titleMetaTag.setAttribute("name", "title");
+        titleMetaTag.setAttribute("content", title);
+        document.querySelector("head").appendChild(titleMetaTag);
+
+        const descrMetaTag = document.createElement("meta");
+        descrMetaTag.setAttribute("name", "description");
+        descrMetaTag.setAttribute("content", description);
+        document.querySelector("head").appendChild(descrMetaTag);
+      }
+    },
     searchClick() {
       if (this.houseAddress) {
         this.$router.push(`/house-worth/${this.houseAddress}`);

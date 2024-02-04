@@ -142,7 +142,7 @@
         </h2>
         <span
           class="text-sm md:text-lg font-semibold cursor-pointer"
-          @click="$router.push('/neighbourhood')"
+          @click="$router.push('/neighborhood')"
           >More ></span
         >
       </div>
@@ -481,8 +481,28 @@ export default {
       }
     },
   },
-  async mounted() {},
+  async mounted() {
+    this.addMetaTags({
+      title: "Tomorrow Luxury Property Dubai | Buy and Sell Real Estate",
+      description:
+        "Enhance your property journey with Tomorrow Luxury Property. Collaborate with our expert real estate agents to discover the perfect luxury home or apartment for you",
+    });
+  },
   methods: {
+    addMetaTags({ title, description }) {
+      if (!this.isMetaTagsAdded) {
+        document.title = title;
+        const titleMetaTag = document.createElement("meta");
+        titleMetaTag.setAttribute("name", "title");
+        titleMetaTag.setAttribute("content", title);
+        document.querySelector("head").appendChild(titleMetaTag);
+
+        const descrMetaTag = document.createElement("meta");
+        descrMetaTag.setAttribute("name", "description");
+        descrMetaTag.setAttribute("content", description);
+        document.querySelector("head").appendChild(descrMetaTag);
+      }
+    },
     searchInputChange(e) {
       let query = e.target.value;
       if (query) {
