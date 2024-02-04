@@ -80,7 +80,7 @@
           class="flex flex-col space-y-20 w-[100%] md:w-[60%] md:min-w-[60%]"
         >
           <div v-if="isOffPlan && details">
-            <h2 class="text-xl md:text-3xl font-semibold mb-6">Details</h2>
+            <h2 class="text-xl md:text-2xl font-semibold mb-6">Details</h2>
             <div class="grid grid-cols-3 gap-4">
               <div v-for="(item, i) in details" :key="i">
                 <h1 class="text-md md:text-xl font-bold">{{ item }}</h1>
@@ -90,7 +90,7 @@
           </div>
 
           <div class="pt-6">
-            <h2 class="text-xl md:text-3xl font-semibold mb-6">
+            <h2 class="text-xl md:text-2xl font-semibold mb-6">
               Property Descriptions
             </h2>
             <p
@@ -107,7 +107,7 @@
           </div>
 
           <div class="md:w-[70%] pt-4">
-            <h2 class="text-xl md:text-3xl font-semibold mb-8">Amenities</h2>
+            <h2 class="text-xl md:text-2xl font-semibold mb-8">Amenities</h2>
             <div class="grid grid-cols-3 gap-4">
               <div
                 class="bg-gray-200 p-2 text-left text-xs md:text-[1rem]"
@@ -120,7 +120,7 @@
           </div>
 
           <div v-if="isOffPlan && units" class="md:w-[50%] pt-4">
-            <h2 class="text-xl md:text-3xl font-semibold mb-8">Units</h2>
+            <h2 class="text-xl md:text-2xl font-semibold mb-8">Units</h2>
             <div class="flex flex-col space-y-4">
               <div
                 class="flex justify-between text-center"
@@ -144,7 +144,7 @@
           </div>
 
           <div v-if="isOffPlan && paymentPlans" class="md:w-[70%] pt-4">
-            <h2 class="text-xl md:text-3xl font-semibold mb-8">Payment Plan</h2>
+            <h2 class="text-xl md:text-2xl font-semibold mb-8">Payment Plan</h2>
             <div class="flex justify-between">
               <div v-for="(plan, i) in paymentPlans" :key="i">
                 <p class="text-xl md:text-xl font-bold">{{ plan }}</p>
@@ -243,7 +243,7 @@
 
       <div v-if="coordinates && coordinates.length > 0">
         <div class="mb-8 mt-28">
-          <h2 class="text-3xl font-semibold mb-1.5">Location Map</h2>
+          <h2 class="text-xl md:text-2xl font-semibold mb-1.5">Location Map</h2>
           <span class="text-sm" v-if="address">{{ address }}</span>
         </div>
 
