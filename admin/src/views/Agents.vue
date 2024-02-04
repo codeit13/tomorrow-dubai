@@ -288,7 +288,7 @@
                         </h5>
                         <svg
                           class="fill-primary cursor-pointer"
-                          @click="openAgentUrl(agent._id)"
+                          @click="openAgentUrl(agent)"
                           xmlns="http://www.w3.org/2000/svg"
                           height="24"
                           viewBox="0 -960 960 960"
@@ -414,8 +414,9 @@ export default {
     removeImage() {
       this.agentImage = null;
     },
-    openAgentUrl(id) {
-      window.open(`https://tomorrowluxuryproperty.com/agent/${id}`);
+    openAgentUrl(agent) {
+      const name = agent.name.trim().replaceAll(" ", "-");
+      window.open(`https://tomorrowluxuryproperty.com/agent/${name}`);
     },
     openAgentModal(agent) {
       this.buttonText = "UPDATE";

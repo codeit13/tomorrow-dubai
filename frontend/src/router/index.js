@@ -52,8 +52,8 @@ const routes = [
     component: () => import("@/views/Agents.vue"),
   },
   {
-    path: "/agent/:id",
-    name: "agent",
+    path: "/agent/:name",
+    name: "Agent",
     component: () => import("@/views/Agent.vue"),
   },
   {

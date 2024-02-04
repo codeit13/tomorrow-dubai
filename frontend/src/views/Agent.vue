@@ -97,8 +97,8 @@ export default {
   },
   methods: {
     getValues() {
-      let agentId = this.$route.params.id;
-      let agent = this.agents.find((agent) => agent._id == agentId);
+      let agentName = this.$route.params.name?.replaceAll("-", " ").trim();
+      let agent = this.agents.find((agent) => agent.name == agentName);
       if (agent) {
         this.agentName = agent.name;
         this.agentTitle = agent.title;
