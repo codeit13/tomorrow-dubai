@@ -373,6 +373,7 @@ export default {
     Header,
   },
   head: {
+    title: "Tomorrow Luxury Property Dubai | Buy and Sell Real Estate",
     meta: [
       {
         name: "title",

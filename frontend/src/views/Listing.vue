@@ -50,7 +50,7 @@
     <div class="px-0.5">
       <div class="my-10">
         <!--  -->
-        <carousel :items-to-show="1" :wrapAround="true" :autoplay="2500">
+        <carousel :items-to-show="1" :wrapAround="true" :autoplay="3500">
           <slide v-for="(url, i) in propertyImages" :key="i">
             <img
               alt="Property"
@@ -378,7 +378,7 @@ export default {
       subtitle: null,
       featureText: null,
       startingPrice: null,
-      propertyImage: null,
+      propertyImages: [],
       description: null,
       shortDescription: null,
       address: null,
@@ -465,7 +465,6 @@ export default {
   methods: {
     addMetaTags({ title, description }) {
       if (!this.isMetaTagsAdded) {
-        this.isMetaTagsAdded = true;
         document.title = title;
         const titleMetaTag = document.createElement("meta");
         titleMetaTag.setAttribute("name", "title");

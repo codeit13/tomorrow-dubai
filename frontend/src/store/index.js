@@ -8,6 +8,7 @@ const store = createStore({
     listings: [],
     properties: null,
     blogs: null,
+    agents: [],
     selectedBlog: null,
     searchableLocations: [],
     searchPriority: null,

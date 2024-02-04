@@ -11,6 +11,9 @@ export const mutations = {
   SET_BLOGS(state, payload) {
     state.blogs = payload;
   },
+  SET_AGENTS(state, payload) {
+    state.agents = payload;
+  },
   SET_SELECTED_BLOG(state, payload) {
     state.selectedBlog = payload;
   },

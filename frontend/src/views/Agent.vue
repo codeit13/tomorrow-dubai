@@ -19,13 +19,14 @@
             <p class="text-sm">EMAIL ID : {{ agentEmail }}</p>
             <p class="text-sm">MOBILE : {{ agnetPhone }}</p>
             <Button
+              @click="emailAgent(agentEmail)"
               class="bg-blue-600 text-lg rounded-none px-12 py-8 text-white"
             >
               Work With {{ agentName }}
             </Button>
           </div>
 
-          <div>
+          <div v-if="lastSoldProperties.length != 0">
             <h2 class="text-2xl font-bold mb-4 montserrat-font">LAST SOLD</h2>
             <div class="list-disc space-y-2">
               <div
@@ -47,6 +48,7 @@
 
 <script>
 import { Button } from "@/components/ui/button";
+import { mapState } from "vuex";
 
 export default {
   components: {
@@ -60,31 +62,54 @@ export default {
       agnetPhone: "+971 581677220",
       agentImage: null,
       lastSoldProperties: [
-        {
-          location: "Burj Khalifa, Downtown, Dubai UAE",
-          price: "AED 5,245,000",
-          soldAt: "JAN/ 2023",
-        },
-        {
-          location: "Burj Khalifa, Downtown, Dubai UAE",
-          price: "AED 5,245,000",
-          soldAt: "JAN/ 2023",
-        },
-        {
-          location: "Burj Khalifa, Downtown, Dubai UAE",
-          price: "AED 5,245,000",
-          soldAt: "JAN/ 2023",
-        },
-        {
-          location: "Burj Khalifa, Downtown, Dubai UAE",
-          price: "AED 5,245,000",
-          soldAt: "JAN/ 2023",
-        },
+        // {
+        //   location: "Burj Khalifa, Downtown, Dubai UAE",
+        //   price: "AED 5,245,000",
+        //   soldAt: "JAN/ 2023",
+        // },
+        // {
+        //   location: "Burj Khalifa, Downtown, Dubai UAE",
+        //   price: "AED 5,245,000",
+        //   soldAt: "JAN/ 2023",
+        // },
+        // {
+        //   location: "Burj Khalifa, Downtown, Dubai UAE",
+        //   price: "AED 5,245,000",
+        //   soldAt: "JAN/ 2023",
+        // },
+        // {
+        //   location: "Burj Khalifa, Downtown, Dubai UAE",
+        //   price: "AED 5,245,000",
+        //   soldAt: "JAN/ 2023",
+        // },
       ],
     };
   },
-  mounted() {
+  computed: {
+    ...mapState(["agents"]),
+  },
+  async mounted() {
     this.agentImage = require("../assets/images/agents/default.png");
+    if (this.agents.length == 0) {
+      await this.$store.dispatch("fetchAgents");
+    }
+    this.getValues();
+  },
+  methods: {
+    getValues() {
+      let agentId = this.$route.params.id;
+      let agent = this.agents.find((agent) => agent._id == agentId);
+      if (agent) {
+        this.agentName = agent.name;
+        this.agentTitle = agent.title;
+        this.agentEmail = agent.email;
+        this.agentPhone = agent.phone;
+        this.agentImage = agent.img;
+      }
+    },
+    emailAgent(agentEmail) {
+      window.open(`mailto:${agentEmail}`);
+    },
   },
 };
 </script>

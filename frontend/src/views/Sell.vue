@@ -95,6 +95,7 @@ export default {
     Header,
   },
   head: {
+    title: "Sell Your Home With Tomorrow Luxury Property",
     meta: [
       {
         name: "title",

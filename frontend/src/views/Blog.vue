@@ -58,20 +58,21 @@ export default {
   computed: {
     ...mapState(["blogs", "selectedBlog"]),
   },
-  head: {
-    meta: [
-      {
-        name: "title",
-        content:
-          "2024 Guide: Real Estate Agent Commission Rates in Dubai for Off-Plan and Ready Properties",
-      },
-      {
-        name: "description",
-        content:
-          "Stay updated with the 2024 real estate agent commission rates in Dubai. Our guide details the commissions for off-plan and ready properties, vital for buyers and sellers",
-      },
-    ],
-  },
+  // head: {
+  //   title: "",
+  //   meta: [
+  //     {
+  //       name: "title",
+  //       content:
+  //         "2024 Guide: Real Estate Agent Commission Rates in Dubai for Off-Plan and Ready Properties",
+  //     },
+  //     {
+  //       name: "description",
+  //       content:
+  //         "Stay updated with the 2024 real estate agent commission rates in Dubai. Our guide details the commissions for off-plan and ready properties, vital for buyers and sellers",
+  //     },
+  //   ],
+  // },
   data() {
     return {
       blogId: null,
@@ -110,6 +111,8 @@ export default {
             title: blog.title,
             content: blog.content,
           });
+          document.title = blog.title;
+
           // this.blogId = blog.id;
           // this.title = blog.title;
 

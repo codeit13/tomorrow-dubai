@@ -12,7 +12,7 @@
         :key="i"
       >
         <img
-          :src="agent.image"
+          :src="agent.img"
           alt="Property"
           class="h-auto"
           width="400"
@@ -25,9 +25,9 @@
         </div> -->
         <div class="px-0 pb-8 w-fit">
           <br />
-          <span class="text-xl font-bold">{{ agent.name }}</span>
-          <br />
-          <span class="text-lg josefin-slab">{{ agent.title }}</span>
+          <span class="text-xl font-bold uppercase">{{ agent.name }}</span>
+          <!-- <br />
+          <span class="text-lg josefin-slab">{{ agent.title }}</span> -->
           <br />
           <span class="text-sm">{{ agent.email }}</span>
           <br />
@@ -44,65 +44,26 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      agents: [
-        {
-          name: "ADEL MAKNERT",
-          title: "Licensed real estate agent",
-          email: "adel@tomorrowdubai.com",
-          phone: "+971 581677220",
-          image: require("../assets/images/agents/default.png"),
-        },
-        {
-          name: "ADEL MAKNERT",
-          title: "Licensed real estate agent",
-          email: "adel@tomorrowdubai.com",
-          phone: "+971 581677220",
-          image: require("../assets/images/agents/default.png"),
-        },
-        {
-          name: "ADEL MAKNERT",
-          title: "Licensed real estate agent",
-          email: "adel@tomorrowdubai.com",
-          phone: "+971 581677220",
-          image: require("../assets/images/agents/default.png"),
-        },
-        {
-          name: "ADEL MAKNERT",
-          title: "Licensed real estate agent",
-          email: "adel@tomorrowdubai.com",
-          phone: "+971 581677220",
-          image: require("../assets/images/agents/default.png"),
-        },
-        {
-          name: "ADEL MAKNERT",
-          title: "Licensed real estate agent",
-          email: "adel@tomorrowdubai.com",
-          phone: "+971 581677220",
-          image: require("../assets/images/agents/default.png"),
-        },
-        {
-          name: "ADEL MAKNERT",
-          title: "Licensed real estate agent",
-          email: "adel@tomorrowdubai.com",
-          phone: "+971 581677220",
-          image: require("../assets/images/agents/default.png"),
-        },
-        {
-          name: "ADEL MAKNERT",
-          title: "Licensed real estate agent",
-          email: "adel@tomorrowdubai.com",
-          phone: "+971 581677220",
-          image: require("../assets/images/agents/default.png"),
-        },
-      ],
+      // agents: [
+      //   {
+      //     name: "ADEL MAKNERT",
+      //     title: "Licensed real estate agent",
+      //     email: "adel@tomorrowdubai.com",
+      //     phone: "+971 581677220",
+      //     image: require("../assets/images/agents/default.png"),
+      //   }
+      // ],
     };
   },
   computed: {
     ...mapState(["agents"]),
   },
+  async mounted() {
+    await this.$store.dispatch("fetchAgents");
+  },
   methods: {
     goToAgent(agent) {
-      this.$router.push("/agent", { query: agent });
+      this.$router.push(`/agent/${agent._id}`);
     },
   },
 };

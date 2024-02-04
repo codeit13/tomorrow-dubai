@@ -52,7 +52,7 @@ const routes = [
     component: () => import("@/views/Agents.vue"),
   },
   {
-    path: "/agent",
+    path: "/agent/:id",
     name: "agent",
     component: () => import("@/views/Agent.vue"),
   },

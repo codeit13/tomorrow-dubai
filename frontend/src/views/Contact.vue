@@ -99,10 +99,11 @@ export default {
     Input,
   },
   head: {
+    title: "Contact Us - Tomorrow Luxury Property",
     meta: [
       {
         name: "title",
-        content: "Contact Us – Tomorrow Luxury Property",
+        content: "Contact Us - Tomorrow Luxury Property",
       },
       {
         name: "description",

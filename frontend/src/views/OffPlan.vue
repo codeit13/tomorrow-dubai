@@ -65,6 +65,8 @@
 import { mapState } from "vuex";
 export default {
   head: {
+    title:
+      "Exclusive Off-Plan Investment Opportunities in Dubai's Thriving Real Estate Market",
     meta: [
       {
         name: "title",

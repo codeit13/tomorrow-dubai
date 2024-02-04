@@ -46,6 +46,8 @@
 import { mapState } from "vuex";
 export default {
   head: {
+    title:
+      "News and Insights - Tomorrow Luxury Property Real Estate in Dubai UAE",
     meta: [
       {
         name: "title",

@@ -70,7 +70,9 @@
         @click="$router.push(item.route)"
         class="text-white-600 cursor-pointer"
         :class="{
-          'underline underline-offset-2': $route.path === item.route,
+          'underline underline-offset-2': item.underlineRoutes.includes(
+            $route.path
+          ),
         }"
       >
         {{ item.name }}
@@ -101,18 +103,22 @@ export default {
         {
           name: "Buy",
           route: "/buy",
+          underlineRoutes: ["/", "/buy"],
         },
         {
           name: "Sell",
           route: "/sell",
+          underlineRoutes: ["/sell"],
         },
         {
           name: "Off Plan",
           route: "/offplan",
+          underlineRoutes: ["/offplan"],
         },
         {
           name: "Agents",
           route: "/partner",
+          underlineRoutes: ["/partner", "/agents", "/agent"],
         },
       ],
     };

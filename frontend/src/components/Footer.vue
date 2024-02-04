@@ -28,7 +28,7 @@
         </div>
         <div class="flex flex-wrap justify-between md:space-x-48">
           <div>
-            <h2 class="mb-4 text-lg font-semibold">Features</h2>
+            <h2 class="mb-4 text-xl font-semibold">Features</h2>
             <ul class="text-black-900 dark:text-gray-400 font-medium">
               <li class="mb-4" v-for="(feature, i) in features" :key="i">
                 <a
@@ -41,7 +41,7 @@
             </ul>
           </div>
           <div>
-            <h2 class="mb-4 text-lg font-semibold">Company</h2>
+            <h2 class="mb-4 text-xl font-semibold">Company</h2>
             <ul class="text-black-900 dark:text-black-900 font-medium">
               <li class="mb-4" v-for="(item, i) in company" :key="i">
                 <a

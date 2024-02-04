@@ -86,6 +86,16 @@ export const actions = {
       return [];
     }
   },
+  async fetchAgents({ commit }) {
+    try {
+      const { data } = await axios.get(`${BASE_URL}/agent`);
+      const agents = data ? data.agents : [];
+      commit("SET_AGENTS", agents);
+    } catch (e) {
+      console.log(e);
+      commit("SET_TOASTER_MSG", { type: "error", message: e.message });
+    }
+  },
 
   async post() {
     try {

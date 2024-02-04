@@ -9,10 +9,10 @@ import router from "./router";
 import store from "./store";
 
 import OpenLayersMap from "vue3-openlayers";
-import titleMixin from "./mixins/titleMixin";
+// import titleMixin from "./mixins/titleMixin";
 
 const app = createApp(App);
-app.mixin(titleMixin);
+// app.mixin(titleMixin);
 
 app.use(router).use(store).use(OpenLayersMap).use(VueHead);
 

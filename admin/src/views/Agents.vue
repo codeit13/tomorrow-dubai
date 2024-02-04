@@ -25,7 +25,7 @@
             class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
           >
             <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-              Blog Details
+              Agent Details
             </h3>
             <button
               @click="isModalOpen = false"
@@ -61,49 +61,47 @@
                 <div class="mb-6 relative z-0">
                   <input
                     type="text"
-                    v-model="blogSlug"
-                    placeholder=""
+                    v-model="agentName"
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   />
                   <label
                     class="mb-2.5 absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
                   >
-                    Slug
+                    Agent Name
                   </label>
                 </div>
 
                 <div class="mb-6 relative z-0">
                   <input
                     type="text"
-                    v-model="blogTitle"
+                    v-model="agentEmail"
                     placeholder=""
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   />
                   <label
                     class="mb-2.5 absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
                   >
-                    Blog Title
+                    Agent Email
                   </label>
                 </div>
-
-                <div class="mb-6">
-                  <label class="mb-2.5 block text-black dark:text-white">
-                    Blog Content
-                  </label>
-
-                  <QuillEditor
-                    v-if="modules && formats"
-                    theme="snow"
-                    contentType="html"
-                    :content="blogContent"
-                    @ready="quillEditorReady"
+                <div class="mb-6 relative z-0">
+                  <input
+                    type="text"
+                    v-model="agentPhone"
+                    placeholder=""
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   />
+                  <label
+                    class="mb-2.5 absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+                  >
+                    Agent Phone
+                  </label>
                 </div>
 
                 <div class="mb-6 flex">
                   <div class="w-[30%]">
                     <label class="mb-2.5 block text-black dark:text-white">
-                      Image
+                      Agent Profile Image
                     </label>
 
                     <div class="file-input-container">
@@ -164,12 +162,12 @@
                     }"
                   >
                     <div
-                      v-if="imageUrl"
+                      v-if="agentImage"
                       class="max-w-[50%] max-h-[100%] mr-6 inline-block relative"
                     >
-                      <img :src="imageUrl" />
+                      <img :src="agentImage" />
                       <span
-                        class="cursor-pointer absolute top-0 right-0 rounded-full bg-black px-[16px] py-[8px]"
+                        class="cursor-pointer absolute top-0 right-0 rounded-full bg-black text-white px-[8px] py-[0px]"
                         @click="removeImage(i)"
                         >x</span
                       >
@@ -187,9 +185,9 @@
               @click="
                 () => {
                   if (this.buttonText.toLowerCase() == 'create') {
-                    this.createBlog();
+                    this.createAgent();
                   } else {
-                    this.updateBlog();
+                    this.updateAgent();
                   }
                 }
               "
@@ -208,7 +206,7 @@
       </div>
     </div>
 
-    <main v-if="blogs.length">
+    <main v-if="agents.length">
       <div class="w-[100vw] h-[100%] z-[1000] backdrop-blur-lg"></div>
 
       <div class="max-w-screen-2xl mx-auto p-4 md:p-6 2xl:p-10">
@@ -217,7 +215,7 @@
           class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6"
         >
           <h2 class="font-semibold text-title-md2 text-black dark:text-white">
-            {{ blogs.length }} News Articles
+            {{ agents.length }} Agents
           </h2>
 
           <button
@@ -234,7 +232,7 @@
                   Dashboard /
                 </a>
               </li>
-              <li class="text-primary">Blogs</li>
+              <li class="text-primary">Agents</li>
             </ol>
           </nav>
         </div>
@@ -252,13 +250,19 @@
                     <th
                       class="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11"
                     >
-                      Blog Title
+                      Agent Name
                     </th>
 
                     <th
                       class="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white"
                     >
-                      Created At
+                      Agent Email
+                    </th>
+
+                    <th
+                      class="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white"
+                    >
+                      Agent Phone
                     </th>
                     <th
                       class="py-4 px-4 font-medium text-black dark:text-white"
@@ -268,17 +272,23 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(blog, i) in blogs" :key="i">
+                  <tr v-for="(agent, i) in agents" :key="i">
                     <td
                       class="border-t border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11"
                     >
                       <div class="flex items-center gap-3">
+                        <div>
+                          <img
+                            class="w-10 h-10 rounded-full"
+                            :src="agent.img"
+                          />
+                        </div>
                         <h5 class="font-medium text-black dark:text-white">
-                          {{ blog.title }}
+                          {{ agent.name }}
                         </h5>
                         <svg
                           class="fill-primary cursor-pointer"
-                          @click="openBlogUrl(blog.slug)"
+                          @click="openAgentUrl(agent._id)"
                           xmlns="http://www.w3.org/2000/svg"
                           height="24"
                           viewBox="0 -960 960 960"
@@ -294,7 +304,14 @@
                       class="border-t border-[#eee] py-5 px-4 dark:border-strokedark"
                     >
                       <p class="text-black dark:text-white">
-                        {{ blog.createdAt }}
+                        {{ agent.email }}
+                      </p>
+                    </td>
+                    <td
+                      class="border-t border-[#eee] py-5 px-4 dark:border-strokedark"
+                    >
+                      <p class="text-black dark:text-white">
+                        {{ agent.phone }}
                       </p>
                     </td>
                     <td
@@ -303,7 +320,7 @@
                       <div class="flex items-center space-x-3.5">
                         <button
                           class="hover:text-primary"
-                          @click="openBlogModal(blog)"
+                          @click="openAgentModal(agent)"
                         >
                           <svg
                             class="fill-current"
@@ -325,7 +342,7 @@
                         </button>
                         <button
                           class="hover:text-primary"
-                          @click="deleteBlog(blog)"
+                          @click="deleteAgent(agent)"
                         >
                           <svg
                             class="fill-current"
@@ -378,48 +395,11 @@ export default {
   data() {
     return {
       isModalOpen: false,
-
-      modules: {
-        toolbar: [
-          [{ header: "1" }, { header: "2" }, { font: [] }],
-          [{ size: [] }],
-          ["bold", "italic", "underline", "strike", "blockquote"],
-          [
-            { list: "ordered" },
-            { list: "bullet" },
-            { indent: "-1" },
-            { indent: "+1" },
-          ],
-          ["link", "image", "video"],
-          ["clean"],
-        ],
-        clipboard: {
-          // toggle to add extra line breaks when pasting HTML:
-          matchVisual: false,
-        },
-      },
-      formats: [
-        "header",
-        "font",
-        "size",
-        "bold",
-        "italic",
-        "underline",
-        "strike",
-        "blockquote",
-        "list",
-        "bullet",
-        "indent",
-        "link",
-        "image",
-        "video",
-      ],
-      blogSlug: null,
-      blogId: null,
-      blogTitle: null,
-      blogContent: "as",
-      quillEditor: null,
-      imageUrl: null,
+      agentId: null,
+      agentName: null,
+      agentEmail: null,
+      agentPhone: null,
+      agentImage: null,
       buttonText: "UPDATE",
     };
   },
@@ -427,29 +407,24 @@ export default {
     // QuillEditor,
   },
   computed: {
-    ...mapState(["properties", "blogs", "agents"]),
+    ...mapState(["agents"]),
   },
   mounted() {},
   methods: {
-    quillEditorReady(editor) {
-      this.quillEditor = editor;
+    removeImage() {
+      this.agentImage = null;
     },
-    removeImage(i) {
-      this.images.splice(i, 1);
+    openAgentUrl(id) {
+      window.open(`https://tomorrowluxuryproperty.com/agent/${id}`);
     },
-    openBlogUrl(slug) {
-      window.open(`https://tomorrowluxuryproperty.com/blog/${slug}`);
-    },
-    openBlogModal(blog) {
+    openAgentModal(agent) {
       this.buttonText = "UPDATE";
 
-      this.blogId = blog._id;
-      this.blogSlug = blog.slug;
-      this.blogTitle = blog.title;
-
-      this.blogContent = blog.content;
-
-      this.image = blog.image;
+      this.agentId = agent._id;
+      this.agentName = agent.name;
+      this.agentEmail = agent.email;
+      this.agentPhone = agent.phone;
+      this.agentImage = agent.img;
 
       this.isModalOpen = true;
     },
@@ -457,48 +432,29 @@ export default {
     resetPopupModal() {
       this.isModalOpen = true;
       this.buttonText = "CREATE";
-      this.blogSlug = null;
-      this.blogId = null;
-      this.blogTitle = null;
-      this.blogContent = "";
-      this.imageUrl = null;
+      this.agentId = null;
+      this.agentName = null;
+      this.agentEmail = null;
+      this.agentPhone = null;
+      this.agentImage = null;
     },
 
-    async createBlog() {
-      if (this.blogSlug && this.blogTitle && this.imageUrl) {
-        const blog = {
-          slug: this.blogSlug?.toLowerCase(),
-          title: this.blogTitle,
-          content: this.quillEditor.root.innerHTML,
-          imageUrl: this.imageUrl,
-        };
-        await this.$store.dispatch("createBlog", {
-          blog: blog,
-        });
-        this.isModalOpen = false;
-      } else {
-        this.$store.commit("SET_TOASTER_MSG", {
-          type: "error",
-          message: "Please make sure all the details are correct.",
-        });
-      }
-    },
-
-    async updateBlog() {
+    async createAgent() {
       if (
-        this.blogSlug &&
-        this.blogTitle
-        // && this.imageUrl
+        this.agentName &&
+        this.agentEmail &&
+        this.agentPhone &&
+        this.agentImage
       ) {
-        const blog = {
-          slug: this.blogSlug?.toLowerCase(),
-          title: this.blogTitle,
-          content: this.quillEditor.root.innerHTML,
-          imageUrl: this.imageUrl,
+        const agent = {
+          name: this.agentName,
+          email: this.agentEmail,
+          phone: this.agentPhone,
+          img: this.agentImage,
+          status: "APPROVED",
         };
-        await this.$store.dispatch("updateBlog", {
-          blog: blog,
-          id: this.blogId,
+        await this.$store.dispatch("createAgent", {
+          agent,
         });
         this.isModalOpen = false;
       } else {
@@ -509,11 +465,40 @@ export default {
       }
     },
 
-    async deleteBlog(blog) {
-      const status = confirm("Are you sure? You want to delete this blog?");
+    async updateAgent() {
+      if (
+        this.agentName &&
+        this.agentEmail &&
+        this.agentPhone &&
+        this.agentImage
+      ) {
+        const agent = {
+          name: this.agentName,
+          email: this.agentEmail,
+          phone: this.agentPhone,
+          img: this.agentImage,
+          status: "APPROVED",
+        };
+        await this.$store.dispatch("updateAgent", {
+          agent,
+          id: this.agentId,
+        });
+        this.isModalOpen = false;
+      } else {
+        this.$store.commit("SET_TOASTER_MSG", {
+          type: "error",
+          message: "Please make sure all the details are correct.",
+        });
+      }
+    },
+
+    async deleteAgent(agent) {
+      const status = confirm(
+        "Are you sure? You want to delete this agent: " + agent.name + " ?"
+      );
       if (status) {
-        await this.$store.dispatch("deleteBlog", {
-          id: blog._id,
+        await this.$store.dispatch("deleteAgent", {
+          id: agent._id,
         });
       }
     },
@@ -525,7 +510,7 @@ export default {
         await uploadBytes(storageRef, file); // Upload the file to the storage location
         const imageUrl = await getDownloadURL(storageRef); // G
 
-        this.imageUrl = imageUrl;
+        this.agentImage = imageUrl;
       }
     },
   },

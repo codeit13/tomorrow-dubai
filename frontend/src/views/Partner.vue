@@ -208,6 +208,7 @@ export default {
     Select,
   },
   head: {
+    title: "Dubai Real Estate Agent Partners",
     meta: [
       {
         name: "title",
