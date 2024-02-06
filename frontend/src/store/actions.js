@@ -29,6 +29,7 @@ export const actions = {
 
       const searchableLocations = listings
         ? listings.map((p) => {
+            p.price = parseInt(p.price);
             return {
               location: p.address,
               name: p.propertyName,
