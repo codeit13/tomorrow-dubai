@@ -99,7 +99,7 @@
                         @blur="propertyNameBlur"
                         class="data-list py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 pee"
                         spellcheck="false"
-                        placeholder="Select a fruit"
+                        placeholder="Select a property"
                       />
 
                       <svg
@@ -540,7 +540,7 @@
       </div>
     </div>
 
-    <main v-if="listings.length">
+    <main>
       <div class="w-[100vw] h-[100%] z-[1000] backdrop-blur-lg"></div>
 
       <div class="max-w-screen-2xl mx-auto p-4 md:p-6 2xl:p-10">

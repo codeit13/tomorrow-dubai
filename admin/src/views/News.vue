@@ -208,7 +208,7 @@
       </div>
     </div>
 
-    <main v-if="blogs.length">
+    <main>
       <div class="w-[100vw] h-[100%] z-[1000] backdrop-blur-lg"></div>
 
       <div class="max-w-screen-2xl mx-auto p-4 md:p-6 2xl:p-10">
