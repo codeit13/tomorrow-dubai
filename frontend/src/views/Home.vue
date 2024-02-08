@@ -365,6 +365,7 @@
 <script>
 import Header from "@/components/Header.vue";
 import { mapState } from "vuex";
+import { useHead } from "@unhead/vue";
 
 import { cn } from "@/lib/utils";
 
@@ -373,11 +374,12 @@ export default {
     Header,
   },
   head: {
-    title: "Tomorrow Luxury Property Dubai | Buy and Sell Real Estate",
+    title: "Exclusive Dubai Luxury Real Estate - Tomorrow Luxury Property",
     meta: [
       {
         name: "title",
-        content: "Tomorrow Luxury Property Dubai | Buy and Sell Real Estate",
+        content:
+          "Exclusive Dubai Luxury Real Estate - Tomorrow Luxury Property",
       },
       {
         name: "description",
@@ -482,10 +484,26 @@ export default {
     },
   },
   async mounted() {
-    this.addMetaTags({
-      title: "Exclusive Dubai Luxury Real Estate - Tomorrow Luxury Property",
-      description:
-        "Enhance your property journey with Tomorrow Luxury Property. Collaborate with our expert real estate agents to discover the perfect luxury home or apartment for you",
+    // this.addMetaTags({
+    //   title: "Exclusive Dubai Luxury Real Estate - Tomorrow Luxury Property",
+    //   description:
+    //     "Enhance your property journey with Tomorrow Luxury Property. Collaborate with our expert real estate agents to discover the perfect luxury home or apartment for you",
+    // });
+    // useHead({
+    //   title: "Exclusive Dubai Luxury Real Estate - Tomorrow Luxury Property",
+    //   description:
+    //     "Enhance your property journey with Tomorrow Luxury Property. Collaborate with our expert real estate agents to discover the perfect luxury home or apartment for you",
+    // });
+  },
+  setup() {
+    useHead({
+      title,
+      meta: [
+        {
+          name: "description",
+          content: description,
+        },
+      ],
     });
   },
   methods: {

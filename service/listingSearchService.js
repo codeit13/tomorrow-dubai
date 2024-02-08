@@ -159,4 +159,55 @@ listingSearchRouter.get("/auto-complete", async (req, res) => {
   }
 });
 
+listingSearchRouter.get(
+  "/:address/:propertyName/:listingName",
+  async (req, res) => {
+    let { address, propertyName, listingName } = req.params;
+
+    try {
+      propertyName = propertyName.toLowerCase().replaceAll("-", " ").trim();
+      listingName = listingName.toLowerCase().replaceAll("-", " ").trim();
+      address = address.toLowerCase().replaceAll("-", " ").trim();
+
+      const listings = await listingDB.find({});
+
+      let listing = listings.find((property) => {
+        return (
+          // property.slug?.toLowerCase().trim() == slug.toLowerCase().trim()
+          property.propertyName
+            ?.trim()
+            .replaceAll(",", "")
+            .replaceAll(".", "")
+            .toLowerCase()
+            .trim() == propertyName &&
+          property.title
+            ?.trim()
+            .replaceAll(",", "")
+            .replaceAll(".", "")
+            .toLowerCase()
+            .trim() == listingName &&
+          property.address
+            ?.trim()
+            .replaceAll(",", "")
+            .replaceAll(".", "")
+            .toLowerCase()
+            .trim() == address
+        );
+      });
+
+      // Send the results as the response
+      // res.json(result);
+      res.status(200).json({
+        message: "listing data fetched successfully",
+        listing,
+      });
+    } catch (error) {
+      console.error("Error performing listing search:", error);
+      res
+        .status(500)
+        .json({ error: "An error occurred while performing listing search" });
+    }
+  }
+);
+
 module.exports = listingSearchRouter;
