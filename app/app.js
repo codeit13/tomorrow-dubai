@@ -55,7 +55,7 @@ app.get("/sitemap.xml", (req, res) => {
 });
 
 // server main website
-app.use("/", express.static(path.join(__dirname, "../frontend/dist")));
+app.use("/", express.static(path.join(__dirname, "../nuxt/.output/public")));
 
 const corsOptions = {
   origin: [
