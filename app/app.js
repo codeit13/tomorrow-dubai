@@ -68,7 +68,6 @@ const corsOptions = {
     "http://localhost:8080",
     "http://localhost:8081",
     "http://localhost:3000",
-    "http://localhost:3001",
   ],
   credentials: true, // Allow cookies to be sent
 };
@@ -101,18 +100,18 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/categories", categoryRoutes);
-app.use("/listing", listingRoutes);
-app.use("/property", propertyRoutes);
-app.use("/search", listingSearchRoutes);
-app.use("/neighbour", neighbourRoutes);
-app.use("/exclusive", exclusiveRoutes);
-app.use("/contact", contactRoutes);
-app.use("/agent", agentRoutes);
-app.use("/logout", logoutRoutes);
-app.use("/login", loginRoutes);
-app.use("/user", userRoutes);
-app.use("/blogs", blogRoutes);
+app.use("/api/categories", categoryRoutes);
+app.use("/api/listing", listingRoutes);
+app.use("/api/property", propertyRoutes);
+app.use("/api/search", listingSearchRoutes);
+app.use("/api/neighbour", neighbourRoutes);
+app.use("/api/exclusive", exclusiveRoutes);
+app.use("/api/contact", contactRoutes);
+app.use("/api/agent", agentRoutes);
+app.use("/api/logout", logoutRoutes);
+app.use("/api/login", loginRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/blogs", blogRoutes);
 
 // This middleware catches all other routes and returns a 404 error
 app.use((req, res, next) => {
