@@ -340,6 +340,7 @@ import {
   PaginationPrev,
 } from "@/components/ui/pagination";
 import { mapState } from "vuex";
+import { useAsyncData, defineSeoMeta } from "#app";
 
 export default {
   components: {
@@ -410,6 +411,18 @@ export default {
     ...mapState(["listings", "neighbourhoodProperties", "searchableLocations"]),
   },
   watch: {
+    async searchData() {
+      defineSeoMeta({
+        title: `Search results for "${newData.query}"` || "Search Results",
+        meta: [
+          {
+            name: "description",
+            content: newData.description || "No description available",
+          },
+          // Add other relevant meta tags (e.g., Open Graph, Twitter)
+        ],
+      });
+    },
     listings: {
       // eslint-disable-next-line
       handler(newVal) {
@@ -433,6 +446,7 @@ export default {
       this.getValues();
     },
   },
+
   mounted() {
     this.property = this.propertyOptions[0];
     this.minPrice = this.minPriceOptions[0];
@@ -441,29 +455,20 @@ export default {
 
     this.searchText = this.$route.params.query.replaceAll("-", " ") || "dubai";
 
-    let neighbourhoodProperty = this.neighbourhoodProperties.find((item) => {
-      return (
-        item.title.trim().toLowerCase() ==
-        this.searchText.trim().replaceAll("-", " ").toLowerCase()
-      );
-    });
-
-    if (neighbourhoodProperty) {
-      this.addMetaTags({
-        title: `Properties for sale in ${neighbourhoodProperty.title} | Tomorrow Luxury Property`,
-        description: neighbourhoodProperty.description,
-      });
-    } else {
-      this.addMetaTags({
-        title: `Properties for sale in ${this.searchText.trim()} | Tomorrow Luxury Property`,
-        description:
-          "Discover Premium Villas and Residences for Sale in Dubai prestigeous Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-      });
-    }
-
     this.getValues();
   },
   methods: {
+    async getSearchData(fetchParams) {
+      // Make your API call based on user query (URLSearchParams or query context)
+      const queryParams = new URLSearchParams(window.location.search);
+      const query = queryParams.get("q") || ""; // Extract the query from URL
+
+      const response = await fetch(`https://your-api-endpoint?q=${query}`, {
+        // ... fetch options
+      });
+      const data = await response.json();
+      return data;
+    },
     addMetaTags({ title, description }) {
       if (!this.isMetaTagsAdded) {
         document.title = title;

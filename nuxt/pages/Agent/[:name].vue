@@ -61,35 +61,24 @@ export default {
       agentEmail: "CEO@TOMORROWDUBAI.COM",
       agnetPhone: "+971 581677220",
       agentImage: null,
-      lastSoldProperties: [
-        // {
-        //   location: "Burj Khalifa, Downtown, Dubai UAE",
-        //   price: "AED 5,245,000",
-        //   soldAt: "JAN/ 2023",
-        // },
-        // {
-        //   location: "Burj Khalifa, Downtown, Dubai UAE",
-        //   price: "AED 5,245,000",
-        //   soldAt: "JAN/ 2023",
-        // },
-        // {
-        //   location: "Burj Khalifa, Downtown, Dubai UAE",
-        //   price: "AED 5,245,000",
-        //   soldAt: "JAN/ 2023",
-        // },
-        // {
-        //   location: "Burj Khalifa, Downtown, Dubai UAE",
-        //   price: "AED 5,245,000",
-        //   soldAt: "JAN/ 2023",
-        // },
-      ],
+      lastSoldProperties: [],
     };
   },
   computed: {
     ...mapState(["agents"]),
   },
+  setup() {
+    useHead({
+      title: "Agent | Tomorrow Luxury Property",
+      meta: [
+        {
+          name: "description",
+          content: "Contact us for your dubai property agent requirements.",
+        },
+      ],
+    });
+  },
   async mounted() {
-    this.agentImage = require("../assets/images/agents/default.png");
     if (this.agents.length == 0) {
       await this.$store.dispatch("fetchAgents");
     }
@@ -97,7 +86,8 @@ export default {
   },
   methods: {
     getValues() {
-      let agentName = this.$route.params.name?.replaceAll("-", " ").trim();
+      const route = useRoute();
+      let agentName = route.params.name?.replaceAll("-", " ").trim();
       let agent = this.agents.find((agent) => agent.name == agentName);
       if (agent) {
         this.agentName = agent.name;

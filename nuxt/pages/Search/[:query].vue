@@ -320,6 +320,7 @@
 </template>
 
 <script>
+import { neighbourhoodProperties } from "../../plugins/store/neighbourhood";
 // import { Input } from "@/components/ui/input";
 // import {
 //   SelectValue,
@@ -433,6 +434,32 @@ export default {
       this.getValues();
     },
   },
+  setup() {
+    useAsyncData(() => {
+      const route = useRoute();
+      const searchText = route.params.query.replaceAll("-", " ") || "dubai";
+
+      let neighbourhoodProperty = neighbourhoodProperties.find((item) => {
+        return (
+          item.title.trim().toLowerCase() ==
+          searchText.trim().replaceAll("-", " ").toLowerCase()
+        );
+      });
+
+      if (neighbourhoodProperty) {
+        useSeoMeta({
+          title: `Properties for sale in ${neighbourhoodProperty.title} | Tomorrow Luxury Property`,
+          description: neighbourhoodProperty.description,
+        });
+      } else {
+        useSeoMeta({
+          title: `Properties for sale in ${searchText.trim()} | Tomorrow Luxury Property`,
+          description:
+            "Discover Premium Villas and Residences for Sale in Dubai prestigeous Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
+        });
+      }
+    });
+  },
   mounted() {
     this.property = this.propertyOptions[0];
     this.minPrice = this.minPriceOptions[0];
@@ -441,44 +468,9 @@ export default {
 
     this.searchText = this.$route.params.query.replaceAll("-", " ") || "dubai";
 
-    let neighbourhoodProperty = this.neighbourhoodProperties.find((item) => {
-      return (
-        item.title.trim().toLowerCase() ==
-        this.searchText.trim().replaceAll("-", " ").toLowerCase()
-      );
-    });
-
-    if (neighbourhoodProperty) {
-      this.addMetaTags({
-        title: `Properties for sale in ${neighbourhoodProperty.title} | Tomorrow Luxury Property`,
-        description: neighbourhoodProperty.description,
-      });
-    } else {
-      this.addMetaTags({
-        title: `Properties for sale in ${this.searchText.trim()} | Tomorrow Luxury Property`,
-        description:
-          "Discover Premium Villas and Residences for Sale in Dubai prestigeous Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-      });
-    }
-
     this.getValues();
   },
   methods: {
-    addMetaTags({ title, description }) {
-      if (!this.isMetaTagsAdded) {
-        document.title = title;
-        this.isMetaTagsAdded = true;
-        const titleMetaTag = document.createElement("meta");
-        titleMetaTag.setAttribute("name", "title");
-        titleMetaTag.setAttribute("content", title);
-        document.querySelector("head").appendChild(titleMetaTag);
-
-        const descrMetaTag = document.createElement("meta");
-        descrMetaTag.setAttribute("name", "description");
-        descrMetaTag.setAttribute("content", description);
-        document.querySelector("head").appendChild(descrMetaTag);
-      }
-    },
     searchTextChange() {
       if (this.searchText) {
         this.filteredLocations = [];
@@ -532,26 +524,6 @@ export default {
     getValues(newVal = null) {
       this.displaySearchText = this.searchText || "dubai";
       let searchQuery = this.searchText.toLowerCase().trim() || "dubai";
-
-      let neighbourhoodProperty = this.neighbourhoodProperties.find((item) => {
-        return (
-          item.title.trim().toLowerCase() ==
-          this.searchText.trim().replaceAll("-", " ").toLowerCase()
-        );
-      });
-
-      if (neighbourhoodProperty) {
-        this.addMetaTags({
-          title: `Properties for sale in ${neighbourhoodProperty.title} | Tomorrow Luxury Property`,
-          description: neighbourhoodProperty.description,
-        });
-      } else {
-        this.addMetaTags({
-          title: `Discover properties for sale | Tomorrow Luxury Property`,
-          description:
-            "Discover Premium Villas and Residences for Sale in Dubai prestigeous Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
-        });
-      }
 
       let minPrice =
         this.minPrice == this.minPriceOptions[0]

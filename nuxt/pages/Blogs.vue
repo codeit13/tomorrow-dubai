@@ -69,6 +69,14 @@ export default {
   computed: {
     ...mapState(["blogs"]),
   },
+  setup() {
+    useAsyncData(() => {
+      useSeoMeta({
+        title: `News and Insights - Tomorrow Luxury Property Real Estate in Dubai UAE`,
+        description: `Learn about with Tomorrow Luxury Property the recent updates in Dubai property investments by visiting our news and insights page`,
+      });
+    });
+  },
   methods: {
     goToBlog(blog) {
       if (blog && blog.slug) {

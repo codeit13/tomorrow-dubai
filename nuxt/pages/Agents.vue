@@ -44,9 +44,16 @@ export default {
   async mounted() {
     await this.$store.dispatch("fetchAgents");
   },
+  setup() {
+    useSeoMeta({
+      title: "Agents | Tomorrow Luxury Property",
+      description: "Explore properties at amazing neighborhoods in Dubai.",
+    });
+  },
   methods: {
     goToAgent(agent) {
-      this.$router.push(`/agent/${agent._id}`);
+      const agentNameSlug = agent.name.trim().replaceAll(" ", "-");
+      this.$router.push(`/agent/${agentNameSlug}`);
     },
   },
 };

@@ -30,8 +30,8 @@ const { generateSiteMap } = require("../service/siteMapGenerator");
 
 const job = new CronJob(
   "0 0 * * *",
-  function () {
-    generateSiteMap();
+  async function () {
+    await generateSiteMap();
   }, // onTick
   null, // onComplete
   true, // start
@@ -45,12 +45,12 @@ app.use(express.json());
 // app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/sitemap.xml", (req, res) => {
+app.get("/sitemap", async (req, res) => {
+  await generateSiteMap();
   res.sendFile(path.join(__dirname, "../sitemap.xml"));
 });
 
-app.get("/sitemap", (req, res) => {
-  generateSiteMap();
+app.get("/sitemap.xml", (req, res) => {
   res.sendFile(path.join(__dirname, "../sitemap.xml"));
 });
 

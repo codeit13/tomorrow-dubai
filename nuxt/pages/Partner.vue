@@ -187,39 +187,32 @@
 </template>
 
 <script>
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import {
-  SelectValue,
-  SelectTrigger,
-  SelectItem,
-  SelectContent,
-  Select,
-} from "@/components/ui/select";
+// import { Button } from "@/components/ui/button";
+// import { Input } from "@/components/ui/input";
+// import {
+//   SelectValue,
+//   SelectTrigger,
+//   SelectItem,
+//   SelectContent,
+//   Select,
+// } from "@/components/ui/select";
 
 export default {
   components: {
-    Button,
-    Input,
-    SelectValue,
-    SelectTrigger,
-    SelectItem,
-    SelectContent,
-    Select,
+    // Button,
+    // Input,
+    // SelectValue,
+    // SelectTrigger,
+    // SelectItem,
+    // SelectContent,
+    // Select,
   },
-  head: {
-    title: "Dubai Real Estate Agent Partners",
-    meta: [
-      {
-        name: "title",
-        content: "Dubai Real Estate Agent Partners",
-      },
-      {
-        name: "description",
-        content:
-          "Experience the industry's first-ever contact-to-close platform and transform your business with the nation's #1 residential brokerage.",
-      },
-    ],
+  setup() {
+    useSeoMeta({
+      title: "Dubai Real Estate Agent Partners",
+      description:
+        "Experience the industry's first-ever contact-to-close platform and transform your business with the nation's #1 residential brokerage.",
+    });
   },
   data() {
     return {

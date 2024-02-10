@@ -28,7 +28,7 @@
           :key="i"
         >
           <img
-            :src="require('@/assets/images/blogs/01.png')"
+            :src="blog.imageUrl || `/assets/images/blogs/01.png`"
             alt="Blog"
             class="w-auto h-auto"
             style="aspect-ratio: 1 / 1; object-fit: cover"
@@ -58,21 +58,6 @@ export default {
   computed: {
     ...mapState(["blogs", "selectedBlog"]),
   },
-  // head: {
-  //   title: "",
-  //   meta: [
-  //     {
-  //       name: "title",
-  //       content:
-  //         "2024 Guide: Real Estate Agent Commission Rates in Dubai for Off-Plan and Ready Properties",
-  //     },
-  //     {
-  //       name: "description",
-  //       content:
-  //         "Stay updated with the 2024 real estate agent commission rates in Dubai. Our guide details the commissions for off-plan and ready properties, vital for buyers and sellers",
-  //     },
-  //   ],
-  // },
   data() {
     return {
       blogId: null,
@@ -83,12 +68,31 @@ export default {
   },
   mounted() {
     this.getValues();
-    // console.log("blog mounted called");
+  },
+  setup() {
+    useAsyncData(() => {
+      const route = useRoute();
+      const slug = route.params.slug;
+
+      const capitalizeFirstLetterOfEveryWord = (str) => {
+        return str
+          .split(" ")
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(" ");
+      };
+
+      const blogTitle = capitalizeFirstLetterOfEveryWord(
+        slug.replaceAll("-", " ")
+      );
+
+      useSeoMeta({
+        title: blogTitle,
+      });
+    });
   },
   watch: {
     blogs: {
       handler(newVal) {
-        // console.log("watcher getValues: ", newVal);
         this.getValues(newVal);
       },
       deep: true,
@@ -111,12 +115,6 @@ export default {
             title: blog.title,
             content: blog.content,
           });
-          document.title = blog.title;
-
-          // this.blogId = blog.id;
-          // this.title = blog.title;
-
-          // this.content = blog.content;
         } else {
           console.log("No blog found: ", slug);
         }

@@ -350,13 +350,85 @@
   </div>
 </template>
 
+<script setup>
+const route = useRoute();
+
+const routePropertyName = route.params.propertyName;
+
+const routeListingName = route.params.listingName;
+
+const routeAddress = route.params.address;
+
+try {
+  $fetch(
+    `https://tomorrowluxuryproperty.com/api/search/${routeAddress}/${routePropertyName}/${routeListingName}`,
+    {
+      server: true,
+      immediate: true,
+    }
+  ).then((res) => {
+    console.log(res);
+
+    const listing = res.listing;
+
+    function extractInnerText(htmlString) {
+      // Match everything between HTML tags
+      const regex = /<[^>]*>([^<]+)<[^>]*>/g;
+
+      // Store the extracted inner text
+      const innerTextArray = [];
+      let match;
+
+      // Loop through matches and extract inner text
+      while ((match = regex.exec(htmlString)) !== null) {
+        innerTextArray.push(match[1].trim());
+      }
+
+      // Join the inner text array to form a single string
+      const innerText = innerTextArray.join(" ");
+
+      return innerText;
+    }
+
+    if (listing) {
+      const descriptionText = extractInnerText(listing.description);
+
+      const capitalizeFirstLetterOfEveryWord = (str) => {
+        return str
+          .split(" ")
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(" ");
+      };
+
+      useSeoMeta({
+        title: `${capitalizeFirstLetterOfEveryWord(
+          listing.title
+        )} | Tomorrow Luxury Property`,
+        meta: [
+          {
+            name: "description",
+            content: descriptionText,
+          },
+        ],
+      });
+    } else {
+      console.log("No listing found");
+    }
+  });
+} catch (e) {
+  console.log(e);
+}
+</script>
+
 <script>
 import { fromLonLat } from "ol/proj";
 import "vue3-carousel/dist/carousel.css";
-import axios from "axios";
 
 import { mapState } from "vuex";
+// import { useAsyncData } from "#app";
+import axios from "axios";
 import { useFetch } from "@vueuse/core";
+// import { useFetch } from "@vueuse/core";
 
 export default {
   components: {},
@@ -406,7 +478,6 @@ export default {
       deep: true,
     },
     async subtitle(address) {
-      // address = "Bazpur, Uttarakhand, India";
       if (address) {
         const data = await this.$store.dispatch("fetchCordinatesFromAddress", {
           address: address,
@@ -421,27 +492,44 @@ export default {
       }
     },
   },
-  setup() {
-    const route = useRoute();
 
-    const propertyName = route.params.propertyName;
-    // .toLowerCase()
-    // .replaceAll("-", " ")
-    // .trim();
-    const listingName = route.params.listingName;
-    // .toLowerCase()
-    // .replaceAll("-", " ")
-    // .trim();
-    const address = route.params.address;
-    // .toLowerCase()
-    // .replaceAll("-", " ")
-    // .trim();
+  //   useAsyncData(
+  //     "searchData",
+  //     async () => {
+  //       const route = useRoute();
 
-    const { data } = useFetch(
-      `https://tomorrowluxuryproperty.com/api/search/${address}/${propertyName}/${listingName}`
-    );
-    console.log(data);
-    // this.getValues();
+  //       const propertyName = route.params.propertyName;
+
+  //       const listingName = route.params.listingName;
+
+  //       const address = route.params.address;
+
+  //       axios
+  //         .get(
+  //           `//tomorrowluxuryproperty.com/api/search/${address}/${propertyName}/${listingName}`
+  //           // "http://localhost:3000/api/hello"
+  //         )
+  //         .then((response) => {
+  //           useSeoMeta({
+  //             title: `Search results for test` || "Search Results",
+  //             meta: [
+  //               {
+  //                 name: "description",
+  //                 content: "No description available",
+  //               },
+  //               // Add other relevant meta tags (e.g., Open Graph, Twitter)
+  //             ],
+  //           });
+  //         });
+  //     },
+  //     {
+  //       // Optional: fetch options or initial fetch params
+  //       server: true,
+  //     }
+  //   );
+  // },
+  mounted() {
+    this.getValues();
   },
   methods: {
     fromLonLat(coordinates) {
@@ -570,15 +658,15 @@ export default {
           descriptionDiv.innerHTML = this.description;
           const descriptionText = descriptionDiv.innerText;
 
-          useHead({
-            title: `${property.title} | Tomorrow Luxury Property`,
-            meta: [
-              {
-                name: "description",
-                content: descriptionText,
-              },
-            ],
-          });
+          // useHead({
+          //   title: `${property.title} | Tomorrow Luxury Property`,
+          //   meta: [
+          //     {
+          //       name: "description",
+          //       content: descriptionText,
+          //     },
+          //   ],
+          // });
         }
       }
     },

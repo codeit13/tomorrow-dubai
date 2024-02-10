@@ -18,6 +18,7 @@
     "embla-carousel": "^8.0.0-rc22",
     "embla-carousel-autoplay": "^8.0.0-rc21",
     "embla-carousel-vue": "^8.0.0-rc22",
+    "jsdom": "^24.0.0",
     "nuxt": "^3.10.1",
     "ol": "^8.2.0",
     "ol-contextmenu": "^5.3.0",
