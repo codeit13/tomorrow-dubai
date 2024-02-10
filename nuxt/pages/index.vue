@@ -2,7 +2,7 @@
   <div class="bg-white">
     <div class="relative">
       <img
-        src="../assets/images/hero-bg.png"
+        src="/assets/images/hero-bg.png"
         alt="Luxury Home"
         class="w-full h-auto aspect-[1/1.5] md:aspect-[16/7]"
         style="object-fit: cover"
