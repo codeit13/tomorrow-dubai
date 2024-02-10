@@ -1,8 +1,8 @@
 const fs = require("fs");
 
-const {
-  neighbourhoodProperties,
-} = require("../nuxt/plugins/store/neighbourhood");
+// const {
+//   neighbourhoodProperties,
+// } = require("../nuxt/plugins/store/neighbourhood");
 
 async function generateSiteMap() {
   return new Promise((resolve, reject) => {
@@ -59,16 +59,16 @@ async function generateSiteMap() {
           }
         }
 
-        neighbourhoodProperties.forEach((neighbourhood) => {
-          const slug = neighbourhood?.name
-            .trim()
-            .replaceAll(" ", "-")
-            .toLowerCase();
-          root
-            .ele("url")
-            .ele("loc")
-            .txt(BASE_URL + `/search/${slug}`);
-        });
+        // neighbourhoodProperties.forEach((neighbourhood) => {
+        //   const slug = neighbourhood?.name
+        //     .trim()
+        //     .replaceAll(" ", "-")
+        //     .toLowerCase();
+        //   root
+        //     .ele("url")
+        //     .ele("loc")
+        //     .txt(BASE_URL + `/search/${slug}`);
+        // });
 
         const xmlContent = root.end({ prettyPrint: true });
         // res.set("Content-Type", "text/xml");
