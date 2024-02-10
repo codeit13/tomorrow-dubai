@@ -2,6 +2,12 @@ import { resolve } from "path";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  // app: {
+  //   head: {
+  //     keywords:
+  //       "dubai, property, sale, properties for sale in dubai, luxury, exclusive properties in dubai, tomorrow luxury property",
+  //   },
+  // },
   modules: [
     "@nuxtjs/tailwindcss",
     "shadcn-nuxt",

@@ -1,5 +1,11 @@
 <template>
   <div>
+    <Head>
+      <Meta
+        name="keywords"
+        content="dubai, property, sale, properties for sale in dubai, luxury, exclusive properties in dubai, tomorrow luxury property"
+      />
+    </Head>
     <Header v-if="!['/', '/buy', '/sell'].includes(route.path)" />
     <NuxtPage />
 
