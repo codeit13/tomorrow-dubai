@@ -13,6 +13,7 @@ export default defineNuxtConfig({
     "shadcn-nuxt",
     "@nuxtjs/google-fonts",
     "vue3-carousel-nuxt",
+    "nuxt-gtag",
   ],
   devtools: { enabled: true },
   shadcn: {
@@ -49,4 +50,7 @@ export default defineNuxtConfig({
     },
   },
   ssr: true,
+  gtag: {
+    id: "G-P3VV6128Q9",
+  },
 });

@@ -13,7 +13,7 @@
       <span
         class="text-sm md:text-xl font-extrabold josefin-slab cursor-pointer"
         :style="{ fontSize: '30px' }"
-        >Tomorrow.
+        >tomorrow.
       </span>
       <span
         class="text-sm md:text-xl cursor-pointer josefin-slab"
@@ -21,6 +21,11 @@
       >
         Luxury Property
       </span>
+      <!-- <img
+        class="mix-blend-multiply h-8"
+        src="/assets/images/logo.jpeg"
+        alt=""
+      /> -->
     </div>
 
     <Popover>
