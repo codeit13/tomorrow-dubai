@@ -26,8 +26,6 @@ const cors = require("cors");
 
 const mongo = require("../config/app-mongo.js");
 
-const { generateSiteMap } = require("../service/siteMapGenerator");
-
 const job = new CronJob(
   "0 0 * * *",
   async function () {
@@ -44,15 +42,6 @@ app.use(express.json());
 
 // app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
-
-app.get("/sitemap", async (req, res) => {
-  await generateSiteMap();
-  res.sendFile(path.join(__dirname, "../sitemap.xml"));
-});
-
-app.get("/sitemap.xml", (req, res) => {
-  res.sendFile(path.join(__dirname, "../sitemap.xml"));
-});
 
 // server main website
 // app.use("/", express.static(path.join(__dirname, "../nuxt/.output/public")));
