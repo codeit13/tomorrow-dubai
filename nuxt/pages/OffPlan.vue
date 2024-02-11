@@ -68,16 +68,11 @@ export default {
     return {};
   },
   setup() {
-    useHead({
+    useSeoMeta({
       title:
         "Exclusive Off-Plan Investment Opportunities in Dubai's Thriving Real Estate Market",
-      meta: [
-        {
-          name: "description",
-          content:
-            "At Tomorrow Luxury Property, you will receive comprehensive information on the latest off-plan projects and developments in Palm Jebel Ali, Palm Jumeirah, Dubai Island, and Downtown Dubai, UAE",
-        },
-      ],
+      description:
+        "At Tomorrow Luxury Property, you will receive comprehensive information on the latest off-plan projects and developments in Palm Jebel Ali, Palm Jumeirah, Dubai Island, and Downtown Dubai, UAE",
     });
   },
   computed: {

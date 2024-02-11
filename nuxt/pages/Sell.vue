@@ -114,15 +114,10 @@ export default {
     },
   },
   setup() {
-    useHead({
+    useSeoMeta({
       title: "Sell Your Home With Tomorrow Luxury Property",
-      meta: [
-        {
-          name: "description",
-          content:
-            "Whether you're preparing to sell or seeking guidance, we offer data-driven insights and expert advice tailored to your local area.",
-        },
-      ],
+      description:
+        "Whether you're preparing to sell or seeking guidance, we offer data-driven insights and expert advice tailored to your local area.",
     });
   },
   methods: {

@@ -10,7 +10,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   gtag("js", new Date());
   gtag("config", gtagId);
 
-  useHead({
+  useSeoMeta({
     script: [
       {
         src: `https://www.googletagmanager.com/gtag/js?id=${gtagId}`,

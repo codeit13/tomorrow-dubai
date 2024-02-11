@@ -68,14 +68,9 @@ export default {
     ...mapState(["agents"]),
   },
   setup() {
-    useHead({
+    useSeoMeta({
       title: "Agent | Tomorrow Luxury Property",
-      meta: [
-        {
-          name: "description",
-          content: "Contact us for your dubai property agent requirements.",
-        },
-      ],
+      description: "Contact us for your dubai property agent requirements.",
     });
   },
   async mounted() {

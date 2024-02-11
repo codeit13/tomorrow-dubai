@@ -657,16 +657,6 @@ export default {
           const descriptionDiv = document.createElement("div");
           descriptionDiv.innerHTML = this.description;
           const descriptionText = descriptionDiv.innerText;
-
-          // useHead({
-          //   title: `${property.title} | Tomorrow Luxury Property`,
-          //   meta: [
-          //     {
-          //       name: "description",
-          //       content: descriptionText,
-          //     },
-          //   ],
-          // });
         }
       }
     },

@@ -365,7 +365,6 @@
 <script>
 import Header from "@/components/Header.vue";
 import { mapState } from "vuex";
-import { useHead } from "@unhead/vue";
 
 import { cn } from "@/lib/utils";
 
