@@ -447,12 +447,12 @@ export default {
       });
 
       if (neighbourhoodProperty) {
-        useSeoMeta({
+        useServerSeoMeta({
           title: `Properties for sale in ${neighbourhoodProperty.title} | Tomorrow Luxury Property`,
           description: neighbourhoodProperty.description,
         });
       } else {
-        useSeoMeta({
+        useServerSeoMeta({
           title: `Properties for sale in ${searchText.trim()} | Tomorrow Luxury Property`,
           description:
             "Discover Premium Villas and Residences for Sale in Dubai prestigeous Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
