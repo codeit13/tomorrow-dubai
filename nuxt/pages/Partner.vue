@@ -209,9 +209,10 @@ export default {
   },
   setup() {
     useSeoMeta({
-      title: "Dubai Real Estate Agent Partners",
+      title:
+        "Join the Future of Real Estate - Partner with Tomorrow Luxury Property",
       description:
-        "Experience the industry's first-ever contact-to-close platform and transform your business with the nation's #1 residential brokerage.",
+        "Join Tomorrow Luxury Property and pioneer a new era in real estate. Our vision is simple: empower your growth and redefine partnership. Opt for our Full-Time offer with benefits like high commission splits and comprehensive support, or the Remote/Referral route for flexible, commitment-free earnings. Let's build success together.",
     });
   },
   data() {
@@ -232,29 +233,8 @@ export default {
   },
   mounted() {
     this.salesVolume = this.salesVolumeOptions[0];
-
-    this.addMetaTags({
-      title:
-        "Join the Future of Real Estate - Partner with Tomorrow Luxury Property",
-      description:
-        "Join Tomorrow Luxury Property and pioneer a new era in real estate. Our vision is simple: empower your growth and redefine partnership. Opt for our Full-Time offer with benefits like high commission splits and comprehensive support, or the Remote/Referral route for flexible, commitment-free earnings. Let's build success together.",
-    });
   },
   methods: {
-    addMetaTags({ title, description }) {
-      if (!this.isMetaTagsAdded) {
-        document.title = title;
-        const titleMetaTag = document.createElement("meta");
-        titleMetaTag.setAttribute("name", "title");
-        titleMetaTag.setAttribute("content", title);
-        document.querySelector("head").appendChild(titleMetaTag);
-
-        const descrMetaTag = document.createElement("meta");
-        descrMetaTag.setAttribute("name", "description");
-        descrMetaTag.setAttribute("content", description);
-        document.querySelector("head").appendChild(descrMetaTag);
-      }
-    },
     async submitForm() {
       if (this.fullName && this.email && this.phone && this.salesVolume) {
         const resp = await this.$store.dispatch("joinAsAgent", {

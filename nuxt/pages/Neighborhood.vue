@@ -45,7 +45,8 @@ export default {
   setup() {
     useSeoMeta({
       title: "Neighborhoods | Tomorrow Luxury Property",
-      description: "Explore properties at amazing neighborhoods in Dubai.",
+      description:
+        "Find your luxury haven in Dubai's most sought-after areas with tomorrow luxury property. Palm Jumeirah's exclusive waterfront, Palm Jebel Ali's pioneering spirit, Jumeira Bay's island luxury, and Downtown Dubai's urban prestige await. Choose your dream home where comfort meets elegance.",
     });
   },
   methods: {

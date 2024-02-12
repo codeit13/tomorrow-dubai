@@ -1,4 +1,4 @@
-import { watch, reactive, hasInjectionContext, inject, version, ref, watchEffect, getCurrentInstance, defineComponent, useSSRContext, provide, shallowReactive, h, Suspense, nextTick, Transition, unref, computed, withCtx, mergeProps, renderSlot, createVNode, openBlock, createBlock, Fragment, renderList, toDisplayString, createTextVNode, createApp, effectScope, markRaw, defineAsyncComponent, onErrorCaptured, onServerPrefetch, resolveDynamicComponent, toRef, shallowRef, isReadonly, resolveComponent, isRef, isShallow, isReactive, toRaw, isVNode, createCommentVNode } from 'vue';
+import { watch, reactive, hasInjectionContext, inject, version, defineComponent, useSSRContext, provide, shallowReactive, h, ref, Suspense, nextTick, Transition, unref, watchEffect, getCurrentInstance, computed, withCtx, mergeProps, renderSlot, createVNode, openBlock, createBlock, Fragment, renderList, toDisplayString, createTextVNode, createApp, effectScope, markRaw, defineAsyncComponent, onErrorCaptured, onServerPrefetch, resolveDynamicComponent, toRef, shallowRef, isReadonly, resolveComponent, isRef, isShallow, isReactive, toRaw, isVNode, createCommentVNode } from 'vue';
 import { f as useRuntimeConfig$1, $ as $fetch, i as createError$1, m as defu, n as createHooks, o as hasProtocol, j as joinURL, p as parseURL, q as parseQuery, w as withQuery, r as isScriptProtocol, t as sanitizeStatusCode, v as withTrailingSlash, x as withoutTrailingSlash } from '../nitro/node-server.mjs';
 import { getActiveHead } from 'unhead';
 import { defineHeadPlugin, composableNames, unpackMeta } from '@unhead/shared';
@@ -1711,7 +1711,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./_nuxt/_name_-erLWDJbV.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/_name_-j9bQiASR.mjs').then((m) => m.default || m)
   },
   {
     name: "Agents",
@@ -1719,7 +1719,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./_nuxt/Agents-iESPgNVQ.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/Agents-a6BdvlBM.mjs').then((m) => m.default || m)
   },
   {
     name: "Blog-slug",
@@ -1727,7 +1727,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./_nuxt/_slug_-X-Kg6ZoS.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/_slug_-qfvWAoAh.mjs').then((m) => m.default || m)
   },
   {
     name: "Blogs",
@@ -1735,7 +1735,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./_nuxt/Blogs-oc64Yozi.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/Blogs-ZqrgXuqX.mjs').then((m) => m.default || m)
   },
   {
     name: "Contact",
@@ -1743,7 +1743,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./_nuxt/Contact-8MYehtx2.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/Contact-CHwsNoAh.mjs').then((m) => m.default || m)
   },
   {
     name: "HouseWorth",
@@ -1751,7 +1751,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./_nuxt/HouseWorth-_1sVnt-O.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/HouseWorth-KKfmLrHF.mjs').then((m) => m.default || m)
   },
   {
     name: "index",
@@ -1759,7 +1759,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./_nuxt/index-S7PdRfgJ.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/index-_c0l8cez.mjs').then((m) => m.default || m)
   },
   {
     name: "Listing-address-propertyName-listingName",
@@ -1767,7 +1767,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./_nuxt/_listingName_-ToFYIp5u.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/_listingName_-2mfBhRj7.mjs').then((m) => m.default || m)
   },
   {
     name: "Neighborhood",
@@ -1775,7 +1775,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./_nuxt/Neighborhood-lcsLn0uf.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/Neighborhood-96CMAIAy.mjs').then((m) => m.default || m)
   },
   {
     name: "OffPlan",
@@ -1783,7 +1783,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./_nuxt/OffPlan-G4JdNhp9.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/OffPlan-arKFb7uN.mjs').then((m) => m.default || m)
   },
   {
     name: "Partner",
@@ -1791,7 +1791,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./_nuxt/Partner-jB4zENg2.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/Partner-tTMvJC0w.mjs').then((m) => m.default || m)
   },
   {
     name: "Search-query",
@@ -1799,7 +1799,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./_nuxt/_query_-5_9nreYr.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/_query_-Arh21Uvv.mjs').then((m) => m.default || m)
   },
   {
     name: "Sell",
@@ -1807,7 +1807,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./_nuxt/Sell-_3MFqyq1.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/Sell-3B6oabtG.mjs').then((m) => m.default || m)
   },
   {
     name: "Buy",
@@ -1815,7 +1815,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./_nuxt/index-S7PdRfgJ.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/index-_c0l8cez.mjs').then((m) => m.default || m)
   }
 ];
 const _wrapIf = (component, props, slots) => {
@@ -3090,7 +3090,7 @@ function _sfc_ssrRender$7(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
         "/sell"
       ].includes($data.route.path)
     }]
-  }, _attrs))}><div><span class="text-sm md:text-xl font-extrabold josefin-slab cursor-pointer" style="${ssrRenderStyle({ fontSize: "30px" })}">Tomorrow. </span><span class="text-sm md:text-xl cursor-pointer josefin-slab" style="${ssrRenderStyle({ fontSize: "16px" })}"> Luxury Property </span></div>`);
+  }, _attrs))}><div><span class="text-sm md:text-xl font-extrabold josefin-slab cursor-pointer" style="${ssrRenderStyle({ fontSize: "30px" })}">tomorrow. </span><span class="text-sm md:text-xl cursor-pointer josefin-slab" style="${ssrRenderStyle({ fontSize: "16px" })}"> Luxury Property </span></div>`);
   _push(ssrRenderComponent(_component_Popover, null, {
     default: withCtx((_, _push2, _parent2, _scopeId) => {
       if (_push2) {
@@ -4207,17 +4207,16 @@ const server = /*#__PURE__*/Object.freeze({
   __proto__: null,
   _: _export_sfc,
   a: useRoute,
-  b: useSeoMeta,
+  b: cn,
   c: createError,
-  d: cn,
+  d: __nuxt_component_0,
   default: entry$1,
-  e: __nuxt_component_0,
-  f: useServerSeoMeta,
-  g: asyncDataDefaults,
-  h: useNuxtApp,
+  e: useServerSeoMeta,
+  f: asyncDataDefaults,
+  g: useNuxtApp,
   n: neighbourhoodProperties,
-  u: useHead
+  u: useSeoMeta
 });
 
-export { _export_sfc as _, useRoute as a, useSeoMeta as b, cn as c, __nuxt_component_0 as d, useServerSeoMeta as e, asyncDataDefaults as f, useNuxtApp as g, createError as h, mapState as m, neighbourhoodProperties as n, server as s, useHead as u };
+export { _export_sfc as _, useRoute as a, __nuxt_component_0 as b, cn as c, useServerSeoMeta as d, asyncDataDefaults as e, useNuxtApp as f, createError as g, mapState as m, neighbourhoodProperties as n, server as s, useSeoMeta as u };
 //# sourceMappingURL=server.mjs.map

@@ -11,9 +11,9 @@
             </span>
           </a>
           <div class="flex flex-col space-y-3 mt-2">
-            <p>Contact us</p>
+            <p>Downtown, Dubai UAE</p>
             <p>Phone: +971 581677220</p>
-            <p>Email: ceo@tomorrowdubai.com</p>
+            <p>Email: ceo@tomorrowluxuryproperty.com</p>
             <div class="flex space-x-8 !mt-[14px]">
               <component
                 :is="handle.icon"
@@ -125,8 +125,8 @@ export default {
           route: "/about",
         },
         {
-          name: "Press",
-          route: "/press",
+          name: "Sitemap",
+          route: "/sitemap",
         },
         {
           name: "Careers",

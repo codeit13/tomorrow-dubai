@@ -45,22 +45,6 @@
 <script>
 import { mapState } from "vuex";
 export default {
-  head: {
-    title:
-      "News and Insights - Tomorrow Luxury Property Real Estate in Dubai UAE",
-    meta: [
-      {
-        name: "title",
-        content:
-          "News and Insights - Tomorrow Luxury Property Real Estate in Dubai UAE",
-      },
-      {
-        name: "description",
-        content:
-          "Learn about with Tomorrow Luxury Property the recent updates in Dubai property investments by visiting our news and insights page",
-      },
-    ],
-  },
   data() {
     return {
       // blogs
@@ -73,7 +57,7 @@ export default {
     useAsyncData(() => {
       useSeoMeta({
         title: `News and Insights - Tomorrow Luxury Property Real Estate in Dubai UAE`,
-        description: `Learn about with Tomorrow Luxury Property the recent updates in Dubai property investments by visiting our news and insights page`,
+        description: `Stay updated on the latest in Dubai property investments with Tomorrow Luxury Property. Visit our News and Insights page for more information.`,
       });
     });
   },

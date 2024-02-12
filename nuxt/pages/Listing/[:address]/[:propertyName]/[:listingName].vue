@@ -40,7 +40,7 @@
           <p class="text-sm md:text-lg font-bold">{{ featureText }}</p>
         </div>
         <div v-if="startingPrice" class="md:text-right">
-          <p class="text-lg text-gray-700">ASKING PRICE</p>
+          <!-- <p class="text-lg text-gray-700">ASKING PRICE</p> -->
           <p class="text-3xl font-semibold">
             AED {{ startingPrice?.toLocaleString("en-US") }}
           </p>
@@ -244,7 +244,7 @@
       <div v-if="coordinates && coordinates.length > 0">
         <div class="mb-8 mt-28">
           <h2 class="text-xl md:text-2xl font-semibold mb-1.5">Location Map</h2>
-          <span class="text-sm" v-if="address">{{ address }}</span>
+          <span class="text-lg" v-if="address">{{ address }}</span>
         </div>
 
         <!-- <div class="mapouter">
@@ -299,7 +299,7 @@
       </div>
 
       <div class="mt-16">
-        <h2 class="text-3xl font-semibold mt-32 mb-20">Similar Properties</h2>
+        <h2 class="text-3xl font-semibold mt-32 mb-12">Similar Properties</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div
             @click="goToProperty(property)"

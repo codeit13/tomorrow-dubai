@@ -1,5 +1,5 @@
 import { defineComponent, onErrorCaptured, createVNode } from 'vue';
-import { h as createError } from '../server.mjs';
+import { g as createError } from '../server.mjs';
 import '../../nitro/node-server.mjs';
 import 'node:http';
 import 'node:https';
