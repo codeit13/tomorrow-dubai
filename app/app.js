@@ -8,7 +8,7 @@ const passport = require("../config/passport");
 
 const app = express();
 
-const { CronJob } = require("cron");
+// const { CronJob } = require("cron");
 
 const categoryRoutes = require("../service/categoryService");
 const listingRoutes = require("../service/listingService");
@@ -26,15 +26,15 @@ const cors = require("cors");
 
 const mongo = require("../config/app-mongo.js");
 
-const job = new CronJob(
-  "0 0 * * *",
-  async function () {
-    await generateSiteMap();
-  }, // onTick
-  null, // onComplete
-  true, // start
-  "America/Los_Angeles" // timeZone
-);
+// const job = new CronJob(
+//   "0 0 * * *",
+//   async function () {
+//     await generateSiteMap();
+//   }, // onTick
+//   null, // onComplete
+//   true, // start
+//   "America/Los_Angeles" // timeZone
+// );
 
 mongo.connect();
 
