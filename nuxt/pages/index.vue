@@ -336,21 +336,6 @@ export default {
   components: {
     // Header,
   },
-  head: {
-    title: "Exclusive Dubai Luxury Real Estate - Tomorrow Luxury Property",
-    meta: [
-      {
-        name: "title",
-        content:
-          "Exclusive Dubai Luxury Real Estate - Tomorrow Luxury Property",
-      },
-      {
-        name: "description",
-        content:
-          "Enhance your property journey with Tomorrow Luxury Property. Collaborate with our expert real estate agents to discover the perfect luxury home or apartment for you.",
-      },
-    ],
-  },
   data() {
     return {
       open: false,
