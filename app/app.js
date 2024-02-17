@@ -6,6 +6,8 @@ const path = require("path");
 const session = require("express-session");
 const passport = require("../config/passport");
 
+const authMiddleware = require("../middleware/auth");
+
 const app = express();
 
 // const { CronJob } = require("cron");
@@ -68,6 +70,7 @@ app.use(
     secret: "sellanyhome",
     resave: false,
     saveUninitialized: false,
+    cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 }, // 7 days
   })
 );
 app.use(passport.initialize());
@@ -89,6 +92,8 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use("/api/checkLogin", authMiddleware);
+
 app.use("/api/categories", categoryRoutes);
 app.use("/api/listing", listingRoutes);
 app.use("/api/property", propertyRoutes);
@@ -103,9 +108,9 @@ app.use("/api/user", userRoutes);
 app.use("/api/blogs", blogRoutes);
 
 // This middleware catches all other routes and returns a 404 error
-app.use((req, res, next) => {
-  const indexPath = path.join(__dirname, "../frontend/dist", "index.html");
-  res.status(200).sendFile(indexPath);
-});
+// app.use((req, res, next) => {
+//   const indexPath = path.join(__dirname, "../frontend/dist", "index.html");
+//   res.status(200).sendFile(indexPath);
+// });
 
 module.exports = app;
