@@ -113,7 +113,7 @@
         </div>
       </div>
     </div>
-    <div class="px-6 md:px-28 py-24 md:py-40">
+    <div class="px-6 py-24 md:px-28 md:pb-40 md:pt-38">
       <div class="flex justify-between items-baseline mb-12">
         <h2 class="text-2xl md:text-4xl font-extrabold josefin-slab">
           Neighborhood For You

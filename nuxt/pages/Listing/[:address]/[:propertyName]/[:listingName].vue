@@ -350,75 +350,9 @@
   </div>
 </template>
 
-<script setup>
-const route = useRoute();
+<!-- <script setup>
 
-const routePropertyName = route.params.propertyName;
-
-const routeListingName = route.params.listingName;
-
-const routeAddress = route.params.address;
-
-try {
-  $fetch(
-    `https://tomorrowluxuryproperty.com/api/search/${routeAddress}/${routePropertyName}/${routeListingName}`,
-    {
-      server: true,
-      immediate: true,
-    }
-  ).then((res) => {
-    console.log(res);
-
-    const listing = res.listing;
-
-    function extractInnerText(htmlString) {
-      // Match everything between HTML tags
-      const regex = /<[^>]*>([^<]+)<[^>]*>/g;
-
-      // Store the extracted inner text
-      const innerTextArray = [];
-      let match;
-
-      // Loop through matches and extract inner text
-      while ((match = regex.exec(htmlString)) !== null) {
-        innerTextArray.push(match[1].trim());
-      }
-
-      // Join the inner text array to form a single string
-      const innerText = innerTextArray.join(" ");
-
-      return innerText;
-    }
-
-    if (listing) {
-      const descriptionText = extractInnerText(listing.description);
-
-      const capitalizeFirstLetterOfEveryWord = (str) => {
-        return str
-          .split(" ")
-          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-          .join(" ");
-      };
-
-      useSeoMeta({
-        title: `${capitalizeFirstLetterOfEveryWord(
-          listing.title
-        )} | Tomorrow Luxury Property`,
-        meta: [
-          {
-            name: "description",
-            content: descriptionText,
-          },
-        ],
-      });
-    } else {
-      console.log("No listing found");
-    }
-  });
-} catch (e) {
-  console.log(e);
-}
-</script>
+</script> -->
 
 <script>
 import { fromLonLat } from "ol/proj";
@@ -466,6 +400,75 @@ export default {
       showMoreBtn: true,
       isMetaTagsAdded: false,
     };
+  },
+  setup() {
+    const route = useRoute();
+
+    const routePropertyName = route.params.propertyName;
+
+    const routeListingName = route.params.listingName;
+
+    const routeAddress = route.params.address;
+
+    try {
+      $fetch(
+        `https://tomorrowluxuryproperty.com/api/search/${routeAddress}/${routePropertyName}/${routeListingName}`,
+        {
+          server: true,
+          immediate: true,
+        }
+      ).then((res) => {
+        console.log(res);
+
+        const listing = res.listing;
+
+        function extractInnerText(htmlString) {
+          // Match everything between HTML tags
+          const regex = /<[^>]*>([^<]+)<[^>]*>/g;
+
+          // Store the extracted inner text
+          const innerTextArray = [];
+          let match;
+
+          // Loop through matches and extract inner text
+          while ((match = regex.exec(htmlString)) !== null) {
+            innerTextArray.push(match[1].trim());
+          }
+
+          // Join the inner text array to form a single string
+          const innerText = innerTextArray.join(" ");
+
+          return innerText;
+        }
+
+        if (listing) {
+          const descriptionText = extractInnerText(listing.description);
+
+          const capitalizeFirstLetterOfEveryWord = (str) => {
+            return str
+              .split(" ")
+              .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+              .join(" ");
+          };
+
+          useSeoMeta({
+            title: `${capitalizeFirstLetterOfEveryWord(
+              listing.title
+            )} | Tomorrow Luxury Property`,
+            meta: [
+              {
+                name: "description",
+                content: descriptionText,
+              },
+            ],
+          });
+        } else {
+          console.log("No listing found");
+        }
+      });
+    } catch (e) {
+      console.log(e);
+    }
   },
   computed: {
     ...mapState(["listings"]),

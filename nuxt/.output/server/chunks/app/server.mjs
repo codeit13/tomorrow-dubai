@@ -1735,7 +1735,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./_nuxt/Blogs-ZqrgXuqX.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/Blogs-m0u9isPG.mjs').then((m) => m.default || m)
   },
   {
     name: "Contact",
@@ -1759,7 +1759,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./_nuxt/index-_c0l8cez.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/index-er47Xdze.mjs').then((m) => m.default || m)
   },
   {
     name: "Listing-address-propertyName-listingName",
@@ -1767,7 +1767,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./_nuxt/_listingName_-2mfBhRj7.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/_listingName_-mz0aKb_z.mjs').then((m) => m.default || m)
   },
   {
     name: "Neighborhood",
@@ -1775,7 +1775,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./_nuxt/Neighborhood-96CMAIAy.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/Neighborhood-V8o5yzP5.mjs').then((m) => m.default || m)
   },
   {
     name: "OffPlan",
@@ -1791,7 +1791,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./_nuxt/Partner-tTMvJC0w.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/Partner-Rrwrc8jx.mjs').then((m) => m.default || m)
   },
   {
     name: "Search-query",
@@ -1815,7 +1815,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./_nuxt/index-_c0l8cez.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/index-er47Xdze.mjs').then((m) => m.default || m)
   }
 ];
 const _wrapIf = (component, props, slots) => {
@@ -3496,8 +3496,8 @@ const _sfc_main$a = {
           route: "/about"
         },
         {
-          name: "Press",
-          route: "/press"
+          name: "Sitemap",
+          route: "/sitemap"
         },
         {
           name: "Careers",
@@ -3521,7 +3521,7 @@ const _sfc_main$a = {
   }
 };
 function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  _push(`<footer${ssrRenderAttrs(mergeProps({ class: "bg-black text-white mt-40" }, _attrs))}><div class="mx-auto w-full p-4 py-6 md:px-24 lg:py-8"><div class="md:flex md:justify-between"><div class="mb-6 md:mb-0"><a href="/" class="flex items-center mb-4"><span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"> Tomorrow Luxury Property </span></a><div class="flex flex-col space-y-3 mt-2"><p>Contact us</p><p>Phone: +971 581677220</p><p>Email: ceo@tomorrowdubai.com</p><div class="flex space-x-8 !mt-[14px]"><!--[-->`);
+  _push(`<footer${ssrRenderAttrs(mergeProps({ class: "bg-black text-white mt-40" }, _attrs))}><div class="mx-auto w-full p-4 py-6 md:px-24 lg:py-8"><div class="md:flex md:justify-between"><div class="mb-6 md:mb-0"><a href="/" class="flex items-center mb-4"><span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"> Tomorrow Luxury Property </span></a><div class="flex flex-col space-y-3 mt-2"><p>Downtown, Dubai UAE</p><p>Phone: +971 581677220</p><p>Email: ceo@tomorrowluxuryproperty.com</p><div class="flex space-x-8 !mt-[14px]"><!--[-->`);
   ssrRenderList($data.socialMediaHandles, (handle, i) => {
     ssrRenderVNode(_push, createVNode(resolveDynamicComponent(handle.icon), {
       class: "cursor-pointer fill-white",
