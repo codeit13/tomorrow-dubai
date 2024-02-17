@@ -275,11 +275,13 @@ export default {
   methods: {
     async login() {
       if (this.email && this.password) {
-        console.log("d");
-        await this.$store.dispatch("login", {
+        const data = await this.$store.dispatch("login", {
           email: this.email,
           password: this.password,
         });
+        if (data.user) {
+          this.$router.push("/portal");
+        }
       } else {
         this.$store.commit("SET_TOASTER_MSG", {
           type: "error",

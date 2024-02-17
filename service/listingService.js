@@ -4,81 +4,91 @@ const agentDB = require("../model/agent");
 const { sendEmail } = require("../config/email");
 const listingSearchRouter = require("./listingSearchService");
 
+const passport = require("passport");
+
 /**
  * Creates a new listing.
  */
-listingRouter.post("", async (req, res, next) => {
-  console.log("Inside POST:", req.body);
-  try {
-    const listing = new listingDB({
-      ...req.body,
-      isOffPlan: req.body.isOffPlan,
-      contactName: req.body.name,
-      contactEmail: req.body.email,
-      contactPhone: req.body.phone,
+listingRouter.post(
+  "",
+  passport.authenticate("session"),
+  async (req, res, next) => {
+    console.log("Inside POST:", req.body);
+    try {
+      const listing = new listingDB({
+        ...req.body,
+        isOffPlan: req.body.isOffPlan,
+        contactName: req.body.name,
+        contactEmail: req.body.email,
+        contactPhone: req.body.phone,
 
-      sellDuration: req.body.duration,
+        sellDuration: req.body.duration,
 
-      agent: req.body.agent,
+        agent: req.body.agent,
 
-      location: req.body.location,
+        location: req.body.location,
 
-      status: req.body.status || "DRAFT",
-      createdAt: Date.now(),
-      updatedAt: Date.now(),
-    });
+        status: req.body.status || "DRAFT",
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      });
 
-    listing.save();
+      listing.save();
 
-    await sendEmail(listing);
+      await sendEmail(listing);
 
-    res.status(201).json({
-      message: "listing data added successfully",
-      listing: listing,
-    });
-  } catch (error) {
-    console.error("Error occurred while creating a listing", error);
-    res
-      .status(500)
-      .json({ error: "An error occurred while creating a listing" });
-  }
-});
-
-listingRouter.put("/:id", async (req, res, next) => {
-  console.log("Inside PUT", req.params.id, "body", req.body);
-  try {
-    const listingId = req.params.id;
-    const updates = req.body;
-
-    // Extract latitude and longitude from request body if available
-    const latitude = req.body.latitude;
-    const longitude = req.body.longitude;
-
-    // If latitude and longitude are provided, update the location field
-    if (latitude !== undefined && longitude !== undefined) {
-      updates.location = {
-        type: "Point",
-        coordinates: [longitude, latitude],
-      };
+      res.status(201).json({
+        message: "listing data added successfully",
+        listing: listing,
+      });
+    } catch (error) {
+      console.error("Error occurred while creating a listing", error);
+      res
+        .status(500)
+        .json({ error: "An error occurred while creating a listing" });
     }
-
-    const updatedListing = await listingDB.findByIdAndUpdate(
-      listingId,
-      updates,
-      { new: true } // To get the updated document as the result
-    );
-
-    res.status(200).json({
-      message: "Listing updated successfully",
-      listing: updatedListing,
-    });
-  } catch (error) {
-    console.error("Error updating listing:", error);
-    res
-      .status(500)
-      .json({ error: "An error occurred while updating the listing" });
   }
-});
+);
+
+listingRouter.put(
+  "/:id",
+  passport.authenticate("session"),
+  async (req, res, next) => {
+    console.log("Inside PUT", req.params.id, "body", req.body);
+    try {
+      const listingId = req.params.id;
+      const updates = req.body;
+
+      // Extract latitude and longitude from request body if available
+      const latitude = req.body.latitude;
+      const longitude = req.body.longitude;
+
+      // If latitude and longitude are provided, update the location field
+      if (latitude !== undefined && longitude !== undefined) {
+        updates.location = {
+          type: "Point",
+          coordinates: [longitude, latitude],
+        };
+      }
+
+      const updatedListing = await listingDB.findByIdAndUpdate(
+        listingId,
+        updates,
+        { new: true } // To get the updated document as the result
+      );
+
+      res.status(200).json({
+        message: "Listing updated successfully",
+        listing: updatedListing,
+      });
+    } catch (error) {
+      console.error("Error updating listing:", error);
+      res
+        .status(500)
+        .json({ error: "An error occurred while updating the listing" });
+    }
+  }
+);
 
 const processQueryParams = (req, res, next) => {
   // Process and validate query parameters here
@@ -125,19 +135,23 @@ listingRouter.get("/:id", async (req, res, next) => {
   }
 });
 
-listingRouter.delete("/:id", async (req, res, next) => {
-  console.log("Deleting record::", req.params.id);
-  try {
-    const response = await listingDB.deleteOne({ _id: req.params.id });
-    res.status(200).json({
-      message: "Id deleted successfully!",
-      listing: response,
-    });
-  } catch (error) {
-    console.error("Error deleting listing by id:", error);
-    res
-      .status(500)
-      .json({ error: "An error occurred while deleting the listing by id" });
+listingRouter.delete(
+  "/:id",
+  passport.authenticate("session"),
+  async (req, res, next) => {
+    console.log("Deleting record::", req.params.id);
+    try {
+      const response = await listingDB.deleteOne({ _id: req.params.id });
+      res.status(200).json({
+        message: "Id deleted successfully!",
+        listing: response,
+      });
+    } catch (error) {
+      console.error("Error deleting listing by id:", error);
+      res
+        .status(500)
+        .json({ error: "An error occurred while deleting the listing by id" });
+    }
   }
-});
+);
 module.exports = listingRouter;

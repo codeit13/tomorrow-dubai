@@ -70,7 +70,7 @@ app.use(
     secret: "sellanyhome",
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 }, // 7 days
+    cookie: { maxAge: 7 * 24 * 60 * 60 * 1000, secure: true }, // 7 days
   })
 );
 app.use(passport.initialize());
@@ -92,7 +92,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/api/checkLogin", authMiddleware);
+app.use("/api/checkLogin", passport.authenticate("session"));
 
 app.use("/api/categories", categoryRoutes);
 app.use("/api/listing", listingRoutes);

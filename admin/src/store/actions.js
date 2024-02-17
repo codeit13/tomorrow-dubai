@@ -3,17 +3,29 @@ import axios from "axios";
 import { BASE_URL } from "@/utils/constants";
 
 export const actions = {
+  async checkLogin({ commit }) {
+    commit("SET_IS_LOADING", true);
+    try {
+      const { data } = await axios.get(`${BASE_URL}/checkLogin`);
+      return data;
+    } catch (e) {
+      console.log(e);
+      return { status: false };
+    } finally {
+      commit("SET_IS_LOADING", false);
+    }
+  },
   async login({ commit }, payload) {
     commit("SET_IS_LOADING", true);
     try {
       const { data } = await axios.post(`${BASE_URL}/login`, payload);
-      if (data.token) {
-        commit("SET_TOKEN", data.token);
+      if (data.user) {
         commit("SET_TOASTER_MSG", {
           type: "success",
           message: "Login successful",
         });
       }
+      return data;
     } catch (e) {
       console.log(e);
       commit("SET_TOASTER_MSG", { type: "error", message: e.message });

@@ -1,3 +1,4 @@
+import store from "@/store";
 import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
@@ -48,6 +49,21 @@ const router = createRouter({
       return { top: 0 };
     }
   },
+});
+
+router.beforeEach(async (to, from) => {
+  console.log(to, from);
+  const data = await store.dispatch("checkLogin");
+
+  if (
+    // make sure the user is authenticated
+    !data.status &&
+    // ❗️ Avoid an infinite redirect
+    to.name !== "Login"
+  ) {
+    // redirect the user to the login page
+    return { name: "Login" };
+  }
 });
 
 export default router;
