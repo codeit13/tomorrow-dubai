@@ -93,7 +93,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/checkLogin", passport.authenticate("session"), (req, res) => {
-  console.log(re.user);
+  console.log(req.user);
   // if (req.user) {
   res.send({
     status: true,
