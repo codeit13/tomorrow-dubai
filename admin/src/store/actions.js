@@ -3,6 +3,24 @@ import axios from "axios";
 import { BASE_URL } from "@/utils/constants";
 
 export const actions = {
+  async login({ commit }, payload) {
+    commit("SET_IS_LOADING", true);
+    try {
+      const { data } = await axios.post(`${BASE_URL}/login`, payload);
+      if (data.token) {
+        commit("SET_TOKEN", data.token);
+        commit("SET_TOASTER_MSG", {
+          type: "success",
+          message: "Login successful",
+        });
+      }
+    } catch (e) {
+      console.log(e);
+      commit("SET_TOASTER_MSG", { type: "error", message: e.message });
+    } finally {
+      commit("SET_IS_LOADING", false);
+    }
+  },
   async fetchProperties({ commit }) {
     commit("SET_IS_LOADING", true);
     try {

@@ -1,5 +1,6 @@
 <template>
   <header
+    v-if="!$route.path.includes('/login')"
     class="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none border-b-[1px] border-[#0d0d0d] dark:border-[#a0a0ff]"
   >
     <div
