@@ -92,7 +92,18 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/api/checkLogin", passport.authenticate("session"));
+app.use("/api/checkLogin", passport.authenticate("session"), (req, res) => {
+  console.log(re.user);
+  // if (req.user) {
+  res.send({
+    status: true,
+  });
+  // } else {
+  //   res.send({
+  //     status: false,
+  //   });
+  // }
+});
 
 app.use("/api/categories", categoryRoutes);
 app.use("/api/listing", listingRoutes);
