@@ -106,9 +106,10 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/checkLogin", (req, res) => {
-  console.log(req.isAuthenticated);
-  console.log(req.isAuthenticated());
-  console.log(req.session);
+  // console.log(req.isAuthenticated);
+  // console.log(req.isAuthenticated());
+  // console.log(req.session);
+  req.isAuthenticated();
   if (req.isAuthenticated) {
     res.send({
       status: req.isAuthenticated,
@@ -130,7 +131,7 @@ app.use("/api/neighbour", neighbourRoutes);
 app.use("/api/exclusive", exclusiveRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/agent", agentRoutes);
-app.use("/api/logout", logoutRoutes);
+// app.use("/api/logout", logoutRoutes);
 app.use("/api/login", loginRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/blogs", blogRoutes);
