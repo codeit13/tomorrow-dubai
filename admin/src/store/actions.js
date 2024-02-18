@@ -7,6 +7,8 @@ export const actions = {
     commit("SET_IS_LOADING", true);
     try {
       const { data } = await axios.get(`${BASE_URL}/checkLogin`);
+      console.log("setting check login status data", data);
+      commit("SET_CHECK_LOGIN_STATUS", data);
       return data;
     } catch (e) {
       console.log(e);
@@ -19,6 +21,7 @@ export const actions = {
     commit("SET_IS_LOADING", true);
     try {
       const { data } = await axios.post(`${BASE_URL}/login`, payload);
+
       if (data.user) {
         commit("SET_TOASTER_MSG", {
           type: "success",

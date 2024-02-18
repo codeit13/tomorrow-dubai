@@ -51,18 +51,22 @@ const router = createRouter({
   },
 });
 
-router.beforeEach(async (to, from) => {
-  console.log(to, from);
-  const data = await store.dispatch("checkLogin");
+router.beforeEach(async (to) => {
+  console.log(store.getters.getCheckLoginStatus);
+  if (store.getters.getCheckLoginStatus === null) {
+    const data = await store.dispatch("checkLogin");
 
-  if (
-    // make sure the user is authenticated
-    !data.status &&
-    // ❗️ Avoid an infinite redirect
-    to.name !== "Login"
-  ) {
-    // redirect the user to the login page
-    return { name: "Login" };
+    if (
+      // make sure the user is authenticated
+      !data.status &&
+      // ❗️ Avoid an infinite redirect
+      to.name !== "Login"
+    ) {
+      // redirect the user to the login page
+      return { name: "Login" };
+    } else {
+      return { name: "Dashboard" };
+    }
   }
 });
 

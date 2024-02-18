@@ -32,7 +32,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(["toasterData"]),
+    ...mapState(["toasterData", "checkLoginStatus"]),
   },
 
   watch: {

@@ -4,7 +4,9 @@ const bodyParser = require("body-parser");
 const path = require("path");
 
 const session = require("express-session");
-const passport = require("../config/passport");
+// const passport = require("../config/passport");
+
+const connectEnsureLogin = require("connect-ensure-login"); //authorization
 
 const authMiddleware = require("../middleware/auth");
 
@@ -73,8 +75,19 @@ app.use(
     cookie: { maxAge: 7 * 24 * 60 * 60 * 1000, secure: true }, // 7 days
   })
 );
+
+const passport = require("passport");
+
+const User = require("../model/user.js"); // User Model
+
 app.use(passport.initialize());
 app.use(passport.session());
+
+passport.use(User.createStrategy());
+
+// To use with sessions
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
   //console.log('Request: ' + req.body);
@@ -92,17 +105,18 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/api/checkLogin", passport.authenticate("session"), (req, res) => {
+app.use("/api/checkLogin", connectEnsureLogin.ensureLoggedIn(), (req, res) => {
   console.log(req.user);
-  // if (req.user) {
-  res.send({
-    status: true,
-  });
-  // } else {
-  //   res.send({
-  //     status: false,
-  //   });
-  // }
+  if (req.user) {
+    res.send({
+      status: true,
+      user: req.user,
+    });
+  } else {
+    res.send({
+      status: false,
+    });
+  }
 });
 
 app.use("/api/categories", categoryRoutes);

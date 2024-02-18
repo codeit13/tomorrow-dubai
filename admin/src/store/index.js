@@ -6,6 +6,7 @@ const store = createStore({
   state: {
     toasterData: null,
     isLoading: false,
+    checkLoginStatus: null,
     listings: [],
     properties: [],
     blogs: [],
@@ -14,6 +15,11 @@ const store = createStore({
   },
   mutations,
   actions,
+  getters: {
+    getCheckLoginStatus(state) {
+      return state.checkLoginStatus;
+    },
+  },
 });
 
 export default store;

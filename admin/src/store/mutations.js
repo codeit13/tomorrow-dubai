@@ -5,6 +5,9 @@ export const mutations = {
   SET_IS_LOADING(state, payload) {
     state.isLoading = payload;
   },
+  SET_CHECK_LOGIN_STATUS(state, payload) {
+    state.checkLoginStatus = payload;
+  },
   SET_PROPERTIES(state, payload) {
     state.properties = payload;
   },
