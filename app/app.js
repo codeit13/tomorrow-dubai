@@ -134,6 +134,17 @@ app.use("/api/login", loginRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/blogs", blogRoutes);
 
+app.post("/api/logout", (req, res, next) => {
+  res.clearCookie("connect.sid"); // clear the session cookie
+  req.logout(function (err) {
+    // logout of passport
+    req.session.destroy(function (err) {
+      // destroy the session
+      res.send(); // send to the client
+    });
+  });
+});
+
 // This middleware catches all other routes and returns a 404 error
 // app.use((req, res, next) => {
 //   const indexPath = path.join(__dirname, "../frontend/dist", "index.html");

@@ -8,11 +8,11 @@ export const actions = {
     try {
       const { data } = await axios.get(`${BASE_URL}/checkLogin`);
       console.log("setting check login status data", data);
-      commit("SET_CHECK_LOGIN_STATUS", { data });
+      commit("SET_CHECK_LOGIN_STATUS", data);
       return data;
     } catch (e) {
       console.log(e);
-      commit("SET_CHECK_LOGIN_STATUS", { data: { status: false } });
+      commit("SET_CHECK_LOGIN_STATUS", { status: false });
       return { status: false };
     } finally {
       commit("SET_IS_LOADING", false);
