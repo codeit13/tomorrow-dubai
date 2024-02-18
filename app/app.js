@@ -111,8 +111,9 @@ app.use("/api/checkLogin", (req, res) => {
   console.log(req.session);
   if (req.isAuthenticated) {
     res.send({
-      status: true,
+      status: req.isAuthenticated,
       user: req.user,
+      session: req.session,
     });
   } else {
     res.send({

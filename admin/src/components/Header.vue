@@ -185,6 +185,7 @@
               </li>
             </ul> -->
             <button
+              @click="logOut"
               class="flex items-center gap-3.5 py-4 px-6 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
             >
               <svg
@@ -243,6 +244,11 @@ export default {
     } else {
       this.darkMode = false;
     }
+  },
+  methods: {
+    async logOut() {
+      await this.$store.dispatch("logOut");
+    },
   },
 };
 </script>
