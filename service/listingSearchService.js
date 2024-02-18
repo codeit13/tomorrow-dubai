@@ -16,7 +16,7 @@ listingSearchRouter.get("/", async (req, res) => {
 
   const { search, status, isBuy } = req.query;
   /* Search */
-  console.log("Search::", req.query);
+  // console.log("Search::", req.query);
 
   /* Filter */
   // Create an empty filter object

@@ -105,24 +105,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/api/checkLogin", (req, res) => {
-  // console.log(req.isAuthenticated);
-  // console.log(req.isAuthenticated());
-  // console.log(req.session);
-  req.isAuthenticated();
-  if (req.isAuthenticated) {
-    res.send({
-      status: req.isAuthenticated,
-      user: req.user,
-      session: req.session,
-    });
-  } else {
-    res.send({
-      status: false,
-    });
-  }
-});
-
 app.use("/api/categories", categoryRoutes);
 app.use("/api/listing", listingRoutes);
 app.use("/api/property", propertyRoutes);
@@ -132,7 +114,7 @@ app.use("/api/exclusive", exclusiveRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/agent", agentRoutes);
 // app.use("/api/logout", logoutRoutes);
-app.use("/api/login", loginRoutes);
+app.use("/api", loginRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/blogs", blogRoutes);
 

@@ -1,4 +1,4 @@
-import store from "../store/index";
+// import store from "../store/index";
 import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
@@ -52,21 +52,21 @@ const router = createRouter({
 });
 
 // eslint-disable-next-line
-router.beforeEach(async (to, from, next) => {
-  if (store.state.checkLoginStatus === null) {
-    const data = await store.dispatch("checkLogin");
-    if (data.status) {
-      next();
-    } else {
-      next({ name: "Login" });
-    }
-  } else {
-    if (store.state.checkLoginStatus.status) {
-      next();
-    } else {
-      next({ name: "Login" });
-    }
-  }
-});
+// router.beforeEach(async (to, from, next) => {
+//   if (store.state.checkLoginStatus === null) {
+//     const data = await store.dispatch("checkLogin");
+//     if (!data.success) {
+//       next();
+//     } else {
+//       next({ name: "Login" });
+//     }
+//   } else {
+//     if (!store.state.checkLoginStatus.success) {
+//       next();
+//     } else {
+//       next({ name: "Login" });
+//     }
+//   }
+// });
 
 export default router;

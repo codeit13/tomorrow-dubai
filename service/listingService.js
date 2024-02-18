@@ -13,7 +13,7 @@ listingRouter.post(
   "",
   passport.authenticate("session"),
   async (req, res, next) => {
-    console.log("Inside POST:", req.body);
+    // console.log("Inside POST:", req.body);
     try {
       const listing = new listingDB({
         ...req.body,

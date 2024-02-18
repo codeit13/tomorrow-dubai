@@ -52,7 +52,7 @@ agentRouter.get("/", async (req, res, next) => {
   console.log("Fetching Agents...");
   try {
     const results = await agentDB.find({});
-    console.log("Agent Result::", results);
+    // console.log("Agent Result::", results);
     res.status(200).json({
       message: "Agents fetched successfully",
       agents: results,

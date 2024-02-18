@@ -13,7 +13,7 @@ propertyRouter.get("", async (req, res, next) => {
  * Creates a new property.
  */
 propertyRouter.post("", async (req, res, next) => {
-  console.log("Inside POST:", req.body);
+  // console.log("Inside POST:", req.body);
   try {
     const property = new propertyDB({
       ...req.body,

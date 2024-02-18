@@ -272,6 +272,12 @@ export default {
       password: null,
     };
   },
+  async mounted() {
+    const data = await this.$store.dispatch("checkLogin");
+    if (data.success) {
+      this.$router.push("/portal");
+    }
+  },
   methods: {
     async login() {
       if (this.email && this.password) {
@@ -279,7 +285,7 @@ export default {
           email: this.email,
           password: this.password,
         });
-        if (data.user) {
+        if (data.success) {
           this.$router.push("/portal");
         }
       } else {

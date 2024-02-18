@@ -1,13 +1,22 @@
 import axios from "axios";
-
 import { BASE_URL } from "@/utils/constants";
+import { config, setConfig } from "../utils/helper";
+import { useCookies } from "vue3-cookies";
+
+const { cookies } = useCookies();
+
+setConfig({
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: "Bearer " + cookies.get("JWT-TOKEN"),
+  },
+});
 
 export const actions = {
   async checkLogin({ commit }) {
     commit("SET_IS_LOADING", true);
     try {
-      const { data } = await axios.get(`${BASE_URL}/checkLogin`);
-      console.log("setting check login status data", data);
+      const { data } = await axios.get(`${BASE_URL}/checkLogin`, config);
       commit("SET_CHECK_LOGIN_STATUS", data);
       return data;
     } catch (e) {
@@ -23,11 +32,14 @@ export const actions = {
     try {
       const { data } = await axios.post(`${BASE_URL}/login`, payload);
 
-      if (data.user) {
+      if (data.success) {
         commit("SET_TOASTER_MSG", {
           type: "success",
           message: "Login successful",
         });
+
+        commit("SET_JWT_TOKEN", data.data.token);
+        cookies.set("JWT-TOKEN", data.data.token);
       }
       return data;
     } catch (e) {

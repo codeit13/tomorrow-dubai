@@ -8,6 +8,9 @@ export const mutations = {
   SET_CHECK_LOGIN_STATUS(state, payload) {
     state.checkLoginStatus = payload;
   },
+  SET_JWT_TOKEN(state, payload) {
+    state.JWT_TOKEN = payload;
+  },
   SET_PROPERTIES(state, payload) {
     state.properties = payload;
   },

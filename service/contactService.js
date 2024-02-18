@@ -39,7 +39,7 @@ contactRouter.get("/", async (req, res, next) => {
   console.log("Fetching Contacts...");
   try {
     const results = await contactDB.find({}).populate("listingId").exec();
-    console.log("Contact Result::", results);
+    // console.log("Contact Result::", results);
     res.status(200).json({
       message: "Contacts fetched successfully",
       contacts: results,

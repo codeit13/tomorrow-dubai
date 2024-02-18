@@ -32,9 +32,8 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(["toasterData", "checkLoginStatus"]),
+    ...mapState(["toasterData", "checkLoginStatus", "JWT-TOKEN"]),
   },
-
   watch: {
     toasterData: {
       deep: true,
@@ -54,6 +53,12 @@ export default {
     Alpine.start();
   },
   async mounted() {
+    const data = await this.$store.dispatch("checkLogin");
+    console.log(data, this.$route);
+    if (!data.success) {
+      this.$router.push("/portal/login");
+    }
+
     await this.$store.dispatch("fetchListings");
     await this.$store.dispatch("fetchProperties");
     await this.$store.dispatch("fetchBlogs");

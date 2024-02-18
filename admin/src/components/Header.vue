@@ -217,6 +217,8 @@
 </template>
 
 <script>
+import { setConfig } from "@/utils/helper";
+
 export default {
   data() {
     return {
@@ -247,7 +249,11 @@ export default {
   },
   methods: {
     async logOut() {
-      await this.$store.dispatch("logOut");
+      // await this.$store.dispatch("logOut");
+      this.$cookies.remove("JWT-TOKEN");
+      await this.$store.commit("SET_JWT_TOKEN", null);
+      setConfig({});
+      this.$router.push("/portal/login");
     },
   },
 };
