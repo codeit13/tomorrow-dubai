@@ -8,10 +8,11 @@ export const actions = {
     try {
       const { data } = await axios.get(`${BASE_URL}/checkLogin`);
       console.log("setting check login status data", data);
-      commit("SET_CHECK_LOGIN_STATUS", data);
+      commit("SET_CHECK_LOGIN_STATUS", { data });
       return data;
     } catch (e) {
       console.log(e);
+      commit("SET_CHECK_LOGIN_STATUS", { data: { status: false } });
       return { status: false };
     } finally {
       commit("SET_IS_LOADING", false);
@@ -43,7 +44,6 @@ export const actions = {
       const { data } = await axios.get(
         `${BASE_URL}/property?status=APPROVED&size=30`
       );
-      console.log(data.property);
       let properties = data ? data.property : [];
 
       commit("SET_PROPERTIES", properties || []);

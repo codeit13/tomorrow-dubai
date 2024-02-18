@@ -1,4 +1,4 @@
-import store from "@/store";
+import store from "../store/index";
 import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
@@ -51,23 +51,55 @@ const router = createRouter({
   },
 });
 
-router.beforeEach(async (to) => {
-  console.log(store.getters.getCheckLoginStatus);
-  if (store.getters.getCheckLoginStatus === null) {
-    const data = await store.dispatch("checkLogin");
+router.beforeEach(async (to, from) => {
+  console.log(
+    "store.state.checkLoginStatus: ",
+    store.state.checkLoginStatus,
+    from
+  );
 
-    if (
-      // make sure the user is authenticated
-      !data.status &&
-      // ❗️ Avoid an infinite redirect
-      to.name !== "Login"
-    ) {
-      // redirect the user to the login page
-      return { name: "Login" };
+  if (store.state.checkLoginStatus == null) {
+    // make an api call to check login status
+    const data = await store.dispatch("checkLogin");
+    if (data.status) {
+      return to;
     } else {
-      return { name: "Dashboard" };
+      return { name: "Login" };
+    }
+  } else {
+    // check the login status in store
+    if (store.state.checkLoginStatus.status) {
+      return to;
+    } else {
+      return { name: "Login" };
     }
   }
+
+  // if (store.state.checkLoginStatus == null) {
+  //   const data = await store.dispatch("checkLogin");
+
+  //   if (
+  //     // make sure the user is authenticated
+  //     !data.status &&
+  //     // ❗️ Avoid an infinite redirect
+  //     to.name !== "Login"
+  //   ) {
+  //     // redirect the user to the login page
+  //     return { name: "Login" };
+  //   } else {
+  //     return { name: "Dashboard" };
+  //   }
+  // } else {
+  //   if (
+  //     // make sure the user is authenticated
+  //     store.state.checkLoginStatus.data.status
+  //   ) {
+  //     // redirect the user to the login page
+  //     next();
+  //   } else {
+  //     return { name: "Login" };
+  //   }
+  // }
 });
 
 export default router;

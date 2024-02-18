@@ -6,7 +6,7 @@ const path = require("path");
 const session = require("express-session");
 // const passport = require("../config/passport");
 
-const connectEnsureLogin = require("connect-ensure-login"); //authorization
+// const connectEnsureLogin = require("connect-ensure-login"); //authorization
 
 const authMiddleware = require("../middleware/auth");
 
@@ -105,9 +105,11 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/api/checkLogin", connectEnsureLogin.ensureLoggedIn(), (req, res) => {
-  console.log(req.user);
-  if (req.user) {
+app.use("/api/checkLogin", (req, res) => {
+  console.log(req.isAuthenticated);
+  console.log(req.isAuthenticated());
+  console.log(req.session);
+  if (req.isAuthenticated) {
     res.send({
       status: true,
       user: req.user,
