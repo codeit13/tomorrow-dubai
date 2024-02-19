@@ -118,10 +118,21 @@ export const actions = {
     }
   },
 
-  async submitContactForm(store, payload) {
+  async submitContactForm({ commit }, payload) {
     try {
       const { data } = await axios.post(`${BASE_URL}/contact/`, payload);
-      data.message = "We will contact you shortly";
+      data.message =
+        "Congrats, We will send you updates directly to your email.";
+
+      return data;
+    } catch (e) {
+      console.log(e);
+      return { message: "Something went wrong!" };
+    }
+  },
+  async subscribeNewsLetter(store, payload) {
+    try {
+      const { data } = await axios.post(`${BASE_URL}/newsletter/`, payload);
       return data;
     } catch (e) {
       console.log(e);

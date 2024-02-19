@@ -54,7 +54,19 @@
       <PopoverContent class="w-100 rounded-sm mt-4 px-8">
         <div class="flex flex-col space-y-4 md:space-x-12">
           <div
-            v-for="(item, i) in menuItems"
+            v-for="(item, i) in menuItems.filter((item) => !item.isDropDown)"
+            :key="i"
+            @click="$router.push(item.route)"
+            class="text-white-600 cursor-pointer"
+            :class="{
+              'underline underline-offset-2': $route.path === item.route,
+            }"
+          >
+            {{ item.name }}
+          </div>
+          <hr />
+          <div
+            v-for="(item, i) in menuItems.filter((item) => item.isDropDown)"
             :key="i"
             @click="$router.push(item.route)"
             class="text-white-600 cursor-pointer"

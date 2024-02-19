@@ -16,6 +16,8 @@
 
 <script>
 import { mapState } from "vuex";
+import { useToast } from "@/components/ui/toast/use-toast";
+const { toast } = useToast();
 
 export default {
   data() {
