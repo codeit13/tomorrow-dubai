@@ -447,20 +447,6 @@ export default {
     });
   },
   methods: {
-    addMetaTags({ title, description }) {
-      if (!this.isMetaTagsAdded) {
-        document.title = title;
-        const titleMetaTag = document.createElement("meta");
-        titleMetaTag.setAttribute("name", "title");
-        titleMetaTag.setAttribute("content", title);
-        document.querySelector("head").appendChild(titleMetaTag);
-
-        const descrMetaTag = document.createElement("meta");
-        descrMetaTag.setAttribute("name", "description");
-        descrMetaTag.setAttribute("content", description);
-        document.querySelector("head").appendChild(descrMetaTag);
-      }
-    },
     searchInputChange(e) {
       let query = e.target.value;
       if (query) {

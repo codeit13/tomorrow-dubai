@@ -70,7 +70,7 @@
 
     <div class="space-x-4 md:space-x-12 hidden md:flex">
       <NuxtLink
-        v-for="(item, i) in menuItems"
+        v-for="(item, i) in menuItems.filter((item) => !item.isDropDown)"
         :key="i"
         :to="item.route"
         class="text-white-600 cursor-pointer"
@@ -82,6 +82,65 @@
       >
         {{ item.name }}
       </NuxtLink>
+
+      <div
+        class="relative"
+        v-for="(item, i) in menuItems.filter((item) => item.isDropDown)"
+        :key="i"
+      >
+        <button
+          id="dropdownDefaultButton"
+          data-dropdown-toggle="dropdown"
+          class="inline-flex items-center"
+          type="button"
+          @click="agentDropDownOpened = !agentDropDownOpened"
+        >
+          {{ item.name }}
+          <svg
+            class="w-2.5 h-2.5 ms-3"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 10 6"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m1 1 4 4 4-4"
+            />
+          </svg>
+        </button>
+
+        <!-- Dropdown menu -->
+        <div
+          id="dropdown"
+          class="z-10 absolute right-0 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+          :class="{
+            block: agentDropDownOpened,
+            hidden: !agentDropDownOpened,
+          }"
+        >
+          <ul
+            class="py-2 text-sm text-gray-700 dark:text-gray-200"
+            aria-labelledby="dropdownDefaultButton"
+          >
+            <li
+              @click="agentDropDownOpened = false"
+              v-for="(dropDownItem, index) in item.dropDownItems"
+              :key="index"
+            >
+              <NuxtLink
+                :to="dropDownItem.route"
+                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              >
+                {{ dropDownItem.name }}
+              </NuxtLink>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </nav>
 </template>
@@ -109,24 +168,39 @@ export default {
         {
           name: "Buy",
           route: "/buy",
+          isDropDown: false,
           underlineRoutes: ["/", "/buy"],
         },
         {
           name: "Sell",
           route: "/sell",
+          isDropDown: false,
           underlineRoutes: ["/sell"],
         },
         {
           name: "Off Plan",
           route: "/offplan",
+          isDropDown: false,
           underlineRoutes: ["/offplan"],
         },
         {
           name: "Agents",
           route: "/partner",
+          isDropDown: true,
+          dropDownItems: [
+            {
+              name: "Partner",
+              route: "/agents",
+            },
+            {
+              name: "Agents",
+              route: "/partner",
+            },
+          ],
           underlineRoutes: ["/partner", "/agents", "/agent"],
         },
       ],
+      agentDropDownOpened: false,
     };
   },
   mounted() {
