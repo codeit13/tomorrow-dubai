@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "https://tomorrowluxuryproperty.com/api";
+// const BASE_URL = "https://tomorrowluxuryproperty.com/api";
+const BASE_URL = "http://localhost:5000/api";
 
 export const actions = {
   async fetchListings({ state, commit }) {

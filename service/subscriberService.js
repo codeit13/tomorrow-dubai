@@ -1,5 +1,5 @@
 const subscriberRoutes = require("express").Router();
-const subscriberDB = require("../model/subscribers");
+const subscriberDB = require("../model/subscriber");
 
 /**
  * Creates a new blog.
@@ -7,17 +7,17 @@ const subscriberDB = require("../model/subscribers");
 subscriberRoutes.post("", async (req, res, next) => {
   try {
     const { email } = req.body;
-    const blog = new subscriberDB({
+    const subscriber = new subscriberDB({
       email,
       createdAt: Date.now(),
       updatedAt: Date.now(),
     });
 
-    blog.save();
+    subscriber.save();
 
     res.status(201).json({
       message: "Subscriber added successfully.",
-      blog: blog,
+      subscriber: subscriber,
     });
   } catch (error) {
     res.status(500).json({
@@ -55,7 +55,7 @@ subscriberRoutes.get("/", async (req, res, next) => {
     const results = await subscriberDB.find({}).sort("-updatedAt").exec();
     res.status(200).json({
       message: "Subscribers fetched successfully",
-      blogs: results,
+      subscribers: results,
     });
   } catch (error) {
     console.error("Error fetching subscribers: ", error);
@@ -87,7 +87,7 @@ subscriberRoutes.delete("/:id", async (req, res, next) => {
     const response = await subscriberDB.deleteOne({ _id: req.params.id });
     res.status(200).json({
       message: "Subscriber deleted successfully!",
-      blog: response,
+      subscriber: response,
     });
   } catch (error) {
     console.error("Error deleting subscriber with id:", error);
