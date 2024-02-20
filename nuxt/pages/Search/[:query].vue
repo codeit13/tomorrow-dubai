@@ -172,63 +172,73 @@
 
       <div
         class="text-center mb-28"
-        v-if="!(filteredProperties && filteredProperties.length)"
+        v-if="!(paginatedProperties && paginatedProperties.length)"
       >
         <h2 class="text-lg mb-2">No matching result</h2>
         <p class="text-2xl font-semibold">Try changing your Search...</p>
       </div>
 
-      <div
-        class="grid grid-cols-1 md:grid-cols-3 gap-4 my-20"
-        v-if="filteredProperties && filteredProperties.length"
-      >
-        <div
-          @click="goToProperty(property)"
-          class="relative cursor-pointer hover:bg-gray-100 rounded-sm border-[1px] border-[#00000062]"
-          v-for="(property, i) in filteredProperties"
-          :key="i"
-        >
-          <img
-            :src="property.propertyImage"
-            alt="Property"
-            class="w-full h-auto"
-            style="aspect-ratio: 300 / 200; object-fit: cover"
-          />
+      <div v-if="paginatedProperties && paginatedProperties.length">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-20">
           <div
-            class="inline-flex items-center border px-2.5 py-0.5 w-fit text-xl josefin-slab font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white hover:text-black bg-black/20 text-secondary-foreground hover:bg-white/80 absolute top-4 right-4"
+            @click="goToProperty(property)"
+            class="relative cursor-pointer hover:bg-gray-100 rounded-sm border-[1px] border-[#00000062]"
+            v-for="(property, i) in paginatedProperties"
+            :key="i"
           >
-            {{ property.tag }}
-          </div>
-          <div class="p-4">
-            <p class="text-lg md:text-2xl font-bold">
-              AED {{ property.price?.toLocaleString("en-us") }}
-            </p>
-            <p class="text-sm">{{ property.featureText }}</p>
-
-            <div class="flex items-start gap-1 mt-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="18"
-                viewBox="0 -960 960 960"
-                fill="#000"
-                width="18"
-              >
-                <path
-                  d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"
-                />
-              </svg>
-
-              <p class="text-sm">{{ property.location }}</p>
-            </div>
-
-            <p
-              class="text-sm mt-4 text-blue-600 hover:text-blue-800 cursor-pointer"
+            <img
+              :src="property.propertyImage"
+              alt="Property"
+              class="w-full h-auto"
+              style="aspect-ratio: 300 / 200; object-fit: cover"
+            />
+            <div
+              class="inline-flex items-center border px-2.5 py-0.5 w-fit text-xl josefin-slab font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white hover:text-black bg-black/20 text-secondary-foreground hover:bg-white/80 absolute top-4 right-4"
             >
-              {{ property.buttonText }}
-            </p>
+              {{ property.tag }}
+            </div>
+            <div class="p-4">
+              <p class="text-lg md:text-2xl font-bold">
+                AED {{ property.price?.toLocaleString("en-us") }}
+              </p>
+              <p class="text-sm">{{ property.featureText }}</p>
+
+              <div class="flex items-start gap-1 mt-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="18"
+                  viewBox="0 -960 960 960"
+                  fill="#000"
+                  width="18"
+                >
+                  <path
+                    d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"
+                  />
+                </svg>
+
+                <p class="text-sm">{{ property.location }}</p>
+              </div>
+
+              <p
+                class="text-sm mt-4 text-blue-600 hover:text-blue-800 cursor-pointer"
+              >
+                {{ property.buttonText }}
+              </p>
+            </div>
           </div>
         </div>
+
+        <div class="w-full text-center">
+          <vue-awesome-paginate
+            :total-items="filteredProperties.length"
+            :items-per-page="9"
+            :max-pages-shown="20"
+            v-model="currentPage"
+            :on-click="onPaginationClick"
+          />
+        </div>
       </div>
+
       <div class="mt-16" v-else>
         <h2 class="text-3xl font-semibold mt-32 mb-20">Similar Properties</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -280,14 +290,13 @@
           </div>
         </div>
       </div>
-      <div class="flex justify-center mb-40">
+      <!-- <div class="flex justify-center mb-40">
         <Pagination
-          v-if="false"
           v-slot="{ page }"
-          :total="filteredProperties.length"
+          :total="100"
           :sibling-count="1"
           show-edges
-          :default-page="1"
+          :default-page="2"
         >
           <PaginationList v-slot="{ items }" class="flex items-center gap-1">
             <PaginationFirst />
@@ -314,7 +323,7 @@
             <PaginationLast />
           </PaginationList>
         </Pagination>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -330,16 +339,16 @@ import { neighbourhoodProperties } from "../../plugins/store/neighbourhood";
 //   Select,
 // } from "@/components/ui/select";
 // import { Button } from "@/components/ui/button";
-// import {
-//   Pagination,
-//   PaginationEllipsis,
-//   PaginationFirst,
-//   PaginationLast,
-//   PaginationList,
-//   PaginationListItem,
-//   PaginationNext,
-//   PaginationPrev,
-// } from "@/components/ui/pagination";
+import {
+  Pagination,
+  PaginationEllipsis,
+  PaginationFirst,
+  PaginationLast,
+  PaginationList,
+  PaginationListItem,
+  PaginationNext,
+  PaginationPrev,
+} from "@/components/ui/pagination";
 import { mapState } from "vuex";
 
 export default {
@@ -351,14 +360,14 @@ export default {
     // SelectContent,
     // Select,
     // Button,
-    // Pagination,
-    // PaginationEllipsis,
-    // PaginationFirst,
-    // PaginationLast,
-    // PaginationList,
-    // PaginationListItem,
-    // PaginationNext,
-    // PaginationPrev,
+    Pagination,
+    PaginationEllipsis,
+    PaginationFirst,
+    PaginationLast,
+    PaginationList,
+    PaginationListItem,
+    PaginationNext,
+    PaginationPrev,
   },
 
   data() {
@@ -405,6 +414,8 @@ export default {
       similarProperties: [],
       isMetaTagsAdded: false,
       filteredLocations: [],
+      paginatedProperties: [],
+      currentPage: 1,
     };
   },
   computed: {
@@ -433,6 +444,14 @@ export default {
     isOffPlan() {
       this.getValues();
     },
+    // currentPage(newValue, prevValue) {
+    //   console.log(prevValue, newValue);
+    //   this.paginatedProperties = this.filteredProperties.slice(
+    //     (newValue - 1) * 3,
+    //     newValue * 3
+    //   );
+
+    // },
   },
   setup() {
     useAsyncData(() => {
@@ -471,6 +490,12 @@ export default {
     this.getValues();
   },
   methods: {
+    onPaginationClick(page) {
+      this.paginatedProperties = this.filteredProperties.slice(
+        (page - 1) * 9,
+        page * 9
+      );
+    },
     searchTextChange() {
       if (this.searchText) {
         this.filteredLocations = [];
@@ -578,6 +603,8 @@ export default {
             tag: property.isOffPlan ? "Off Plan" : "Exclusive",
           };
         });
+
+        this.paginatedProperties = this.filteredProperties.slice(3);
       }
     },
     goToProperty(property) {
@@ -616,3 +643,30 @@ export default {
   },
 };
 </script>
+
+<style>
+.pagination-container {
+  display: flex;
+  column-gap: 15px;
+}
+.paginate-buttons {
+  height: 40px;
+  width: 40px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgb(242, 242, 242);
+  border: 1px solid rgb(217, 217, 217);
+  color: black;
+}
+.paginate-buttons:hover {
+  background-color: #d8d8d8;
+}
+.active-page {
+  background-color: #0d0d0d;
+  border: 1px solid #0d0d0d;
+  color: white;
+}
+.active-page:hover {
+  background-color: #2d2d2d;
+}
+</style>
