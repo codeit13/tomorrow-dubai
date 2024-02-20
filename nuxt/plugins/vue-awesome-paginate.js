@@ -1,4 +1,6 @@
 // import the package
+import { defineNuxtPlugin } from "#app";
+
 import VueAwesomePaginate from "vue-awesome-paginate";
 
 // import the necessary css file
