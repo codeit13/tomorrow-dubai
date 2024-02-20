@@ -9,8 +9,8 @@
       ].includes(route.path),
     }"
   >
-    <div @click="$router.push('/')">
-      <span
+    <div @click="$router.push('/')" class="cursor-pointer">
+      <!-- <span
         class="text-sm md:text-xl font-extrabold josefin-slab cursor-pointer"
         :style="{ fontSize: '30px' }"
         >tomorrow.
@@ -20,12 +20,12 @@
         :style="{ fontSize: '16px' }"
       >
         Luxury Property
-      </span>
-      <!-- <img
+      </span> -->
+      <img
         class="mix-blend-multiply h-8"
-        src="/assets/images/logo.jpeg"
+        src="/assets/images/logo.png"
         alt=""
-      /> -->
+      />
     </div>
 
     <Popover>
@@ -99,6 +99,11 @@
         class="relative"
         v-for="(item, i) in menuItems.filter((item) => item.isDropDown)"
         :key="i"
+        :class="{
+          'underline underline-offset-2': item.underlineRoutes.includes(
+            route.path
+          ),
+        }"
       >
         <button
           id="dropdownDefaultButton"
@@ -145,7 +150,7 @@
             >
               <NuxtLink
                 :to="dropDownItem.route"
-                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                class="text-white-600 cursor-pointer block px-4 py-2"
               >
                 {{ dropDownItem.name }}
               </NuxtLink>
@@ -215,7 +220,7 @@ export default {
       agentDropDownOpened: false,
     };
   },
-  mounted() {
+  created() {
     const route = useRoute();
     this.route = route;
   },

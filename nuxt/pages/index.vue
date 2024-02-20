@@ -126,9 +126,12 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div
+        <NuxtLink
           v-for="(property, i) in neighbourProperties"
-          @click="goToNeighborhoodProperty(property)"
+          :to="`/search/${property.title
+            .trim()
+            .replaceAll(' ', '-')
+            .toLowerCase()}`"
           :key="i"
           class="rounded-lg border bg-card shadow-sm relative w-full cursor-pointer"
           data-v0-t="card"
@@ -147,7 +150,7 @@
           >
             {{ property.title }}
           </h3>
-        </div>
+        </NuxtLink>
       </div>
     </div>
     <div
@@ -342,6 +345,7 @@ export default {
       value: "next.js",
       query: null,
       filteredLocations: [],
+      router: null,
     };
   },
   watch: {
@@ -446,6 +450,9 @@ export default {
         "Enhance your property journey with Tomorrow Luxury Property. Collaborate with our expert real estate agents to discover the perfect luxury home or apartment for you.",
     });
   },
+  mounted() {
+    this.router = useRouter();
+  },
   methods: {
     searchInputChange(e) {
       let query = e.target.value;
@@ -477,7 +484,7 @@ export default {
     searchClick(entry = null) {
       if (entry != null && entry.name) {
         if (entry.type == "LISTING") {
-          this.$router.push(
+          this.router.push(
             `/search/${entry?.name.trim().replaceAll(" ", "-").toLowerCase()}`
           );
           this.goToProperty(entry);
