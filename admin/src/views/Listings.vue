@@ -963,8 +963,11 @@ export default {
   watch: {
     propertyName() {
       if (this.propertyName) {
-        this.filteredProperties = this.properties.filter(
-          (i) => i.name == this.propertyName
+        this.filteredProperties = this.properties.filter((i) =>
+          i.name
+            .trim()
+            .toLowerCase()
+            .includes(this.propertyName.trim().toLowerCase())
         );
       } else {
         this.filteredProperties = this.properties;
