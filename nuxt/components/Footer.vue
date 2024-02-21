@@ -12,25 +12,39 @@
         <input
           type="email"
           v-model="emailId"
-          class="pr-48 pl-4 py-2 text-gray-700 bg-white border josefin-slab font-bold rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
+          class="pr-48 pl-4 py-2 text-gray-700 bg-white border josefin-slab font-bold rounded-md dark:bg-gray-800 dark:text-gray-800 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
           placeholder="Enter your email address"
         />
 
         <button
           @click="subscribeNewsLetter"
-          class="w-full josefin-slab px-6 py-2.5 text-lg font-bold tracking-wider text-white transition-colors duration-300 transform md:w-auto md:mx-4 focus:outline-none bg-gray-800 rounded-lg hover:bg-gray-700 focus:ring focus:ring-gray-300 focus:ring-opacity-80"
+          class="w-full josefin-slab px-6 py-2.5 text-lg font-bold tracking-wider text-black transition-colors duration-300 transform md:w-auto md:mx-4 focus:outline-none bg-[#fff] rounded-lg hover:bg-[#e3e3e3] focus:ring focus:ring-gray-300 focus:ring-opacity-80"
         >
-          Sign up →
+          <div class="flex justify-center gap-2">
+            <span>Sign Up</span>
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24"
+              viewBox="0 -960 960 960"
+              width="24"
+            >
+              <path
+                d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"
+              />
+            </svg>
+          </div>
         </button>
       </div>
       <div class="md:flex md:justify-between">
         <div class="mb-6 md:mb-0">
           <NuxtLink to="/" class="flex items-center mb-4">
-            <span
+            <!-- <span
               class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
             >
               Tomorrow Luxury Property
-            </span>
+            </span> -->
+            <img src="/assets/images/footer-logo.png" class="h-16" alt="logo" />
           </NuxtLink>
           <div class="flex flex-col space-y-3 mt-2">
             <p>Downtown, Dubai UAE</p>
@@ -101,22 +115,22 @@ export default {
       socialMediaHandles: [
         {
           name: "Facebook",
-          handleUrl: "https://www.facebook.com/tomorrowdubai",
+          handleUrl: "https://www.facebook.com/tomorrowluxuryproperty",
           icon: markRaw(facebookIcon),
         },
         {
           name: "LinkedIn",
-          handleUrl: "https://www.linkedin.com/company/tomorrow-dubai",
+          handleUrl: "https://www.linkedin.com/company/tomorrowluxuryproperty",
           icon: markRaw(linkedinIcon),
         },
         {
           name: "Instagram",
-          handleUrl: "https://www.instagram.com/tomorrowdubai/",
+          handleUrl: "https://www.instagram.com/tomorrowluxuryproperty/",
           icon: markRaw(instagramIcon),
         },
         {
           name: "Behance",
-          handleUrl: "https://www.behance.net/tomorrowdubai",
+          handleUrl: "https://www.behance.net/tomorrowluxuryproperty",
           icon: markRaw(behanceIcon),
         },
       ],
