@@ -20,6 +20,9 @@ export const mutations = {
   SET_BLOGS(state, payload) {
     state.blogs = payload;
   },
+  SET_SUBSCRIBERS(state, payload) {
+    state.subscribers = payload;
+  },
   SET_AGENTS(state, payload) {
     state.agents = payload;
   },

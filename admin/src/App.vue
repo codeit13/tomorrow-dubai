@@ -64,6 +64,7 @@ export default {
     await this.$store.dispatch("fetchBlogs");
     await this.$store.dispatch("fetchAgents");
     await this.$store.dispatch("fetchContacts");
+    await this.$store.dispatch("fetchSubscribers");
 
     // Init flatpickr
     flatpickr(".datepicker", {

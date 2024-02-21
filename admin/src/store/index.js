@@ -15,6 +15,7 @@ const store = createStore({
     listings: [],
     properties: [],
     blogs: [],
+    subscribers: [],
     agents: [],
     contacts: [],
   },

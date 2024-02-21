@@ -217,6 +217,10 @@ export default {
           name: "Contacts",
           route: "/portal/contact",
         },
+        {
+          name: "Subscribers",
+          route: "/portal/subscribers",
+        },
       ],
     };
   },

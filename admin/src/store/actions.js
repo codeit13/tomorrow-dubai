@@ -383,6 +383,23 @@ export const actions = {
     }
   },
 
+  async fetchSubscribers({ commit }) {
+    commit("SET_IS_LOADING", true);
+    try {
+      const { data } = await axios.get(`${BASE_URL}/newsletter`);
+      const subscribers = data ? data.subscribers : [];
+      commit("SET_SUBSCRIBERS", subscribers);
+      return;
+    } catch (e) {
+      console.log(e);
+      commit("SET_TOASTER_MSG", { type: "error", message: e.message });
+
+      return [];
+    } finally {
+      commit("SET_IS_LOADING", false);
+    }
+  },
+
   async post({ commit }) {
     commit("SET_IS_LOADING", true);
     try {

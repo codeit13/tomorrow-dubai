@@ -22,8 +22,10 @@
         Luxury Property
       </span> -->
       <img
-        class="mix-blend-multiply h-8"
-        src="/assets/images/logo.png"
+        class="h-8"
+        :src="`/assets/images/logo-${
+          ['/', '/buy', '/sell'].includes(route.path) ? 'dark' : 'light'
+        }.png`"
         alt=""
       />
     </div>
@@ -53,28 +55,32 @@
       </PopoverTrigger>
       <PopoverContent class="w-100 rounded-sm mt-4 px-8">
         <div class="flex flex-col space-y-4 md:space-x-12">
-          <div
+          <NuxtLink
             v-for="(item, i) in menuItems.filter((item) => !item.isDropDown)"
             :key="i"
-            @click="$router.push(item.route)"
+            :to="item.route"
             class="text-white-600 cursor-pointer"
             :class="{
               'underline underline-offset-2': $route.path === item.route,
             }"
           >
             {{ item.name }}
-          </div>
+          </NuxtLink>
           <hr />
           <div
             v-for="(item, i) in menuItems.filter((item) => item.isDropDown)"
             :key="i"
             @click="$router.push(item.route)"
-            class="text-white-600 cursor-pointer"
-            :class="{
-              'underline underline-offset-2': $route.path === item.route,
-            }"
+            class="flex flex-col space-y-4 md:space-x-12"
           >
-            {{ item.name }}
+            <NuxtLink
+              v-for="(dropDownItem, index) in item.dropDownItems"
+              :key="index"
+              :to="dropDownItem.route"
+              class="text-white-600 cursor-pointer"
+            >
+              {{ dropDownItem.name }}
+            </NuxtLink>
           </div>
         </div>
       </PopoverContent>
@@ -139,10 +145,7 @@
             hidden: !agentDropDownOpened,
           }"
         >
-          <ul
-            class="py-2 text-sm text-gray-700 dark:text-gray-200"
-            aria-labelledby="dropdownDefaultButton"
-          >
+          <ul class="py-2 text-black" aria-labelledby="dropdownDefaultButton">
             <li
               @click="agentDropDownOpened = false"
               v-for="(dropDownItem, index) in item.dropDownItems"
@@ -150,7 +153,7 @@
             >
               <NuxtLink
                 :to="dropDownItem.route"
-                class="text-white-600 cursor-pointer block px-4 py-2"
+                class="cursor-pointer block px-4 py-2"
               >
                 {{ dropDownItem.name }}
               </NuxtLink>
@@ -206,11 +209,11 @@ export default {
           isDropDown: true,
           dropDownItems: [
             {
-              name: "Partner",
+              name: "Find an Agent",
               route: "/agents",
             },
             {
-              name: "Agents",
+              name: "Join as an Agent",
               route: "/partner",
             },
           ],
