@@ -60,7 +60,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(subscriber, i) in subscribers" :key="i">
+                  <tr
+                    v-for="(subscriber, i) in subscribers.filter(
+                      (i) => i.email
+                    )"
+                    :key="i"
+                  >
                     <td
                       class="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11"
                     >
