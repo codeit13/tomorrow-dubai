@@ -171,16 +171,22 @@ export default {
       window.open(url, "_blank");
     },
     async subscribeNewsLetter() {
-      const resp = await this.$store.dispatch("subscribeNewsLetter", {
-        email: this.emailId,
-      });
-      if (resp.message) {
-        this.$store.commit("SET_TOASTER_MSG", {
-          title: resp.message,
+      if (this.emailId && this.emailId.includes("@")) {
+        const resp = await this.$store.dispatch("subscribeNewsLetter", {
+          email: this.emailId,
         });
+        if (resp.message) {
+          this.$store.commit("SET_TOASTER_MSG", {
+            title: resp.message,
+          });
+        } else {
+          this.$store.commit("SET_TOASTER_MSG", {
+            title: "Something went wrong. Please try again later.",
+          });
+        }
       } else {
         this.$store.commit("SET_TOASTER_MSG", {
-          title: "Something went wrong. Please try again later.",
+          title: "Please enter a valid email address.",
         });
       }
     },
