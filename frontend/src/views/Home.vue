@@ -226,7 +226,9 @@
                 />
               </svg>
 
-              <p class="text-sm">{{ property.address }}</p>
+              <p class="text-sm">
+                {{ property.propertyName }} {{ property.address }}
+              </p>
             </div>
 
             <p

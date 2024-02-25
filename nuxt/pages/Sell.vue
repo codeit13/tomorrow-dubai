@@ -12,11 +12,11 @@
         <div
           class="absolute top-[58px] md:top-[68px] left-0 right-0 bottom-0 flex flex-col justify-center items-start text-left text-white bg-black bg-opacity-50 px-6 md:px-28"
         >
-          <h2
+          <h1
             class="text-2xl font-bold uppercase tracking-wide montserrat-font"
           >
             How Much is My
-          </h2>
+          </h1>
           <h2
             class="text-6xl font-bold uppercase tracking-wide montserrat-font mt-1"
           >

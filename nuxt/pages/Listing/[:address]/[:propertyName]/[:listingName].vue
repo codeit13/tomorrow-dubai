@@ -123,7 +123,7 @@
             <h2 class="text-xl md:text-2xl font-semibold mb-8">Units</h2>
             <div class="flex flex-col space-y-4">
               <div
-                class="flex justify-between text-center"
+                class="flex justify-between text-left"
                 v-for="(unit, i) in units"
                 :key="i"
               >
@@ -132,11 +132,11 @@
                 </h1>
                 <span
                   v-if="unit.sqFt"
-                  class="text-sm md:text-md josefin-slab font-[600]"
+                  class="text-sm md:text-md josefin-slab font-[600] text-left"
                 >
                   {{ unit.sqFt }} Sq Ft
                 </span>
-                <span v-if="unit.price" class="text-sm md:text-md">
+                <span v-if="unit.price" class="text-sm md:text-md text-left">
                   AED {{ unit.price?.toLocaleString("en-US") }}
                 </span>
               </div>
@@ -227,6 +227,7 @@
               <Input v-model="email" placeholder="Email" />
               <Input v-model="phone" placeholder="+971 | Mobile" />
               <Textarea
+                rows="8"
                 class="rounded-none border-[#000]"
                 v-model="moreInfo"
                 placeholder="Tell us more about what you want to know"
@@ -600,7 +601,7 @@ export default {
             property.priceText = property.price
               ? `AED ${property.price?.toLocaleString("en-us")}`
               : "Amazing Prices";
-            property.locationText = property.address;
+            property.locationText = `${property.propertyName}, ${property.address}`;
             property.image = property.img1 || property.images[0];
             property.buttonText = `${property.homeType.toUpperCase()} FOR SALE`;
             property.tag = property.isOffPlan ? "Off Plan" : "Exclusive";

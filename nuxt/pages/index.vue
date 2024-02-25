@@ -12,11 +12,11 @@
         <div
           class="absolute top-[58px] md:top-[64px] left-0 right-0 bottom-0 flex flex-col justify-center items-start text-left text-white bg-black bg-opacity-50 px-6 md:px-28"
         >
-          <h2
+          <h1
             class="text-xl md:text-2xl font-bold uppercase tracking-wide montserrat-font"
           >
             Find Your Next
-          </h2>
+          </h1>
           <h2
             class="text-4xl md:text-6xl font-bold uppercase tracking-wide montserrat-font mt-1"
           >
@@ -202,7 +202,9 @@
                 />
               </svg>
 
-              <p class="text-sm">{{ property.address }}</p>
+              <p class="text-sm">
+                {{ property.propertyName }}, {{ property.address }}
+              </p>
             </div>
 
             <p
@@ -424,9 +426,7 @@ export default {
                   ? `STARTING PRICE - AED ${property.details["Price Range"]}`
                   : "Exclusive Prices";
                 property.image = property.img1 || property.images[0];
-                property.completionText = property.yearBuilt
-                  ? `Completion ${property.yearBuilt}`
-                  : "Completed";
+                property.completionText = `Completion ${property.details["Completion Date"]}`;
               }
               return property;
             })

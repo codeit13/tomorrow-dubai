@@ -27,15 +27,15 @@
               v-model="searchText"
               @input="searchTextChange"
               class="block p-4 ps-10"
-              placeholder="Search By Title, Location,"
+              placeholder="Search Community, Building or City"
             />
           </div>
           <ul
-            class="absolute md:max-w-[30vw] bg-white border border-gray-100 w-full mt-2"
+            class="absolute md:max-w-[30vw] bg-white border border-gray-100 w-full mt-2 h-[50vh] overflow-hidden overflow-y-scroll"
             v-if="filteredLocations && filteredLocations.length"
           >
             <li
-              v-for="(entry, i) in filteredLocations.slice(0, 6)"
+              v-for="(entry, i) in filteredLocations"
               :key="i"
               @click="searchClick(entry)"
               class="pl-8 pr-2 py-1 border-b-2 border-gray-100 relative cursor-pointer hover:bg-gray-50 hover:text-gray-900"
@@ -216,7 +216,9 @@
                   />
                 </svg>
 
-                <p class="text-sm">{{ property.location }}</p>
+                <p class="text-sm">
+                  {{ property.propertyName }}, {{ property.location }}
+                </p>
               </div>
 
               <p
@@ -569,7 +571,7 @@ export default {
             property.priceText = `AED ${property.price?.toLocaleString(
               "en-us"
             )}`;
-            property.locationText = property.address;
+            property.locationText = `${property.propertyName}, ${property.address}`;
             property.image = property.img1 || property.images[0];
             property.buttonText = `${property.homeType.toUpperCase()} FOR SALE`;
             property.tag = property.isOffPlan ? "Off Plan" : "Exclusive";
@@ -582,6 +584,8 @@ export default {
           return (
             (property.title.toLowerCase().includes(searchQuery) ||
               property.address.toLowerCase().includes(searchQuery) ||
+              property.propertyName.toLowerCase().includes(searchQuery) ||
+              "dubai".includes(searchQuery) ||
               property.homeType.toLowerCase().includes(searchQuery)) &&
             (minPrice ? property.price >= minPrice : true) &&
             (maxPrice ? property.price <= maxPrice : true) &&

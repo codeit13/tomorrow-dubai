@@ -1,13 +1,15 @@
 <template>
   <footer class="bg-black text-white mt-40">
     <div class="mx-auto w-full p-4 py-6 md:px-24 lg:py-8">
-      <h1 class="text-lg josefin-slab font-bold text-center lg:text-2xl">
+      <h1
+        class="text-black-900 dark:text-gray-400 font-medium text-center lg:text-xl my-2"
+      >
         Stay ahead of the curve <br />
         Sign up now to recieve exclusive listings before they hit the market and
         latest market updates.
       </h1>
       <div
-        class="flex flex-col justify-center mx-auto mt-6 space-y-3 md:space-y-0 md:flex-row"
+        class="flex flex-col justify-center mx-auto mt-6 space-y-3 md:space-y-0 md:flex-row pt-2 pb-10"
       >
         <input
           type="email"
@@ -44,7 +46,7 @@
             >
               Tomorrow Luxury Property
             </span> -->
-            <img src="/assets/images/footer-logo.png" class="h-16" alt="logo" />
+            <img src="/assets/images/footer-logo.png" class="h-12" alt="logo" />
           </NuxtLink>
           <div class="flex flex-col space-y-3 mt-2">
             <p>Downtown, Dubai UAE</p>
@@ -115,22 +117,22 @@ export default {
       socialMediaHandles: [
         {
           name: "Facebook",
-          handleUrl: "https://www.facebook.com/tomorrowluxuryproperty",
+          handleUrl: "https://facebook.com/tomorrowluxuryproperty",
           icon: markRaw(facebookIcon),
         },
         {
           name: "LinkedIn",
-          handleUrl: "https://www.linkedin.com/company/tomorrowluxuryproperty",
+          handleUrl: "https://linkedin.com/company/tomorrowluxuryproperty",
           icon: markRaw(linkedinIcon),
         },
         {
           name: "Instagram",
-          handleUrl: "https://www.instagram.com/tomorrowluxuryproperty/",
+          handleUrl: "https://instagram.com/tomorrowluxuryproperty/",
           icon: markRaw(instagramIcon),
         },
         {
           name: "Behance",
-          handleUrl: "https://www.behance.net/tomorrowluxuryproperty",
+          handleUrl: "https://tiktok.com/@tomorrowluxuryproperty",
           icon: markRaw(behanceIcon),
         },
       ],

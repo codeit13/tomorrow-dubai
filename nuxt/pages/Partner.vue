@@ -7,9 +7,9 @@
         <div class="w-fit">
           <div class="w-fit">
             <p class="text-2xl md:text-4xl font-bold w-fit">We're Looking</p>
-            <p class="text-5xl md:text-7xl font-bold w-fit mt-2 md:mt-4">
+            <h1 class="text-5xl md:text-7xl font-bold w-fit mt-2 md:mt-4">
               For Partners
-            </p>
+            </h1>
           </div>
           <p class="mt-6 text-xl md:text-4xl w-fit font-semibold">
             We Made Real Estate
@@ -37,10 +37,15 @@
       </div>
     </header>
     <section class="py-12">
-      <h2 class="text-2xl md:text-3xl font-bold text-center">
+      <p class="mt-3 text-center text-gray-800 font-bold text-2xl md:text-3xl">
         Join the Future of Real Estate
+      </p>
+
+      <h2 class="text-2xl md:text-3xl font-bold text-center mt-2">
+        Dubai’s First Subscription-Based Real Estate Jobs
       </h2>
-      <p class="mt-3 text-center text-gray-600 text-lg md:text-xl josefin-slab">
+
+      <p class="mt-3 text-center text-gray-900 text-lg md:text-xl josefin-slab">
         Partner with Tomorrow Luxury property. Simplifying Success in Real
         Estate
       </p>
@@ -61,7 +66,7 @@
           <p class="mt-4 text-lg font-bold">
             AED 2,500 <span class="text-sm font-normal">/billed annually</span>
           </p>
-          <div class="w-[98%] mx-auto text-center">
+          <div class="w-[100%] mx-auto text-center">
             <p class="mt-8 text-lg text-left">
               Company <span class="font-bold">Visa & Medical</span>
             </p>
@@ -151,12 +156,21 @@
           </svg>
         </div>
         <div class="mt-8 md:mt-0 grid grid-cols-1 gap-4 w-[100%] md:w-[25%]">
-          <Input v-model="fullName" placeholder="Full Name" />
-          <Input v-model="email" placeholder="Email Id" type="email" />
-          <Input v-model="phone" placeholder="Mobile No" />
+          <Input
+            class="border-black"
+            v-model="fullName"
+            placeholder="Full Name"
+          />
+          <Input
+            class="border-black"
+            v-model="email"
+            placeholder="Email Id"
+            type="email"
+          />
+          <Input class="border-black" v-model="phone" placeholder="Mobile No" />
           <span>What is your individual yearly commission volume!</span>
-          <Select class="pt-0" v-model="salesVolume">
-            <SelectTrigger class="w-[100%]" id="commission">
+          <Select class="pt-0 border-black" v-model="salesVolume">
+            <SelectTrigger class="w-[100%] border-black" id="commission">
               <SelectValue
                 placeholder="What Is Your Individual Yearly Commission Value?"
               />

@@ -29,7 +29,7 @@
             class="items-center gap-6 border px-4 w-full text-xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/50 py-6 montserrat-font absolute bottom-0 overflow-hidden text-ellipsis"
           >
             <p class="text-sm md:text-2xl font-extrabold montserrat-font mr-10">
-              {{ property.name }}
+              {{ property.propertyName }}
             </p>
             <div class="flex items-start gap-1">
               <svg
@@ -89,9 +89,8 @@ export default {
                   )}`
                 : `AMAZING STARTING PRICES`;
               property.image = property.img1 || property.images[0];
-              property.completionText = property.yearBuilt
-                ? `Completed in ${property.yearBuilt}`
-                : `Completed`;
+              property.completionText = `Completion ${property.details["Completion Date"]}`;
+
               // property.features = `${property.bed} BEDS | ${property.bath} BATHS | ${property.sqFt} SQ FT`;
               return property;
             })
