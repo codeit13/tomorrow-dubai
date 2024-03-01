@@ -68,17 +68,19 @@
                 </div>
               </div>
               <ul
-                class="bg-white border border-gray-100 w-full mt-2"
+                class="bg-white border border-gray-100 w-full mt-2 max-h-[35vh] z-20 overflow-hidden overflow-y-scroll"
                 v-if="filteredLocations && filteredLocations.length"
               >
                 <li
-                  v-for="(entry, i) in filteredLocations.slice(0, 6)"
+                  v-for="(entry, i) in filteredLocations"
                   :key="i"
                   @click="searchClick(entry)"
                   class="pl-8 pr-2 py-1 border-b-2 border-gray-100 relative cursor-pointer hover:bg-gray-50 hover:text-gray-900"
                 >
                   <svg
-                    v-if="entry.type == 'PROPERTY'"
+                    v-if="
+                      entry.type == 'PROPERTY' || entry.type == 'NEIGHBORHOOD'
+                    "
                     class="stroke-current absolute w-4 h-4 left-2 top-2"
                     xmlns="http://www.w3.org/2000/svg"
                     height="24"
@@ -103,8 +105,17 @@
                     />
                   </svg>
 
-                  <span v-if="entry.name">
-                    {{ entry.name }}, {{ entry.location }}
+                  <span v-if="entry.name && entry.type == 'NEIGHBORHOOD'">
+                    {{ entry.title }} (All)
+                  </span>
+                  <span v-else-if="entry.name && entry.type == 'PROPERTY'">
+                    {{ entry.name }}, {{ entry.address }}
+                  </span>
+                  <span
+                    v-else-if="entry.name && entry.type == 'LISTING'"
+                    class="capitalize"
+                  >
+                    {{ entry.title }}, {{ entry.address }}
                   </span>
                 </li>
               </ul>
@@ -354,7 +365,21 @@ export default {
     query(query) {
       if (query) {
         this.filteredLocations = [];
-        this.searchableLocations.map((location) => {
+        this.neighbourhoodProperties.forEach((p) => {
+          if (
+            p.title.toLowerCase().trim().includes(query.toLowerCase().trim())
+          ) {
+            ``;
+            this.filteredLocations.push({
+              address: "",
+              name: p.title,
+              title: p.title,
+              type: "NEIGHBORHOOD",
+            });
+          }
+        });
+
+        this.searchableLocations.forEach((location) => {
           if (
             location.address
               ?.toLowerCase()
@@ -371,7 +396,6 @@ export default {
           ) {
             this.filteredLocations.push(location);
           }
-          return location;
         });
       } else {
         this.filteredLocations = [];

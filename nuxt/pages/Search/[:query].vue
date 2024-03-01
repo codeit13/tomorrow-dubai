@@ -31,7 +31,7 @@
             />
           </div>
           <ul
-            class="absolute md:max-w-[30vw] bg-white border border-gray-100 w-full mt-2 h-[50vh] overflow-hidden overflow-y-scroll"
+            class="absolute md:max-w-[30vw] bg-white border border-gray-100 w-full mt-2 h-[35vh] z-20 overflow-hidden overflow-y-scroll"
             v-if="filteredLocations && filteredLocations.length"
           >
             <li
@@ -41,7 +41,7 @@
               class="pl-8 pr-2 py-1 border-b-2 border-gray-100 relative cursor-pointer hover:bg-gray-50 hover:text-gray-900"
             >
               <svg
-                v-if="entry.type == 'PROPERTY'"
+                v-if="entry.type == 'PROPERTY' || entry.type == 'NEIGHBORHOOD'"
                 class="stroke-current absolute w-4 h-4 left-2 top-2"
                 xmlns="http://www.w3.org/2000/svg"
                 height="24"
@@ -66,8 +66,17 @@
                 />
               </svg>
 
-              <span v-if="entry.name">
-                {{ entry.name }}, {{ entry.location }}
+              <span v-if="entry.name && entry.type == 'NEIGHBORHOOD'">
+                {{ entry.title }} (All)
+              </span>
+              <span v-else-if="entry.name && entry.type == 'PROPERTY'">
+                {{ entry.name }}, {{ entry.address }}
+              </span>
+              <span
+                v-else-if="entry.name && entry.type == 'LISTING'"
+                class="capitalize"
+              >
+                {{ entry.title }}, {{ entry.address }}
               </span>
             </li>
           </ul>
@@ -141,7 +150,13 @@
                 :key="i"
                 v-for="(option, i) in isOffPlanOptions"
               >
-                {{ option == "Yes" ? "Ready" : "Off-Plan" }}
+                {{
+                  option == "Yes"
+                    ? "Ready"
+                    : option == "No"
+                    ? "Off-Plan"
+                    : option
+                }}
               </SelectItem>
             </SelectContent>
           </Select>
@@ -405,7 +420,7 @@ export default {
         "500000000",
         "1000000000",
       ],
-      isOffPlanOptions: ["Yes", "No"],
+      isOffPlanOptions: ["Property Status", "Yes", "No"],
       property: null,
       minPrice: null,
       maxPrice: null,
@@ -501,7 +516,25 @@ export default {
     searchTextChange() {
       if (this.searchText) {
         this.filteredLocations = [];
-        this.searchableLocations.map((location) => {
+
+        this.neighbourhoodProperties.forEach((p) => {
+          if (
+            p.title
+              .toLowerCase()
+              .trim()
+              .includes(this.searchText.toLowerCase().trim())
+          ) {
+            ``;
+            this.filteredLocations.push({
+              address: "",
+              name: p.title,
+              title: p.title,
+              type: "NEIGHBORHOOD",
+            });
+          }
+        });
+
+        this.searchableLocations.forEach((location) => {
           if (
             location.address
               ?.toLowerCase()
@@ -560,9 +593,22 @@ export default {
         this.maxPrice == this.maxPriceOptions[0]
           ? false
           : parseInt(this.maxPrice);
-      let offPlan = this.isOffPlan == this.isOffPlanOptions[0] ? false : true;
+      let offPlan =
+        this.isOffPlan == this.isOffPlanOptions[0]
+          ? "DEFAULT"
+          : this.isOffPlan == "Yes"
+          ? true
+          : false;
       let selectedProperty =
         this.property == this.propertyOptions[0] ? false : this.property;
+
+      console.log({
+        searchQuery,
+        minPrice,
+        maxPrice,
+        offPlan,
+        selectedProperty,
+      });
 
       let properties = newVal ? newVal : this.listings;
       if (properties) {
@@ -589,7 +635,7 @@ export default {
               property.homeType.toLowerCase().includes(searchQuery)) &&
             (minPrice ? property.price >= minPrice : true) &&
             (maxPrice ? property.price <= maxPrice : true) &&
-            (offPlan ? property.isOffPlan == offPlan : true) &&
+            (offPlan == "DEFAULT" ? true : property.isOffPlan == offPlan) &&
             (selectedProperty ? property.homeType == selectedProperty : true)
           );
         });
@@ -608,7 +654,7 @@ export default {
           };
         });
 
-        this.paginatedProperties = this.filteredProperties.slice(3);
+        this.paginatedProperties = this.filteredProperties.slice(0, 9);
       }
     },
     goToProperty(property) {
