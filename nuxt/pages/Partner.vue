@@ -1,7 +1,7 @@
 <template>
   <div class="bg-white text-gray-900 px-4">
     <header
-      class="pt-48 md:pt-64 md:px-28 md:pl-40 pb-32 text-left bg-gray-100 bg-opacity-50"
+      class="pt-48 md:pt-64 md:px-28 md:pl-30 pb-32 text-left bg-gray-100 bg-opacity-50"
     >
       <div class="flex flex-col gap-32 items-center md:items-end w-fit">
         <div class="w-fit">
@@ -37,11 +37,11 @@
       </div>
     </header>
     <section class="py-12">
-      <p class="mt-3 text-center text-gray-800 font-bold text-2xl md:text-3xl">
+      <p class="mt-3 text-center text-gray-800 font-bold text-2xl md:text-2xl">
         Join the Future of Real Estate
       </p>
 
-      <h2 class="text-2xl md:text-3xl font-bold text-center mt-2">
+      <h2 class="text-2xl md:text-2xl font-bold text-center mt-2">
         Dubai’s First Subscription-Based Real Estate Jobs
       </h2>
 
@@ -115,9 +115,10 @@
       </div>
       <div class="mt-8 text-center">
         <Button
-          class="bg-blue-600 text-lg font-semibold rounded-none px-6 py-8 text-white mt-4"
-          >Subscribe Now</Button
+          class="bg-blue-600 text-lg font-semibold rounded-none px-3 py-6 text-white mt-4"
         >
+          Subscribe Now
+        </Button>
       </div>
     </section>
     <section class="px-4 md:px-28 py-24 bg-gray-100/50 md:bg-gray-100">
@@ -126,17 +127,17 @@
           <div>
             <h2 class="text-3xl font-bold text-left">LETS CHAT</h2>
             <div class="mt-8 mx-auto text-left">
-              <p class="text-xl font-bold">
+              <p class="text-lg font-bold">
                 Launch Your Dubai Real Estate Career In Just 10 Minutes!
               </p>
-              <p class="mt-5 text-xl font-bold">
+              <p class="mt-5 text-lg font-bold">
                 Experience Our Hassle-Free, Plug-And-Play Model.
               </p>
-              <p class="mt-5 text-xl font-bold">
+              <p class="mt-5 text-lg font-bold">
                 Enjoy An Unmatched Commission Split: 90% For Agents, 10% For The
                 Company.
               </p>
-              <p class="mt-5 text-xl font-bold">
+              <p class="mt-5 text-lg font-bold">
                 Join Us And Elevate Your Real Estate Success Today!
               </p>
             </div>

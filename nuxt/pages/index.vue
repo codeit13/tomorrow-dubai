@@ -55,7 +55,6 @@
                       class="block p-4 ps-10 focus:outline-none rounded-sm bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white w-[62vw] md:w-[25vw] h-10 bg-background px-3 py text-sm text-black placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
                       placeholder="Search Community, Building, or City"
                       @keyup.enter="searchClick"
-                      @change="searchInputChange"
                     />
                   </div>
 
@@ -105,7 +104,10 @@
                     />
                   </svg>
 
-                  <span v-if="entry.name && entry.type == 'NEIGHBORHOOD'">
+                  <span
+                    v-if="entry.name && entry.type == 'NEIGHBORHOOD'"
+                    class="capitalize"
+                  >
                     {{ entry.title }} (All)
                   </span>
                   <span v-else-if="entry.name && entry.type == 'PROPERTY'">
@@ -124,7 +126,7 @@
         </div>
       </div>
     </div>
-    <div class="px-6 py-24 md:px-28 md:pb-40 md:pt-38">
+    <div class="px-6 py-24 md:px-28 md:pt-38">
       <div class="flex justify-between items-baseline mb-12">
         <h2 class="text-2xl md:text-4xl font-extrabold josefin-slab">
           Neighborhood For You
@@ -165,7 +167,7 @@
       </div>
     </div>
     <div
-      class="px-6 md:px-28 pb-40"
+      class="px-6 md:px-28 md:pt-38"
       v-if="exclusiveProperties && exclusiveProperties.length"
     >
       <div class="flex justify-between items-baseline mb-0">
@@ -230,7 +232,7 @@
     </div>
 
     <div
-      class="px-6 md:px-28 py-4"
+      class="px-6 py-24 md:px-28 md:pt-38"
       v-if="offPlanProperties && offPlanProperties.length"
     >
       <div class="flex justify-between items-baseline mb-0">
@@ -242,8 +244,9 @@
         <span
           class="text-sm md:text-lg font-semibold cursor-pointer mr-8"
           @click="$router.push('/offplan')"
-          >More ></span
         >
+          More >
+        </span>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div
@@ -263,14 +266,14 @@
               class="items-center gap-6 border px-4 w-full text-xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/50 absolute bottom-0 overflow-hidden text-ellipsis py-6 montserrat-font"
             >
               <p
-                class="text-sm md:text-2xl font-extrabold montserrat-font mr-10 text-[1rem]"
+                class="text-sm md:text-lg font-extrabold montserrat-font mr-10 text-[1rem]"
               >
                 {{ property.name }}
               </p>
               <div class="flex items-start gap-1">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="w-5 h-5 md:w-6 md:h-6"
+                  class="w-3 h-3 md:w-4 md:h-4"
                   viewBox="0 -960 960 960"
                   fill="#fff"
                 >
@@ -279,13 +282,13 @@
                   />
                 </svg>
 
-                <span class="text-sm md:text-lg">{{ property.address }}</span>
+                <span class="text-sm md:text-sm">{{ property.address }}</span>
               </div>
             </div>
           </div>
 
           <div class="p-4 pb-8 w-full bg-gray-100">
-            <p class="text-sm md:text-lg font-semibold">
+            <p class="text-sm md:text-[1rem]] font-semibold">
               {{ property.heading }}
             </p>
             <p class="text-[0.85rem] md:text-[1rem] josefin-slab mt-2">
@@ -297,7 +300,7 @@
     </div>
 
     <div
-      class="px-6 md:px-28 py-4 mt-24"
+      class="px-6 md:px-28 md:pt-38"
       v-if="filteredBlogs && filteredBlogs.length"
     >
       <div class="flex justify-between items-baseline mb-12">
@@ -311,7 +314,7 @@
         >
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div
           class="relative cursor-pointer w-fit hover:bg-gray-100 rounded-sm border-[1px] border-[#00000062]"
           v-for="(blog, i) in filteredBlogs"
@@ -325,7 +328,7 @@
             "
             alt="News"
             class="w-auto h-auto"
-            style="aspect-ratio: 1/1; object-fit: cover"
+            style="aspect-ratio: 300 / 200; object-fit: cover"
           />
 
           <div class="p-4 pl-6 pb-8 w-full">

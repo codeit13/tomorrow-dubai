@@ -66,7 +66,10 @@
                 />
               </svg>
 
-              <span v-if="entry.name && entry.type == 'NEIGHBORHOOD'">
+              <span
+                v-if="entry.name && entry.type == 'NEIGHBORHOOD'"
+                class="capitalize"
+              >
                 {{ entry.title }} (All)
               </span>
               <span v-else-if="entry.name && entry.type == 'PROPERTY'">

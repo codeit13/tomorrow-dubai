@@ -6,7 +6,7 @@
         v-if="isOffPlan"
       >
         <span
-          class="text-sm md:text-xl font-extrabold josefin-slab mb-20 cursor-pointer uppercase"
+          class="text-sm md:text-[1rem] font-extrabold josefin-slab mb-20 cursor-pointer uppercase"
           @click="$router.push('/offplan')"
           >{{ `< Off Plan` }}</span
         >
