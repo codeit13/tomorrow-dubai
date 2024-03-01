@@ -128,7 +128,7 @@
     </div>
     <div class="px-6 py-24 md:px-28 md:pt-38">
       <div class="flex justify-between items-baseline mb-12">
-        <h2 class="text-2xl md:text-4xl font-extrabold josefin-slab">
+        <h2 class="text-2xl md:text-3xl font-extrabold josefin-slab">
           Neighborhood For You
         </h2>
         <span
@@ -172,7 +172,7 @@
     >
       <div class="flex justify-between items-baseline mb-0">
         <h2
-          class="text-2xl md:text-4xl font-extrabold josefin-slab mb-8 md:mb-12"
+          class="text-2xl md:text-3xl font-extrabold josefin-slab mb-8 md:mb-12"
         >
           Exclusive Properties
         </h2>
@@ -237,7 +237,7 @@
     >
       <div class="flex justify-between items-baseline mb-0">
         <h2
-          class="text-2xl md:text-4xl font-extrabold josefin-slab mb-12 md:mb-12"
+          class="text-2xl md:text-3xl font-extrabold josefin-slab mb-12 md:mb-12"
         >
           Off Plan
         </h2>
@@ -304,7 +304,7 @@
       v-if="filteredBlogs && filteredBlogs.length"
     >
       <div class="flex justify-between items-baseline mb-12">
-        <h2 class="text-2xl md:text-4xl font-extrabold josefin-slab">
+        <h2 class="text-2xl md:text-3xl font-extrabold josefin-slab">
           News & Updates
         </h2>
         <span
