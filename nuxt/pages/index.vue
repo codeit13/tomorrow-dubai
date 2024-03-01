@@ -270,7 +270,7 @@
               >
                 {{ property.name }}
               </p>
-              <div class="flex items-start gap-1">
+              <div class="flex items-start gap-1 mt-1">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="w-3 h-3 md:w-4 md:h-4"
