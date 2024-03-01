@@ -72,7 +72,9 @@
                   @click="$router.push(feature.route)"
                   class="hover:underline cursor-pointer"
                 >
-                  <span class="text-slate-300 text-sm">{{ feature.name }}</span>
+                  <span class="text-neutral-500 text-sm">
+                    {{ feature.name }}
+                  </span>
                 </a>
               </li>
             </ul>
@@ -85,7 +87,7 @@
                   @click="$router.push(item.route)"
                   class="hover:underline cursor-pointer"
                 >
-                  <span class="text-slate-300 text-sm">{{ item.name }}</span>
+                  <span class="text-neutral-500 text-sm">{{ item.name }}</span>
                 </a>
               </li>
             </ul>
