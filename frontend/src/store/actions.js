@@ -31,11 +31,9 @@ export const actions = {
         ? listings.map((p) => {
             p.price = parseInt(p.price);
             return {
-              location: p.address,
-              name: p.propertyName,
-              propertyName: p.propertyName,
-              title: p.title,
               address: p.address,
+              name: p.propertyName,
+              title: p.title,
               type: "LISTING",
             };
           })
@@ -68,8 +66,8 @@ export const actions = {
         ? properties.map((l) => {
             return {
               address: l.location,
-              location: l.location,
               name: l.name,
+              title: l.title,
               type: "PROPERTY",
             };
           })

@@ -26,15 +26,17 @@
             style="aspect-ratio: 3/4; object-fit: cover"
           />
           <div
-            class="items-center gap-6 border px-4 w-full text-xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/50 py-6 montserrat-font absolute bottom-0 overflow-hidden text-ellipsis"
+            class="items-center gap-6 border px-4 w-full text-xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/50 absolute bottom-0 overflow-hidden text-ellipsis py-6 montserrat-font"
           >
-            <p class="text-sm md:text-2xl font-extrabold montserrat-font mr-10">
+            <p
+              class="text-sm md:text-lg font-extrabold montserrat-font mr-10 text-[1rem]"
+            >
               {{ property.propertyName }}
             </p>
-            <div class="flex items-start gap-1">
+            <div class="flex items-start gap-1 mt-1">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="w-4 h-4 md:w-6 md:h-6"
+                class="w-3 h-3 md:w-4 md:h-4"
                 viewBox="0 -960 960 960"
                 fill="#fff"
               >
@@ -43,12 +45,12 @@
                 />
               </svg>
 
-              <span class="text-sm md:text-lg">{{ property.address }}</span>
+              <span class="text-sm md:text-sm">{{ property.address }}</span>
             </div>
           </div>
         </div>
         <div class="p-4 pb-8 w-full bg-gray-100">
-          <p class="text-sm md:text-lg font-semibold">
+          <p class="text-sm md:text-[1rem]] font-semibold">
             {{ property.subtitle }}
           </p>
           <p class="text-[0.85rem] md:text-[1rem] josefin-slab mt-2">

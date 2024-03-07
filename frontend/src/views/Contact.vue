@@ -83,7 +83,7 @@
         <br /> -->
         Downtown Dubai, UAE
       </p>
-      <p class="mt-6">CEO@TOMORROWDUBAI.COM</p>
+      <p class="mt-6">ceo@tomorrowluxuryproperty.com</p>
       <p class="mt-2">+971 581677220</p>
     </div>
   </div>

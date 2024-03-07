@@ -135,7 +135,7 @@
         </div>
       </div>
     </div>
-    <div class="px-6 md:px-28 py-24 md:py-40">
+    <div class="px-6 md:px-28 pt-24 md:pt-40 pb-0 md:pb-0">
       <div class="flex justify-between items-baseline mb-12">
         <h2 class="text-2xl md:text-4xl font-extrabold josefin-slab">
           Neighborhood For You
@@ -173,7 +173,7 @@
       </div>
     </div>
     <div
-      class="px-6 md:px-28 pb-40"
+      class="px-6 md:px-28 pt-24 md:pt-40"
       v-if="exclusiveProperties && exclusiveProperties.length"
     >
       <div class="flex justify-between items-baseline mb-0">
@@ -243,7 +243,7 @@
     </div>
 
     <div
-      class="px-6 md:px-28 py-4"
+      class="px-6 md:px-28 pt-24 md:pt-40"
       v-if="offPlanProperties && offPlanProperties.length"
     >
       <div class="flex justify-between items-baseline mb-0">
@@ -316,7 +316,7 @@
     </div>
 
     <div
-      class="px-6 md:px-28 py-4 mt-24"
+      class="px-6 md:px-28 pt-24 md:pt-40"
       v-if="filteredBlogs && filteredBlogs.length"
     >
       <div class="flex justify-between items-baseline mb-12">

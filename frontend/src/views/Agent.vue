@@ -58,7 +58,7 @@ export default {
     return {
       agentName: "Manish Kumar",
       agentTitle: "LICENSED REAL ESTATE AGENT",
-      agentEmail: "CEO@TOMORROWDUBAI.COM",
+      agentEmail: "ceo@tomorrowluxuryproperty.com",
       agnetPhone: "+971 581677220",
       agentImage: null,
       lastSoldProperties: [
