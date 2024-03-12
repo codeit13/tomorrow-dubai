@@ -258,6 +258,7 @@ export default {
           phone: this.phone,
           salesVolume: this.salesVolume,
           status: "DRAFT",
+          from: "PARTNER",
         });
 
         if (resp.message) {

@@ -18,6 +18,7 @@ contactRouter.post("", async (req, res, next) => {
     moreInfo: req.body.moreInfo,
     listingId: req.body.listingId,
     status: req.body.status || "INITIATED", // Two values can be used here INITIATED and DONE
+    from: req.body.from || "DEFAULT",
     createdAt: Date.now(),
     updatedAt: Date.now(),
   });

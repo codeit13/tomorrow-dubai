@@ -82,8 +82,16 @@ export default {
   methods: {
     getValues() {
       const route = useRoute();
-      let agentName = route.params.name?.replaceAll("-", " ").trim();
-      let agent = this.agents.find((agent) => agent.name == agentName);
+      let agentName = route.params.name
+        ?.replaceAll("-", " ")
+        .trim()
+        .toLowerCase();
+      let agent = this.agents.find(
+        (agent) => agent.name.trim().toLowerCase() == agentName
+      );
+
+      console.log(agentName, this.agents, agent);
+
       if (agent) {
         this.agentName = agent.name;
         this.agentTitle = agent.title;

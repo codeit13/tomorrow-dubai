@@ -259,6 +259,11 @@
                     >
                       Property Name
                     </th>
+                    <th
+                      class="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white"
+                    >
+                      From
+                    </th>
                     <!-- <th
                       class="py-4 px-4 font-medium text-black dark:text-white"
                     >
@@ -284,6 +289,14 @@
                     >
                       <div class="flex flex-col items-start gap-3">
                         <p class="">{{ contact.moreInfo }}</p>
+                      </div>
+                    </td>
+
+                    <td
+                      class="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11"
+                    >
+                      <div class="flex flex-col items-start gap-3">
+                        <p class="">{{ contact.from }}</p>
                       </div>
                     </td>
 

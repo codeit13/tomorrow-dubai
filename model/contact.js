@@ -8,6 +8,7 @@ const contactSchema = mongoose.Schema({
   moreInfo: { type: String },
   listingId: { type: mongoose.Schema.Types.ObjectId, ref: "listingdbs" }, // Reference to the Agent model
   status: { type: String },
+  from: { type: String },
   createdAt: { type: Date },
   updatedAt: { type: Date, default: Date.now },
 });

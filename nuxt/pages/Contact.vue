@@ -117,6 +117,7 @@ export default {
           email: this.email,
           phone: this.phone,
           moreInfo: this.moreInfo,
+          from: "CONTACT",
         };
 
         const resp = await this.$store.dispatch("submitContactForm", payload);
