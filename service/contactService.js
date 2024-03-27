@@ -13,8 +13,8 @@ contactRouter.post("", async (req, res, next) => {
   const contact = new contactDB({
     id: req.body.id,
     buyerName: req.body.name,
-    buyerEmail: req.body.email,
-    buyerPhone: req.body.phone,
+    email: req.body.email,
+    phone: req.body.phone,
     moreInfo: req.body.moreInfo,
     listingId: req.body.listingId,
     status: req.body.status || "INITIATED", // Two values can be used here INITIATED and DONE

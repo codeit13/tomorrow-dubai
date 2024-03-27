@@ -3,10 +3,10 @@ const mongoose = require("mongoose");
 const contactSchema = mongoose.Schema({
   id: { type: String },
   buyerName: { type: String, require: true },
-  buyerEmail: { type: String, require: true },
-  buyerPhone: { type: String, require: true },
+  email: { type: String, require: true },
   moreInfo: { type: String },
   listingId: { type: mongoose.Schema.Types.ObjectId, ref: "listingdbs" }, // Reference to the Agent model
+  phone: { type: String },
   status: { type: String },
   from: { type: String },
   createdAt: { type: Date },

@@ -117,10 +117,81 @@
         <Button
           class="bg-blue-600 text-lg font-semibold rounded-none px-3 py-6 text-white mt-4"
         >
-          Subscribe Now
+          Join our Team
         </Button>
       </div>
+
+      <section class="bg-white dark:bg-gray-900 mt-16">
+        <div class="container px-6 py-12 mx-auto">
+          <h1
+            class="text-2xl text-center font-semibold text-gray-800 lg:text-3xl dark:text-white"
+          >
+            Frequently asked questions
+          </h1>
+
+          <div class="mt-8 space-y-8 lg:mt-12">
+            <div
+              class="p-8 bg-gray-100 rounded-lg dark:bg-gray-800"
+              v-for="(faq, i) in faqs"
+              :key="i"
+            >
+              <button
+                class="flex items-center justify-between w-full"
+                @click="openFaq(i)"
+              >
+                <h1 class="font-semibold text-gray-700 dark:text-white">
+                  {{ faq.question }}
+                </h1>
+
+                <span
+                  v-if="faq.selected"
+                  class="text-gray-400 bg-gray-200 rounded-full"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M18 12H6"
+                    />
+                  </svg>
+                </span>
+                <span v-else class="text-white bg-blue-500 rounded-full">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                    />
+                  </svg>
+                </span>
+              </button>
+
+              <p
+                class="mt-6 text-sm text-gray-500 dark:text-gray-300"
+                v-if="faq.selected"
+              >
+                {{ faq.answer }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
+
     <section class="px-4 md:px-28 py-24 bg-gray-100/50 md:bg-gray-100">
       <div class="flex flex-wrap justify-between">
         <div class="flex flex-col justify-between">
@@ -182,8 +253,9 @@
                 v-for="(option, i) in salesVolumeOptions"
                 :key="i"
                 :value="option"
-                >{{ option }}</SelectItem
               >
+                {{ option }}
+              </SelectItem>
             </SelectContent>
           </Select>
           <span class="text-sm">
@@ -193,8 +265,9 @@
           <Button
             class="mt-4 w-fit rounded-none font-semibold px-8 py-6"
             @click="submitForm"
-            >Submit</Button
           >
+            Send Application
+          </Button>
         </div>
       </div>
     </section>
@@ -244,12 +317,69 @@ export default {
         "400K AED - 500K AED",
         "Above 500K AED",
       ],
+      faqs: [
+        {
+          question: "Is tomorrow luxury property a real estate brokerage?",
+          answer:
+            "Yes, Tomorrow Luxury Property is indeed a licensed real estate brokerage operating in Dubai.",
+          selected: false,
+        },
+        {
+          question: `What does "subscription-based real estate jobs" mean?`,
+          answer: `Dubai's first subscription-based real estate job offer allows individuals to join the industry 
+                  with a unique model. For an annual fee of AED 30,000, get hired in 30 minutes from anywhere 
+                  in the world, with company visa sponsorship, offering flexibility and higher commission splits for 
+                  independent work within the brokerage's structure.`,
+          selected: false,
+        },
+        {
+          question: `What sets us apart?`,
+          answer: `Higher commission rates (80%), flexible roles, and an innovative subscription model.`,
+          selected: false,
+        },
+        {
+          question: `Is there a referral or part-time option?`,
+          answer: `Yes, a one-time AED 30,000 fee (paid upfront or deducted after successful closing) offers 
+lifetime earnings with an 80% commission split.`,
+          selected: false,
+        },
+        {
+          question: `Do I need to pay upfront AED 30,000?`,
+          answer: `No, you don't need to pay upfront AED 30,000. Instead, it's AED 500 upfront, AED 7,000 after receiving the offer letter, and the remainder after obtaining the visa.`,
+          selected: false,
+        },
+        {
+          question: `Are visa and medical benefits provided?`,
+          answer: `Yes, for full-time`,
+          selected: false,
+        },
+        {
+          question: `Can part-time agents transition to full-time roles?`,
+          answer: `Yes, part-time agents can switch to full-time roles. We offer immediate application processing and company visa support`,
+          selected: false,
+        },
+        {
+          question: `How do I apply?`,
+          answer: `To apply, simply visit our website and fill out the form, or call us at +971 581677220.`,
+          selected: false,
+        },
+      ],
     };
   },
   mounted() {
     this.salesVolume = this.salesVolumeOptions[0];
   },
   methods: {
+    openFaq(i) {
+      this.faqs.map((faq, currentIndex) => {
+        if (i === currentIndex) {
+          faq.selected = !faq.selected;
+          console.log(faq);
+        } else {
+          faq.selected = false;
+        }
+      });
+    },
     async submitForm() {
       if (this.fullName && this.email && this.phone && this.salesVolume) {
         const resp = await this.$store.dispatch("joinAsAgent", {

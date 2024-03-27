@@ -15,10 +15,12 @@ const mailOptions = {
   to: process.env.TO,
 };
 
-const sendEmail = async(property) => {
+const sendEmail = async (property) => {
   const subjectTemplate = process.env.SUBJECT_SELLER;
-  const subject = subjectTemplate
-    .replace("${property.contactName}", property.contactName);
+  const subject = subjectTemplate.replace(
+    "${property.contactName}",
+    property.contactName
+  );
   mailOptions.subject = subject;
 
   const messageTemplate = process.env.TEXT_SELLER;
@@ -52,17 +54,19 @@ const sendEmail = async(property) => {
   });
 };
 
- const sendContactEmail = async(contact, property) => {
+const sendContactEmail = async (contact, property) => {
   const subjectTemplate = process.env.SUBJECT_BUYER;
-  const subject = subjectTemplate
-    .replace("${contact.buyerName}", contact.buyerName);
+  const subject = subjectTemplate.replace(
+    "${contact.buyerName}",
+    contact.buyerName
+  );
   mailOptions.subject = subject;
 
   const messageTemplate = process.env.TEXT_BUYER;
   const message = messageTemplate
     .replace("${contact.buyerName}", contact.buyerName)
-    .replace("${contact.buyerPhone}", contact.buyerPhone)
-    .replace("${contact.buyerEmail}", contact.buyerEmail)
+    .replace("${contact.buyerPhone}", contact.phone)
+    .replace("${contact.buyerEmail}", contact.email)
     .replace("${property.homeType}", property.homeType)
     .replace("${property.bed}", property.bed)
     .replace("${property.bath}", property.bath)
@@ -87,4 +91,4 @@ const sendEmail = async(property) => {
   });
 };
 
-module.exports = {sendEmail, sendContactEmail};
+module.exports = { sendEmail, sendContactEmail };

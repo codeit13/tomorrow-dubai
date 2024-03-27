@@ -278,9 +278,9 @@
                     >
                       <div class="flex flex-col items-start gap-3">
                         <h5 class="font-medium text-black dark:text-white">
-                          {{ contact.buyerName }} ( {{ contact.buyerPhone }} )
+                          {{ contact.buyerName }} ( {{ contact.phone }} )
                         </h5>
-                        <p class="">{{ contact.buyerEmail }}</p>
+                        <p class="">{{ contact.email }}</p>
                       </div>
                     </td>
 

@@ -49,30 +49,30 @@
       <div class="mt-4">
         <div class="flex flex-col space-y-8">
           <Input
-            class="placeholder-black"
+            class="border-black rounded-none bg-[#D9D9D933] px-4 py-6 placeholder:black text-black"
             v-model="name"
             placeholder="FULL NAME"
           />
           <Input
-            class="placeholder-black"
+            class="border-black rounded-none bg-[#D9D9D933] px-4 py-6 placeholder:black text-black"
             v-model="email"
             placeholder="EMAIL"
           />
           <Input
-            class="placeholder-black"
+            class="border-black rounded-none bg-[#D9D9D933] px-4 py-6 placeholder:black text-black"
             v-model="phone"
             placeholder="MOBILE"
           />
           <Input
-            class="placeholder-black h-32"
+            class="border-black rounded-none bg-[#D9D9D933] px-4 py-6 placeholder:black text-black h-32"
             v-model="moreInfo"
             placeholder="MESSAGE"
           />
         </div>
         <Button
-          class="bg-white text-[#302CFF] rounded-none border-[1px] border-[#302CFF] hover:text-white px-8 mt-4"
+          class="bg-blue-600 text-lg font-semibold rounded-none px-3 py-6 text-white mt-4 w-fit"
           @click="submitContactForm"
-          >Send</Button
+          >Submit Form</Button
         >
       </div>
     </div>
