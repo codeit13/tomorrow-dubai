@@ -8,21 +8,21 @@
         Sign up now to recieve exclusive listings before they hit the market.
       </h1>
       <div
-        class="flex flex-col justify-center mx-auto mt-6 space-y-3 md:space-y-0 md:flex-row pt-2 pb-16"
+        class="flex flex-col justify-center mx-auto mt-6 md:space-y-0 md:flex-row pt-2 pb-16"
       >
         <input
           type="email"
           v-model="emailId"
-          class="pr-48 pl-3 text-gray-700 bg-white border josefin-slab font-bold rounded-md dark:bg-gray-800 dark:text-gray-800 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
-          placeholder="Enter your email address"
+          class="pr-48 pl-3 text-black bg-white border-2 border-r-1 border-[#043433] text-[1.1rem] josefin-slab font-bold rounded-none dark:bg-gray-800 dark:text-gray-800 placeholder:text-black"
+          placeholder="Enter your email address..."
         />
 
         <button
           @click="subscribeNewsLetter"
-          class="w-full josefin-slab px-4 py-2 text-lg font-bold tracking-wider text-black transition-colors duration-300 transform md:w-auto md:mx-4 focus:outline-none bg-[#fff] rounded-lg hover:bg-[#e3e3e3] focus:ring focus:ring-gray-300 focus:ring-opacity-80"
+          class="w-full josefin-slab px-6 py-2 text-lg font-bold tracking-widest border-2 border-l-0 border-[#043433] text-black transition-colors duration-300 transform md:w-auto md:ml-0 focus:outline-none bg-[#fff] rounded-none hover:bg-[#e3e3e3] focus:ring focus:ring-gray-300 focus:ring-opacity-80"
         >
           <div class="flex justify-center gap-2">
-            <span class="text-">Subscribe</span>
+            <span class="capitalize">Subscribe</span>
 
             <svg
               xmlns="http://www.w3.org/2000/svg"

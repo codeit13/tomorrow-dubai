@@ -60,7 +60,7 @@
 
                   <button
                     @click="searchClick"
-                    class="rounded-sm dark:bg-blue-500 dark:hover:bg-blue-500 dark:focus:ring-blue-800 inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors disabled:pointer-events-none disabled:opacity-50 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white"
+                    class="rounded-sm dark:bg-blue-500 dark:hover:bg-blue-500 dark:focus:ring-blue-800 inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors disabled:pointer-events-none disabled:opacity-50 px-8 py-2 bg-blue-700 hover:bg-blue-600 text-white"
                   >
                     Search
                   </button>
@@ -153,7 +153,7 @@
           <img
             :src="property.imageUrl"
             alt="DUBAILAND"
-            class="w-full h-36 object-cover border-0 border-r-4 border-b-1 border-[#00000020]"
+            class="w-full h-36 object-cover"
             width="350"
             height="150"
             style="aspect-ratio: 350 / 150; object-fit: cover"
@@ -459,8 +459,8 @@ export default {
             })
             .filter((property) => {
               return property.isOffPlan;
-            });
-          // .slice(0, 3);
+            })
+            .slice(0, 3);
         } catch (error) {
           console.log(error);
           return [];

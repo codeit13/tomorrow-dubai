@@ -115,35 +115,65 @@
       </div>
       <div class="mt-8 text-center">
         <Button
-          class="bg-blue-600 text-lg font-semibold rounded-none px-3 py-6 text-white mt-4"
+          class="bg-blue-600 rounded-none font-semibold px-8 py-6 text-white mt-4"
         >
           Join our Team
         </Button>
       </div>
 
       <section class="bg-white dark:bg-gray-900 mt-16">
-        <div class="container px-6 py-12 mx-auto">
+        <div class="w-[90vw ] md:w-[50vw] py-12 mx-auto">
           <h1
             class="text-2xl text-center font-semibold text-gray-800 lg:text-3xl dark:text-white"
           >
             Frequently asked questions
           </h1>
 
-          <div class="mt-8 space-y-8 lg:mt-12">
+          <div class="mt-8 space-y-1 lg:mt-12">
             <div
-              class="p-8 bg-gray-100 rounded-lg dark:bg-gray-800"
+              class="px-4 py-3 bg-gray-100 rounded-lg dark:bg-gray-800"
               v-for="(faq, i) in faqs"
               :key="i"
             >
               <button
-                class="flex items-center justify-between w-full"
+                class="flex items-start justify-start gap-2 w-full"
                 @click="openFaq(i)"
               >
-                <h1 class="font-semibold text-gray-700 dark:text-white">
+                <span class="fill-blue">
+                  <svg
+                    v-if="faq.selected"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24"
+                    viewBox="0 -960 960 960"
+                    width="24"
+                  >
+                    <path
+                      d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z"
+                    />
+                  </svg>
+
+                  <svg
+                    v-else
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24"
+                    viewBox="0 -960 960 960"
+                    width="24"
+                  >
+                    <path
+                      d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
+                    />
+                  </svg>
+                </span>
+                <h1
+                  class="text-gray-700 dark:text-white"
+                  :class="{
+                    'font-semibold': faq.selected,
+                  }"
+                >
                   {{ faq.question }}
                 </h1>
 
-                <span
+                <!-- <span
                   v-if="faq.selected"
                   class="text-gray-400 bg-gray-200 rounded-full"
                 >
@@ -177,11 +207,11 @@
                       d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                     />
                   </svg>
-                </span>
+                </span> -->
               </button>
 
               <p
-                class="mt-6 text-sm text-gray-500 dark:text-gray-300"
+                class="mt-6 ml-8 text-sm text-gray-500 dark:text-gray-300"
                 v-if="faq.selected"
               >
                 {{ faq.answer }}
@@ -322,7 +352,7 @@ export default {
           question: "Is tomorrow luxury property a real estate brokerage?",
           answer:
             "Yes, Tomorrow Luxury Property is indeed a licensed real estate brokerage operating in Dubai.",
-          selected: false,
+          selected: true,
         },
         {
           question: `What does "subscription-based real estate jobs" mean?`,

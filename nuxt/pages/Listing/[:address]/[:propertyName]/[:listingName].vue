@@ -74,7 +74,7 @@
     </div>
     <div class="mx-auto px-6 md:px-24 py-12">
       <div
-        class="flex flex-wrap md:flex-nowrap space-y-12 md:space-y-0 md:space-x-24"
+        class="flex flex-wrap md:flex-nowrap space-y-12 md:space-y-0 md:space-x-28"
       >
         <div
           class="flex flex-col space-y-20 w-[100%] md:w-[60%] md:min-w-[60%]"
@@ -84,7 +84,7 @@
             <div class="grid grid-cols-3 gap-4">
               <div v-for="(item, i) in details" :key="i">
                 <h1 class="text-md md:text-xl font-bold">{{ item }}</h1>
-                <span class="text-xs">{{ i }}</span>
+                <span class="text-sm">{{ i }}</span>
               </div>
             </div>
           </div>
@@ -119,9 +119,9 @@
             </div>
           </div>
 
-          <div v-if="isOffPlan && units" class="md:w-[50%] pt-4">
+          <div v-if="isOffPlan && units" class="md:w-[70%] pt-4">
             <h2 class="text-xl md:text-2xl font-semibold mb-8">Units</h2>
-            <div class="flex flex-col space-y-4">
+            <!-- <div class="flex flex-col space-y-4">
               <div
                 class="flex justify-between text-left"
                 v-for="(unit, i) in units"
@@ -132,12 +132,47 @@
                 </h1>
                 <span
                   v-if="unit.sqFt"
-                  class="text-sm md:text-md josefin-slab font-[600] text-left"
+                  class="text-sm md:text-md josefin-slab font-[600] w-fit text-left"
                 >
                   {{ unit.sqFt }} Sq Ft
                 </span>
                 <span v-if="unit.price" class="text-sm md:text-md text-left">
                   AED {{ unit.price?.toLocaleString("en-US") }}
+                </span>
+              </div>
+            </div> -->
+            <div class="flex justify-between">
+              <div class="flex flex-col space-y-4">
+                <h1
+                  v-for="(key, i) in Object.keys(units).filter(
+                    (e) => units[e].sqFt && units[e].price
+                  )"
+                  :key="i"
+                  class="font-bold text-sm md:text-md"
+                >
+                  {{ key }}
+                </h1>
+              </div>
+              <div class="flex flex-col space-y-4">
+                <span
+                  v-for="(key, i) in Object.keys(units).filter(
+                    (e) => units[e].sqFt && units[e].price
+                  )"
+                  :key="i"
+                  class="text-sm md:text-md josefin-slab font-[600] w-fit text-left"
+                >
+                  {{ units[key].sqFt }} Sq Ft
+                </span>
+              </div>
+              <div class="flex flex-col space-y-4">
+                <span
+                  v-for="(key, i) in Object.keys(units).filter(
+                    (e) => units[e].sqFt && units[e].price
+                  )"
+                  :key="i"
+                  class="text-sm md:text-md text-left"
+                >
+                  AED {{ units[key].price?.toLocaleString("en-US") }}
                 </span>
               </div>
             </div>
@@ -154,43 +189,39 @@
           </div>
         </div>
         <div
-          class="flex flex-col flex-wrap space-y-5 md:space-y-10 w-full md:w-[45%] md:items-end"
+          class="flex flex-col flex-wrap gap-5 md:gap-10 w-full md:w-[45%] md:items-start"
         >
           <div
-            class="flex items-center md:items-start flex-wrap md:flex-nowrap justify-start gap-8 md:p-8"
+            class="flex items-start md:items-start flex-wrap md:flex-nowrap justify-start gap-8 md:p-8"
             v-if="agent"
           >
-            <div class="rounded-full bg-gray-200 mb-4">
-              <img
-                alt="Agent"
-                class="w-[200px] h-full rounded-full"
-                :src="agent.img"
-                :style="{
-                  aspectRatio: '1/1',
-                  objectFit: 'cover',
-                }"
-              />
-            </div>
+            <img
+              alt="Agent"
+              class="w-[100px] rounded-full bg-gray-200 mb-4"
+              :src="agent.img"
+              :style="{
+                aspectRatio: '1/1',
+                objectFit: 'cover',
+              }"
+            />
             <div class="w-full">
-              <h3 class="text-lg montserrat-font mb-3">LISTING AGENT</h3>
-              <p class="font-semibold montserrat-font mb-3">{{ agent.name }}</p>
-              <p class="mb-3">
-                <a
-                  :href="`mailto:${agent.email}`"
-                  class="text-sm montserrat-font"
-                >
-                  {{ agent.email }}
-                </a>
-              </p>
-              <p class="mb-3">
-                <a :href="`tel:${agent.phone}`" class="text-sm montserrat-font">
-                  {{ agent.phone }}
-                </a>
-              </p>
+              <h3 class="text-sm montserrat-font mb-6">LISTING AGENT</h3>
+              <p class="font-semibold mb-0">{{ agent.name }}</p>
+              <p class="text-sm italic mb-4">(Liscensed Real Estate Broker)</p>
+
+              <a
+                :href="`mailto:${agent.email}`"
+                class="text-sm mb-0 block w-[50%] text-wrap"
+              >
+                {{ agent.email }}
+              </a>
+              <a :href="`tel:${agent.phone}`" class="text-sm mb-3">
+                {{ agent.phone }}
+              </a>
 
               <div class="flex mt-6">
                 <Button
-                  class="rounded-none border-2 transition-all border-[#000] bg-white text-sm font-semibold text-[#25D366] mt-2"
+                  class="rounded-none border-2 transition-all border-[#000] bg-white text-sm font-semibold text-[#25D366] mt-2 px-6 py-4"
                   variant="outline"
                   @click="goToWhatsapp(agent.phone)"
                 >
@@ -198,26 +229,11 @@
                 </Button>
                 <Button
                   @click="goToCall(agent.phone)"
-                  class="rounded-none border-2 transition-all border-[#000] bg-black text-sm font-semibold text-[#e3e3e3] mt-2 ml-0 md:ml-2"
+                  class="rounded-none border-2 transition-all border-[#000] bg-black text-sm font-semibold text-[#e3e3e3] mt-2 ml-0 md:ml-2 px-6 py-4"
                   variant="outline"
                   >Call Now</Button
                 >
               </div>
-
-              <!-- <Button
-               
-                class="mt-2"
-                variant="outline"
-              >
-                WhatsApp
-              </Button>
-              <Button
-                
-                class="mt-2 ml-0 md:ml-2"
-                variant="outline"
-              >
-                Call Now
-              </Button> -->
             </div>
           </div>
           <div class="w-[92%] p-6 md:py-6 md:px-4 bg-gray-100 bg-opacity-50">
@@ -235,8 +251,9 @@
               <Button
                 class="rounded-none border-[1px] px-6 border-[#000] bg-white text-black hover:bg-black hover:text-white"
                 @click="submitContactForm"
-                >Submit</Button
               >
+                Send Message
+              </Button>
             </div>
           </div>
         </div>

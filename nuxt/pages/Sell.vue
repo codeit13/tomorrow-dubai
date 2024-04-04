@@ -32,7 +32,7 @@
 
             <button
               @click="searchClick"
-              class="inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white"
+              class="inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-8 py-5 bg-blue-700 hover:bg-blue-700 text-white"
             >
               Search
             </button>
@@ -40,14 +40,14 @@
         </div>
       </div>
     </div>
-    <div class="px-6 md:px-28 pb-40 mt-20">
+    <div class="px-6 md:px-28 pb-40 mt-24">
       <span class="text-4xl font-semibold">Sell with a partner agent</span>
       <div class="mt-4">
         <p class="text-lg">
-          At Tomorrow Luxury Properties, we represent the pinnacle of real
-          estate expertise. Backed by unparalleled resources, we stand ready to
-          craft a tailor-made strategy to showcase and sell your exquisite home.
-          Trust us to utilize our expertise to your advantage.
+          At Tomorrow Luxury Property, we represent the pinnacle of real estate
+          expertise. Backed by unparalleled resources, we stand ready to craft a
+          tailor-made strategy to showcase and sell your exquisite home. Trust
+          us to utilize our expertise to your advantage.
         </p>
       </div>
       <div class="flex flex-row items-center gap-6 mt-12">
@@ -79,22 +79,22 @@
             class="w-[27vw] flex flex-col justify-center items-center gap-4 mt-12"
           >
             <Input
-              class="border-black rounded-none bg-[#D9D9D933] px-4 py-6 placeholder:black text-black"
+              class="border-black px-4 py-6 h-10 text-[0.95rem]"
               v-model="name"
               placeholder="FULL NAME"
             />
             <Input
-              class="border-black rounded-none bg-[#D9D9D933] px-4 py-6 placeholder:black text-black"
+              class="border-black px-4 py-6 h-10 text-[0.95rem]"
               v-model="email"
               placeholder="EMAIL"
             />
             <Input
-              class="border-black rounded-none bg-[#D9D9D933] px-4 py-6 placeholder:black text-black"
+              class="border-black px-4 py-6 h-10 text-[0.95rem]"
               v-model="phone"
               placeholder="MOBILE"
             />
             <Button
-              class="bg-blue-600 text-lg font-semibold rounded-none px-3 py-6 text-white mt-4 w-fit"
+              class="bg-blue-600 text-lg font-semibold rounded-none px-8 py-7 text-white mt-4 w-fit"
               @click="submitContactForm"
             >
               We're here to help
@@ -105,7 +105,7 @@
     </div>
 
     <div
-      class="px-6 md:px-28 pb-40 mt-16"
+      class="px-6 md:px-28 mt-2"
       v-if="exclusiveProperties && exclusiveProperties.length"
     >
       <h2 class="text-3xl font-extrabold josefin-slab mb-12">

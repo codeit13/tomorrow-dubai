@@ -86,10 +86,8 @@ export default {
             .map((property) => {
               property.name = property.title;
               property.subtitle = property.price
-                ? `STARTING PRICE - AED ${property.price.toLocaleString(
-                    "en-US"
-                  )}`
-                : `AMAZING STARTING PRICES`;
+                ? `STARTING PRICE - AED ${property.details["Price Range"]}`
+                : "Exclusive Prices";
               property.image = property.img1 || property.images[0];
               property.completionText = `Completion ${property.details["Completion Date"]}`;
 
