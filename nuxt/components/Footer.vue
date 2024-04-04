@@ -13,7 +13,7 @@
         <input
           type="email"
           v-model="emailId"
-          class="pr-48 pl-3 text-black bg-white border-2 border-r-1 border-[#043433] text-[1.1rem] josefin-slab font-bold rounded-none dark:bg-gray-800 dark:text-gray-800 placeholder:text-black"
+          class="pr-48 pl-3 text-black bg-white border-2 border-r-1 border-[#043433] text-[1.1rem] josefin-slab font-bold rounded-none dark:bg-gray-800 dark:text-gray-800 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
           placeholder="Enter your email address..."
         />
 

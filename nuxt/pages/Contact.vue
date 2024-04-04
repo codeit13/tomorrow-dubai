@@ -16,17 +16,18 @@
       <div class="flex justify-center gap-10 my-12">
         <Button
           @click="openWhatsapp"
-          class="rounded-none px-6 md:px-8 py-6 border-2 transition-all hover:text-xl border-[#000] bg-white text-sm md:text-lg font-semibold text-[#25D366]"
+          class="rounded-none px-6 md:px-8 py-5 border-2 transition-all border-[#000] bg-white text-sm md:text-lg font-semibold text-[#25D366]"
           variant="outline"
         >
           WhatsApp
         </Button>
         <Button
           @click="openCall"
-          class="rounded-none px-6 md:px-10 py-6 border-2 transition-all hover:text-xl border-[#000] bg-black text-nowrap text-sm md:text-lg font-semibold text-[#e3e3e3]"
+          class="rounded-none px-6 md:px-10 py-5 border-2 transition-all border-[#000] bg-black text-nowrap text-sm md:text-lg font-semibold text-[#e3e3e3]"
           variant="outline"
-          >Call Now</Button
         >
+          Call Now
+        </Button>
       </div>
 
       <svg

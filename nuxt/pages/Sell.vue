@@ -32,7 +32,7 @@
 
             <button
               @click="searchClick"
-              class="inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-8 py-5 bg-blue-700 hover:bg-blue-700 text-white"
+              class="inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-8 py-5 bg-blue-700 text-white"
             >
               Search
             </button>
@@ -94,7 +94,7 @@
               placeholder="MOBILE"
             />
             <Button
-              class="bg-blue-600 text-lg font-semibold rounded-none px-8 py-7 text-white mt-4 w-fit"
+              class="bg-blue-700 text-lg font-semibold rounded-none px-8 py-7 text-white mt-4 w-fit"
               @click="submitContactForm"
             >
               We're here to help
