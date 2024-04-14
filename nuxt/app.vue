@@ -7,7 +7,7 @@
       />
       <Meta
         property="og:title"
-        content="Real Estate in Dubai, Homes for Sale"
+        content="Real Estate in Dubai, Homes for Sale | Tomorrow Luxury Property"
       />
       <Meta
         property="og:description"
@@ -21,7 +21,7 @@
 
       <Meta
         name="twitter:title"
-        content="Real Estate in Dubai, Homes for Sale"
+        content="Real Estate in Dubai, Homes for Sale | Tomorrow Luxury Property"
       />
       <Meta
         name="twitter:description"
