@@ -217,7 +217,7 @@
           class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6"
         >
           <h2 class="font-semibold text-title-md2 text-black dark:text-white">
-            {{ contacts.length }} Contacts
+            {{ filteredContacts.length }} Contacts
           </h2>
 
           <nav>
@@ -255,15 +255,16 @@
                     </th>
 
                     <th
+                      v-if="from == 'LISTING'"
                       class="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white"
                     >
                       Property Name
                     </th>
-                    <th
+                    <!-- <th
                       class="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white"
                     >
                       From
-                    </th>
+                    </th> -->
                     <!-- <th
                       class="py-4 px-4 font-medium text-black dark:text-white"
                     >
@@ -272,7 +273,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(contact, i) in contacts" :key="i">
+                  <tr v-for="(contact, i) in filteredContacts" :key="i">
                     <td
                       class="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11"
                     >
@@ -292,23 +293,24 @@
                       </div>
                     </td>
 
-                    <td
+                    <!-- <td
                       class="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11"
                     >
                       <div class="flex flex-col items-start gap-3">
                         <p class="">{{ contact.from }}</p>
                       </div>
-                    </td>
+                    </td> -->
 
                     <td
+                      v-if="from == 'LISTING'"
                       class="border-b border-[#eee] py-5 px-4 dark:border-strokedark"
                     >
                       <div class="flex gap-2 text-black dark:text-white">
-                        {{ contact.propertyId?.title }}
+                        {{ contact.listingId?.title }}
                         <svg
                           class="fill-primary cursor-pointer"
-                          v-if="contact.propertyId?.slug"
-                          @click="openPropertyUrl(contact.propertyId.slug)"
+                          v-if="contact.listingId"
+                          @click="openListingUrl(contact.listingId)"
                           xmlns="http://www.w3.org/2000/svg"
                           height="24"
                           viewBox="0 -960 960 960"
@@ -401,7 +403,6 @@ export default {
   data() {
     return {
       isModalOpen: false,
-
       modules: {
         toolbar: [
           [{ header: "1" }, { header: "2" }, { font: [] }],
@@ -444,6 +445,8 @@ export default {
       quillEditor: null,
       imageUrl: null,
       buttonText: "UPDATE",
+      filteredContacts: [],
+      from: "",
     };
   },
   components: {
@@ -452,7 +455,22 @@ export default {
   computed: {
     ...mapState(["properties", "blogs", "agents", "contacts"]),
   },
-  mounted() {},
+  watch: {
+    "$route.params.from": {
+      handler() {
+        this.from = this.$route.params.from;
+        this.filteredContacts = this.contacts.filter(
+          (c) => c.from == this.from
+        );
+      },
+    },
+  },
+  mounted() {
+    this.from = this.$route.params.from;
+    this.filteredContacts = this.contacts.filter(
+      (c) => c.from == this.$route.params.from
+    );
+  },
   methods: {
     quillEditorReady(editor) {
       this.quillEditor = editor;
@@ -460,8 +478,35 @@ export default {
     removeImage(i) {
       this.images.splice(i, 1);
     },
-    openPropertyUrl(slug) {
-      window.open(`https://tomorrowluxuryproperty.com/listing/${slug}`);
+    openListingUrl(listing) {
+      if (listing && listing.propertyName && listing.title && listing.address) {
+        const propertyName = listing.propertyName
+          .trim()
+          .replaceAll(" ", "-")
+          .replaceAll(",", "")
+          .replaceAll(".", "")
+          .toLowerCase();
+        const listingName = listing.title
+          .trim()
+          .replaceAll(" ", "-")
+          .replaceAll(",", "")
+          .replaceAll(".", "")
+          .toLowerCase()
+          .trim();
+        const address = listing.address
+          .trim()
+          .replaceAll(" ", "-")
+          .replaceAll(",", "")
+          .replaceAll(".", "")
+          .toLowerCase()
+          .trim();
+
+        window.open(
+          `https://tomorrowluxuryproperty.com/listing/${address}/${propertyName}/${listingName}`
+        );
+      } else {
+        console.log("No listing found");
+      }
     },
     openBlogModal(blog) {
       this.buttonText = "UPDATE";

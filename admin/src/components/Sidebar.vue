@@ -148,18 +148,6 @@
                     fill="white"
                   />
                 </svg>
-                <svg
-                  v-else-if="tab.name.toLowerCase().includes('contact')"
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="24"
-                  viewBox="0 -960 960 960"
-                  width="24"
-                  fill="#d6d6d6"
-                >
-                  <path
-                    d="M160-40v-80h640v80H160Zm0-800v-80h640v80H160Zm320 400q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35ZM160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm70-80q45-56 109-88t141-32q77 0 141 32t109 88h70v-480H160v480h70Zm118 0h264q-29-20-62.5-30T480-280q-36 0-69.5 10T348-240Zm132-280q-17 0-28.5-11.5T440-560q0-17 11.5-28.5T480-600q17 0 28.5 11.5T520-560q0 17-11.5 28.5T480-520Zm0 40Z"
-                  />
-                </svg>
 
                 <svg
                   v-else-if="tab.name.toLowerCase().includes('agent')"
@@ -189,6 +177,112 @@
 
                 {{ tab.name }}
               </a>
+            </li>
+            <li>
+              <a
+                class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
+                href="#"
+                @click.stop="
+                  selectTab({
+                    name: 'Contacts',
+                    route: '/portal/contact/LISTING',
+                  })
+                "
+                :class="{
+                  'bg-graydark dark:bg-meta-4':
+                    selectedTab === 'Contacts' ||
+                    page === 'formElements' ||
+                    page === 'formLayout',
+                }"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 -960 960 960"
+                  width="24"
+                  fill="#d6d6d6"
+                >
+                  <path
+                    d="M160-40v-80h640v80H160Zm0-800v-80h640v80H160Zm320 400q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35ZM160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm70-80q45-56 109-88t141-32q77 0 141 32t109 88h70v-480H160v480h70Zm118 0h264q-29-20-62.5-30T480-280q-36 0-69.5 10T348-240Zm132-280q-17 0-28.5-11.5T440-560q0-17 11.5-28.5T480-600q17 0 28.5 11.5T520-560q0 17-11.5 28.5T480-520Zm0 40Z"
+                  />
+                </svg>
+
+                Contacts
+
+                <svg
+                  class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
+                  :class="{
+                    'rotate-180': selectedTab === 'Contacts',
+                    'rotate-360': selectedTab != 'Contacts',
+                  }"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
+                    fill=""
+                  />
+                </svg>
+              </a>
+
+              <!-- Dropdown Menu Start -->
+              <div
+                class="overflow-hidden"
+                :class="selectedTab === 'Contacts' ? 'block' : 'hidden'"
+              >
+                <ul class="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
+                  <li>
+                    <a
+                      class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-[#e3e3e3] cursor-pointer"
+                      @click="$router.push('/portal/contact/LISTING')"
+                      :class="{
+                        'text-white': $route.path == '/portal/contact/LISTING',
+                      }"
+                    >
+                      • Listing Page
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-[#e3e3e3] cursor-pointer"
+                      @click="$router.push('/portal/contact/CONTACT')"
+                      :class="{
+                        'text-white': $route.path == '/portal/contact/CONTACT',
+                      }"
+                    >
+                      • Contacts Page
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-[#e3e3e3] cursor-pointer"
+                      @click="$router.push('/portal/contact/PARTNER')"
+                      :class="{
+                        'text-white': $route.path == '/portal/contact/PARTNER',
+                      }"
+                    >
+                      • Partner Page
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-[#e3e3e3] cursor-pointer"
+                      @click="$router.push('/portal/contact/SELL')"
+                      :class="{
+                        'text-white': $route.path == '/portal/contact/SELL',
+                      }"
+                    >
+                      • Sell Page
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <!-- Dropdown Menu End -->
             </li>
           </ul>
         </div>
@@ -226,10 +320,10 @@ export default {
           name: "Agents",
           route: "/portal/agents",
         },
-        {
-          name: "Contacts",
-          route: "/portal/contact",
-        },
+        // {
+        //   name: "Contacts",
+        //   route: "/portal/contact",
+        // },
         {
           name: "Subscribers",
           route: "/portal/subscribers",
