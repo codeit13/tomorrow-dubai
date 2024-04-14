@@ -472,9 +472,9 @@ export default {
   },
   setup() {
     useSeoMeta({
-      title: "Exclusive Dubai Luxury Real Estate - Tomorrow Luxury Property",
+      title: "Real Estate in Dubai, Homes for Sale | Tomorrow Luxury Property",
       description:
-        "Enhance your property journey with Tomorrow Luxury Property. Collaborate with our expert real estate agents to discover the perfect luxury home or apartment for you.",
+        "Explore, buy, sell, or rent with Tomorrow Luxury Property. Collaborate with our expert real estate agents to discover the perfect luxury home or apartment for you.",
     });
   },
   mounted() {
