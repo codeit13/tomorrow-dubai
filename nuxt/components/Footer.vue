@@ -1,13 +1,13 @@
 <template>
   <footer class="bg-black text-white mt-20">
     <div class="mx-auto w-full p-4 py-6 md:px-24 lg:py-12">
-      <h1
+      <!-- <h1
         class="text-black-900 dark:text-gray-400 font-medium text-center lg:text-xl my-2"
       >
         Stay ahead of the curve <br />
         Sign up now to recieve exclusive listings before they hit the market.
-      </h1>
-      <div
+      </h1> -->
+      <!-- <div
         class="flex flex-col justify-center mx-auto mt-6 md:space-y-0 md:flex-row pt-2 pb-16"
       >
         <input
@@ -36,22 +36,25 @@
             </svg>
           </div>
         </button>
-      </div>
+      </div> -->
       <div class="md:flex md:justify-between">
+        <!-- First Column -->
         <div class="mb-6 md:mb-0">
           <NuxtLink to="/" class="flex items-center mb-4">
-            <!-- <span
-              class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
+            <span
+              class="self-center text-xl font-semibold whitespace-nowrap dark:text-white uppercase"
             >
               Tomorrow Luxury Property
-            </span> -->
+            </span>
             <!-- <img src="/assets/images/logo-dark.png" class="h-10" alt="logo" /> -->
           </NuxtLink>
           <div class="flex flex-col space-y-3 mt-2">
-            <p>Downtown, Dubai UAE</p>
-            <p>Phone: +971 581677220</p>
-            <p>Email: ceo@tomorrowluxuryproperty.com</p>
-            <div class="flex space-x-8 !mt-[14px]">
+            <p class="text-neutral-200 text-lg">Downtown, Dubai UAE</p>
+            <p class="text-neutral-200 text-sm">Phone: +971 581677220</p>
+            <p class="text-neutral-200 text-sm">
+              Email: ceo@tomorrowluxuryproperty.com
+            </p>
+            <div class="flex space-x-8 !mt-[20px]">
               <component
                 :is="handle.icon"
                 v-for="(handle, i) in socialMediaHandles"
@@ -60,39 +63,111 @@
                 @click="openExternalUrl(handle.handleUrl)"
               />
             </div>
-            <p class="!mt-6">© 2024 tomm luxury real estate llc</p>
+            <p class="!mt-6 text-neutral-200 text-sm">
+              © 2024 tomm luxury real estate llc
+            </p>
+
+            <!-- <div
+              class="flex flex-col justify-center mx-auto mt-6 md:space-y-0 md:flex-row pt-2 pb-16"
+            >
+              <input
+                type="email"
+                v-model="emailId"
+                class="pr-10 pl-3 text-black bg-white border-2 border-r-1 border-[#043433] text-[1.1rem] josefin-slab font-bold rounded-none dark:bg-gray-800 dark:text-gray-800 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
+                placeholder="Enter your email address..."
+              />
+
+              <button
+                @click="subscribeNewsLetter"
+                class="w-full josefin-slab px-6 py-2 text-lg font-bold tracking-widest border-2 border-l-0 border-[#043433] text-black transition-colors duration-300 transform md:w-auto md:ml-0 focus:outline-none bg-[#fff] rounded-none hover:bg-[#e3e3e3] focus:ring focus:ring-gray-300 focus:ring-opacity-80"
+              >
+                <div class="flex justify-center gap-2">
+                  <span class="capitalize">Subscribe</span>
+
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24"
+                    viewBox="0 -960 960 960"
+                    width="24"
+                  >
+                    <path
+                      d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"
+                    />
+                  </svg>
+                </div>
+              </button>
+            </div> -->
           </div>
         </div>
-        <div class="flex flex-wrap justify-between md:space-x-48">
-          <div>
-            <h2 class="mb-4 text-xl font-semibold">Features</h2>
-            <ul class="font-medium">
-              <li class="mb-4" v-for="(feature, i) in features" :key="i">
-                <a
-                  @click="$router.push(feature.route)"
-                  class="hover:underline cursor-pointer"
+        <!-- <div class="flex flex-wrap justify-between md:space-x-48"> -->
+        <div>
+          <h2 class="mb-4 text-xl font-semibold">Features</h2>
+          <ul class="font-medium">
+            <li class="mb-4" v-for="(feature, i) in features" :key="i">
+              <a
+                @click="$router.push(feature.route)"
+                class="hover:underline cursor-pointer"
+              >
+                <span class="text-neutral-400 text-sm">
+                  {{ feature.name }}
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="mb-4 text-xl font-semibold">Company</h2>
+          <ul class="text-black-900 dark:text-black-900 font-medium">
+            <li class="mb-4" v-for="(item, i) in company" :key="i">
+              <a
+                @click="$router.push(item.route)"
+                class="hover:underline cursor-pointer"
+              >
+                <span class="text-neutral-400 text-sm">{{ item.name }}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h1
+            class="text-black-900 dark:text-gray-400 font-medium text-left lg:text-xl my-2"
+          >
+            Stay ahead of the curve <br />
+            Sign up now to recieve exclusive listings before they hit the
+            market.
+          </h1>
+          <div
+            class="flex flex-col justify-start mx-auto mt-6 md:space-y-0 md:flex-row pt-2 pb-16"
+          >
+            <input
+              type="email"
+              v-model="emailId"
+              class="pr-24 pl-3 text-black bg-white text-[1.1rem] josefin-slab font-bold rounded-none dark:bg-gray-800 dark:text-gray-800 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300 placeholder:text-slate-600"
+              placeholder="Enter your email address..."
+            />
+
+            <button
+              @click="subscribeNewsLetter"
+              class="w-full josefin-slab px-6 py-2 text-[1rem] font-bold tracking-widest text-black transition-colors duration-300 transform md:w-auto md:ml-2 focus:outline-none bg-[#fff] rounded-none hover:bg-[#e3e3e3] focus:ring focus:ring-gray-300 focus:ring-opacity-80"
+            >
+              <div class="flex justify-center gap-2">
+                <span class="capitalize">Subscribe</span>
+
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 -960 960 960"
+                  width="24"
                 >
-                  <span class="text-neutral-400 text-sm">
-                    {{ feature.name }}
-                  </span>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h2 class="mb-4 text-xl font-semibold">Company</h2>
-            <ul class="text-black-900 dark:text-black-900 font-medium">
-              <li class="mb-4" v-for="(item, i) in company" :key="i">
-                <a
-                  @click="$router.push(item.route)"
-                  class="hover:underline cursor-pointer"
-                >
-                  <span class="text-neutral-400 text-sm">{{ item.name }}</span>
-                </a>
-              </li>
-            </ul>
+                  <path
+                    d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"
+                  />
+                </svg>
+              </div>
+            </button>
           </div>
         </div>
+        <!-- </div> -->
       </div>
     </div>
   </footer>

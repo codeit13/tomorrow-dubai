@@ -412,12 +412,11 @@ lifetime earnings with an 80% commission split.`,
     },
     async submitForm() {
       if (this.fullName && this.email && this.phone && this.salesVolume) {
-        const resp = await this.$store.dispatch("joinAsAgent", {
-          fullName: this.fullName,
+        const resp = await this.$store.dispatch("submitContactForm", {
+          name: this.fullName,
           email: this.email,
           phone: this.phone,
-          salesVolume: this.salesVolume,
-          status: "DRAFT",
+          moreInfo: this.salesVolume,
           from: "PARTNER",
         });
 
