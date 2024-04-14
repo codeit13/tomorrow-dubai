@@ -3,7 +3,37 @@
     <Head>
       <Meta
         name="keywords"
-        content="dubai, property, sale, properties for sale in dubai, luxury, exclusive properties in dubai, tomorrow luxury property, Dubai's First Subscription-Based Real Estate Jobs"
+        content="dubai, palm,jebel, exclusive, market, property, sale, properties for sale in dubai, luxury, exclusive properties in dubai, tomorrow luxury property, Dubai's First Subscription-Based Real Estate Jobs"
+      />
+      <Meta
+        property="og:title"
+        content="Real Estate in Dubai, Homes for Sale"
+      />
+      <Meta
+        property="og:description"
+        content="Explore, buy, sell, or rent with Tomorrow Luxury Property. Collaborate with our expert real estate agents to discover the perfect luxury home or apartment for you."
+      />
+      <Meta
+        property="og:image"
+        content="https://tomorrowluxuryproperty.com/assets/images/logo-light.png"
+      />
+      <Meta property="og:url" content="http://tomorrowluxuryproperty.com/" />
+
+      <Meta
+        name="twitter:title"
+        content="Real Estate in Dubai, Homes for Sale"
+      />
+      <Meta
+        name="twitter:description"
+        content="Explore, buy, sell, or rent with Tomorrow Luxury Property. Collaborate with our expert real estate agents to discover the perfect luxury home or apartment for you."
+      />
+      <Meta
+        name="twitter:url"
+        content="https://tomorrowluxuryproperty.com/assets/images/logo-light.png"
+      />
+      <Meta
+        name="twitter:card"
+        content="Explore, buy, sell, or rent with Tomorrow Luxury Property. Collaborate with our expert real estate agents to discover the perfect luxury home or apartment for you."
       />
     </Head>
     <Header v-if="!['/', '/buy', '/sell'].includes(route.path)" />

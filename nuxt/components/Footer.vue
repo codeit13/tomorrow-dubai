@@ -104,9 +104,9 @@
         </div>
         <div class="flex flex-wrap justify-between md:space-x-48">
           <div>
-            <h2 class="mb-4 text-xl font-semibold tracking-wider">Features</h2>
+            <h2 class="mb-6 text-xl font-semibold tracking-wider">Features</h2>
             <ul class="font-medium">
-              <li class="mb-4" v-for="(feature, i) in features" :key="i">
+              <li class="mb-2" v-for="(feature, i) in features" :key="i">
                 <a
                   @click="$router.push(feature.route)"
                   class="hover:underline cursor-pointer"
@@ -119,9 +119,9 @@
             </ul>
           </div>
           <div>
-            <h2 class="mb-4 text-xl font-semibold tracking-wider">Company</h2>
+            <h2 class="mb-6 text-xl font-semibold tracking-wider">Company</h2>
             <ul class="text-black-900 dark:text-black-900 font-medium">
-              <li class="mb-4" v-for="(item, i) in company" :key="i">
+              <li class="mb-2" v-for="(item, i) in company" :key="i">
                 <a
                   @click="$router.push(item.route)"
                   class="hover:underline cursor-pointer"

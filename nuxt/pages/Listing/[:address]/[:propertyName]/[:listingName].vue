@@ -50,7 +50,7 @@
     <div class="px-0.5">
       <div class="my-10">
         <!--  -->
-        <carousel :items-to-show="1" :wrapAround="true" :autoplay="3500">
+        <carousel :items-to-show="1" :wrapAround="true">
           <slide v-for="(url, i) in propertyImages" :key="i">
             <img
               alt="Property"
@@ -191,49 +191,50 @@
         <div
           class="flex flex-col flex-wrap gap-5 md:gap-10 w-full md:w-[45%] md:items-start"
         >
-          <div
-            class="flex items-start md:items-start flex-wrap md:flex-nowrap justify-start gap-8 md:p-8"
-            v-if="agent"
-          >
-            <img
-              alt="Agent"
-              class="w-[100px] rounded-full bg-gray-200 mb-4"
-              :src="agent.img"
-              :style="{
-                aspectRatio: '1/1',
-                objectFit: 'cover',
-              }"
-            />
-            <div class="w-full">
-              <h3 class="text-sm montserrat-font mb-6">LISTING AGENT</h3>
-              <p class="font-semibold mb-0">{{ agent.name }}</p>
-              <p class="text-sm italic mb-4">(Liscensed Real Estate Broker)</p>
+          <div class="flex flex-col justify-center items-center">
+            <div
+              class="flex items-start md:items-start flex-nowrap w-full justify-between gap-8 md:p-8"
+              v-if="agent"
+            >
+              <img
+                alt="Agent"
+                class="w-[80px] rounded-full bg-gray-200 mb-4"
+                :src="agent.img"
+                :style="{
+                  aspectRatio: '1/1',
+                  objectFit: 'cover',
+                }"
+              />
+              <div class="w-full">
+                <h3 class="text-sm montserrat-font mb-6">LISTING AGENT</h3>
+                <p class="font-semibold mb-0">{{ agent.name }}</p>
+                <p class="text-sm italic mb-4">(Liscensed Real Estate Agent)</p>
 
-              <a
-                :href="`mailto:${agent.email}`"
-                class="text-sm mb-0 block w-[50%] text-wrap"
-              >
-                {{ agent.email }}
-              </a>
-              <a :href="`tel:${agent.phone}`" class="text-sm mb-3">
-                {{ agent.phone }}
-              </a>
-
-              <div class="flex mt-6">
-                <Button
-                  class="rounded-none border-2 transition-all border-[#000] bg-white text-sm font-semibold text-[#25D366] mt-2 px-6 py-4"
-                  variant="outline"
-                  @click="goToWhatsapp(agent.phone)"
+                <a
+                  :href="`mailto:${agent.email}`"
+                  class="text-sm mb-0 block w-[50%] text-wrap"
                 >
-                  WhatsApp
-                </Button>
-                <Button
-                  @click="goToCall(agent.phone)"
-                  class="rounded-none border-2 transition-all border-[#000] bg-black text-sm font-semibold text-[#e3e3e3] mt-2 ml-0 md:ml-2 px-6 py-4"
-                  variant="outline"
-                  >Call Now</Button
-                >
+                  {{ agent.email }}
+                </a>
+                <a :href="`tel:${agent.phone}`" class="text-sm mb-3">
+                  {{ agent.phone }}
+                </a>
               </div>
+            </div>
+            <div class="flex w-full mt-6">
+              <Button
+                class="rounded-none w-full border-2 transition-all border-[#000] bg-white text-sm font-semibold text-[#25D366] mt-2 px-6 py-4 shadow-none"
+                variant="outline"
+                @click="goToWhatsapp(agent.phone)"
+              >
+                WhatsApp
+              </Button>
+              <Button
+                @click="goToCall(agent.phone)"
+                class="rounded-none w-full border-2 transition-all border-[#000] bg-black text-sm font-semibold text-[#e3e3e3] mt-2 ml-0 md:ml-2 px-6 py-4 shadow-none"
+                variant="outline"
+                >Contact Agent</Button
+              >
             </div>
           </div>
           <div class="w-[92%] p-6 md:py-6 md:px-4 bg-gray-100 bg-opacity-50">

@@ -15,6 +15,7 @@
         <div class="flex flex-col gap-10 md:gap-48 md:w-[60%]">
           <div class="md:col-span-2 space-y-4 mt-4">
             <h1 class="text-3xl font-bold montserrat-font">{{ agentName }}</h1>
+            <h2 class="text-lg font-bold">(Liscensed Real Estate Agent)</h2>
             <p class="text-lg">{{ agentTitle }}</p>
             <p class="text-sm">EMAIL ID : {{ agentEmail }}</p>
             <p class="text-sm">MOBILE : {{ agnetPhone }}</p>
