@@ -204,12 +204,27 @@
             v-for="(property, i) in paginatedProperties"
             :key="i"
           >
-            <img
+            <!-- <img
               :src="property.propertyImage"
               alt="Property"
               class="w-full h-auto"
               style="aspect-ratio: 300 / 200; object-fit: cover"
-            />
+            /> -->
+            <carousel :items-to-show="1" :wrapAround="true">
+              <slide v-for="(url, i) in property.images" :key="i">
+                <img
+                  alt="Property"
+                  :src="url"
+                  class="w-full h-auto"
+                  style="aspect-ratio: 300 / 200; object-fit: cover"
+                />
+              </slide>
+
+              <template #addons>
+                <navigation />
+                <pagination />
+              </template>
+            </carousel>
             <div
               class="inline-flex items-center border px-2.5 py-0.5 w-fit text-xl josefin-slab font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white hover:text-black bg-black/20 text-secondary-foreground hover:bg-white/80 absolute top-4 right-4"
             >
@@ -268,14 +283,31 @@
             v-for="(property, i) in similarProperties"
             :key="i"
           >
-            <img
+            <!-- <img
               :src="property.image"
               alt="Property"
               class="w-full h-auto"
               width="300"
               height="200"
               style="aspect-ratio: 300 / 200; object-fit: cover"
-            />
+            /> -->
+            <carousel :items-to-show="1" :wrapAround="true">
+              <slide v-for="(url, i) in property.images" :key="i">
+                <img
+                  alt="Property"
+                  :src="url"
+                  class="w-full h-auto"
+                  width="300"
+                  height="200"
+                  style="aspect-ratio: 300 / 200; object-fit: cover"
+                />
+              </slide>
+
+              <template #addons>
+                <navigation />
+                <pagination />
+              </template>
+            </carousel>
             <div
               class="inline-flex items-center border px-2.5 py-0.5 w-fit josefin-slab text-xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/10 absolute top-4 right-4"
             >

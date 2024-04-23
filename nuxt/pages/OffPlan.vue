@@ -13,20 +13,35 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-12 mx-auto">
       <div
-        @click="goToProperty(property)"
         class="relative cursor-pointer w-fit"
         v-for="(property, i) in offPlanProperties"
         :key="i"
       >
         <div class="relative">
-          <img
+          <!-- <img
             :src="property.image"
             alt="Property"
             class="w-[613px] h-auto"
             style="aspect-ratio: 3/4; object-fit: cover"
-          />
+          /> -->
+          <carousel :items-to-show="1" :wrapAround="true">
+            <slide v-for="(url, i) in property.images" :key="i">
+              <img
+                alt="Property"
+                :src="url"
+                class="w-[613px] h-auto"
+                style="aspect-ratio: 3/4; object-fit: cover"
+              />
+            </slide>
+
+            <template #addons>
+              <navigation />
+              <pagination />
+            </template>
+          </carousel>
           <div
-            class="items-center gap-6 border px-4 w-full text-xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/50 absolute bottom-0 overflow-hidden text-ellipsis py-6 montserrat-font"
+            @click="goToProperty(property)"
+            class="items-center gap-6 border px-4 w-full text-xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/50 absolute bottom-5 overflow-hidden text-ellipsis py-6 montserrat-font"
           >
             <p
               class="text-sm md:text-lg font-extrabold montserrat-font mr-10 text-[1rem]"
@@ -49,7 +64,10 @@
             </div>
           </div>
         </div>
-        <div class="p-4 pb-8 w-full bg-gray-100">
+        <div
+          class="p-4 pb-8 w-full bg-gray-100"
+          @click="goToProperty(property)"
+        >
           <p class="text-sm md:text-[1rem]] font-semibold">
             {{ property.subtitle }}
           </p>

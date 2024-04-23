@@ -321,23 +321,37 @@
         <h2 class="text-3xl font-semibold mt-32 mb-12">Similar Properties</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div
-            @click="goToProperty(property)"
             class="relative cursor-pointer hover:bg-gray-100 rounded-sm border-[1px] border-[#00000062]"
             v-for="(property, i) in similarProperties"
             :key="i"
           >
-            <img
+            <!-- <img
               :src="property.image"
               alt="Property"
               class="w-full h-auto"
               style="aspect-ratio: 300 / 200; object-fit: cover"
-            />
+            /> -->
+            <carousel :items-to-show="1" :wrapAround="true">
+              <slide v-for="(url, i) in property.images" :key="i">
+                <img
+                  alt="Property"
+                  :src="url"
+                  class="w-full h-auto"
+                  style="aspect-ratio: 300 / 200; object-fit: cover"
+                />
+              </slide>
+
+              <template #addons>
+                <navigation />
+                <pagination />
+              </template>
+            </carousel>
             <div
               class="inline-flex items-center border px-2.5 py-0.5 w-fit josefin-slab text-xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/10 absolute top-4 right-4"
             >
               {{ property.tag }}
             </div>
-            <div class="p-4">
+            <div class="p-4" @click="goToProperty(property)">
               <p class="text-lg md:text-2xl font-bold">
                 {{ property.priceText }}
               </p>
@@ -720,7 +734,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .mapouter {
   position: relative;
   /* height: 400px;
@@ -742,5 +756,13 @@ export default {
 .gmap_canvas iframe {
   position: relative;
   z-index: 2;
+}
+
+.carousel__prev,
+.carousel__next,
+.carousel__prev > svg,
+.carousel__next > svg {
+  width: 4.5rem !important;
+  height: 4.5rem !important;
 }
 </style>

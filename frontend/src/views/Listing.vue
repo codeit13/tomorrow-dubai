@@ -670,4 +670,12 @@ export default {
   position: relative;
   z-index: 2;
 }
+
+.carousel__prev,
+.carousel__next,
+.carousel__prev > svg,
+.carousel__next > svg {
+  width: 80px !important;
+  height: 80px !important;
+}
 </style>

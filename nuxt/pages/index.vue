@@ -181,22 +181,36 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div
           class="relative cursor-pointer hover:bg-gray-100 rounded-sm border-[1px] border-[#00000062]"
-          @click="goToProperty(property)"
           v-for="(property, i) in exclusiveProperties"
           :key="i"
         >
-          <img
+          <!-- <img
             :src="property.image"
             alt="Property"
             class="w-full h-auto"
             style="aspect-ratio: 300 / 200; object-fit: cover"
-          />
+          /> -->
+          <carousel :items-to-show="1" :wrapAround="true">
+            <slide v-for="(url, i) in property.images" :key="i">
+              <img
+                alt="Property"
+                :src="url"
+                class="w-full h-auto"
+                style="aspect-ratio: 300 / 200; object-fit: cover"
+              />
+            </slide>
+
+            <template #addons>
+              <navigation />
+              <pagination />
+            </template>
+          </carousel>
           <div
             class="inline-flex items-center border px-2.5 py-0.5 w-fit josefin-slab text-xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/10 absolute top-4 right-4"
           >
             {{ property.tag }}
           </div>
-          <div class="p-4">
+          <div class="p-4" @click="goToProperty(property)">
             <p class="text-lg md:text-2xl font-bold">
               AED {{ property.price?.toLocaleString("en-us") }}
             </p>
@@ -250,20 +264,35 @@
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div
-          @click="goToProperty(property)"
           class="relative cursor-pointer w-fit"
           v-for="(property, i) in offPlanProperties"
           :key="i"
         >
           <div class="relative">
-            <img
+            <!-- <img
               :src="property.image"
               alt="Property"
               class="w-[613px] h-auto"
               style="aspect-ratio: 3/4; object-fit: cover"
-            />
+            /> -->
+            <carousel :items-to-show="1" :wrapAround="true">
+              <slide v-for="(url, i) in property.images" :key="i">
+                <img
+                  alt="Property"
+                  :src="url"
+                  class="w-[613px] h-auto"
+                  style="aspect-ratio: 3/4; object-fit: cover"
+                />
+              </slide>
+
+              <template #addons>
+                <navigation />
+                <pagination />
+              </template>
+            </carousel>
             <div
-              class="items-center gap-6 border px-4 w-full text-xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/50 absolute bottom-0 overflow-hidden text-ellipsis py-6 montserrat-font"
+              @click="goToProperty(property)"
+              class="items-center gap-6 border px-4 w-full text-xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/50 absolute bottom-5 overflow-hidden text-ellipsis py-6 montserrat-font"
             >
               <p
                 class="text-sm md:text-lg font-extrabold montserrat-font mr-10 text-[1rem]"
@@ -287,7 +316,10 @@
             </div>
           </div>
 
-          <div class="p-4 pb-8 w-full bg-gray-100">
+          <div
+            class="p-4 pb-8 w-full bg-gray-100"
+            @click="goToProperty(property)"
+          >
             <p class="text-sm md:text-[1rem]] font-semibold">
               {{ property.heading }}
             </p>
@@ -346,15 +378,12 @@
 </template>
 
 <script>
-// import Header from "@/components/Header.vue";
+import "vue3-carousel/dist/carousel.css";
 import { mapState } from "vuex";
 
 import { cn } from "../lib/utils";
 
 export default {
-  components: {
-    // Header,
-  },
   data() {
     return {
       open: false,
@@ -581,3 +610,13 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.carousel__prev,
+.carousel__next,
+.carousel__prev > svg,
+.carousel__next > svg {
+  width: 2rem !important;
+  height: 2rem !important;
+}
+</style>
