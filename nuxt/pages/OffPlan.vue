@@ -18,13 +18,13 @@
         :key="i"
       >
         <div class="relative">
-          <!-- <img
+          <img
             :src="property.image"
             alt="Property"
             class="w-[613px] h-auto"
             style="aspect-ratio: 3/4; object-fit: cover"
-          /> -->
-          <carousel :items-to-show="1" :wrapAround="true">
+          />
+          <!-- <carousel :items-to-show="1" :wrapAround="true">
             <slide v-for="(url, i) in property.images" :key="i">
               <img
                 alt="Property"
@@ -38,10 +38,10 @@
               <navigation />
               <pagination />
             </template>
-          </carousel>
+          </carousel> -->
           <div
             @click="goToProperty(property)"
-            class="items-center gap-6 border px-4 w-full text-xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/50 absolute bottom-5 overflow-hidden text-ellipsis py-6 montserrat-font"
+            class="items-center gap-6 border px-4 w-full text-xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/50 absolute bottom-0 overflow-hidden text-ellipsis py-6 montserrat-font"
           >
             <p
               class="text-sm md:text-lg font-extrabold montserrat-font mr-10 text-[1rem]"

@@ -222,7 +222,7 @@
 
               <template #addons>
                 <navigation />
-                <pagination />
+                <!-- <pagination /> -->
               </template>
             </carousel>
             <div
@@ -305,7 +305,7 @@
 
               <template #addons>
                 <navigation />
-                <pagination />
+                <!-- <pagination /> -->
               </template>
             </carousel>
             <div
