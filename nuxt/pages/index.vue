@@ -12,15 +12,22 @@
         <div
           class="absolute top-[58px] md:top-[64px] left-0 right-0 bottom-0 flex flex-col justify-center items-start text-left text-white bg-black bg-opacity-50 px-6 md:px-28"
         >
-          <h1
+          <!-- <h1
             class="text-xl md:text-2xl font-bold uppercase tracking-wide montserrat-font"
           >
             Find Your Next
-          </h1>
+          </h1> -->
           <h2
-            class="text-4xl md:text-6xl font-bold uppercase tracking-wide montserrat-font mt-1"
+            class="text-4xl md:text-5xl tracking-wide montserrat-font mt-1 mb-6 inline-block"
+            id="hero-text"
           >
-            Dream Home
+            View Listings in
+            <span
+              class="text-4xl md:text-5xl font-bold transition-opacity duration-700"
+              id="hero-switch-text"
+            >
+              Dubai Island
+            </span>
           </h2>
 
           <div class="mt-3">
@@ -52,7 +59,7 @@
                     <input
                       type="text"
                       v-model="query"
-                      class="block p-4 ps-10 focus:outline-none rounded-sm bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white w-[62vw] md:w-[25vw] h-10 bg-background px-3 py text-sm text-black placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+                      class="block p-4 ps-10 focus:outline-none rounded-sm bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white w-[60vw] md:w-[25vw] h-10 bg-background px-3 py text-sm text-black placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
                       placeholder="Search Community, Building, or City"
                       @keyup.enter="searchClick"
                     />
@@ -515,6 +522,21 @@ export default {
   },
   mounted() {
     this.router = useRouter();
+    const changingText = document.getElementById("hero-switch-text");
+
+    const textArray = this.neighbourhoodProperties;
+    textArray.shift();
+    let currentIndex = 0;
+
+    setInterval(() => {
+      changingText.style.opacity = 0;
+
+      setTimeout(() => {
+        changingText.textContent = textArray[currentIndex].title;
+        currentIndex = (currentIndex + 1) % textArray.length;
+        changingText.style.opacity = 1;
+      }, 1000);
+    }, 4000); // Text change every 5 seconds
   },
   methods: {
     searchInputChange(e) {

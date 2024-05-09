@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white text-gray-900 px-4">
+  <div class="bg-white text-gray-900 px-4 md:px-0">
     <header
       class="pt-48 md:pt-64 md:px-28 md:pl-30 pb-32 text-left bg-gray-100 bg-opacity-50"
     >
@@ -56,7 +56,7 @@
         experience. With us, you are not just an agent; you become an integral
         partner in a journey of mutual growth and success.
       </p>
-      <div class="mt-8 mx-auto max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- <div class="mt-8 mx-auto max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="border-2 border-[#00000090] p-6 text-center bg-[#302CFF0D]">
           <h3
             class="text-xl text-center text-[#302CFF] font-semibold border-2 border-[#302CFF50] w-fit px-8 py-3 mx-auto"
@@ -111,15 +111,116 @@
               <span class="font-bold">Agent: 80% - 20% Company</span>
             </p>
           </div>
+        </div>p-6 md:p-0
+      </div> -->
+
+      <div class="mt-8 mx-auto flex flex-col bg-white gap-6">
+        <div class="p-0 text-center grid grid-cols-1 md:grid-cols-2 space-y-10">
+          <div class="flex items-center justify-center bg-white px-2">
+            <div
+              class="flex flex-col items-start justify-center gap-2 bg-white"
+            >
+              <span class="text-3xl font-bold text-black">full-Time</span>
+              <span class="text-sm text-gray-900 underline underline-offset-4">
+                Learn more
+              </span>
+              <span class="font-bold text-black text-left">
+                A full resident's/employment visa paid by Company
+              </span>
+              <Button
+                class="bg-blue-600 rounded-none font-semibold px-8 py-6 text-white mt-4"
+              >
+                Start my subscription
+              </Button>
+            </div>
+          </div>
+          <div
+            class="flex items-center justify-center bg-gray-100 px-8 py-10 md:pr-80"
+          >
+            <div class="text-left">
+              <p class="text-2xl tracking-wide">
+                <span class="font-bold">AED 2,500</span>
+                <span class="text-lg">/ month / billed annually</span>
+              </p>
+              <ul class="w-[100%] mx-auto text-center list-disc">
+                <li class="mt-8 text-lg text-left">
+                  <span class="font-bold">Desk fee & RERA Certification</span>
+                </li>
+                <li class="text-lg mt-2 text-left">
+                  Commission Split
+                  <span class="font-bold">Agent 80% - 20% Company</span>
+                </li>
+                <li class="text-lg mt-2 text-left">
+                  <span class="font-bold">Flexible Work</span> Arrangements &
+                  <span class="font-bold">Office space</span>
+                </li>
+                <li class="text-lg mt-2 text-left">
+                  Comprehensive
+                  <span class="font-bold">Training and Development</span>
+                </li>
+                <li class="text-lg mt-2 text-left">
+                  <span class="font-bold">Unlimited</span> Property Listings
+                </li>
+                <li class="text-lg mt-2 text-left">
+                  Marketing and Advertising Support
+                </li>
+                <li class="text-lg mt-2 text-left">Recognition and Rewards</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-0 text-center grid grid-cols-1 md:grid-cols-2 space-y-10">
+          <div class="flex items-center justify-center bg-gray-100 px-6">
+            <div class="pt-6 pb-10 text-right md:w-[65%]">
+              <p class="mt-4 text-2xl tracking-wide text-left md:text-right">
+                <span class="font-bold">AED 30,000 </span>
+                <span class="text-lg">/ one time </span>
+              </p>
+              <div class="w-[100%] mx-auto text-center">
+                <p class="mt-16 text-lg text-left md:text-right">
+                  Enjoy the flexibility of working remotely with a one-time fee
+                  of AED 30,000 and a favorable commission split, without the
+                  need for a full-time commitment.
+                </p>
+                <p class="text-lg mt-10 mb-24 text-left md:text-right">
+                  Commission Split <br />
+                  <span class="font-bold"
+                    >Referral Agent 80% - 20% Company
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="flex items-start md:items-center justify-start md:justify-center bg-white"
+          >
+            <div class="flex flex-col items-start justify-center gap-2">
+              <span class="text-3xl font-bold text-black">Remote/Referral</span>
+              <span class="text-sm text-gray-900 underline underline-offset-4">
+                Learn more
+              </span>
+              <!-- <span class="font-bold text-black text-left">
+                A full resident's/employment visa paid by Company
+              </span> -->
+              <Button
+                class="bg-blue-600 rounded-none font-semibold px-8 py-6 text-white mt-4"
+              >
+                Start my subscription
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="mt-8 text-center">
+
+      <!-- <div class="mt-8 text-center">
         <Button
           class="bg-blue-600 rounded-none font-semibold px-8 py-6 text-white mt-4"
         >
           Join our Team
         </Button>
-      </div>
+      </div> -->
 
       <section class="bg-white dark:bg-gray-900 mt-16">
         <div class="w-[90vw ] md:w-[50vw] py-12 mx-auto">

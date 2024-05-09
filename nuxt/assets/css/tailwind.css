@@ -3,14 +3,44 @@
 @tailwind utilities;
 
 * {
-  font-family: "Josefin Sans";
-  font-weight: 500;
+  /* font-family: "Josefin Sans"; */
+  font-family: "GT America Compressed Black", sans-serif;
+  /* font-weight: 500; */
 }
 
-.montserrat-font {
+/* .montserrat-font {
   font-family: "Montserrat Subrayada";
 }
 
 .josefin-slab {
   font-family: "Josefin Slab";
+} */
+
+#hero-switch-text {
+  /* position: absolute; */
+  /* top: 5vh; */
+  /* left: 50vh; */
+  /* opacity: 0; */
+  /* vertical-align: middle; */
+}
+
+.animate-change {
+  animation: fade-in 5s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    /* transform: translateY(-5vh); */
+  }
+  50%,
+  60% {
+    opacity: 1;
+    /* transform: translateY(0); */
+  }
+
+  100% {
+    opacity: 0;
+    /* transform: translateY(20vh); */
+  }
 }

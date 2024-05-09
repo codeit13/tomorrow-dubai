@@ -1,12 +1,17 @@
 * {
-  font-family: "Josefin Sans";
-  font-weight: 500;
+  /* font-family: "Josefin Sans"; */
+  font-family: "GT America Compressed Black", sans-serif;
+  /* font-weight: 500; */
 }
 
-.montserrat-font {
+/* .montserrat-font {
   font-family: "Montserrat Subrayada";
 }
 
 .josefin-slab {
   font-family: "Josefin Slab";
-}
+} */
+
+/* body {
+  font-family: 'GT America Compressed Black', sans-serif;
+} */

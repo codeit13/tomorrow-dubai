@@ -189,23 +189,23 @@
           </div>
         </div>
         <div
-          class="flex flex-col flex-wrap gap-5 md:gap-10 w-full md:w-[45%] md:items-start"
+          class="flex flex-col flex-wrap gap-5 md:gap-0 w-full md:w-[30%] md:items-start"
         >
-          <div class="flex flex-col justify-center items-center">
+          <div class="flex flex-col justify-center items-center w-[70%]">
             <div
-              class="flex items-start md:items-start flex-nowrap w-full justify-between gap-8 md:p-8"
+              class="flex items-start md:items-center flex-nowrap w-full justify-between gap-8 md:p-8"
               v-if="agent"
             >
               <img
                 alt="Agent"
-                class="w-[80px] rounded-full bg-gray-200 mb-4"
+                class="w-[100px] rounded-full bg-gray-200 mb-4"
                 :src="agent.img"
                 :style="{
                   aspectRatio: '1/1',
                   objectFit: 'cover',
                 }"
               />
-              <div class="w-full">
+              <div class="">
                 <h3 class="text-sm montserrat-font mb-6">LISTING AGENT</h3>
                 <p class="font-semibold mb-0">{{ agent.name }}</p>
                 <p class="text-sm italic mb-4">(Liscensed Real Estate Agent)</p>
@@ -221,7 +221,11 @@
                 </a>
               </div>
             </div>
-            <div class="flex w-full mt-6">
+          </div>
+          <div class="w-[92%] px-0 py-6 md:py-2 md:px-4">
+            <span class="font-bold">need immediate assistance?</span>
+
+            <div class="flex w-full mb-8">
               <Button
                 class="rounded-none w-full border-2 transition-all border-[#000] bg-white text-sm font-semibold text-[#25D366] mt-2 px-6 py-4 shadow-none"
                 variant="outline"
@@ -233,16 +237,27 @@
                 @click="goToCall(agent.phone)"
                 class="rounded-none w-full border-2 transition-all border-[#000] bg-black text-sm font-semibold text-[#e3e3e3] mt-2 ml-0 md:ml-2 px-6 py-4 shadow-none"
                 variant="outline"
-                >Contact Agent</Button
               >
+                Contact Agent
+              </Button>
             </div>
-          </div>
-          <div class="w-[92%] p-6 md:py-6 md:px-4 bg-gray-100 bg-opacity-50">
             <h2 class="text-xl font-semibold mb-4">Register your interest</h2>
             <div class="space-y-4 text-right">
-              <Input v-model="name" placeholder="Full Name" />
-              <Input v-model="email" placeholder="Email" />
-              <Input v-model="phone" placeholder="+971 | Mobile" />
+              <Input
+                class="border-[#000] rounded-none"
+                v-model="name"
+                placeholder="Name"
+              />
+              <Input
+                class="border-[#000] rounded-none"
+                v-model="email"
+                placeholder="Email"
+              />
+              <Input
+                class="border-[#000] rounded-none"
+                v-model="phone"
+                placeholder="+971 | Phone"
+              />
               <Textarea
                 rows="8"
                 class="rounded-none border-[#000]"
@@ -250,7 +265,7 @@
                 placeholder="Tell us more about what you want to know"
               />
               <Button
-                class="rounded-none border-[1px] px-6 border-[#000] bg-white text-black hover:bg-black hover:text-white"
+                class="rounded-none w-full text-md font-bold border-[1px] px-6 py-5 border-[#000] bg-black text-white hover:bg-white hover:text-black"
                 @click="submitContactForm"
               >
                 Send Message
@@ -688,7 +703,7 @@ export default {
 
           this.isOffPlan = property.isOffPlan;
 
-          this.moreInfo = `Hi, I found your property. Please contact me. Thank you`;
+          this.moreInfo = `I found your listing for property and am interested in learning more. Please contact me. Thank you.`;
 
           const descriptionDiv = document.createElement("div");
           descriptionDiv.innerHTML = this.description;

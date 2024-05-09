@@ -1,30 +1,30 @@
 <template>
   <footer class="bg-black text-white mt-20">
-    <div class="mx-auto w-full p-4 py-6 md:px-24 lg:py-12">
+    <div class="mx-auto w-full p-4 py-8 md:px-24 lg:py-12">
       <h1
-        class="text-black-900 dark:text-gray-400 font-medium text-center lg:text-xl my-2"
+        class="text-black-900 dark:text-gray-400 font-bold text-center lg:text-xl my-2"
       >
-        Stay ahead of the curve <br />
-        Sign up now to recieve exclusive listings before they hit the market.
+        Join our community! <br />
+        Get the latest market updates straight to your inbox.
       </h1>
       <div
-        class="flex flex-col justify-center mx-auto mt-6 md:space-y-0 md:flex-row pt-2 pb-16"
+        class="flex flex-col justify-center mx-auto mt-6 md:flex-row pt-2 pb-20 md:pb-28 md:space-y-0"
       >
         <input
           type="email"
           v-model="emailId"
-          class="pr-48 pl-3 py-2 text-black bg-white text-[1.1rem] josefin-slab font-bold rounded-none dark:bg-gray-800 dark:text-gray-800 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
-          placeholder="Enter your email address..."
+          class="pr-48 pl-3 py-2 text-black bg-white text-[1.2rem] josefin-slab font-bold rounded-none dark:bg-gray-800 dark:text-gray-800 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
+          placeholder="name@example.com"
         />
 
         <button
           @click="subscribeNewsLetter"
-          class="w-full josefin-slab px-6 py-2 text-lg font-bold tracking-widest mt-1 text-black transition-colors duration-300 transform md:w-auto md:ml-1 focus:outline-none bg-[#fff] rounded-none hover:bg-[#e3e3e3] focus:ring focus:ring-gray-300 focus:ring-opacity-80"
+          class="w-full josefin-slab px-8 py-2 text-lg font-bold tracking-widest mt-1 text-black transition-colors duration-300 transform md:w-auto md:ml-1 focus:outline-none bg-[#fff] rounded-none hover:bg-[#e3e3e3] focus:ring focus:ring-gray-300 focus:ring-opacity-80"
         >
           <div class="flex justify-center gap-2">
-            <span class="capitalize">Subscribe</span>
+            <span class="uppercase font-normal tracking-wider">Subscribe</span>
 
-            <svg
+            <!-- <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24"
               viewBox="0 -960 960 960"
@@ -33,28 +33,37 @@
               <path
                 d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"
               />
-            </svg>
+            </svg> -->
           </div>
         </button>
       </div>
       <div class="md:flex md:justify-between">
         <div class="mb-6 md:mb-0">
-          <NuxtLink to="/" class="flex items-center mb-4">
-            <!-- <span
+          <!-- <NuxtLink to="/" class="flex items-center mb-4">
+            < <span
               class="self-center text-xl font-semibold whitespace-nowrap dark:text-white uppercase"
             >
               Tomorrow Luxury Property
-            </span> -->
+            </span>
             <img src="/assets/images/logo-white.png" class="h-10" alt="logo" />
-          </NuxtLink>
-          <div class="flex flex-col space-y-3 mt-2">
-            <p class="text-neutral-200 text-lg tracking-wider">
+          </NuxtLink> -->
+          <div class="flex flex-col gap-3 mt-2">
+            <p class="text-gray-100 font-bold text-lg tracking-wider">
+              Head Office
+            </p>
+            <p
+              class="text-gray-100 font-bold underline underline-offset-4 text-lg tracking-wider"
+            >
               Downtown, Dubai UAE
             </p>
-            <p class="text-neutral-200 text-sm tracking-wider">
+            <p
+              class="text-gray-100 font-bold underline underline-offset-4 text-sm tracking-wider mt-6"
+            >
               Phone: +971 581677220
             </p>
-            <p class="text-neutral-200 text-sm tracking-wider">
+            <p
+              class="text-gray-100 font-bold underline underline-offset-4 text-sm tracking-wider"
+            >
               Email: ceo@tomorrowluxuryproperty.com
             </p>
             <div class="flex space-x-8 !mt-[20px]">
@@ -66,9 +75,6 @@
                 @click="openExternalUrl(handle.handleUrl)"
               />
             </div>
-            <p class="!mt-6 text-neutral-200 text-sm tracking-wider">
-              © 2024 tomm luxury real estate llc
-            </p>
 
             <!-- <div
               class="flex flex-col justify-center mx-auto mt-6 md:space-y-0 md:flex-row pt-2 pb-16"
@@ -102,7 +108,7 @@
             </div> -->
           </div>
         </div>
-        <div class="flex flex-wrap justify-between md:space-x-48">
+        <div class="flex flex-wrap justify-between md:gap-80">
           <div>
             <h2 class="mb-6 text-xl font-semibold tracking-wider">Features</h2>
             <ul class="font-medium">
@@ -135,6 +141,12 @@
           </div>
         </div>
       </div>
+
+      <p
+        class="!mt-6 text-neutral-400 font-semibold text-lg tracking-wider border-t-[1.5px] border-[#e3e3e3]"
+      >
+        © 2024 tomm luxury real estate llc
+      </p>
     </div>
   </footer>
 </template>
