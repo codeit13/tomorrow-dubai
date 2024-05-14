@@ -11,16 +11,20 @@
           >{{ `< Off Plan` }}</span
         >
         <div class="text-center">
-          <h1 class="text-2xl md:text-4xl montserrat-font mb-3">
+          <h1
+            class="text-2xl md:text-[2.75rem] montserrat-font font-extrabold mb-3"
+          >
             {{ title }}
           </h1>
-          <p class="text-sm md:text-xl mb-3 josefin-slab font-[600] uppercase">
+          <p
+            class="text-sm md:text-xl mb-2 josefin-slab font-normal capitalize"
+          >
             {{ subtitle }}
           </p>
           <!-- <p class="text-lg">{{ featureText }}</p> -->
 
           <!-- <p class="text-lg text-gray-700 mt-4">STARTING FROM</p> -->
-          <p class="text-sm md:text-xl" v-if="startingPrice">
+          <p class="text-sm md:text-xl font-semibold" v-if="startingPrice">
             STARTING FROM AED {{ startingPrice?.toLocaleString("en-US") }}
           </p>
         </div>
@@ -148,7 +152,7 @@
                     (e) => units[e].sqFt && units[e].price
                   )"
                   :key="i"
-                  class="font-bold text-sm md:text-md"
+                  class="font-bold text-sm md:text-[1rem]"
                 >
                   {{ key }}
                 </h1>
@@ -159,7 +163,7 @@
                     (e) => units[e].sqFt && units[e].price
                   )"
                   :key="i"
-                  class="text-sm md:text-md josefin-slab font-[600] w-fit text-left"
+                  class="text-sm md:text-[1rem] josefin-slab font-[600] w-fit text-left"
                 >
                   {{ units[key].sqFt }} Sq Ft
                 </span>
@@ -170,7 +174,7 @@
                     (e) => units[e].sqFt && units[e].price
                   )"
                   :key="i"
-                  class="text-sm md:text-md text-left"
+                  class="text-sm md:text-[1rem] text-left"
                 >
                   AED {{ units[key].price?.toLocaleString("en-US") }}
                 </span>
@@ -191,9 +195,9 @@
         <div
           class="flex flex-col flex-wrap gap-5 md:gap-0 w-full md:w-[30%] md:items-start"
         >
-          <div class="flex flex-col justify-center items-center w-[70%]">
+          <div class="flex flex-col justify-center items-start w-full">
             <div
-              class="flex items-start md:items-center flex-nowrap w-full justify-between gap-8 md:p-8"
+              class="flex items-start md:items-start flex-nowrap w-full gap-8 md:p-8"
               v-if="agent"
             >
               <img
@@ -221,55 +225,59 @@
                 </a>
               </div>
             </div>
-          </div>
-          <div class="w-[92%] px-0 py-6 md:py-2 md:px-4">
-            <span class="font-bold">need immediate assistance?</span>
+            <div class="px-0 py-6 md:py-2 md:px-4 mb-4 w-full">
+              <span class="font-bold">need immediate assistance?</span>
 
-            <div class="flex w-full mb-8">
-              <Button
-                class="rounded-none w-full border-2 transition-all border-[#000] bg-white text-sm font-semibold text-[#25D366] mt-2 px-6 py-4 shadow-none"
-                variant="outline"
-                @click="goToWhatsapp(agent.phone)"
-              >
-                WhatsApp
-              </Button>
-              <Button
-                @click="goToCall(agent.phone)"
-                class="rounded-none w-full border-2 transition-all border-[#000] bg-black text-sm font-semibold text-[#e3e3e3] mt-2 ml-0 md:ml-2 px-6 py-4 shadow-none"
-                variant="outline"
-              >
-                Contact Agent
-              </Button>
-            </div>
-            <h2 class="text-xl font-semibold mb-4">Register your interest</h2>
-            <div class="space-y-4 text-right">
-              <Input
-                class="border-[#000] rounded-none"
-                v-model="name"
-                placeholder="Name"
-              />
-              <Input
-                class="border-[#000] rounded-none"
-                v-model="email"
-                placeholder="Email"
-              />
-              <Input
-                class="border-[#000] rounded-none"
-                v-model="phone"
-                placeholder="+971 | Phone"
-              />
-              <Textarea
-                rows="8"
-                class="rounded-none border-[#000]"
-                v-model="moreInfo"
-                placeholder="Tell us more about what you want to know"
-              />
-              <Button
-                class="rounded-none w-full text-md font-bold border-[1px] px-6 py-5 border-[#000] bg-black text-white hover:bg-white hover:text-black"
-                @click="submitContactForm"
-              >
-                Send Message
-              </Button>
+              <div class="flex w-full mb-8">
+                <Button
+                  class="rounded-none w-full border-2 transition-all border-[#000] bg-white text-sm font-semibold text-[#25D366] mt-2 px-6 py-4 shadow-none"
+                  variant="outline"
+                  @click="goToWhatsapp(agent.phone)"
+                >
+                  WhatsApp
+                </Button>
+                <Button
+                  @click="goToCall(agent.phone)"
+                  class="rounded-none w-full border-2 transition-all border-[#000] bg-black text-sm font-semibold text-[#e3e3e3] mt-2 ml-0 md:ml-2 px-6 py-4 shadow-none"
+                  variant="outline"
+                >
+                  Contact Agent
+                </Button>
+              </div>
+              <div class="md:border-2 px-4 py-4">
+                <h2 class="text-xl font-semibold mb-4 text-neutral-800">
+                  Register your Interest
+                </h2>
+                <div class="space-y-4 text-right">
+                  <Input
+                    class="border-[#e3e3e3] rounded-none"
+                    v-model="name"
+                    placeholder="Full Name"
+                  />
+                  <Input
+                    class="border-[#e3e3e3] rounded-none"
+                    v-model="email"
+                    placeholder="Email Address"
+                  />
+                  <Input
+                    class="border-[#e3e3e3] rounded-none"
+                    v-model="phone"
+                    placeholder="+971 | Phone"
+                  />
+                  <Textarea
+                    rows="8"
+                    class="rounded-none border-[#e3e3e3] text-gray-600 focus:text-black"
+                    v-model="moreInfo"
+                    placeholder="Tell us more about what you want to know"
+                  />
+                  <Button
+                    class="rounded-none w-full text-md font-bold border-[1px] px-6 py-5 border-[#000] bg-black text-white hover:bg-white hover:text-black"
+                    @click="submitContactForm"
+                  >
+                    Send Message
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -349,6 +357,7 @@
             <carousel :items-to-show="1" :wrapAround="true">
               <slide v-for="(url, i) in property.images" :key="i">
                 <img
+                  @click="goToProperty(property)"
                   alt="Property"
                   :src="url"
                   class="w-full h-auto"
@@ -358,11 +367,11 @@
 
               <template #addons>
                 <navigation />
-                <pagination />
+                <!-- <pagination /> -->
               </template>
             </carousel>
             <div
-              class="inline-flex items-center border px-2.5 py-0.5 w-fit josefin-slab text-xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/10 absolute top-4 right-4"
+              class="inline-flex items-center border px-2.5 py-0.5 w-fit josefin-slab text-[0.85em] md:text-[0.95em] font-normal transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/10 absolute top-4 right-4"
             >
               {{ property.tag }}
             </div>
@@ -703,7 +712,7 @@ export default {
 
           this.isOffPlan = property.isOffPlan;
 
-          this.moreInfo = `I found your listing for property and am interested in learning more. Please contact me. Thank you.`;
+          this.moreInfo = `I found your listing for ${this.title}, ${this.subtitle}.\n\nI am interested in learning more about it. Please contact me. Thank you.`;
 
           const descriptionDiv = document.createElement("div");
           descriptionDiv.innerHTML = this.description;

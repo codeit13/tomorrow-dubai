@@ -199,7 +199,6 @@
       <div v-if="paginatedProperties && paginatedProperties.length">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-20">
           <div
-            @click="goToProperty(property)"
             class="relative cursor-pointer hover:bg-gray-100 rounded-sm border-[1px] border-[#00000062]"
             v-for="(property, i) in paginatedProperties"
             :key="i"
@@ -213,6 +212,7 @@
             <carousel :items-to-show="1" :wrapAround="true">
               <slide v-for="(url, i) in property.images" :key="i">
                 <img
+                  @click="goToProperty(property)"
                   alt="Property"
                   :src="url"
                   class="w-full h-auto"
@@ -226,11 +226,11 @@
               </template>
             </carousel>
             <div
-              class="inline-flex items-center border px-2.5 py-0.5 w-fit text-xl josefin-slab font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white hover:text-black bg-black/20 text-secondary-foreground hover:bg-white/80 absolute top-4 right-4"
+              class="inline-flex items-center border px-2.5 py-0.5 w-fit text-xl josefin-slab font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/20 text-secondary-foreground absolute top-4 right-4"
             >
               {{ property.tag }}
             </div>
-            <div class="p-4">
+            <div class="p-4" @click="goToProperty(property)">
               <p class="text-lg md:text-2xl font-bold">
                 AED {{ property.price?.toLocaleString("en-us") }}
               </p>
@@ -278,7 +278,6 @@
         <h2 class="text-3xl font-semibold mt-32 mb-20">Similar Properties</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div
-            @click="goToProperty(property)"
             class="relative cursor-pointer hover:bg-gray-100 rounded-sm border-[1px] border-[#00000062]"
             v-for="(property, i) in similarProperties"
             :key="i"
@@ -294,6 +293,7 @@
             <carousel :items-to-show="1" :wrapAround="true">
               <slide v-for="(url, i) in property.images" :key="i">
                 <img
+                  @click="goToProperty(property)"
                   alt="Property"
                   :src="url"
                   class="w-full h-auto"
@@ -313,7 +313,7 @@
             >
               {{ property.tag }}
             </div>
-            <div class="p-4">
+            <div class="p-4" @click="goToProperty(property)">
               <!-- <div class="flex align-center justify-between"> -->
               <p class="text-lg font-bold">{{ property.priceText }}</p>
               <p class="text-sm">{{ property.featureText }}</p>

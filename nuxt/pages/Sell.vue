@@ -114,22 +114,22 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div
           class="relative cursor-pointer hover:bg-gray-100 rounded-sm border-[1px] border-[#00000062]"
-          @click="goToProperty(property)"
           v-for="(property, i) in exclusiveProperties"
           :key="i"
         >
           <img
+            @click="goToProperty(property)"
             :src="property.image"
             alt="Property"
             class="w-full h-auto"
             style="aspect-ratio: 300 / 200; object-fit: cover"
           />
           <div
-            class="inline-flex items-center border px-2.5 py-0.5 w-fit josefin-slab text-xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/10 absolute top-4 right-4"
+            class="inline-flex items-center border px-2.5 py-0.5 w-fit josefin-slab text-[0.95em] md:text-[0.85em] font-normal transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/10 absolute top-4 right-4"
           >
             {{ property.tag }}
           </div>
-          <div class="p-4">
+          <div class="p-4" @click="goToProperty(property)">
             <!-- <div class="flex align-center justify-between"> -->
             <p class="text-lg font-bold">AED {{ property.price }}</p>
             <p class="text-sm">{{ property.features }}</p>

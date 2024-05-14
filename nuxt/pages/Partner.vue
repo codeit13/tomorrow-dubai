@@ -56,7 +56,7 @@
         experience. With us, you are not just an agent; you become an integral
         partner in a journey of mutual growth and success.
       </p>
-      <!-- <div class="mt-8 mx-auto max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="mt-8 mx-auto max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="border-2 border-[#00000090] p-6 text-center bg-[#302CFF0D]">
           <h3
             class="text-xl text-center text-[#302CFF] font-semibold border-2 border-[#302CFF50] w-fit px-8 py-3 mx-auto"
@@ -111,10 +111,18 @@
               <span class="font-bold">Agent: 80% - 20% Company</span>
             </p>
           </div>
-        </div>p-6 md:p-0
-      </div> -->
+        </div>
+      </div>
 
-      <div class="mt-8 mx-auto flex flex-col bg-white gap-6">
+      <div class="mt-8 text-center">
+        <Button
+          class="bg-blue-600 rounded-none font-semibold px-8 py-6 text-white mt-4"
+        >
+          Join our Team
+        </Button>
+      </div>
+
+      <!-- <div class="mt-8 mx-auto flex flex-col bg-white gap-6">
         <div class="p-0 text-center grid grid-cols-1 md:grid-cols-2 space-y-10">
           <div class="flex items-center justify-center bg-white px-2">
             <div
@@ -201,9 +209,6 @@
               <span class="text-sm text-gray-900 underline underline-offset-4">
                 Learn more
               </span>
-              <!-- <span class="font-bold text-black text-left">
-                A full resident's/employment visa paid by Company
-              </span> -->
               <Button
                 class="bg-blue-600 rounded-none font-semibold px-8 py-6 text-white mt-4"
               >
@@ -212,17 +217,9 @@
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- <div class="mt-8 text-center">
-        <Button
-          class="bg-blue-600 rounded-none font-semibold px-8 py-6 text-white mt-4"
-        >
-          Join our Team
-        </Button>
       </div> -->
 
-      <section class="bg-white dark:bg-gray-900 mt-16">
+      <!-- <section class="bg-white dark:bg-gray-900 mt-16">
         <div class="w-[90vw ] md:w-[50vw] py-12 mx-auto">
           <h1
             class="text-2xl text-center font-semibold text-gray-800 lg:text-3xl dark:text-white"
@@ -274,41 +271,7 @@
                   {{ faq.question }}
                 </h1>
 
-                <!-- <span
-                  v-if="faq.selected"
-                  class="text-gray-400 bg-gray-200 rounded-full"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="w-6 h-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M18 12H6"
-                    />
-                  </svg>
-                </span>
-                <span v-else class="text-white bg-blue-500 rounded-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="w-6 h-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                    />
-                  </svg>
-                </span> -->
+              
               </button>
 
               <p
@@ -320,7 +283,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
     </section>
 
     <section class="px-4 md:px-28 py-24 bg-gray-100/50 md:bg-gray-100">

@@ -18,7 +18,7 @@
             Find Your Next
           </h1> -->
           <h2
-            class="text-4xl md:text-5xl tracking-wide montserrat-font mt-1 mb-6 inline-block"
+            class="text-4xl md:text-5xl tracking-wide font-bold mt-1 mb-3 inline-block"
             id="hero-text"
           >
             View Listings in
@@ -59,7 +59,7 @@
                     <input
                       type="text"
                       v-model="query"
-                      class="block p-4 ps-10 focus:outline-none rounded-sm bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white w-[60vw] md:w-[25vw] h-10 bg-background px-3 py text-sm text-black placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+                      class="block p-4 ps-10 focus:outline-none rounded-sm bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white w-[60vw] md:w-[33vw] h-10 bg-background px-3 py text-sm text-black placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
                       placeholder="Search Community, Building, or City"
                       @keyup.enter="searchClick"
                     />
@@ -135,7 +135,7 @@
     </div>
     <div class="px-6 py-24 md:px-28 md:pt-38">
       <div class="flex justify-between items-baseline mb-12">
-        <h2 class="text-2xl md:text-3xl font-extrabold josefin-slab">
+        <h2 class="text-2xl md:text-[1.75em] font-extrabold josefin-slab">
           Neighborhood For You
         </h2>
         <span
@@ -166,7 +166,7 @@
             style="aspect-ratio: 350 / 150; object-fit: cover"
           />
           <h3
-            class="absolute bottom-0 w-full text-center font-bold text-xl text-white p-4 pb-3 montserrat-font"
+            class="absolute bottom-0 w-full text-center font-bold text-[1em] text-white p-4 pb-3 montserrat-font"
           >
             {{ property.title }}
           </h3>
@@ -207,6 +207,7 @@
           <carousel :items-to-show="1" :wrapAround="true">
             <slide v-for="(url, i) in property.images" :key="i">
               <img
+                @click="goToProperty(property)"
                 alt="Property"
                 :src="url"
                 class="w-full h-auto"
@@ -220,7 +221,7 @@
             </template>
           </carousel>
           <div
-            class="inline-flex items-center border px-2.5 py-0.5 w-fit josefin-slab text-xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/10 absolute top-4 right-4"
+            class="inline-flex items-center border px-2.5 py-0.5 w-fit josefin-slab text-xl font-normal text-[0.95em] md:text-[0.85em] transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/10 absolute top-4 right-4"
           >
             {{ property.tag }}
           </div>
@@ -281,6 +282,7 @@
           class="relative cursor-pointer w-fit"
           v-for="(property, i) in offPlanProperties"
           :key="i"
+          @click="goToProperty(property)"
         >
           <div class="relative">
             <img
@@ -305,11 +307,10 @@
               </template>
             </carousel> -->
             <div
-              @click="goToProperty(property)"
               class="items-center gap-6 border px-4 w-full text-xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/50 absolute bottom-0 overflow-hidden text-ellipsis py-6 montserrat-font"
             >
               <p
-                class="text-sm md:text-lg font-extrabold montserrat-font mr-10 text-[1rem]"
+                class="text-lg font-extrabold montserrat-font mr-10 text-[1rem]"
               >
                 {{ property.name }}
               </p>
@@ -325,7 +326,9 @@
                   />
                 </svg>
 
-                <span class="text-sm md:text-sm">{{ property.address }}</span>
+                <span class="text-sm md:text-sm font-normal">{{
+                  property.address
+                }}</span>
               </div>
             </div>
           </div>
@@ -524,8 +527,11 @@ export default {
     this.router = useRouter();
     const changingText = document.getElementById("hero-switch-text");
 
-    const textArray = this.neighbourhoodProperties;
+    const textArray = JSON.parse(
+      JSON.stringify(this.neighbourhoodProperties)
+    ).slice(0, 7);
     textArray.shift();
+
     let currentIndex = 0;
 
     setInterval(() => {
@@ -647,11 +653,12 @@ export default {
 .carousel__next > svg {
   width: 2rem !important;
   height: 2rem !important;
+  fill: #fff;
 }
 
 .carousel__next,
 .carousel__prev {
-  background: #ffffff60 !important;
+  background: #ffffff00 !important;
   border-radius: 100% !important;
 }
 </style>

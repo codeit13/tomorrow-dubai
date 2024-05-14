@@ -110,7 +110,9 @@
         </div>
         <div class="flex flex-wrap justify-between md:gap-80">
           <div>
-            <h2 class="mb-6 text-xl font-semibold tracking-wider">Features</h2>
+            <h2 class="mb-6 text-[1em] font-semibold tracking-wider">
+              Features
+            </h2>
             <ul class="font-medium">
               <li class="mb-2" v-for="(feature, i) in features" :key="i">
                 <a
@@ -125,16 +127,18 @@
             </ul>
           </div>
           <div>
-            <h2 class="mb-6 text-xl font-semibold tracking-wider">Company</h2>
+            <h2 class="mb-6 text-[1em] font-semibold tracking-wider">
+              Company
+            </h2>
             <ul class="text-black-900 dark:text-black-900 font-medium">
               <li class="mb-2" v-for="(item, i) in company" :key="i">
                 <a
                   @click="$router.push(item.route)"
                   class="hover:underline cursor-pointer"
                 >
-                  <span class="text-neutral-400 text-sm tracking-wider">{{
-                    item.name
-                  }}</span>
+                  <span class="text-neutral-400 text-sm tracking-wider">
+                    {{ item.name }}
+                  </span>
                 </a>
               </li>
             </ul>
@@ -143,7 +147,7 @@
       </div>
 
       <p
-        class="!mt-6 text-neutral-400 font-semibold text-lg tracking-wider border-t-[1.5px] border-[#e3e3e3]"
+        class="!mt-4 text-neutral-400 text-sm tracking-wider border-t-[1.5px] border-[#e3e3e3]"
       >
         © 2024 tomm luxury real estate llc
       </p>
@@ -197,7 +201,7 @@ export default {
           route: "/",
         },
         {
-          name: "Become a agent",
+          name: "Become an agent",
           route: "/partner",
         },
         {
