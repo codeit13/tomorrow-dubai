@@ -18,7 +18,7 @@
             Find Your Next
           </h1> -->
           <h2
-            class="text-4xl md:text-5xl tracking-wide font-bold mt-1 mb-3 inline-block"
+            class="text-4xl md:text-5xl tracking-wide font-bold mt-1 mb-2 inline-block"
             id="hero-text"
           >
             View Listings in
