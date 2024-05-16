@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-white text-gray-900 px-4 md:px-0">
+  <div class="bg-white text-gray-900 px-0 md:px-0">
     <header
-      class="pt-20 md:pt-40 md:px-28 md:pl-40 pb-32 text-left bg-gray-100 bg-opacity-50"
+      class="pt-32 md:pt-40 md:px-28 md:pl-40 px-4 pb-32 text-left bg-gray-100 bg-opacity-50"
     >
-      <div class="flex flex-col gap-32 items-center md:items-end w-fit">
+      <div class="flex flex-col gap-20 items-center md:items-end w-fit">
         <div class="w-fit">
           <div class="w-fit">
             <p class="text-4xl md:text-8xl font-bold w-fit text-black">
@@ -19,17 +19,15 @@
             We've Made Real Estate Brokerage Simple, Plug And Play
           </p>
           <Button
-            class="bg-[#0400D3] rounded-none font-semibold px-10 py-8 text-white text-lg mt-8 tracking-wider"
+            class="bg-[#0400D3] rounded-none font-semibold px-8 py-6 text-sm md:text-lg md:px-10 md:py-8 text-white mt-8 tracking-wider"
           >
             Apply Now
           </Button>
         </div>
-        <div class="w-fit mt-2 md:mt-0 relative">
+        <div class="w-full md:w-fit relative">
           <svg
-            width="60"
-            height="60"
             viewBox="0 0 66 58"
-            class="absolute right-[-80px] md:right-[-200px]"
+            class="w-12 md:w-20 h-12 md:h-20 absolute right-12 md:right-[-200px]"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -41,7 +39,7 @@
         </div>
       </div>
     </header>
-    <section class="py-12">
+    <section class="py-16 px-3.5">
       <p class="mt-3 text-center text-gray-800 font-bold text-xl md:text-2xl">
         Build Your Tomorrow, Today with Us
       </p>
