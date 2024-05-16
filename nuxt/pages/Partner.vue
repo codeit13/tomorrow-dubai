@@ -1,16 +1,16 @@
 <template>
   <div class="bg-white text-gray-900 px-4 md:px-0">
     <header
-      class="pt-48 md:pt-58 md:px-28 md:pl-40 pb-32 text-left bg-gray-100 bg-opacity-50"
+      class="pt-20 md:pt-40 md:px-28 md:pl-40 pb-32 text-left bg-gray-100 bg-opacity-50"
     >
       <div class="flex flex-col gap-32 items-center md:items-end w-fit">
         <div class="w-fit">
           <div class="w-fit">
-            <p class="text-2xl md:text-8xl font-bold w-fit text-black">
+            <p class="text-4xl md:text-8xl font-bold w-fit text-black">
               We're Looking For
             </p>
             <h1
-              class="text-5xl md:text-8xl font-bold w-fit mt-2 md:mt-4 text-black"
+              class="text-4xl md:text-8xl font-bold w-fit mt-2 md:mt-4 text-black"
             >
               Partners
             </h1>
@@ -19,19 +19,19 @@
             We've Made Real Estate Brokerage Simple, Plug And Play
           </p>
           <Button
-            class="bg-[#0400D3] rounded-none font-semibold px-10 py-7 text-white text-lg mt-8 tracking-wider"
+            class="bg-[#0400D3] rounded-none font-semibold px-10 py-8 text-white text-lg mt-8 tracking-wider"
           >
             Apply Now
           </Button>
         </div>
-        <div class="w-fit mt-2 md:mt-8 relative">
+        <div class="w-fit mt-2 md:mt-0 relative">
           <svg
             width="60"
             height="60"
             viewBox="0 0 66 58"
+            class="absolute right-[-80px] md:right-[-200px]"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            class="text-right"
           >
             <path
               d="M19.664 0.240001L33.104 22.896L46.544 0.240001L65.872 0.240001L33.104 57.2L0.208 0.240001L19.664 0.240001Z"
@@ -42,7 +42,7 @@
       </div>
     </header>
     <section class="py-12">
-      <p class="mt-3 text-center text-gray-800 font-bold text-2xl md:text-2xl">
+      <p class="mt-3 text-center text-gray-800 font-bold text-xl md:text-2xl">
         Build Your Tomorrow, Today with Us
       </p>
 
@@ -55,7 +55,7 @@
         Estate
       </p> -->
       <p
-        class="md:w-[50%] text-center mt-6 text-lg md:text-xl !leading-8 mx-auto"
+        class="md:w-[45%] text-center mt-6 text-lg md:text-xl !leading-8 mx-auto"
       >
         At <span class="font-semibold">Tomorrow Luxury Property</span>, we
         redefine the essence of real estate partnership. Our mission is to
@@ -325,7 +325,7 @@
     </section>
 
     <!-- bg-gray-100/50 md:bg-gray-100 -->
-    <section class="px-4 md:px-36 py-24">
+    <section class="px-4 md:px-36 py-16">
       <div class="flex flex-wrap justify-between">
         <div class="flex flex-col justify-between">
           <div>
@@ -339,16 +339,16 @@
                 Launch Your Dubai Real Estate Career In
                 <span class="font-bold">Just 10 Minutes!</span>
               </p>
-              <p class="mt-8 text-lg md:text-xl">
+              <p class="mt-4 md:mb-8 text-lg md:text-xl">
                 Experience Our Hassle-Free,
                 <span class="font-bold">Plug-And-Play Model.</span>
               </p>
-              <p class="mt-8 text-lg md:text-xl">
+              <p class="mt-4 md:mb-8 text-lg md:text-xl">
                 Enjoy An Unmatched Commission Split:
                 <span class="font-bold">80% For Agents</span>, 10% For The
                 Company.
               </p>
-              <p class="mt-8 text-lg md:text-xl">
+              <p class="mt-4 md:mb-8 text-lg md:text-xl">
                 <span class="font-bold">Join Us</span> And Elevate Your Real
                 Estate Success Today!
               </p>
@@ -360,7 +360,7 @@
             viewBox="0 0 66 58"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            class="relative mt-28 left-[20%] -rotate-90"
+            class="relative mt-28 md:left-[20%] mb-4 md:mb-0 -rotate-90"
           >
             <path
               d="M19.664 0.240001L33.104 22.896L46.544 0.240001L65.872 0.240001L33.104 57.2L0.208 0.240001L19.664 0.240001Z"
