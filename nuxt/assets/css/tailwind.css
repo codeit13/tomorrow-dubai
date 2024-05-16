@@ -2,10 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  @font-face {
+    font-family: "GT Americ";
+    src: url("/fonts/GT-America/GT-America-Compressed-Regular-Trial.otf")
+      format("opentype");
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
 * {
-  /* font-family: "Josefin Sans"; */
-  font-family: "GT America Compressed Black", sans-serif;
-  /* font-weight: 500; */
+  font-family: "GT America", sans-serif;
 }
 
 /* .montserrat-font {

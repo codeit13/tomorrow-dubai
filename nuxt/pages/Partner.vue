@@ -1,28 +1,33 @@
 <template>
   <div class="bg-white text-gray-900 px-4 md:px-0">
     <header
-      class="pt-48 md:pt-64 md:px-28 md:pl-30 pb-32 text-left bg-gray-100 bg-opacity-50"
+      class="pt-48 md:pt-58 md:px-28 md:pl-40 pb-32 text-left bg-gray-100 bg-opacity-50"
     >
       <div class="flex flex-col gap-32 items-center md:items-end w-fit">
         <div class="w-fit">
           <div class="w-fit">
-            <p class="text-2xl md:text-4xl font-bold w-fit">We're Looking</p>
-            <h1 class="text-5xl md:text-7xl font-bold w-fit mt-2 md:mt-4">
-              For Partners
+            <p class="text-2xl md:text-8xl font-bold w-fit text-black">
+              We're Looking For
+            </p>
+            <h1
+              class="text-5xl md:text-8xl font-bold w-fit mt-2 md:mt-4 text-black"
+            >
+              Partners
             </h1>
           </div>
           <p class="mt-6 text-xl md:text-4xl w-fit font-semibold">
-            We Made Real Estate
-            <span class="text-2xl md:text-5xl w-fit font-extrabold"
-              >Brokerage</span
-            >
-            Simple, Plug And Play
+            We've Made Real Estate Brokerage Simple, Plug And Play
           </p>
+          <Button
+            class="bg-[#0400D3] rounded-none font-semibold px-10 py-7 text-white text-lg mt-8 tracking-wider"
+          >
+            Apply Now
+          </Button>
         </div>
         <div class="w-fit mt-2 md:mt-8 relative">
           <svg
-            width="40"
-            height="40"
+            width="60"
+            height="60"
             viewBox="0 0 66 58"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +35,7 @@
           >
             <path
               d="M19.664 0.240001L33.104 22.896L46.544 0.240001L65.872 0.240001L33.104 57.2L0.208 0.240001L19.664 0.240001Z"
-              fill="#302CFF"
+              fill="#0400D3"
             />
           </svg>
         </div>
@@ -38,41 +43,49 @@
     </header>
     <section class="py-12">
       <p class="mt-3 text-center text-gray-800 font-bold text-2xl md:text-2xl">
-        Join the Future of Real Estate
+        Build Your Tomorrow, Today with Us
       </p>
 
-      <h2 class="text-2xl md:text-2xl font-bold text-center mt-2">
-        Dubai’s First Subscription-Based Real Estate Jobs
+      <h2 class="text-2xl md:text-4xl font-bold text-center mt-6">
+        Transform Your Career with Our Real Estate Partnership
       </h2>
 
-      <p class="mt-3 text-center text-gray-900 text-lg md:text-xl josefin-slab">
+      <!-- <p class="mt-3 text-center text-gray-900 text-lg md:text-xl josefin-slab">
         Partner with Tomorrow Luxury property. Simplifying Success in Real
         Estate
+      </p> -->
+      <p
+        class="md:w-[50%] text-center mt-6 text-lg md:text-xl !leading-8 mx-auto"
+      >
+        At <span class="font-semibold">Tomorrow Luxury Property</span>, we
+        redefine the essence of real estate partnership. Our mission is to
+        empower your entrepreneurial spirit by providing a seamless, efficient,
+        and rewarding real estate brokerage experience. With us, you are not
+        just an agent; you become an integral partner in a journey of mutual
+        growth and success.
       </p>
-      <p class="md:w-[47%] text-justify mt-8 text-lg mx-auto">
-        At Tomorrow Luxury Property, we redefine the essence of real estate
-        partnership. Our mission is to empower your entrepreneurial spirit by
-        providing a seamless, efficient, and rewarding real estate brokerage
-        experience. With us, you are not just an agent; you become an integral
-        partner in a journey of mutual growth and success.
-      </p>
-      <div class="mt-8 mx-auto max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="border-2 border-[#00000090] p-6 text-center bg-[#302CFF0D]">
+      <div
+        class="mt-8 mx-auto md:max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8"
+      >
+        <div
+          class="border-2 border-[#00000090] p-6 text-center bg-[#302CFF0D] overflow-hidden relative"
+        >
           <h3
-            class="text-xl text-center text-[#302CFF] font-semibold border-2 border-[#302CFF50] w-fit px-8 py-3 mx-auto"
+            class="text-xl text-center text-[#302CFF] font-semibold border border-black w-fit px-10 py-4 mx-auto"
           >
             Full-Time
           </h3>
-          <p class="mt-4 text-lg font-bold">
-            AED 2,500 <span class="text-sm font-normal">/billed annually</span>
+          <p class="mt-4 text-lg md:text-xl font-bold">
+            AED 2,500 <span class="text-sm font-normal">/Billed annually</span>
           </p>
-          <div class="w-[100%] mx-auto text-center">
+          <div class="w-[100%] mx-auto mb-16 text-center">
             <p class="mt-8 text-lg text-left">
-              Company <span class="font-bold">Visa & Medical</span>
+              <span class="font-bold">Desk fee</span> &
+              <span class="font-bold">RERA Certification</span>
             </p>
             <p class="text-lg mt-2 text-left">
               Commission Split
-              <span class="font-bold">Agent: 90% | Company: 10%</span>
+              <span class="font-bold">Agent: 80% | Company: 20%</span>
             </p>
             <p class="text-lg mt-2 text-left">
               <span class="font-bold">Flexible Work</span> Arrangements &
@@ -90,17 +103,26 @@
             </p>
             <p class="text-lg mt-2 text-left">Recognition and Rewards</p>
           </div>
+          <span
+            class="absolute bottom-4 left-0 right-0 underline underline-offset-4"
+          >
+            Learn more
+          </span>
         </div>
-        <div class="border-2 border-[#00000090] p-6 text-center">
+        <div
+          class="border-2 border-[#00000090] p-6 text-center overflow-hidden relative"
+        >
           <h3
-            class="text-xl text-center font-semibold border w-fit px-8 py-3 mx-auto"
+            class="text-xl text-center font-semibold border border-black w-fit px-10 py-4 mx-auto"
           >
             Remote/Referral
           </h3>
-          <p class="mt-4 text-lg font-bold">
+          <p class="mt-4 text-lg md:text-xl font-bold">
             AED 30,000 <span class="text-lg font-normal">/one time</span>
           </p>
-          <div class="w-[98%] mx-auto">
+          <div
+            class="w-[98%] h-[60%] mx-auto mb-10 flex flex-col items-center justify-between"
+          >
             <p class="mt-8 text-lg text-left">
               Enjoy the flexibility of working remotely with a one-time fee of
               AED 30,000 and a favorable commission split, without the need for
@@ -111,15 +133,31 @@
               <span class="font-bold">Agent: 80% - 20% Company</span>
             </p>
           </div>
+          <span
+            class="absolute bottom-4 left-0 right-0 underline underline-offset-4"
+          >
+            Learn more
+          </span>
         </div>
       </div>
 
-      <div class="mt-8 text-center">
+      <div
+        class="mt-12 w-fit mx-auto text-center flex flex-col items-center gap-2"
+      >
+        <span class="font-bold text-2xl md:text-3xl">
+          A full resident's/ employment visa paid by Company
+        </span>
         <Button
-          class="bg-blue-600 rounded-none font-semibold px-8 py-6 text-white mt-4"
+          class="bg-[#0400D3] rounded-none font-semibold px-10 py-8 text-white text-lg mt-4 w-fit"
         >
-          Join our Team
+          Start my subscription!
         </Button>
+      </div>
+
+      <div
+        class="mt-36 w-fit mx-auto text-center flex flex-col items-center gap-2"
+      >
+        <span class="font-bold text-4xl"> Hear from Our Agents </span>
       </div>
 
       <!-- <div class="mt-8 mx-auto flex flex-col bg-white gap-6">
@@ -136,7 +174,7 @@
                 A full resident's/employment visa paid by Company
               </span>
               <Button
-                class="bg-blue-600 rounded-none font-semibold px-8 py-6 text-white mt-4"
+                class="bg-[#0400D3] rounded-none font-semibold px-8 py-6 text-white mt-4"
               >
                 Start my subscription
               </Button>
@@ -210,7 +248,7 @@
                 Learn more
               </span>
               <Button
-                class="bg-blue-600 rounded-none font-semibold px-8 py-6 text-white mt-4"
+                class="bg-[#0400D3] rounded-none font-semibold px-8 py-6 text-white mt-4"
               >
                 Start my subscription
               </Button>
@@ -286,34 +324,43 @@
       </section> -->
     </section>
 
-    <section class="px-4 md:px-28 py-24 bg-gray-100/50 md:bg-gray-100">
+    <!-- bg-gray-100/50 md:bg-gray-100 -->
+    <section class="px-4 md:px-36 py-24">
       <div class="flex flex-wrap justify-between">
         <div class="flex flex-col justify-between">
           <div>
-            <h2 class="text-3xl font-bold text-left">LETS CHAT</h2>
-            <div class="mt-8 mx-auto text-left">
-              <p class="text-lg font-bold">
-                Launch Your Dubai Real Estate Career In Just 10 Minutes!
+            <h2
+              class="text-3xl md:text-4xl font-bold text-left underline underline-offset-8"
+            >
+              Ready to partner?
+            </h2>
+            <div class="mt-10 mx-auto text-left">
+              <p class="text-lg md:text-xl">
+                Launch Your Dubai Real Estate Career In
+                <span class="font-bold">Just 10 Minutes!</span>
               </p>
-              <p class="mt-5 text-lg font-bold">
-                Experience Our Hassle-Free, Plug-And-Play Model.
+              <p class="mt-8 text-lg md:text-xl">
+                Experience Our Hassle-Free,
+                <span class="font-bold">Plug-And-Play Model.</span>
               </p>
-              <p class="mt-5 text-lg font-bold">
-                Enjoy An Unmatched Commission Split: 90% For Agents, 10% For The
+              <p class="mt-8 text-lg md:text-xl">
+                Enjoy An Unmatched Commission Split:
+                <span class="font-bold">80% For Agents</span>, 10% For The
                 Company.
               </p>
-              <p class="mt-5 text-lg font-bold">
-                Join Us And Elevate Your Real Estate Success Today!
+              <p class="mt-8 text-lg md:text-xl">
+                <span class="font-bold">Join Us</span> And Elevate Your Real
+                Estate Success Today!
               </p>
             </div>
           </div>
           <svg
-            width="40"
-            height="40"
+            width="60"
+            height="60"
             viewBox="0 0 66 58"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            class="relative mt-28 left-[0%] -rotate-90"
+            class="relative mt-28 left-[20%] -rotate-90"
           >
             <path
               d="M19.664 0.240001L33.104 22.896L46.544 0.240001L65.872 0.240001L33.104 57.2L0.208 0.240001L19.664 0.240001Z"
@@ -321,22 +368,31 @@
             />
           </svg>
         </div>
-        <div class="mt-8 md:mt-0 grid grid-cols-1 gap-4 w-[100%] md:w-[25%]">
+        <div class="mt-8 md:mt-0 grid grid-cols-1 gap-4 w-[100%] md:w-[30%]">
           <Input
-            class="border-black"
+            class="border-black rounded-none h-14 bg-gray-100 text-black placeholder:text-black"
             v-model="fullName"
             placeholder="Full Name"
           />
           <Input
-            class="border-black"
+            class="border-black rounded-none h-14 bg-gray-100 text-black placeholder:text-black"
             v-model="email"
             placeholder="Email Id"
             type="email"
           />
-          <Input class="border-black" v-model="phone" placeholder="Mobile No" />
-          <span>What is your individual yearly commission volume!</span>
+          <Input
+            class="border-black rounded-none h-14 bg-gray-100 text-black placeholder:text-black"
+            v-model="phone"
+            placeholder="Mobile No"
+          />
+          <span class="text-black">
+            What is your individual yearly commission volume!
+          </span>
           <Select class="pt-0 border-black" v-model="salesVolume">
-            <SelectTrigger class="w-[100%] border-black" id="commission">
+            <SelectTrigger
+              class="w-[100%] border-black rounded-none h-14 bg-gray-100 text-black placeholder:text-black"
+              id="commission"
+            >
               <SelectValue
                 placeholder="What Is Your Individual Yearly Commission Value?"
               />
@@ -352,12 +408,12 @@
               </SelectItem>
             </SelectContent>
           </Select>
-          <span class="text-sm">
+          <span class="text-sm text-black mt-4">
             By submitting this form I accept the Privacy Policy and Terms of
             Service.
           </span>
           <Button
-            class="mt-4 w-fit rounded-none font-semibold px-8 py-6"
+            class="mt-1 w-fit rounded-none font-semibold px-10 py-8 text-lg"
             @click="submitForm"
           >
             Send Application
