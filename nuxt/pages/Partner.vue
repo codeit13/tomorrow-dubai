@@ -6,20 +6,20 @@
       <div class="flex flex-col gap-20 items-center md:items-end w-fit">
         <div class="w-fit">
           <div class="w-fit">
-            <p class="text-4xl md:text-8xl font-bold w-fit text-black">
+            <p class="text-4xl md:text-6xl font-bold w-fit text-black">
               We're Looking For
             </p>
             <h1
-              class="text-4xl md:text-8xl font-bold w-fit mt-2 md:mt-4 text-black"
+              class="text-4xl md:text-6xl font-bold w-fit mt-2 md:mt-4 text-black"
             >
               Partners
             </h1>
           </div>
-          <p class="mt-6 text-xl md:text-4xl w-fit font-semibold">
+          <p class="mt-6 text-xl md:text-3xl w-fit font-semibold">
             We've Made Real Estate Brokerage Simple, Plug And Play
           </p>
           <Button
-            class="bg-[#0400D3] rounded-none font-semibold px-8 py-6 text-sm md:text-lg md:px-10 md:py-8 text-white mt-8 tracking-wider"
+            class="bg-[#0400D3] rounded-none font-semibold px-6 py-4 text-sm md:text-lg md:px-10 md:py-8 text-white mt-8 tracking-wider"
           >
             Apply Now
           </Button>
@@ -27,7 +27,7 @@
         <div class="w-full md:w-fit relative">
           <svg
             viewBox="0 0 66 58"
-            class="w-12 md:w-20 h-12 md:h-20 absolute right-12 md:right-[-200px]"
+            class="w-12 md:w-16 h-12 md:h-20 absolute right-12 md:right-[-200px]"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -40,11 +40,11 @@
       </div>
     </header>
     <section class="py-16 px-3.5">
-      <p class="mt-3 text-center text-gray-800 font-bold text-xl md:text-2xl">
+      <p class="mt-3 text-center text-gray-800 font-bold text-xl md:text-xl">
         Build Your Tomorrow, Today with Us
       </p>
 
-      <h2 class="text-2xl md:text-4xl font-bold text-center mt-6">
+      <h2 class="text-2xl md:text-3xl font-bold text-center mt-6">
         Transform Your Career with Our Real Estate Partnership
       </h2>
 
@@ -53,7 +53,7 @@
         Estate
       </p> -->
       <p
-        class="md:w-[45%] text-center mt-6 text-lg md:text-xl !leading-8 mx-auto"
+        class="md:w-[45%] text-center mt-6 text-lg md:text-lg !leading-8 mx-auto"
       >
         At <span class="font-semibold">Tomorrow Luxury Property</span>, we
         redefine the essence of real estate partnership. Our mission is to
@@ -142,11 +142,11 @@
       <div
         class="mt-12 w-fit mx-auto text-center flex flex-col items-center gap-2"
       >
-        <span class="font-bold text-2xl md:text-3xl">
+        <span class="font-bold text-2xl md:text-2xl">
           A full resident's/ employment visa paid by Company
         </span>
         <Button
-          class="bg-[#0400D3] rounded-none font-semibold px-10 py-8 text-white text-lg mt-4 w-fit"
+          class="bg-[#0400D3] rounded-none font-semibold px-8 py-6 text-white text-sm mt-4 w-fit"
         >
           Start my subscription!
         </Button>
@@ -155,7 +155,7 @@
       <div
         class="mt-36 w-fit mx-auto text-center flex flex-col items-center gap-2"
       >
-        <span class="font-bold text-4xl"> Hear from Our Agents </span>
+        <span class="font-bold text-3xl"> Hear from Our Agents </span>
       </div>
 
       <!-- <div class="mt-8 mx-auto flex flex-col bg-white gap-6">
@@ -328,33 +328,33 @@
         <div class="flex flex-col justify-between">
           <div>
             <h2
-              class="text-3xl md:text-4xl font-bold text-left underline underline-offset-8"
+              class="text-3xl md:text-3xl font-bold text-left underline underline-offset-8"
             >
               Ready to partner?
             </h2>
             <div class="mt-10 mx-auto text-left">
-              <p class="text-lg md:text-xl">
+              <p class="mb-4 md:mb-8 text-lg md:text-lg">
                 Launch Your Dubai Real Estate Career In
-                <span class="font-bold">Just 10 Minutes!</span>
+                <span class="font-bold">Just 30 Minutes!</span>
               </p>
-              <p class="mt-4 md:mb-8 text-lg md:text-xl">
+              <p class="mb-4 md:mb-8 text-lg md:text-lg">
                 Experience Our Hassle-Free,
                 <span class="font-bold">Plug-And-Play Model.</span>
               </p>
-              <p class="mt-4 md:mb-8 text-lg md:text-xl">
+              <p class="mb-4 md:mb-8 text-lg md:text-lg">
                 Enjoy An Unmatched Commission Split:
-                <span class="font-bold">80% For Agents</span>, 10% For The
+                <span class="font-bold">80% For Agents</span>, 20% For The
                 Company.
               </p>
-              <p class="mt-4 md:mb-8 text-lg md:text-xl">
+              <p class="mb-4 md:mb-8 text-lg md:text-lg">
                 <span class="font-bold">Join Us</span> And Elevate Your Real
                 Estate Success Today!
               </p>
             </div>
           </div>
           <svg
-            width="60"
-            height="60"
+            width="40"
+            height="40"
             viewBox="0 0 66 58"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -411,7 +411,7 @@
             Service.
           </span>
           <Button
-            class="mt-1 w-fit rounded-none font-semibold px-10 py-8 text-lg"
+            class="mt-1 w-fit rounded-none font-semibold px-8 py-6 text-sm"
             @click="submitForm"
           >
             Send Application

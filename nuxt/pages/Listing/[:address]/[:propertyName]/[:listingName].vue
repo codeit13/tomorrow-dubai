@@ -666,6 +666,11 @@ export default {
           })
           .slice(0, 3);
 
+        console.log("Listings: ", this.listings);
+        console.log("propertyName: ", propertyName);
+        console.log("listingName: ", listingName);
+        console.log("address: ", address);
+
         let property = listings.filter((property) => {
           return (
             // property.slug?.toLowerCase().trim() == slug.toLowerCase().trim()
@@ -673,18 +678,21 @@ export default {
               ?.trim()
               .replaceAll(",", "")
               .replaceAll(".", "")
+              .replaceAll("-", " ")
               .toLowerCase()
               .trim() == propertyName &&
             property.title
               ?.trim()
               .replaceAll(",", "")
               .replaceAll(".", "")
+              .replaceAll("-", " ")
               .toLowerCase()
               .trim() == listingName &&
             property.address
               ?.trim()
               .replaceAll(",", "")
               .replaceAll(".", "")
+              .replaceAll("-", " ")
               .toLowerCase()
               .trim() == address
           );
