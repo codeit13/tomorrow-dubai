@@ -199,7 +199,7 @@
         <div class="w-full md:w-[30%] md:items-start">
           <div class="sticky top-0 pt-10">
             <div
-              class="flex flex-col justify-center items-start w-full md:border-[2px] md:border-black md:px-6 md:pt-8 md:pb-6"
+              class="flex flex-col justify-center items-start w-full md:border-[1px] md:border-black md:px-6 md:pt-8 md:pb-6"
             >
               <div
                 class="flex items-start md:items-start flex-nowrap w-full gap-10"
@@ -263,23 +263,23 @@
                   </h2>
                   <div class="space-y-4 text-right">
                     <Input
-                      class="border-black rounded-none"
+                      class="border-black border-[1px] rounded-none"
                       v-model="name"
                       placeholder="Full Name"
                     />
                     <Input
-                      class="border-black rounded-none"
+                      class="border-black border-[1px] rounded-none"
                       v-model="email"
                       placeholder="Email Address"
                     />
                     <Input
-                      class="border-black rounded-none"
+                      class="border-black border-[1px] rounded-none"
                       v-model="phone"
                       placeholder="+971 | Phone"
                     />
                     <Textarea
                       rows="8"
-                      class="rounded-none border-black text-gray-900 focus:text-black"
+                      class="rounded-none border-black border-[1px] text-gray-900 focus:text-black"
                       v-model="moreInfo"
                       placeholder="Tell us more about what you want to know"
                     />
