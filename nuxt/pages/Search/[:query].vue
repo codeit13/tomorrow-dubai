@@ -226,7 +226,7 @@
               </template>
             </carousel>
             <div
-              class="inline-flex items-center border px-2.5 py-0.5 w-fit text-xl josefin-slab font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/20 text-secondary-foreground absolute top-4 right-4"
+              class="inline-flex items-center border px-2.5 py-0.5 w-fit josefin-slab text-xl font-normal text-[0.95em] md:text-[0.85em] transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/10 absolute top-4 right-4"
             >
               {{ property.tag }}
             </div>
@@ -309,7 +309,7 @@
               </template>
             </carousel>
             <div
-              class="inline-flex items-center border px-2.5 py-0.5 w-fit josefin-slab text-xl font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/10 absolute top-4 right-4"
+              class="inline-flex items-center border px-2.5 py-0.5 w-fit josefin-slab text-xl font-normal text-[0.95em] md:text-[0.85em] transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/10 absolute top-4 right-4"
             >
               {{ property.tag }}
             </div>

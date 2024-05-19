@@ -17,18 +17,18 @@
           >
             Find Your Next
           </h1> -->
-          <h2
+          <h1
             class="text-4xl md:text-5xl tracking-wide font-bold mt-1 mb-2 inline-block"
             id="hero-text"
           >
             View Listings in
             <span
-              class="text-4xl md:text-5xl font-bold transition-opacity duration-700"
+              class="text-4xl md:text-5xl font-bold transition-opacity duration-700 !capitalize"
               id="hero-switch-text"
             >
               Dubai Island
             </span>
-          </h2>
+          </h1>
 
           <div class="mt-3">
             <div
@@ -527,10 +527,22 @@ export default {
     this.router = useRouter();
     const changingText = document.getElementById("hero-switch-text");
 
-    const textArray = JSON.parse(
+    let textArray = JSON.parse(
       JSON.stringify(this.neighbourhoodProperties)
     ).slice(0, 7);
     textArray.shift();
+
+    textArray = textArray.map((item) => {
+      // capitalize item.title eg: "DUBAI ISLAND" to Dubai Island
+      item.title = item.title
+        .split(" ")
+        .map(
+          (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+        )
+        .join(" ");
+
+      return item;
+    });
 
     let currentIndex = 0;
 

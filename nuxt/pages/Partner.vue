@@ -19,6 +19,7 @@
             We've Made Real Estate Brokerage Simple, Plug And Play
           </p>
           <Button
+            @click="goToApplyNow"
             class="bg-[#0400D3] rounded-none font-semibold px-6 py-4 text-sm md:text-lg md:px-10 md:py-8 text-white mt-8 tracking-wider"
           >
             Apply Now
@@ -323,7 +324,7 @@
     </section>
 
     <!-- bg-gray-100/50 md:bg-gray-100 -->
-    <section class="px-4 md:px-36 py-16">
+    <section class="px-4 md:px-36 py-16" id="apply-now">
       <div class="flex flex-wrap justify-between">
         <div class="flex flex-col justify-between">
           <div>
@@ -527,6 +528,9 @@ lifetime earnings with an 80% commission split.`,
           faq.selected = false;
         }
       });
+    },
+    goToApplyNow() {
+      window.location = "#apply-now";
     },
     async submitForm() {
       if (this.fullName && this.email && this.phone && this.salesVolume) {

@@ -19,6 +19,7 @@
       >
         <div class="relative">
           <img
+            @click="goToProperty(property)"
             :src="property.image"
             alt="Property"
             class="w-[613px] h-auto"

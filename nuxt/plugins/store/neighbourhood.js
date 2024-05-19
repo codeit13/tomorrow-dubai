@@ -10,9 +10,9 @@ export const neighbourhoodProperties = [
       "Explore luxury homes for sale in Palm Jebel Ali, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
   },
   {
-    title: "PALM JUMEIRAH",
+    title: "PALM JUMEIRA",
     description:
-      "Explore luxury homes for sale in Palm Jumeirah, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
+      "Explore luxury homes for sale in Palm Jumeira, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
   },
   {
     title: "DOWNTOWN DUBAI",
@@ -32,17 +32,17 @@ export const neighbourhoodProperties = [
   {
     title: "JUMERIAH",
     description:
-      " luxury homes for sale in Jumeirah Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
+      " luxury homes for sale in Jumeira Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
   },
   {
     title: "JUMERIAH PARK",
     description:
-      "Explore luxury homes for sale in Jumeirah Park, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today",
+      "Explore luxury homes for sale in Jumeira Park, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today",
   },
   {
     title: "DUBAI CREEK HARBOUR",
     description:
-      "Explore luxury homes for sale in Jumeirah Park, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today",
+      "Explore luxury homes for sale in Jumeira Park, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today",
   },
   {
     title: "CITY WALK",
@@ -82,7 +82,7 @@ export const neighbourhoodProperties = [
   {
     title: " JUMERIAH LAKE TOWER",
     description:
-      "Explore luxury homes for sale in Jumeirah Lake Tower, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
+      "Explore luxury homes for sale in Jumeira Lake Tower, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
   },
   {
     title: "BUSINESS BAY",
@@ -97,7 +97,7 @@ export const neighbourhoodProperties = [
   {
     title: "JUMEIRIAH BEACH RESIDENCES",
     description:
-      "Explore luxury homes for sale in Jumeirah Beach Residences, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
+      "Explore luxury homes for sale in Jumeira Beach Residences, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
   },
   {
     title: "JUMERIA BAY ISLAND",
@@ -107,7 +107,7 @@ export const neighbourhoodProperties = [
   {
     title: "PEARL JUMERIAH",
     description:
-      "Explore luxury homes for sale in Pearl Jumeirah, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
+      "Explore luxury homes for sale in Pearl Jumeira, Dubai. Browse our listings for high-end properties, featuring photos and virtual tours. Connect with our agents at Tomorrow Luxury Property to discover your perfect home in a prestigious location. Start your journey with us today.",
   },
   {
     title: "UMM SUQEIM",

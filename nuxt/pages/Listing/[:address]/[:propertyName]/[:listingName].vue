@@ -12,7 +12,7 @@
         >
         <div class="text-center">
           <h1
-            class="text-2xl md:text-[2.75rem] montserrat-font font-extrabold mb-3"
+            class="text-2xl md:text-[2.75rem] montserrat-font font-extrabold mb-3 capitalize"
           >
             {{ title }}
           </h1>
@@ -35,10 +35,14 @@
         v-else
       >
         <div>
-          <h1 class="text-2xl md:text-3xl montserrat-font mb-4">
+          <h1
+            class="text-2xl md:text-[2.75rem] montserrat-font font-extrabold mb-3 capitalize"
+          >
             {{ title }}
           </h1>
-          <p class="text-sm md:text-lg mb-4 josefin-slab font-[600] uppercase">
+          <p
+            class="text-sm md:text-xl mb-2 josefin-slab font-normal capitalize"
+          >
             {{ subtitle }}
           </p>
           <p class="text-sm md:text-lg font-bold">{{ featureText }}</p>
@@ -191,105 +195,16 @@
               </div>
             </div>
           </div>
-        </div>
-        <div
-          class="flex flex-col flex-wrap gap-5 md:gap-0 w-full md:w-[30%] md:items-start"
-        >
-          <div class="flex flex-col justify-center items-start w-full">
-            <div
-              class="flex items-start md:items-start flex-nowrap w-full gap-8 md:p-8"
-              v-if="agent"
-            >
-              <img
-                alt="Agent"
-                class="w-[100px] rounded-full bg-gray-200 mb-4"
-                :src="agent.img"
-                :style="{
-                  aspectRatio: '1/1',
-                  objectFit: 'cover',
-                }"
-              />
-              <div class="">
-                <h3 class="text-sm montserrat-font mb-6">LISTING AGENT</h3>
-                <p class="font-semibold mb-0">{{ agent.name }}</p>
-                <p class="text-sm italic mb-4">(Liscensed Real Estate Agent)</p>
 
-                <a
-                  :href="`mailto:${agent.email}`"
-                  class="text-sm mb-0 block w-[50%] text-wrap"
-                >
-                  {{ agent.email }}
-                </a>
-                <a :href="`tel:${agent.phone}`" class="text-sm mb-3">
-                  {{ agent.phone }}
-                </a>
-              </div>
+          <div v-if="coordinates && coordinates.length > 0">
+            <div class="mb-8 mt-28">
+              <h2 class="text-xl md:text-2xl font-semibold mb-1.5">
+                Location Map
+              </h2>
+              <span class="text-lg" v-if="address">{{ address }}</span>
             </div>
-            <div class="px-0 py-6 md:py-2 md:px-4 mb-4 w-full">
-              <span class="font-bold">need immediate assistance?</span>
 
-              <div class="flex w-full mb-8">
-                <Button
-                  class="rounded-none w-full border-2 transition-all border-[#000] bg-white text-sm font-semibold text-[#25D366] mt-2 px-6 py-4 shadow-none"
-                  variant="outline"
-                  @click="goToWhatsapp(agent.phone)"
-                >
-                  WhatsApp
-                </Button>
-                <Button
-                  @click="goToCall(agent.phone)"
-                  class="rounded-none w-full border-2 transition-all border-[#000] bg-black text-sm font-semibold text-[#e3e3e3] mt-2 ml-0 md:ml-2 px-6 py-4 shadow-none"
-                  variant="outline"
-                >
-                  Contact Agent
-                </Button>
-              </div>
-              <div class="md:border-2 px-4 py-4">
-                <h2 class="text-xl font-semibold mb-4 text-neutral-800">
-                  Register your Interest
-                </h2>
-                <div class="space-y-4 text-right">
-                  <Input
-                    class="border-[#e3e3e3] rounded-none"
-                    v-model="name"
-                    placeholder="Full Name"
-                  />
-                  <Input
-                    class="border-[#e3e3e3] rounded-none"
-                    v-model="email"
-                    placeholder="Email Address"
-                  />
-                  <Input
-                    class="border-[#e3e3e3] rounded-none"
-                    v-model="phone"
-                    placeholder="+971 | Phone"
-                  />
-                  <Textarea
-                    rows="8"
-                    class="rounded-none border-[#e3e3e3] text-gray-600 focus:text-black"
-                    v-model="moreInfo"
-                    placeholder="Tell us more about what you want to know"
-                  />
-                  <Button
-                    class="rounded-none w-full text-md font-bold border-[1px] px-6 py-5 border-[#000] bg-black text-white hover:bg-white hover:text-black"
-                    @click="submitContactForm"
-                  >
-                    Send Message
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div v-if="coordinates && coordinates.length > 0">
-        <div class="mb-8 mt-28">
-          <h2 class="text-xl md:text-2xl font-semibold mb-1.5">Location Map</h2>
-          <span class="text-lg" v-if="address">{{ address }}</span>
-        </div>
-
-        <!-- <div class="mapouter">
+            <!-- <div class="mapouter">
           <div class="gmap_canvas">
             <iframe
               src="https://maps.google.com/maps?q=dubai&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
@@ -299,44 +214,145 @@
             ></iframe>
           </div>
         </div> -->
-        <div
-          v-if="coordinates && coordinates.length > 0"
-          class="w-[100%] h-[50vh] md:w-[65%] md:h-[400px]"
-        >
-          <ol-map
-            :loadTilesWhileAnimating="true"
-            :loadTilesWhileInteracting="true"
-            style="height: 400px"
-          >
-            <ol-view
-              ref="view"
-              :center="coordinates"
-              :rotation="rotation"
-              :zoom="zoom"
-              :projection="projection"
-            />
+            <div
+              v-if="coordinates && coordinates.length > 0"
+              class="w-[100%] h-[50vh] md:h-[400px]"
+            >
+              <ol-map
+                :loadTilesWhileAnimating="true"
+                :loadTilesWhileInteracting="true"
+                style="height: 400px"
+              >
+                <ol-view
+                  ref="view"
+                  :center="coordinates"
+                  :rotation="rotation"
+                  :zoom="zoom"
+                  :projection="projection"
+                />
 
-            <ol-tile-layer>
-              <ol-source-osm />
-            </ol-tile-layer>
+                <ol-tile-layer>
+                  <ol-source-osm />
+                </ol-tile-layer>
 
-            <ol-vector-layer>
-              <ol-source-vector>
-                <ol-feature>
-                  <ol-geom-point :coordinates="coordinates"></ol-geom-point>
-                  <ol-style>
-                    <ol-style-circle :radius="radius">
-                      <ol-style-fill :color="fillColor"></ol-style-fill>
-                      <ol-style-stroke
-                        :color="strokeColor"
-                        :width="strokeWidth"
-                      ></ol-style-stroke>
-                    </ol-style-circle>
-                  </ol-style>
-                </ol-feature>
-              </ol-source-vector>
-            </ol-vector-layer>
-          </ol-map>
+                <ol-vector-layer>
+                  <ol-source-vector>
+                    <ol-feature>
+                      <ol-geom-point :coordinates="coordinates"></ol-geom-point>
+                      <ol-style>
+                        <ol-style-circle :radius="radius">
+                          <ol-style-fill :color="fillColor"></ol-style-fill>
+                          <ol-style-stroke
+                            :color="strokeColor"
+                            :width="strokeWidth"
+                          ></ol-style-stroke>
+                        </ol-style-circle>
+                      </ol-style>
+                    </ol-feature>
+                  </ol-source-vector>
+                </ol-vector-layer>
+              </ol-map>
+            </div>
+          </div>
+        </div>
+        <div class="w-full md:w-[27%] md:items-start">
+          <div class="sticky top-0 pt-10">
+            <div
+              class="flex flex-col justify-center items-start w-full md:border-[1px] md:border-black"
+            >
+              <div
+                class="flex items-start md:items-start flex-nowrap w-full gap-10 md:p-8"
+                v-if="agent"
+              >
+                <img
+                  alt="Agent"
+                  class="w-[100px] rounded-full bg-gray-200 mb-4"
+                  :src="agent.img"
+                  :style="{
+                    aspectRatio: '1/1',
+                    objectFit: 'cover',
+                  }"
+                />
+                <div class="overflow-hidden">
+                  <h3 class="text-sm montserrat-font font-bold mb-3">
+                    LISTING AGENT
+                  </h3>
+                  <p class="font-semibold">{{ agent.name }}</p>
+                  <p class="text-sm italic mb-2">
+                    (Liscensed Real Estate Agent)
+                  </p>
+
+                  <a
+                    :href="`mailto:${agent.email}`"
+                    class="text-sm mb-0 block text-wrap underline underline-offset-4"
+                    style="word-wrap: break-word"
+                  >
+                    {{ agent.email }}
+                  </a>
+                  <a
+                    :href="`tel:${agent.phone}`"
+                    class="text-sm mb-3 underline underline-offset-4"
+                  >
+                    {{ agent.phone }}
+                  </a>
+                </div>
+              </div>
+              <div class="px-0 py-6 md:py-2 md:px-4 mb-4 w-full">
+                <span class="font-bold">need immediate assistance?</span>
+
+                <div class="flex w-full mb-8">
+                  <Button
+                    class="rounded-none w-full border-2 transition-all border-[#000] bg-white text-sm font-semibold text-[#25D366] mt-2 px-6 py-4 shadow-none"
+                    variant="outline"
+                    @click="goToWhatsapp(agent.phone)"
+                  >
+                    WhatsApp
+                  </Button>
+                  <Button
+                    @click="goToCall(agent.phone)"
+                    class="rounded-none w-full border-2 transition-all border-[#000] bg-black text-sm font-semibold text-[#e3e3e3] mt-2 ml-0 md:ml-2 px-6 py-4 shadow-none"
+                    variant="outline"
+                  >
+                    Contact Agent
+                  </Button>
+                </div>
+                <div class="">
+                  <h2 class="text-xl font-semibold mb-4 text-neutral-800">
+                    Register your Interest
+                  </h2>
+                  <div class="space-y-4 text-right">
+                    <Input
+                      class="border-[#e3e3e3] rounded-none"
+                      v-model="name"
+                      placeholder="Full Name"
+                    />
+                    <Input
+                      class="border-[#e3e3e3] rounded-none"
+                      v-model="email"
+                      placeholder="Email Address"
+                    />
+                    <Input
+                      class="border-[#e3e3e3] rounded-none"
+                      v-model="phone"
+                      placeholder="+971 | Phone"
+                    />
+                    <Textarea
+                      rows="8"
+                      class="rounded-none border-[#e3e3e3] text-gray-600 focus:text-black"
+                      v-model="moreInfo"
+                      placeholder="Tell us more about what you want to know"
+                    />
+                    <Button
+                      class="rounded-none w-full text-md font-bold border-[1px] px-6 py-5 border-[#000] bg-black text-white hover:bg-white hover:text-black"
+                      @click="submitContactForm"
+                    >
+                      Send Message
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

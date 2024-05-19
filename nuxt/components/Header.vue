@@ -91,7 +91,7 @@
         v-for="(item, i) in menuItems.filter((item) => !item.isDropDown)"
         :key="i"
         :to="item.route"
-        class="text-white-600 cursor-pointer"
+        class="text-white-600 cursor-pointer transition-all duration-200 hover:underline hover:underline-offset-2"
         :class="{
           'underline underline-offset-2': item.underlineRoutes.includes(
             route.path
@@ -114,7 +114,7 @@
         <button
           id="dropdownDefaultButton"
           data-dropdown-toggle="dropdown"
-          class="inline-flex items-center"
+          class="inline-flex items-center transition-all duration-200 hover:underline hover:underline-offset-2"
           type="button"
           @click="agentDropDownOpened = !agentDropDownOpened"
         >

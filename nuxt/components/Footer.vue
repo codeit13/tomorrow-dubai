@@ -1,19 +1,19 @@
 <template>
   <footer class="bg-black text-white mt-20">
     <div class="mx-auto w-full p-4 py-8 md:px-24 lg:py-12">
-      <h1
+      <h3
         class="text-black-900 dark:text-gray-400 font-bold text-center lg:text-xl my-2"
       >
         Join our community! <br />
         Get the latest market updates straight to your inbox.
-      </h1>
+      </h3>
       <div
         class="flex flex-col justify-center mx-auto mt-6 md:flex-row pt-2 pb-20 md:pb-28 md:space-y-0"
       >
         <input
           type="email"
           v-model="emailId"
-          class="pr-48 pl-3 py-2 text-black bg-white text-[1.2rem] josefin-slab font-bold rounded-none dark:bg-gray-800 dark:text-gray-800 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
+          class="md:pr-48 pl-3 py-2 text-black bg-white text-[1.2rem] josefin-slab font-bold rounded-none dark:bg-gray-800 dark:text-gray-800 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
           placeholder="name@example.com"
         />
 

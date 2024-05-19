@@ -17,11 +17,11 @@
           >
             How Much is My
           </h1>
-          <h2
+          <h1
             class="text-6xl font-bold uppercase tracking-wide montserrat-font mt-1"
           >
             House Worth?
-          </h2>
+          </h1>
           <div class="flex space-x-2 mt-8">
             <input
               v-model="houseAddress"
@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="px-6 md:px-28 pb-40 mt-24">
-      <span class="text-4xl font-semibold">Sell with a partner agent</span>
+      <h2 class="text-4xl font-semibold">Sell with a partner agent</h2>
       <div class="mt-4">
         <p class="text-lg">
           At Tomorrow Luxury Property, we represent the pinnacle of real estate
@@ -51,7 +51,7 @@
         </p>
       </div>
       <div class="flex flex-row items-center gap-6 mt-12">
-        <span class="text-4xl font-bold">Trust. Transparency. Integrity.</span>
+        <h2 class="text-4xl font-bold">Trust. Transparency. Integrity.</h2>
         <div class="w-fit">
           <svg
             width="45"
@@ -69,7 +69,7 @@
       </div>
       <div class="flex flex-col items-center gap-6 mt-24">
         <div class="flex flex-col items-center gap-6 w-[60vw]">
-          <span class="text-4xl">Thinking of Selling ?</span>
+          <h2 class="text-4xl">Thinking of Selling ?</h2>
 
           <span class="text-lg">
             Complete the form below to connect with a Tomorrow Luxury Property
