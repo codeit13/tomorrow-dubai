@@ -49,7 +49,7 @@
         </div>
         <div v-if="startingPrice" class="md:text-right">
           <!-- <p class="text-lg text-gray-700">ASKING PRICE</p> -->
-          <p class="text-3xl font-semibold">
+          <p class="text-sm md:text-xl font-semibold">
             AED {{ startingPrice?.toLocaleString("en-US") }}
           </p>
         </div>
@@ -195,73 +195,14 @@
               </div>
             </div>
           </div>
-
-          <div v-if="coordinates && coordinates.length > 0">
-            <div class="mb-8 mt-28">
-              <h2 class="text-xl md:text-2xl font-semibold mb-1.5">
-                Location Map
-              </h2>
-              <span class="text-lg" v-if="address">{{ address }}</span>
-            </div>
-
-            <!-- <div class="mapouter">
-          <div class="gmap_canvas">
-            <iframe
-              src="https://maps.google.com/maps?q=dubai&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
-              frameborder="0"
-              scrolling="no"
-              class="w-[100%] h-[50vh] md:w-[65%] md:h-[400px]"
-            ></iframe>
-          </div>
-        </div> -->
-            <div
-              v-if="coordinates && coordinates.length > 0"
-              class="w-[100%] h-[50vh] md:h-[400px]"
-            >
-              <ol-map
-                :loadTilesWhileAnimating="true"
-                :loadTilesWhileInteracting="true"
-                style="height: 400px"
-              >
-                <ol-view
-                  ref="view"
-                  :center="coordinates"
-                  :rotation="rotation"
-                  :zoom="zoom"
-                  :projection="projection"
-                />
-
-                <ol-tile-layer>
-                  <ol-source-osm />
-                </ol-tile-layer>
-
-                <ol-vector-layer>
-                  <ol-source-vector>
-                    <ol-feature>
-                      <ol-geom-point :coordinates="coordinates"></ol-geom-point>
-                      <ol-style>
-                        <ol-style-circle :radius="radius">
-                          <ol-style-fill :color="fillColor"></ol-style-fill>
-                          <ol-style-stroke
-                            :color="strokeColor"
-                            :width="strokeWidth"
-                          ></ol-style-stroke>
-                        </ol-style-circle>
-                      </ol-style>
-                    </ol-feature>
-                  </ol-source-vector>
-                </ol-vector-layer>
-              </ol-map>
-            </div>
-          </div>
         </div>
-        <div class="w-full md:w-[27%] md:items-start">
+        <div class="w-full md:w-[30%] md:items-start">
           <div class="sticky top-0 pt-10">
             <div
-              class="flex flex-col justify-center items-start w-full md:border-[1px] md:border-black"
+              class="flex flex-col justify-center items-start w-full md:border-[2px] md:border-black md:px-6 md:pt-8 md:pb-6"
             >
               <div
-                class="flex items-start md:items-start flex-nowrap w-full gap-10 md:p-8"
+                class="flex items-start md:items-start flex-nowrap w-full gap-10"
                 v-if="agent"
               >
                 <img
@@ -297,7 +238,7 @@
                   </a>
                 </div>
               </div>
-              <div class="px-0 py-6 md:py-2 md:px-4 mb-4 w-full">
+              <div class="py-6 md:py-2 mb-4 w-full">
                 <span class="font-bold">need immediate assistance?</span>
 
                 <div class="flex w-full mb-8">
@@ -322,23 +263,23 @@
                   </h2>
                   <div class="space-y-4 text-right">
                     <Input
-                      class="border-[#e3e3e3] rounded-none"
+                      class="border-black rounded-none"
                       v-model="name"
                       placeholder="Full Name"
                     />
                     <Input
-                      class="border-[#e3e3e3] rounded-none"
+                      class="border-black rounded-none"
                       v-model="email"
                       placeholder="Email Address"
                     />
                     <Input
-                      class="border-[#e3e3e3] rounded-none"
+                      class="border-black rounded-none"
                       v-model="phone"
                       placeholder="+971 | Phone"
                     />
                     <Textarea
                       rows="8"
-                      class="rounded-none border-[#e3e3e3] text-gray-600 focus:text-black"
+                      class="rounded-none border-black text-gray-900 focus:text-black"
                       v-model="moreInfo"
                       placeholder="Tell us more about what you want to know"
                     />
@@ -353,6 +294,63 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div v-if="coordinates && coordinates.length > 0">
+        <div class="mb-8 mt-28">
+          <h2 class="text-xl md:text-2xl font-semibold mb-1.5">Location Map</h2>
+          <span class="text-lg" v-if="address">{{ address }}</span>
+        </div>
+
+        <!-- <div class="mapouter">
+          <div class="gmap_canvas">
+            <iframe
+              src="https://maps.google.com/maps?q=dubai&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+              frameborder="0"
+              scrolling="no"
+              class="w-[100%] h-[50vh] md:w-[65%] md:h-[400px]"
+            ></iframe>
+          </div>
+        </div> -->
+        <div
+          v-if="coordinates && coordinates.length > 0"
+          class="w-[100%] h-[50vh] md:w-[65%] md:h-[400px]"
+        >
+          <ol-map
+            :loadTilesWhileAnimating="true"
+            :loadTilesWhileInteracting="true"
+            style="height: 400px"
+          >
+            <ol-view
+              ref="view"
+              :center="coordinates"
+              :rotation="rotation"
+              :zoom="zoom"
+              :projection="projection"
+            />
+
+            <ol-tile-layer>
+              <ol-source-osm />
+            </ol-tile-layer>
+
+            <ol-vector-layer>
+              <ol-source-vector>
+                <ol-feature>
+                  <ol-geom-point :coordinates="coordinates"></ol-geom-point>
+                  <ol-style>
+                    <ol-style-circle :radius="radius">
+                      <ol-style-fill :color="fillColor"></ol-style-fill>
+                      <ol-style-stroke
+                        :color="strokeColor"
+                        :width="strokeWidth"
+                      ></ol-style-stroke>
+                    </ol-style-circle>
+                  </ol-style>
+                </ol-feature>
+              </ol-source-vector>
+            </ol-vector-layer>
+          </ol-map>
         </div>
       </div>
 
