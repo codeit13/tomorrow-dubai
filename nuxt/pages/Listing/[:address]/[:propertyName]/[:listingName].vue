@@ -196,7 +196,7 @@
             </div>
           </div>
         </div>
-        <div class="w-full md:w-[30%] md:items-start">
+        <div class="w-full md:w-[40%] md:items-start">
           <div class="sticky top-0 pt-10">
             <div
               class="flex flex-col justify-center items-start w-full md:border-[1px] md:border-black md:px-6 md:pt-8 md:pb-6"
