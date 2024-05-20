@@ -82,9 +82,9 @@
     </div>
     <div class="mx-auto px-6 md:px-24 py-12">
       <div
-        class="flex flex-wrap md:flex-nowrap space-y-12 md:space-y-0 md:space-x-16"
+        class="flex flex-wrap justify-between md:flex-nowrap space-y-12 md:space-y-0 md:space-x-16"
       >
-        <div class="flex flex-col space-y-20 w-[100%] md:w-[60%]">
+        <div class="flex flex-col space-y-20 w-[100%] md:w-[60%] mt-5">
           <div v-if="isOffPlan && details">
             <h2 class="text-xl md:text-2xl font-semibold mb-6">Details</h2>
             <div class="grid grid-cols-3 gap-4">
