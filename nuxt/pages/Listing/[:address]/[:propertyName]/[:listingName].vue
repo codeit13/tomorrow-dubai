@@ -82,11 +82,9 @@
     </div>
     <div class="mx-auto px-6 md:px-24 py-12">
       <div
-        class="flex flex-wrap md:flex-nowrap space-y-12 md:space-y-0 md:space-x-28"
+        class="flex flex-wrap md:flex-nowrap space-y-12 md:space-y-0 md:space-x-16"
       >
-        <div
-          class="flex flex-col space-y-20 w-[100%] md:w-[60%] md:min-w-[60%]"
-        >
+        <div class="flex flex-col space-y-20 w-[100%] md:w-[60%]">
           <div v-if="isOffPlan && details">
             <h2 class="text-xl md:text-2xl font-semibold mb-6">Details</h2>
             <div class="grid grid-cols-3 gap-4">
@@ -196,10 +194,10 @@
             </div>
           </div>
         </div>
-        <div class="w-full md:w-[40%] md:items-start">
-          <div class="sticky top-0 pt-10">
+        <div class="w-full md:w-[40%] md:max-w-[520px] md:items-start">
+          <div class="sticky top-0 pt-5">
             <div
-              class="flex flex-col justify-center items-start w-full md:border-[1px] md:border-black md:px-6 md:pt-8 md:pb-6"
+              class="flex flex-col justify-center items-start w-full md:border-[2px] md:border-[#dadada] md:px-6 md:pt-8 md:pb-6"
             >
               <div
                 class="flex items-start md:items-start flex-nowrap w-full gap-10"
@@ -238,10 +236,10 @@
                   </a>
                 </div>
               </div>
-              <div class="py-6 md:py-2 mb-4 w-full">
+              <div class="py-6 md:py-0 mt-6 w-full">
                 <span class="font-bold">need immediate assistance?</span>
 
-                <div class="flex w-full mb-8">
+                <div class="flex w-full mb-6">
                   <Button
                     class="rounded-none w-full border-2 transition-all border-[#000] bg-white text-sm font-semibold text-[#25D366] mt-2 px-6 py-4 shadow-none"
                     variant="outline"
@@ -261,25 +259,25 @@
                   <h2 class="text-xl font-semibold mb-4 text-neutral-800">
                     Register your Interest
                   </h2>
-                  <div class="space-y-4 text-right">
+                  <div class="space-y-3 text-right">
                     <Input
-                      class="border-black border-[1px] rounded-none"
+                      class="border-[#dadada] border-[1px] rounded-none"
                       v-model="name"
                       placeholder="Full Name"
                     />
                     <Input
-                      class="border-black border-[1px] rounded-none"
+                      class="border-[#dadada] border-[1px] rounded-none"
                       v-model="email"
                       placeholder="Email Address"
                     />
                     <Input
-                      class="border-black border-[1px] rounded-none"
+                      class="border-[#dadada] border-[1px] rounded-none"
                       v-model="phone"
                       placeholder="+971 | Phone"
                     />
                     <Textarea
                       rows="8"
-                      class="rounded-none border-black border-[1px] text-gray-900 focus:text-black"
+                      class="rounded-none border-[#dadada] border-[1px] text-gray-900 focus:text-black"
                       v-model="moreInfo"
                       placeholder="Tell us more about what you want to know"
                     />
