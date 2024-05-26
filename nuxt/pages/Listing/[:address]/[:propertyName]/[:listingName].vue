@@ -80,11 +80,9 @@
         </carousel>
       </div>
     </div>
-    <div class="mx-auto px-6 md:px-24 py-12">
-      <div
-        class="flex flex-wrap justify-between md:flex-nowrap space-y-12 md:space-y-0 md:space-x-16"
-      >
-        <div class="flex flex-col space-y-20 w-[100%] md:w-[60%] mt-5">
+    <div class="mx-auto px-6 md:px-20 pt-4 pb-10">
+      <div class="flex flex-wrap justify-between">
+        <div class="flex flex-col gap-20 md:w-[70%]">
           <div v-if="isOffPlan && details">
             <h2 class="text-xl md:text-2xl font-semibold mb-6">Details</h2>
             <div class="grid grid-cols-3 gap-4">
@@ -95,7 +93,7 @@
             </div>
           </div>
 
-          <div class="pt-6">
+          <div class="pt-4">
             <h2 class="text-xl md:text-2xl font-semibold mb-6">
               Property Descriptions
             </h2>
@@ -194,13 +192,13 @@
             </div>
           </div>
         </div>
-        <div class="w-full md:w-[40%] md:max-w-[520px] md:items-start">
-          <div class="sticky top-0 pt-5">
+        <div class="flex flex-col flex-wrap w-fit md:items-start">
+          <div class="sticky top-0 pt-4">
             <div
-              class="flex flex-col justify-center items-start w-full md:border-[2px] md:border-[#dadada] md:px-6 md:pt-8 md:pb-6"
+              class="flex flex-col justify-center items-start w-full md:border-[2px] md:border-[#dadada]"
             >
               <div
-                class="flex items-start md:items-start flex-nowrap w-full gap-10"
+                class="flex items-start md:items-start flex-nowrap w-full gap-6 px-3 py-4"
                 v-if="agent"
               >
                 <img
@@ -236,10 +234,10 @@
                   </a>
                 </div>
               </div>
-              <div class="py-6 md:py-0 mt-6 w-full">
+              <div class="px-0 py-6 md:py-2 md:px-4 mb-4 w-full">
                 <span class="font-bold">need immediate assistance?</span>
 
-                <div class="flex w-full mb-6">
+                <div class="flex w-full mb-8">
                   <Button
                     class="rounded-none w-full border-2 transition-all border-[#000] bg-white text-sm font-semibold text-[#25D366] mt-2 px-6 py-4 shadow-none"
                     variant="outline"

@@ -381,7 +381,7 @@
 </template>
 
 <script>
-import { neighbourhoodProperties } from "../../plugins/store/neighbourhood";
+import { neighbourhoodProperties } from "@/plugins/store/neighbourhood";
 // import { Input } from "@/components/ui/input";
 // import {
 //   SelectValue,

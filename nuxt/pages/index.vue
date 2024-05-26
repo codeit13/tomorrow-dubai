@@ -665,6 +665,16 @@ export default {
 .carousel__next > svg {
   width: 2rem !important;
   height: 2rem !important;
+}
+/* Hide SVG buttons by default */
+.carousel__prev > svg,
+.carousel__next > svg {
+  fill: transparent;
+}
+
+/* Show SVG buttons when hovering over the carousel slide */
+.carousel:hover .carousel__prev > svg,
+.carousel:hover .carousel__next > svg {
   fill: #fff;
 }
 

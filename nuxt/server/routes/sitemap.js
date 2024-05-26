@@ -1,7 +1,7 @@
 import fs from "fs";
 import { create } from "xmlbuilder2";
 
-import { neighbourhoodProperties } from "../../plugins/store/neighbourhood.js";
+import { neighbourhoodProperties } from "@/plugins/store/neighbourhood.js";
 
 export default defineEventHandler((event) => {
   const BASE_URL = "https://tomorrowluxuryproperty.com";

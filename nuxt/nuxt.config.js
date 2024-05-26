@@ -8,6 +8,9 @@ export default defineNuxtConfig({
   //       "dubai, property, sale, properties for sale in dubai, luxury, exclusive properties in dubai, tomorrow luxury property",
   //   },
   // },
+  alias: {
+    "@": resolve(__dirname),
+  },
   modules: [
     "@nuxtjs/tailwindcss",
     "shadcn-nuxt",
