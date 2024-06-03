@@ -23,7 +23,7 @@
           :src="blog.imageUrl"
           alt="Property"
           class="w-full h-auto"
-          style="aspect-ratio: 1/1; object-fit: cover"
+          style="aspect-ratio: 300 / 200; object-fit: cover"
         />
 
         <div class="p-4 pl-6 pb-8 w-full">

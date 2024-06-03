@@ -372,12 +372,9 @@
           @click="goToBlog(blog)"
         >
           <img
-            :src="
-              blog.imageUrl ||
-              `https://firebasestorage.googleapis.com/v0/b/sellanyhome-66c20.appspot.com/o/Mercedes-Benz-Places-Binghatti.webp?alt=media&token=8e6cb0bb-e057-418e-8c1e-8cf677a09b8f`
-            "
+            :src="blog.imageUrl"
             alt="News"
-            class="w-auto h-auto"
+            class="w-full h-auto"
             style="aspect-ratio: 300 / 200; object-fit: cover"
           />
 
