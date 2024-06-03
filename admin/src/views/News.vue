@@ -95,6 +95,7 @@
                     v-if="modules && formats"
                     theme="snow"
                     contentType="html"
+                    toolbar="full"
                     :content="blogContent"
                     @ready="quillEditorReady"
                   />

@@ -359,8 +359,9 @@
         <span
           class="text-sm md:text-lg font-semibold cursor-pointer"
           @click="$router.push('/blogs')"
-          >More ></span
         >
+          More >
+        </span>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">

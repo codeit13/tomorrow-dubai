@@ -82,7 +82,7 @@
     </div>
     <div class="mx-auto px-6 md:px-20 pt-4 pb-10">
       <div
-        class="flex flex-wrap md:flex-nowrap space-x-10 md:gap-0 justify-between"
+        class="flex flex-wrap md:flex-nowrap md:space-x-10 gap-10 md:gap-0 justify-between"
       >
         <div class="flex flex-col gap-20 md:w-[65%]">
           <div v-if="isOffPlan && details">
