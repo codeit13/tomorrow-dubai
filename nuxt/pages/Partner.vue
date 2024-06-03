@@ -147,7 +147,7 @@
           A full resident's/ employment visa paid by Company
         </span>
         <Button
-          class="bg-[#0400D3] rounded-none font-semibold px-8 py-6 text-white text-sm mt-4 w-fit"
+          class="bg-[#0400D3] rounded-none font-semibold px-8 py-6 text-white text-md mt-4 w-fit"
         >
           Start my subscription!
         </Button>

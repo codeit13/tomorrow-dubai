@@ -20,7 +20,7 @@
       <h2 class="text-2xl font-extrabold my-12 mt-20 josefin-slab">
         Similar Blogs
       </h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div
           @click="goToBlog(blog)"
           class="relative cursor-pointer w-fit hover:bg-gray-100 rounded-sm border-[1px] border-[#00000062]"

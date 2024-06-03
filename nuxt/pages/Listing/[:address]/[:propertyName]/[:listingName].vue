@@ -36,7 +36,7 @@
       >
         <div>
           <h1
-            class="text-2xl md:text-[2.75rem] montserrat-font font-extrabold mb-3 capitalize"
+            class="text-2xl md:text-[2.5rem] montserrat-font font-extrabold mb-3 capitalize"
           >
             {{ title }}
           </h1>
@@ -81,8 +81,10 @@
       </div>
     </div>
     <div class="mx-auto px-6 md:px-20 pt-4 pb-10">
-      <div class="flex flex-wrap gap-20 md:gap-0 justify-between">
-        <div class="flex flex-col gap-20 md:w-[70%]">
+      <div
+        class="flex flex-wrap md:flex-nowrap space-x-10 md:gap-0 justify-between"
+      >
+        <div class="flex flex-col gap-20 md:w-[65%]">
           <div v-if="isOffPlan && details">
             <h2 class="text-xl md:text-2xl font-semibold mb-6">Details</h2>
             <div class="grid grid-cols-3 gap-4">
@@ -194,9 +196,7 @@
         </div>
         <div class="flex flex-col flex-wrap w-fit md:items-start">
           <div class="sticky top-0 pt-4">
-            <div
-              class="flex flex-col justify-center items-start w-full md:border-[2px] md:border-[#dadada]"
-            >
+            <div class="flex flex-col justify-center items-start w-full">
               <div
                 class="flex items-start md:items-start flex-nowrap w-full gap-6 px-3 py-4"
                 v-if="agent"
@@ -221,7 +221,7 @@
 
                   <a
                     :href="`mailto:${agent.email}`"
-                    class="text-sm mb-0 block text-wrap underline underline-offset-4"
+                    class="text-sm mb-0 block text-wrap font-semibold underline underline-offset-4"
                     style="word-wrap: break-word"
                   >
                     {{ agent.email }}
@@ -253,7 +253,7 @@
                     Contact Agent
                   </Button>
                 </div>
-                <div class="">
+                <div class="px-4 py-4 md:border-[1px] md:border-[#dadada]">
                   <h2 class="text-xl font-semibold mb-4 text-neutral-800">
                     Register your Interest
                   </h2>
