@@ -46,6 +46,7 @@
               :key="i"
               :src="img"
               :alt="`Brand ${i}`"
+              class="w-auto h-20"
             />
           </div>
         </div>
@@ -69,6 +70,8 @@ export default {
         "/assets/images/about/nakheel.png",
         "/assets/images/about/sobha.png",
         "/assets/images/about/meraas.png",
+        "/assets/images/about/emaar.png",
+        "/assets/images/about/meydan.png",
       ],
     };
   },

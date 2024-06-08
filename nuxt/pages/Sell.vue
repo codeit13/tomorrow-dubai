@@ -12,16 +12,16 @@
         <div
           class="absolute top-[58px] md:top-[68px] left-0 right-0 bottom-0 flex flex-col justify-center items-start text-left text-white bg-black bg-opacity-50 px-6 md:px-28"
         >
-          <h1
+          <span
             class="text-2xl font-bold uppercase tracking-wide montserrat-font"
           >
             How Much is My
-          </h1>
-          <h1
+          </span>
+          <span
             class="text-6xl font-bold uppercase tracking-wide montserrat-font mt-1"
           >
             House Worth?
-          </h1>
+          </span>
           <div class="flex space-x-2 mt-8">
             <input
               v-model="houseAddress"
@@ -41,7 +41,9 @@
       </div>
     </div>
     <div class="px-6 md:px-28 pb-40 mt-24">
-      <h2 class="text-4xl font-semibold">Sell with a partner agent</h2>
+      <h1 class="text-3xl md:text-4xl font-semibold">
+        Sell with a partner agent
+      </h1>
       <div class="mt-4">
         <p class="text-lg">
           At Tomorrow Luxury Property, we represent the pinnacle of real estate
@@ -51,7 +53,9 @@
         </p>
       </div>
       <div class="flex flex-row items-center gap-6 mt-12">
-        <h2 class="text-4xl font-bold">Trust. Transparency. Integrity.</h2>
+        <h2 class="text-2xl md:text-4xl font-bold">
+          Trust. Transparency. Integrity.
+        </h2>
         <div class="w-fit">
           <svg
             width="45"
@@ -68,7 +72,7 @@
         </div>
       </div>
       <div class="flex flex-col items-center gap-6 mt-24">
-        <div class="flex flex-col items-center gap-6 w-[60vw]">
+        <div class="flex flex-col items-center gap-6 md:w-[60vw]">
           <h2 class="text-4xl">Thinking of Selling ?</h2>
 
           <span class="text-lg">
@@ -76,7 +80,7 @@
             advisor tailored to your market.
           </span>
           <div
-            class="w-[27vw] flex flex-col justify-center items-center gap-4 mt-12"
+            class="w-full md:w-[27vw] flex flex-col justify-center items-center gap-4 mt-12"
           >
             <Input
               class="border-black px-4 py-6 h-10 text-[0.95rem]"

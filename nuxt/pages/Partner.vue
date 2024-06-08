@@ -20,7 +20,7 @@
           </p>
           <Button
             @click="goToApplyNow"
-            class="bg-[#0400D3] rounded-none font-semibold px-6 py-4 text-sm md:text-lg md:px-10 md:py-8 text-white mt-8 tracking-wider"
+            class="bg-[#0400D3] rounded-none font-semibold px-8 py-6 text-white text-md mt-8 tracking-wider"
           >
             Apply Now
           </Button>
@@ -117,7 +117,8 @@
             Remote/Referral
           </h3>
           <p class="mt-4 text-lg md:text-xl font-bold">
-            AED 30,000 <span class="text-lg font-normal">/one time</span>
+            AED <span class="line-through">30,000</span>
+            <span class="text-lg font-normal">/one time</span>
           </p>
           <div
             class="w-[98%] h-[60%] mx-auto mb-10 flex flex-col items-center justify-between"
@@ -146,7 +147,21 @@
         <span class="font-bold text-2xl md:text-2xl">
           A full resident's/ employment visa paid by Company
         </span>
+
+        <component
+          :is="`script`"
+          src="https://js.stripe.com/v3/buy-button.js"
+        ></component>
+
+        <div v-if="showBuyButton">
+          <stripe-buy-button
+            buy-button-id="buy_btn_1PNqvgAed87xgZSOHNKe41xd"
+            publishable-key="pk_test_51PKbFaAed87xgZSO3rbRmhfcQIRHhCvsAfazC73P8zctz9wy3YqNxXJAsLiMaIpGMif3xfvtwGlZTS7Gy2I4r24e00zuPF5nwJ"
+          >
+          </stripe-buy-button>
+        </div>
         <Button
+          v-else
           class="bg-[#0400D3] rounded-none font-semibold px-8 py-6 text-white text-md mt-4 w-fit"
         >
           Start my subscription!
@@ -156,7 +171,62 @@
       <div
         class="mt-36 w-fit mx-auto text-center flex flex-col items-center gap-2"
       >
-        <span class="font-bold text-3xl"> Hear from Our Agents </span>
+        <!-- <span class="font-bold text-3xl">  </span> -->
+        <section class="bg-white dark:bg-gray-900">
+          <div class="container px-6 pt-0 pb-10 mx-auto">
+            <h1
+              class="text-3xl font-bold text-center capitalize lg:text-3xl dark:text-white mb-6"
+            >
+              Hear from <span class="text-[#0400D3]">Our Agents</span>
+            </h1>
+
+            <!-- <p class="max-w-2xl mx-auto mt-6 text-center dark:text-gray-300">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
+              incidunt ex placeat modi magni quia error alias, adipisci rem
+              similique, at omnis eligendi optio eos harum.
+            </p> -->
+
+            <!-- <section
+              class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 lg:grid-cols-2 xl:grid-cols-3"
+            > -->
+
+            <carousel
+              :items-to-show="3"
+              :wrapAround="true"
+              class=""
+              :autoplay="1500"
+              :pauseAutoplayOnHover="true"
+            >
+              <!-- < v-for="(url, i) in property.images" :key="i"> -->
+              <slide class="" v-for="(testimonial, i) in testimonials" :key="i">
+                <div
+                  class="flex flex-col gap-2 p-8 border rounded-lg dark:border-gray-700 mx-4"
+                >
+                  <p class="leading-loose dark:text-gray-400">
+                    “{{ testimonial.content }}”
+                  </p>
+
+                  <div class="flex items-center justify-center mt-8 -mx-2">
+                    <div class="mx-2">
+                      <h1 class="font-semibold text-gray-800 dark:text-white">
+                        {{ testimonial.name }}
+                      </h1>
+                      <span class="text-sm">{{ testimonial.designation }}</span>
+                    </div>
+                  </div>
+                </div>
+              </slide>
+              <!-- </> -->
+
+              <template #addons>
+                <navigation />
+                <!-- <pagination /> -->
+              </template>
+            </carousel>
+
+            <!-- </section> -->
+          </div>
+        </section>
       </div>
 
       <!-- <div class="mt-8 mx-auto flex flex-col bg-white gap-6">
@@ -403,8 +473,8 @@
                 :key="i"
                 :value="option"
               >
-                {{ option }}
-              </SelectItem>
+                {{ option }} </SelectItem
+              >/
             </SelectContent>
           </Select>
           <span class="text-sm text-black mt-4">
@@ -424,6 +494,7 @@
 </template>
 
 <script>
+import "vue3-carousel/dist/carousel.css";
 // import { Button } from "@/components/ui/button";
 // import { Input } from "@/components/ui/input";
 // import {
@@ -454,6 +525,7 @@ export default {
   },
   data() {
     return {
+      showBuyButton: false,
       fullName: null,
       email: null,
       phone: null,
@@ -513,10 +585,43 @@ lifetime earnings with an 80% commission split.`,
           selected: false,
         },
       ],
+      testimonials: [
+        {
+          name: "Priya R",
+          designation: "Mumbai, India",
+          profile_pic: null,
+          content:
+            "The support and resources at Tomorrow Luxury Property are unmatched. The office space, flexible work arrangements, and unlimited property listings have significantly boosted my productivity and sales. The recognition and rewards system keeps me motivated to achieve more. I appreciated the quick and easy start with no CV required.",
+        },
+        {
+          name: "Ahmed Khan",
+          designation: "Fujairah",
+          profile_pic: null,
+          content:
+            "As a Remote/Referral partner, I appreciate the freedom and the high earning potential this model offers. The initial fee is worth the investment, and the ongoing support from the company ensures I have everything I need to succeed. The process was straightforward, it's the perfect balance of independence and support.",
+        },
+        {
+          name: "Sarah T",
+          designation: "New York, USA",
+          profile_pic: null,
+          content:
+            "Joining Tomorrow Luxury Property as a Full-Time partner has been a game-changer for my career. The comprehensive training and marketing support have allowed me to excel and close more deals than ever before. The 80-20 commission split ensures I get the maximum benefit from my hard work. I highly recommend it!",
+        },
+        {
+          name: "Emily Wilson",
+          designation: "Egypt",
+          profile_pic: null,
+          content:
+            "As a remote partner, the flexibility offered by Tomorrow Luxury Property is unmatched. The one-time fee and 80% commission split make it a lucrative opportunity without the full-time commitment. The support from the team and access to resources ensure I can efficiently manage my referrals and close deals from anywhere.",
+        },
+      ],
     };
   },
   mounted() {
     this.salesVolume = this.salesVolumeOptions[0];
+    setTimeout(() => {
+      this.showBuyButton = true;
+    }, 4000);
   },
   methods: {
     openFaq(i) {

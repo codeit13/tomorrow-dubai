@@ -25,7 +25,7 @@
 
           <!-- <p class="text-lg text-gray-700 mt-4">STARTING FROM</p> -->
           <p class="text-sm md:text-xl font-semibold" v-if="startingPrice">
-            STARTING FROM AED {{ startingPrice?.toLocaleString("en-US") }}
+            STARTING FROM - AED {{ startingPrice?.toLocaleString("en-US") }}
           </p>
         </div>
         <span></span>
@@ -36,12 +36,12 @@
       >
         <div>
           <h1
-            class="text-2xl md:text-[2.5rem] montserrat-font font-extrabold mb-3 capitalize"
+            class="text-2xl md:text-[2rem] montserrat-font font-extrabold mb-4 capitalize"
           >
             {{ title }}
           </h1>
           <p
-            class="text-sm md:text-xl mb-2 josefin-slab font-normal capitalize"
+            class="text-sm md:text-xl mb-3 josefin-slab font-normal capitalize"
           >
             {{ subtitle }}
           </p>
@@ -49,7 +49,7 @@
         </div>
         <div v-if="startingPrice" class="md:text-right">
           <!-- <p class="text-lg text-gray-700">ASKING PRICE</p> -->
-          <p class="text-sm md:text-xl font-semibold">
+          <p class="text-sm md:text-[1.75rem] font-semibold">
             AED {{ startingPrice?.toLocaleString("en-US") }}
           </p>
         </div>
@@ -228,7 +228,7 @@
                   </a>
                   <a
                     :href="`tel:${agent.phone}`"
-                    class="text-sm mb-3 underline underline-offset-4"
+                    class="text-sm mb-3 font-semibold underline underline-offset-4"
                   >
                     {{ agent.phone }}
                   </a>
@@ -466,6 +466,7 @@ export default {
       fillColor: "white",
       showMoreBtn: true,
       isMetaTagsAdded: false,
+      // style: null,
     };
   },
   setup() {
@@ -598,8 +599,22 @@ export default {
   //     }
   //   );
   // },
+  beforeUnmount() {
+    // remove style tag (id="carousel") from body
+    // document.querySelector("body").removeChild(this.style);
+  },
   mounted() {
     this.getValues();
+
+    // this.style = document.createElement("style");
+    // this.style.innerHTML = `
+    // .carousel__next,
+    // .carousel__prev {
+    //   transform: scale(1.5);
+    // }
+    //   `;
+
+    // document.querySelector("body").appendChild(this.style);
   },
   methods: {
     fromLonLat(coordinates) {
@@ -800,11 +815,16 @@ export default {
   z-index: 2;
 }
 
-.carousel__prev,
+/* .carousel__prev,
 .carousel__next,
 .carousel__prev > svg,
 .carousel__next > svg {
-  width: 4.5rem !important;
-  height: 4.5rem !important;
-}
+  width: 8rem !important;
+  height: 8rem !important;
+} */
+
+/* .carousel__next,
+.carousel__prev {
+  transform: scale(1.5);
+} */
 </style>
