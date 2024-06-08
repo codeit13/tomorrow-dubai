@@ -177,7 +177,7 @@
             <h1
               class="text-3xl font-bold text-center capitalize lg:text-3xl dark:text-white mb-6"
             >
-              Hear from <span class="text-[#0400D3]">Our Agents</span>
+              "Hear from Our Agents"
             </h1>
 
             <!-- <p class="max-w-2xl mx-auto mt-6 text-center dark:text-gray-300">
