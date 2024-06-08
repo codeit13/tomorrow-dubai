@@ -193,8 +193,7 @@
             <carousel
               :items-to-show="3"
               :wrapAround="true"
-              class=""
-              :autoplay="1500"
+              :autoplay="1000"
               :pauseAutoplayOnHover="true"
             >
               <!-- < v-for="(url, i) in property.images" :key="i"> -->
