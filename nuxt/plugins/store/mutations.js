@@ -20,7 +20,4 @@ export const mutations = {
   SET_SEARCHABLE_LOCATIONS(state, payload) {
     state.searchableLocations = payload;
   },
-  SET_SEARCH_PRIORITY(state, payload) {
-    state.searchPriority = payload;
-  },
 };

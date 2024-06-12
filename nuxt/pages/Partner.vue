@@ -103,11 +103,13 @@
             <p class="text-lg mt-2 text-left">Recognition and Rewards</p>
           </div>
           <span
-            class="absolute bottom-4 left-0 right-0 underline underline-offset-4"
+            @click="fullTimeLearnMoreDialogOpen = true"
+            class="absolute bottom-4 left-0 right-0 underline underline-offset-4 cursor-pointer"
           >
             Learn more
           </span>
         </div>
+
         <div
           class="border-2 border-[#00000090] p-6 text-center overflow-hidden relative"
         >
@@ -134,7 +136,8 @@
             </p>
           </div>
           <span
-            class="absolute bottom-4 left-0 right-0 underline underline-offset-4"
+            @click="remoteLearnMoreDialogOpen = true"
+            class="absolute bottom-4 left-0 right-0 underline underline-offset-4 cursor-pointer"
           >
             Learn more
           </span>
@@ -147,11 +150,6 @@
         <span class="font-bold text-2xl md:text-2xl">
           A full resident's/ employment visa paid by Company
         </span>
-
-        <component
-          :is="`script`"
-          src="https://js.stripe.com/v3/buy-button.js"
-        ></component>
 
         <div v-if="showBuyButton">
           <stripe-buy-button
@@ -191,7 +189,7 @@
             > -->
 
             <carousel
-              :items-to-show="3"
+              :items-to-show="$device.isDesktop ? 3 : 1"
               :wrapAround="true"
               :autoplay="1000"
               :pauseAutoplayOnHover="true"
@@ -489,6 +487,176 @@
         </div>
       </div>
     </section>
+
+    <Dialog
+      :open="fullTimeLearnMoreDialogOpen"
+      @update:open="
+        (e) => {
+          this.fullTimeLearnMoreDialogOpen = e;
+        }
+      "
+    >
+      <DialogContent class="md:max-w-6xl md:px-12 md:py-8 px-2 py-4">
+        <div class="flex flex-col gap-8">
+          <div class="flex flex-row items-center justify-center">
+            <div class="w-[70%]">
+              <h2 class="text-xl font-bold">
+                Earn with Tomorrow Luxury Property, <br />Real Estate Referral
+                Program
+              </h2>
+              <p class="mt-2 text-sm">
+                Receive an impressive 80% commission on every finalized real
+                estate transaction by referring clients to Tomorrow Luxury
+                Property. Follow these straightforward steps to commence your
+                earnings:
+              </p>
+            </div>
+            <div class="space-y-2 text-center w-[30%]">
+              <h4 class="font-bold">Remote/Referral</h4>
+              <p class="text-sm">AED 30,000 /one time</p>
+            </div>
+          </div>
+          <div class="text-center mt-8">
+            <h3 class="text-lg font-semibold">3 Simple Steps</h3>
+            <p class="text-sm">to Join the Referral Program</p>
+          </div>
+          <div class="flex flex-col gap-8">
+            <div class="grid grid-cols-3 gap-8">
+              <div class="space-y-2">
+                <h3 class="text-lg font-semibold underline underline-offset-4">
+                  Step 1
+                </h3>
+                <h4 class="font-bold">Sign an Agreement</h4>
+                <p class="text-sm">
+                  Enter into a partnership agreement with us.
+                  <span class="font-bold">
+                    Pay upfront or choose to have the payment deducted after
+                    closing,
+                  </span>
+                  and start referring clients today.
+                </p>
+              </div>
+              <div class="space-y-2">
+                <h3 class="text-lg font-semibold underline underline-offset-4">
+                  Step 2
+                </h3>
+                <h4 class="font-bold">Refer Client to us</h4>
+                <p class="text-sm">
+                  Provide your
+                  <span class="font-bold">client's contact</span> details to our
+                  broker for a seamless transition. Get updates at every step;
+                  <span class="font-bold">transparency is our key.</span>
+                </p>
+              </div>
+              <div class="space-y-2">
+                <h3 class="text-lg font-semibold underline underline-offset-4">
+                  Step 3
+                </h3>
+                <h4 class="font-bold">Get Paid</h4>
+                <p class="text-sm">
+                  Earn a
+                  <span class="font-bold">80% commission,</span> deposited into
+                  your bank account after the transaction closes.
+                </p>
+              </div>
+            </div>
+            <Button
+              class="w-fit mx-auto rounded-none px-6 py-4 font-bold bg-white border-[1px] border-black text-black hover:text-white hover:bg-black"
+              >Start My Subscription</Button
+            >
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+
+    <Dialog
+      :open="remoteLearnMoreDialogOpen"
+      @update:open="
+        (e) => {
+          this.remoteLearnMoreDialogOpen = e;
+        }
+      "
+    >
+      <DialogContent
+        class="md:max-w-6xl md:px-12 md:py-8 max-w-[90vw] px-2 py-4"
+      >
+        <div class="flex flex-col gap-8">
+          <div class="flex flex-row items-center justify-between">
+            <div class="w-[60%]">
+              <h2 class="text-xl font-bold">
+                CLICK, PAY, and START: Revolutionizing Real Estate with<br />Our
+                Plug and Play Model for Agents!
+              </h2>
+              <p class="mt-2 text-sm">
+                Tomorrow Luxury Property is the go-to brokerage for luxury real
+                estate in Dubai. As the first subscription-based, plug-and-play
+                platform for real estate agents. Start your journey today and
+                unlock your potential in Dubai's luxury real estate market!
+              </p>
+            </div>
+            <div class="space-y-2">
+              <h4 class="font-bold">Full Time</h4>
+              <p class="text-sm font-bold">AED 2,500 | Monthly</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-8 mt-8">
+            <div class="grid grid-cols-2">
+              <div class="space-y-2 w-fit">
+                <h3 class="text-xl font-semibold">what you get</h3>
+                <ul class="space-y-1 list-disc list-inside">
+                  <li class="font-bold">Office space & Visa</li>
+                  <li class="font-bold">Broker License</li>
+                  <li class="font-bold">80% Commission Split</li>
+                  <li>Training and Development</li>
+                  <li>Unlimited Property Listings</li>
+                  <li>Marketing and Advertising Support</li>
+                  <li>Unlimited Property Listings</li>
+                  <li>
+                    Partner <span class="font-bold">One Share</span> ( buy back
+                    after 3 year )
+                  </li>
+                </ul>
+              </div>
+              <div class="w-max flex flex-col gap-2 text-left">
+                <h3 class="text-xl font-semibold">Simple Process to Join</h3>
+                <ul class="space-y-1 list-disc list-inside text-left">
+                  <li class="font-bold">
+                    Sign up & pay an upfront fee of AED 500.
+                  </li>
+
+                  <li>
+                    After review and confirmation, send a passport copy and
+                    signed agreement
+                  </li>
+                  <li>
+                    After the balance payment, we process your visa application.
+                  </li>
+                  <li>
+                    <span class="font-bold">Join the same day</span> and
+                    <span class="font-bold">start training.</span>
+                  </li>
+                </ul>
+                <div class="text-center text-sm mt-8 w-fit">
+                  <p>
+                    <span class="font-semibold">Disclaimer:</span>
+                    <span class="font-bold">
+                      AED 500 refundable if you change your mind.
+                    </span>
+                  </p>
+                  <p>No questions asked policy.</p>
+                </div>
+              </div>
+            </div>
+            <Button
+              class="w-fit mx-auto rounded-none px-6 py-4 mt-2 font-bold bg-white border-[1px] border-black text-black hover:text-white hover:bg-black"
+            >
+              Start My Subscription
+            </Button>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
   </div>
 </template>
 
@@ -524,7 +692,9 @@ export default {
   },
   data() {
     return {
-      showBuyButton: false,
+      fullTimeLearnMoreDialogOpen: false,
+      remoteLearnMoreDialogOpen: false,
+      showBuyButton: true,
       fullName: null,
       email: null,
       phone: null,
@@ -546,9 +716,9 @@ export default {
         },
         {
           question: `What does "subscription-based real estate jobs" mean?`,
-          answer: `Dubai's first subscription-based real estate job offer allows individuals to join the industry 
-                  with a unique model. For an annual fee of AED 30,000, get hired in 30 minutes from anywhere 
-                  in the world, with company visa sponsorship, offering flexibility and higher commission splits for 
+          answer: `Dubai's first subscription-based real estate job offer allows individuals to join the industry
+                  with a unique model. For an annual fee of AED 30,000, get hired in 30 minutes from anywhere
+                  in the world, with company visa sponsorship, offering flexibility and higher commission splits for
                   independent work within the brokerage's structure.`,
           selected: false,
         },
@@ -559,7 +729,7 @@ export default {
         },
         {
           question: `Is there a referral or part-time option?`,
-          answer: `Yes, a one-time AED 30,000 fee (paid upfront or deducted after successful closing) offers 
+          answer: `Yes, a one-time AED 30,000 fee (paid upfront or deducted after successful closing) offers
 lifetime earnings with an 80% commission split.`,
           selected: false,
         },

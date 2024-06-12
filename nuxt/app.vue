@@ -35,7 +35,10 @@
         name="twitter:card"
         content="Explore, buy, sell, or rent with Tomorrow Luxury Property. Collaborate with our expert real estate agents to discover the perfect luxury home or apartment for you."
       />
+
+      <Script src="https://js.stripe.com/v3/buy-button.js"></Script>
     </Head>
+
     <Header v-if="!['/', '/buy', '/sell'].includes(route.path)" />
     <NuxtPage />
 

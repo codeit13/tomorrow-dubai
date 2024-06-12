@@ -13,7 +13,6 @@ const store = createStore({
       agents: [],
       selectedBlog: null,
       searchableLocations: [],
-      searchPriority: null,
       neighbourhoodProperties: neighbourhoodProperties,
     };
   },
@@ -23,5 +22,4 @@ const store = createStore({
 
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(store);
-  // Install the store instance as a plugin
 });

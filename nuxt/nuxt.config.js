@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     "shadcn-nuxt",
     "@nuxtjs/google-fonts",
     "vue3-carousel-nuxt",
+    "@nuxtjs/device",
   ],
   devtools: { enabled: true },
   shadcn: {
