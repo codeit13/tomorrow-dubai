@@ -197,7 +197,7 @@
               <!-- < v-for="(url, i) in property.images" :key="i"> -->
               <slide class="" v-for="(testimonial, i) in testimonials" :key="i">
                 <div
-                  class="flex flex-col gap-2 p-8 border rounded-lg dark:border-gray-700 mx-4"
+                  class="flex flex-col gap-2 p-8 border rounded-lg dark:border-gray-700 mx-2 md:mx-4"
                 >
                   <p class="leading-loose dark:text-gray-400">
                     “{{ testimonial.content }}”
@@ -497,7 +497,7 @@
       "
     >
       <DialogContent
-        class="w-[90vw] h-[80vh] md:h-fit overflow-auto md:max-w-6xl md:px-12 md:py-8 px-2 py-4"
+        class="w-[90vw] h-[80vh] md:h-fit overflow-auto md:max-w-6xl md:px-12 md:py-8 px-4 py-4"
       >
         <div class="flex flex-col gap-8">
           <div
@@ -582,7 +582,7 @@
       "
     >
       <DialogContent
-        class="w-[90vw] h-[80vh] md:h-fit overflow-auto md:max-w-6xl md:px-12 md:py-8 px-2 py-4"
+        class="w-[90vw] h-[80vh] md:h-fit overflow-auto md:max-w-6xl md:px-12 md:py-8 px-4 py-4"
       >
         <div class="flex flex-col flex-wrap gap-8">
           <div
