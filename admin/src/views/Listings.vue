@@ -735,11 +735,23 @@ export default {
       ],
       ammenities: [
         {
-          name: "Club House",
+          name: "Swimming Pool",
           value: false,
         },
         {
-          name: "Swimming Pool",
+          name: "Kids Play Area",
+          value: false,
+        },
+        {
+          name: "Jacuzzi",
+          value: false,
+        },
+        {
+          name: "Built In Wardrobes",
+          value: false,
+        },
+        {
+          name: "Balcony",
           value: false,
         },
         {
@@ -747,11 +759,19 @@ export default {
           value: false,
         },
         {
-          name: "Nearby Highways",
+          name: "Private Gym",
           value: false,
         },
         {
-          name: "Shopping Centers",
+          name: "Steam Room",
+          value: false,
+        },
+        {
+          name: "Concierge Service",
+          value: false,
+        },
+        {
+          name: "Beach Access",
           value: false,
         },
         {
@@ -759,7 +779,11 @@ export default {
           value: false,
         },
         {
-          name: "Lounge Terrace",
+          name: "Cigar Lounge",
+          value: false,
+        },
+        {
+          name: "Sauna Room",
           value: false,
         },
         {
@@ -767,75 +791,43 @@ export default {
           value: false,
         },
         {
+          name: "Charging Station",
+          value: false,
+        },
+        {
           name: "Terrace Garden",
           value: false,
         },
         {
-          name: "24 * 7 Electricity",
+          name: "Maid Room",
           value: false,
         },
         {
-          name: "Kids Playarea",
+          name: "Walk In Closet",
           value: false,
         },
         {
-          name: "Pet Garden",
+          name: "Beachfront",
           value: false,
         },
         {
-          name: "Maid's room ",
+          name: "Movie Theater",
           value: false,
         },
         {
-          name: "Private gym",
+          name: "Study Room",
           value: false,
         },
         {
-          name: "Study room",
+          name: "Private Pool",
           value: false,
         },
         {
-          name: "Private pool ",
+          name: "Equipped Kitchen",
           value: false,
         },
         {
-          name: "Equipped kitchen ",
-          value: false,
-        },
-        {
-          name: "Built in wardrobes ",
-          value: false,
-        },
-        {
-          name: "Walk-in closet ",
-          value: false,
-        },
-        {
-          name: "Private garden ",
-          value: false,
-        },
-        {
-          name: "Covered parking ",
-          value: false,
-        },
-        {
-          name: "Pool ",
-          value: false,
-        },
-        {
-          name: "Concierge service ",
-          value: false,
-        },
-        {
-          name: "Balcony ",
-          value: false,
-        },
-        {
-          name: "Spa",
-          value: false,
-        },
-        {
-          name: "Private cinema",
+          name: "Wine Cellar",
           value: false,
         },
       ],

@@ -216,7 +216,7 @@
                   </h3>
                   <p class="font-semibold">{{ agent.name }}</p>
                   <p class="text-sm italic mb-2">
-                    (Liscensed Real Estate Agent)
+                    (Licensed Real Estate Agent)
                   </p>
 
                   <a

@@ -103,7 +103,7 @@
             <p class="text-lg mt-2 text-left">Recognition and Rewards</p>
           </div>
           <span
-            @click="fullTimeLearnMoreDialogOpen = true"
+            @click="remoteLearnMoreDialogOpen = true"
             class="absolute bottom-4 left-0 right-0 underline underline-offset-4 cursor-pointer"
           >
             Learn more
@@ -136,7 +136,7 @@
             </p>
           </div>
           <span
-            @click="remoteLearnMoreDialogOpen = true"
+            @click="fullTimeLearnMoreDialogOpen = true"
             class="absolute bottom-4 left-0 right-0 underline underline-offset-4 cursor-pointer"
           >
             Learn more
@@ -496,10 +496,14 @@
         }
       "
     >
-      <DialogContent class="md:max-w-6xl md:px-12 md:py-8 px-2 py-4">
+      <DialogContent
+        class="w-[90vw] h-[80vh] md:h-fit overflow-auto md:max-w-6xl md:px-12 md:py-8 px-2 py-4"
+      >
         <div class="flex flex-col gap-8">
-          <div class="flex flex-row items-center justify-center">
-            <div class="w-[70%]">
+          <div
+            class="flex flex-row flex-wrap md:flex-nowrap gap-4 items-center justify-center"
+          >
+            <div class="md:w-[70%]">
               <h2 class="text-xl font-bold">
                 Earn with Tomorrow Luxury Property, <br />Real Estate Referral
                 Program
@@ -511,17 +515,17 @@
                 earnings:
               </p>
             </div>
-            <div class="space-y-2 text-center w-[30%]">
+            <div class="md:space-y-2 text-center md:w-[30%]">
               <h4 class="font-bold">Remote/Referral</h4>
               <p class="text-sm">AED 30,000 /one time</p>
             </div>
           </div>
-          <div class="text-center mt-8">
-            <h3 class="text-lg font-semibold">3 Simple Steps</h3>
-            <p class="text-sm">to Join the Referral Program</p>
+          <div class="text-center mt-2 md:mt-8">
+            <h3 class="text-xl font-semibold">3 Simple Steps</h3>
+            <p class="text-lg">to Join the Referral Program</p>
           </div>
-          <div class="flex flex-col gap-8">
-            <div class="grid grid-cols-3 gap-8">
+          <div class="flex flex-col flex-wrap gap-8">
+            <div class="grid md:grid-cols-3 gap-8">
               <div class="space-y-2">
                 <h3 class="text-lg font-semibold underline underline-offset-4">
                   Step 1
@@ -578,11 +582,13 @@
       "
     >
       <DialogContent
-        class="md:max-w-6xl md:px-12 md:py-8 max-w-[90vw] px-2 py-4"
+        class="w-[90vw] h-[80vh] md:h-fit overflow-auto md:max-w-6xl md:px-12 md:py-8 px-2 py-4"
       >
-        <div class="flex flex-col gap-8">
-          <div class="flex flex-row items-center justify-between">
-            <div class="w-[60%]">
+        <div class="flex flex-col flex-wrap gap-8">
+          <div
+            class="flex flex-row flex-wrap items-center justify-center md:justify-between"
+          >
+            <div class="md:w-[60%]">
               <h2 class="text-xl font-bold">
                 CLICK, PAY, and START: Revolutionizing Real Estate with<br />Our
                 Plug and Play Model for Agents!
@@ -594,14 +600,14 @@
                 unlock your potential in Dubai's luxury real estate market!
               </p>
             </div>
-            <div class="space-y-2">
+            <div class="md:space-y-2 mt-4 md:mt-0">
               <h4 class="font-bold">Full Time</h4>
               <p class="text-sm font-bold">AED 2,500 | Monthly</p>
             </div>
           </div>
 
-          <div class="flex flex-col gap-8 mt-8">
-            <div class="grid grid-cols-2">
+          <div class="flex flex-col flex-wrap gap-8 mt-8">
+            <div class="grid md:grid-cols-2 gap-6">
               <div class="space-y-2 w-fit">
                 <h3 class="text-xl font-semibold">what you get</h3>
                 <ul class="space-y-1 list-disc list-inside">
@@ -618,7 +624,7 @@
                   </li>
                 </ul>
               </div>
-              <div class="w-max flex flex-col gap-2 text-left">
+              <div class="md:w-max flex flex-col gap-2 text-left">
                 <h3 class="text-xl font-semibold">Simple Process to Join</h3>
                 <ul class="space-y-1 list-disc list-inside text-left">
                   <li class="font-bold">
