@@ -151,15 +151,15 @@
           A full resident's/ employment visa paid by Company
         </span>
 
-        <div v-if="showBuyButton">
+        <!-- <div v-if="showBuyButton">
           <stripe-buy-button
             buy-button-id="buy_btn_1PNqvgAed87xgZSOHNKe41xd"
             publishable-key="pk_test_51PKbFaAed87xgZSO3rbRmhfcQIRHhCvsAfazC73P8zctz9wy3YqNxXJAsLiMaIpGMif3xfvtwGlZTS7Gy2I4r24e00zuPF5nwJ"
           >
           </stripe-buy-button>
-        </div>
+        </div> -->
         <Button
-          v-else
+          @click="openFullTimePaymentLink"
           class="bg-[#0400D3] rounded-none font-semibold px-8 py-6 text-white text-md mt-4 w-fit"
         >
           Start my subscription!
@@ -566,8 +566,10 @@
             </div>
             <Button
               class="w-fit mx-auto rounded-none px-6 py-4 font-bold bg-white border-[1px] border-black text-black hover:text-white hover:bg-black"
-              >Start My Subscription</Button
+              @click="openRemotePaymentLink"
             >
+              Start My Subscription
+            </Button>
           </div>
         </div>
       </DialogContent>
@@ -656,6 +658,7 @@
             </div>
             <Button
               class="w-fit mx-auto rounded-none px-6 py-4 mt-2 font-bold bg-white border-[1px] border-black text-black hover:text-white hover:bg-black"
+              @click="openFullTimePaymentLink"
             >
               Start My Subscription
             </Button>
@@ -811,6 +814,12 @@ lifetime earnings with an 80% commission split.`,
     },
     goToApplyNow() {
       window.location = "#apply-now";
+    },
+    openFullTimePaymentLink() {
+      window.open("https://buy.stripe.com/5kA3cz4px6UmaE86oo", "_blank");
+    },
+    openRemotePaymentLink() {
+      window.open("https://buy.stripe.com/bIY00naNV7Yq3bG289", "_blank");
     },
     async submitForm() {
       if (this.fullName && this.email && this.phone && this.salesVolume) {
