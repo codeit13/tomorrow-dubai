@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white">
-    <div class="relative">
+    <div class="relative overflow-hidden">
       <img
         src="/assets/images/hero-bg.png"
         alt="Luxury Home"
@@ -10,7 +10,7 @@
       <div class="absolute top-0 left-0 right-0 bottom-0">
         <Header />
         <div
-          class="absolute top-[58px] md:top-[64px] left-0 right-0 bottom-0 flex flex-col justify-center items-start text-left text-white bg-black bg-opacity-50 px-6 md:px-28"
+          class="h-full flex flex-col justify-center items-start text-left text-white bg-black bg-opacity-50 px-6 md:px-28"
         >
           <!-- <h1
             class="text-xl md:text-2xl font-bold uppercase tracking-wide montserrat-font"

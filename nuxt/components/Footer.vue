@@ -39,14 +39,14 @@
       </div>
       <div class="md:flex md:justify-between">
         <div class="mb-6 md:mb-0">
-          <!-- <NuxtLink to="/" class="flex items-center mb-4">
-            < <span
+          <NuxtLink to="/" class="flex items-center mb-8 md:mb-10">
+            <!-- <span
               class="self-center text-xl font-semibold whitespace-nowrap dark:text-white uppercase"
             >
               Tomorrow Luxury Property
-            </span>
-            <img src="/assets/images/logo-white.png" class="h-10" alt="logo" />
-          </NuxtLink> -->
+            </span> -->
+            <img src="/assets/images/logo-dark.png" class="h-16" alt="logo" />
+          </NuxtLink>
           <div class="flex flex-col gap-3 mt-2">
             <p class="text-gray-100 font-bold text-lg tracking-wider">
               Head Office

@@ -2,7 +2,7 @@
   <nav
     class="flex justify-between items-center py-4 px-4 md:px-28 border-[1px] border-t-0 border-x-0 border-black"
     :class="{
-      'text-white bg-black bg-opacity-50 border-white': [
+      'text-white bg-black text-white bg-opacity-50 border-white': [
         '/',
         '/buy',
         '/sell',
@@ -21,11 +21,14 @@
       >
         Luxury Property
       </span> -->
+      <!--  -->
       <img
-        class="h-8"
-        :src="`/assets/images/logo-${
-          ['/', '/buy', '/sell'].includes(route.path) ? 'dark' : 'light'
-        }.png`"
+        class="h-10"
+        :src="
+          ['/', '/buy', '/sell'].includes(route.path)
+            ? '/assets/images/logo-dark.png'
+            : '/assets/images/logo-light.png'
+        "
         alt=""
       />
     </div>

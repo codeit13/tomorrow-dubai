@@ -39,7 +39,9 @@
       <Script src="https://js.stripe.com/v3/buy-button.js"></Script>
     </Head>
 
-    <Header v-if="!['/', '/buy', '/sell'].includes(route.path)" />
+    <Header
+      v-if="route.path ? !['/', '/buy', '/sell'].includes(route.path) : false"
+    />
     <NuxtPage />
 
     <Footer />
