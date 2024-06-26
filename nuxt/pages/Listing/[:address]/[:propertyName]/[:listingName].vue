@@ -116,7 +116,7 @@
             <h2 class="text-xl md:text-2xl font-semibold mb-8">Amenities</h2>
             <div class="grid grid-cols-3 gap-4">
               <div
-                class="bg-gray-200 p-2 text-left text-xs md:text-[1rem]"
+                class="bg-gray-200 py-3.5 px-2 text-center text-xs md:text-[1rem]"
                 :key="i"
                 v-for="(item, i) in amenities"
               >

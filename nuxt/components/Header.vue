@@ -2,11 +2,8 @@
   <nav
     class="flex justify-between items-center py-4 px-4 md:px-28 border-[1px] border-t-0 border-x-0 border-black"
     :class="{
-      'text-white bg-black text-white bg-opacity-50 border-white': [
-        '/',
-        '/buy',
-        '/sell',
-      ].includes(route.path),
+      'text-white bg-black text-white bg-opacity-50 border-[0px] border-white':
+        ['/', '/buy', '/sell'].includes(route.path),
     }"
   >
     <div @click="$router.push('/')" class="cursor-pointer">
@@ -23,7 +20,7 @@
       </span> -->
       <!--  -->
       <img
-        class="h-10"
+        class="h-12 md:h-14"
         :src="
           ['/', '/buy', '/sell'].includes(route.path)
             ? '/assets/images/logo-dark.png'

@@ -617,7 +617,6 @@
                   <li class="font-bold">Broker License</li>
                   <li class="font-bold">80% Commission Split</li>
                   <li>Training and Development</li>
-                  <li>Unlimited Property Listings</li>
                   <li>Marketing and Advertising Support</li>
                   <li>Unlimited Property Listings</li>
                   <li>
