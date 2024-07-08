@@ -38,7 +38,7 @@
               v-for="(entry, i) in filteredLocations"
               :key="i"
               @click="searchClick(entry)"
-              class="pl-8 pr-2 py-1 border-b-2 border-gray-100 relative cursor-pointer hover:bg-gray-50 hover:text-gray-900"
+              class="pl-8 pr-2 py-1 border-b-2 border-gray-100 relative cursor-pointer hover:bg-gray-50 hover:text-gray-900 transition-all duration-500"
             >
               <svg
                 v-if="entry.type == 'PROPERTY' || entry.type == 'NEIGHBORHOOD'"
