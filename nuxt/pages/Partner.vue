@@ -693,9 +693,13 @@ export default {
   setup() {
     useSeoMeta({
       title:
-        "Join the Future of Real Estate - Partner with Tomorrow Luxury Property",
+        "Partner with Tomorrow Luxury Property | Dubai's First Subscription-Based Real Estate Jobs",
+      ogTitle:
+        "Partner with Tomorrow Luxury Property | Dubai's First Subscription-Based Real Estate Jobs",
       description:
-        "Join Tomorrow Luxury Property and pioneer a new era in real estate. Our vision is simple: empower your growth and redefine partnership. Opt for our Full-Time offer with benefits like high commission splits and comprehensive support, or the Remote/Referral route for flexible, commitment-free earnings. Let's build success together.",
+        "Join Tomorrow Luxury Property and transform your real estate career with Dubai's first subscription-based real estate jobs. Refer a client and earn 80% commission on every successful transaction.",
+      ogDescription:
+        "Join Tomorrow Luxury Property and transform your real estate career with Dubai's first subscription-based real estate jobs. Refer a client and earn 80% commission on every successful transaction.",
     });
   },
   data() {

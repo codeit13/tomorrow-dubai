@@ -72,8 +72,13 @@ export default {
   },
   setup() {
     useSeoMeta({
-      title: "Agent | Tomorrow Luxury Property",
-      description: "Contact us for your dubai property agent requirements.",
+      title: "Top Real Estate Agents in Dubai | Tomorrow Luxury Property Team",
+      ogTitle:
+        "Top Real Estate Agents in Dubai | Tomorrow Luxury Property Team",
+      description:
+        " Connect with Dubai's best real estate agents at Tomorrow Luxury Property.",
+      ogDescription:
+        "Our dedicated team offers unparalleled service for buying, selling, or investing.",
     });
   },
   async mounted() {

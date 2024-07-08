@@ -121,28 +121,64 @@
           v-for="(property, i) in exclusiveProperties"
           :key="i"
         >
-          <img
+          <!-- <img
             @click="goToProperty(property)"
             :src="property.image"
             alt="Property"
             class="w-full h-auto"
             style="aspect-ratio: 300 / 200; object-fit: cover"
-          />
+          /> -->
+          <carousel :items-to-show="1" :wrapAround="true">
+            <slide v-for="(url, i) in property.images" :key="i">
+              <img
+                @click="goToProperty(property)"
+                alt="Property"
+                :src="url"
+                class="w-full h-auto"
+                style="aspect-ratio: 300 / 200; object-fit: cover"
+              />
+            </slide>
+
+            <template #addons>
+              <navigation />
+              <!-- <pagination /> -->
+            </template>
+          </carousel>
+
           <div
-            class="inline-flex items-center border px-2.5 py-0.5 w-fit josefin-slab text-[0.95em] md:text-[0.85em] font-normal transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/10 absolute top-4 right-4"
+            class="inline-flex items-center border px-2.5 py-0.5 w-fit josefin-slab text-xl font-normal text-[0.95em] md:text-[0.85em] transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent text-white bg-black/10 absolute top-4 right-4"
           >
             {{ property.tag }}
           </div>
           <div class="p-4" @click="goToProperty(property)">
             <!-- <div class="flex align-center justify-between"> -->
-            <p class="text-lg font-bold">AED {{ property.price }}</p>
-            <p class="text-sm">{{ property.features }}</p>
+            <p class="text-lg font-bold">
+              AED {{ property.price?.toLocaleString("en-us") }}
+            </p>
+            <p class="text-sm mt-2">{{ property.features }}</p>
             <!-- </div> -->
 
-            <p class="text-sm mt-2">{{ property.address }}</p>
+            <div class="flex items-start gap-1 mt-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="18"
+                viewBox="0 -960 960 960"
+                fill="#000"
+                width="18"
+              >
+                <path
+                  d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"
+                />
+              </svg>
+
+              <p class="text-sm">
+                {{ property.propertyName }}, {{ property.address }}
+              </p>
+            </div>
+
             <p
               @click="goToProperty(property)"
-              class="text-sm mt-4 text-blue-600 hover:text-blue-800 cursor-pointer"
+              class="text-sm mt-4 text-[#302CFF] hover:text-[#302CFF] cursor-pointer"
             >
               {{ property.buttonText }}
             </p>
@@ -175,7 +211,7 @@ export default {
             .map((property) => {
               property.image = property.img1 || property.images[0];
               property.buttonText = `${property.homeType?.toUpperCase()} FOR SALE`;
-              property.tag = "Exclusive";
+              // property.tag = "Exclusive";
               property.features = `${property.bed} BEDS | ${property.bath} BATHS | ${property.sqFt} SQ FT`;
               return property;
             })
@@ -185,9 +221,14 @@ export default {
   },
   setup() {
     useSeoMeta({
-      title: "Sell Your Home With Tomorrow Luxury Property",
+      title:
+        " Sell Your Luxury Property in Dubai | Top Agents at Tomorrow Luxury Property",
+      ogTitle:
+        " Sell Your Luxury Property in Dubai | Top Agents at Tomorrow Luxury Property",
       description:
-        "Whether you're preparing to sell or seeking guidance, we offer data-driven insights and expert advice tailored to your local area.",
+        "Maximize your property's value with Tomorrow Luxury Property. Our expert agents provide tailored strategies for a seamless and profitable sale.",
+      ogDescription:
+        "Maximize your property's value with Tomorrow Luxury Property. Our expert agents provide tailored strategies for a seamless and profitable sale.",
     });
   },
   methods: {

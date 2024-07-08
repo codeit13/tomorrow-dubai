@@ -520,12 +520,17 @@ export default {
       if (neighbourhoodProperty) {
         useHead({
           title: `Properties for sale in ${neighbourhoodProperty.title} | Tomorrow Luxury Property`,
+          ogTitle: `Properties for sale in ${neighbourhoodProperty.title} | Tomorrow Luxury Property`,
           description: neighbourhoodProperty.description,
+          ogDescription: neighbourhoodProperty.description,
         });
       } else {
         useHead({
           title: `Properties for sale in ${searchText.trim()} | Tomorrow Luxury Property`,
+          ogTitle: `Properties for sale in ${searchText.trim()} | Tomorrow Luxury Property`,
           description:
+            "Discover Premium Villas and Residences for Sale in Dubai prestigeous Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
+          ogDescription:
             "Discover Premium Villas and Residences for Sale in Dubai prestigeous Societies. Experience the pinnacle of luxury living in our fully authenticated 3 to 10 bedroom properties. Contact us today to find your dream mansion",
         });
       }
@@ -655,7 +660,7 @@ export default {
             property.locationText = `${property.propertyName}, ${property.address}`;
             property.image = property.img1 || property.images[0];
             property.buttonText = `${property.homeType.toUpperCase()} FOR SALE`;
-            property.tag = property.isOffPlan ? "Off Plan" : "Exclusive";
+            // property.tag = property.isOffPlan ? "Off Plan" : "Exclusive";
             property.featureText = `${property.bed} BEDS | ${property.bath} BATHS | ${property.sqFt} SQ FT`;
             return property;
           })

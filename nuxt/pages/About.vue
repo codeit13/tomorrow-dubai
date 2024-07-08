@@ -77,9 +77,14 @@ export default {
   },
   setup() {
     useSeoMeta({
-      title: "About Us | Tomorrow Luxury Property",
+      title:
+        "About Tomorrow Luxury Property | Dubai's Leading Real Estate Firm",
+      ogTitle:
+        "About Tomorrow Luxury Property | Dubai's Leading Real Estate Firm",
       description:
-        "At Tomorrow Luxury Property, we redefine excellence in the realm of real estate brokerage. Nestled in the heart of Dubai, we pride ourselves on being the city's pioneering subscription-based real estate hub, serving agents from across the globe.",
+        " Learn about Tomorrow Luxury Property, Dubai's leading luxury real estate firm. Discover our mission, vision, and meet the team dedicated to your success.",
+      ogDescription:
+        " Learn about Tomorrow Luxury Property, Dubai's leading luxury real estate firm. Discover our mission, vision, and meet the team dedicated to your success.",
     });
   },
   computed: {},

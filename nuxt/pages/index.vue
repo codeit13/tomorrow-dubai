@@ -476,7 +476,7 @@ export default {
             .map((property) => {
               property.image = property.img1 || property.images[0];
               property.buttonText = `${property.homeType.toUpperCase()} FOR SALE`;
-              property.tag = "Exclusive";
+              // property.tag = "Exclusive";
               property.features = `${property.bed} BEDS | ${property.bath} BATHS | ${property.sqFt} SQ FT`;
               return property;
             })
@@ -517,7 +517,11 @@ export default {
   setup() {
     useSeoMeta({
       title: "Real Estate in Dubai, Homes for Sale | Tomorrow Luxury Property",
+      ogTitle:
+        "Real Estate in Dubai, Homes for Sale | Tomorrow Luxury Property",
       description:
+        "Explore, buy, sell, or rent with Tomorrow Luxury Property. Collaborate with our expert real estate agents to discover the perfect luxury home or apartment for you.",
+      ogDescription:
         "Explore, buy, sell, or rent with Tomorrow Luxury Property. Collaborate with our expert real estate agents to discover the perfect luxury home or apartment for you.",
     });
   },

@@ -105,9 +105,12 @@ export default {
   },
   setup() {
     useSeoMeta({
-      title: "Contact us | Tomorrow Luxury Property",
+      title: "Contact Tomorrow Luxury Property | Dubai Real Estate Experts",
+      ogTitle: "Contact Tomorrow Luxury Property | Dubai Real Estate Experts",
       description:
-        "Get in contact with Tomorrow Luxury Property Real Estate today by filling in the form and a member of our team will get back to you shortly.",
+        "Reach out to Tomorrow Luxury Property for expert assistance in buying, selling, or investing in luxury properties in Dubai. Contact us today",
+      ogDescription:
+        "Reach out to Tomorrow Luxury Property for expert assistance in buying, selling, or investing in luxury properties in Dubai. Contact us today",
     });
   },
   methods: {

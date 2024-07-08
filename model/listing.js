@@ -17,6 +17,7 @@ const listingSchema = mongoose.Schema(
   {
     id: { type: String },
     slug: { type: String, unique: true },
+    tag: { type: String, default: "New" },
     homeType: { type: String, require: true },
     isBuy: { type: Boolean, default: false }, // It is assumed that properties are created default by sellers
     isOffPlan: { type: Boolean, default: false },

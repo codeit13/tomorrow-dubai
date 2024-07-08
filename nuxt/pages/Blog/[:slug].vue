@@ -87,6 +87,7 @@ export default {
 
       useSeoMeta({
         title: blogTitle,
+        ogTitle: blogTitle,
       });
     });
   },

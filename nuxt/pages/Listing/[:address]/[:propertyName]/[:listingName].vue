@@ -523,6 +523,11 @@ export default {
             title: `${capitalizeFirstLetterOfEveryWord(
               listing.title
             )} | Tomorrow Luxury Property`,
+            ogTitle: `${capitalizeFirstLetterOfEveryWord(
+              listing.title
+            )} | Tomorrow Luxury Property`,
+            description: descriptionText.slice(0, 100) + "...",
+            ogDescription: descriptionText.slice(0, 100) + "...",
             meta: [
               {
                 name: "description",
@@ -685,7 +690,7 @@ export default {
             property.locationText = `${property.propertyName}, ${property.address}`;
             property.image = property.img1 || property.images[0];
             property.buttonText = `${property.homeType.toUpperCase()} FOR SALE`;
-            property.tag = property.isOffPlan ? "Off Plan" : "Exclusive";
+            // property.tag = property.isOffPlan ? "Off Plan" : "Exclusive";
             property.featureText = `${property.bed} BEDS | ${property.bath} BATHS | ${property.sqFt} SQ FT`;
             return property;
           })

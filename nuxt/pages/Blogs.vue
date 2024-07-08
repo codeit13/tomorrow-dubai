@@ -56,8 +56,10 @@ export default {
   setup() {
     useAsyncData(() => {
       useSeoMeta({
-        title: `News and Insights - Tomorrow Luxury Property Real Estate in Dubai UAE`,
-        description: `Stay updated on the latest in Dubai property investments with Tomorrow Luxury Property. Visit our News and Insights page for more information.`,
+        title: `Dubai Real Estate News & Insights | Tomorrow Luxury Property`,
+        ogTitle: `Dubai Real Estate News & Insights | Tomorrow Luxury Property`,
+        description: `Stay informed with the latest updates and trends in Dubai's real estate market. Get expert analysis and insights from Tomorrow Luxury Property.`,
+        ogDescription: `Stay informed with the latest updates and trends in Dubai's real estate market. Get expert analysis and insights from Tomorrow Luxury Property.`,
       });
     });
   },

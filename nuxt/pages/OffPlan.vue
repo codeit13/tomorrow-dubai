@@ -91,9 +91,13 @@ export default {
   setup() {
     useSeoMeta({
       title:
-        "Exclusive Off-Plan Investment Opportunities in Dubai’s Thriving Real Estate Market",
+        "Invest in Off Plan Properties in Dubai | Tomorrow Luxury Property",
+      ogTitle:
+        "Invest in Off Plan Properties in Dubai | Tomorrow Luxury Property",
       description:
-        "At Tomorrow Luxury Property, you will receive comprehensive information on the latest off-plan projects and developments in Palm Jebel Ali, Palm Jumeirah, Dubai Island, and Downtown Dubai, UAE.",
+        " Secure prime off plan properties in Dubai with Tomorrow Luxury Property. Access exclusive deals and top investment opportunities in burgeoning areas.",
+      ogDescription:
+        " Secure prime off plan properties in Dubai with Tomorrow Luxury Property. Access exclusive deals and top investment opportunities in burgeoning areas.",
     });
   },
   computed: {
@@ -118,20 +122,6 @@ export default {
     },
   },
   methods: {
-    addMetaTags({ title, description }) {
-      if (!this.isMetaTagsAdded) {
-        document.title = title;
-        const titleMetaTag = document.createElement("meta");
-        titleMetaTag.setAttribute("name", "title");
-        titleMetaTag.setAttribute("content", title);
-        document.querySelector("head").appendChild(titleMetaTag);
-
-        const descrMetaTag = document.createElement("meta");
-        descrMetaTag.setAttribute("name", "description");
-        descrMetaTag.setAttribute("content", description);
-        document.querySelector("head").appendChild(descrMetaTag);
-      }
-    },
     goToProperty(property) {
       if (
         property &&

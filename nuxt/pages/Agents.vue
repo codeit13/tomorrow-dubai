@@ -47,7 +47,9 @@ export default {
   setup() {
     useSeoMeta({
       title: "Agents | Tomorrow Luxury Property",
+      ogTitle: "Agents | Tomorrow Luxury Property",
       description: "Explore properties at amazing neighborhoods in Dubai.",
+      ogDescription: "Explore properties at amazing neighborhoods in Dubai.",
     });
   },
   methods: {

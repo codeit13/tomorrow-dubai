@@ -58,19 +58,19 @@
               class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
             >
               <div class="p-8">
-                <!-- <div class="mb-6 relative z-0">
+                <div class="mb-6 relative z-0">
                   <input
                     type="text"
-                    v-model="listingSlug"
+                    v-model="tag"
                     placeholder=""
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   />
                   <label
                     class="mb-2.5 absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
                   >
-                    Slug
+                    Tag
                   </label>
-                </div> -->
+                </div>
 
                 <div class="mb-6 relative z-0">
                   <input
@@ -944,6 +944,7 @@ export default {
       buttonText: "UPDATE",
       propertyNameListOpened: false,
       filteredProperties: [],
+      tag: null,
     };
   },
   components: {
@@ -1035,6 +1036,8 @@ export default {
 
       this.images = listing.images;
       this.agent = listing.agent._id;
+
+      this.tag = listing.tag;
 
       if (listing.amenities)
         listing.amenities.map((i) => {
@@ -1225,6 +1228,7 @@ export default {
       this.isOffPlan = "NO";
       this.agent = "DEFAULT";
       this.images = [];
+      this.tag = null;
 
       this.ammenities.map((i) => {
         i.value = false;
@@ -1261,6 +1265,7 @@ export default {
       ) {
         const listing = {
           slug: this.listingSlug?.toLowerCase(),
+          tag: this.tag,
           title: this.listingTitle,
           propertyName: this.propertyName,
           address: this.listingFullAddress,
@@ -1317,6 +1322,7 @@ export default {
       ) {
         const listing = {
           slug: this.listingSlug?.toLowerCase(),
+          tag: this.tag,
           title: this.listingTitle,
           propertyName: this.propertyName,
           address: this.listingFullAddress,
