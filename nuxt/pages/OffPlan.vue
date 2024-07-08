@@ -98,6 +98,8 @@ export default {
         " Secure prime off plan properties in Dubai with Tomorrow Luxury Property. Access exclusive deals and top investment opportunities in burgeoning areas.",
       ogDescription:
         " Secure prime off plan properties in Dubai with Tomorrow Luxury Property. Access exclusive deals and top investment opportunities in burgeoning areas.",
+      keywords:
+        "Off plan properties Dubai, Dubai pre-launch real estate, prime property investments, off plan luxury homes, Tomorrow Luxury Property off plan",
     });
   },
   computed: {

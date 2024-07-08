@@ -111,6 +111,8 @@ export default {
         "Reach out to Tomorrow Luxury Property for expert assistance in buying, selling, or investing in luxury properties in Dubai. Contact us today",
       ogDescription:
         "Reach out to Tomorrow Luxury Property for expert assistance in buying, selling, or investing in luxury properties in Dubai. Contact us today",
+      keywords:
+        "contact Tomorrow Luxury Property, real estate inquiries Dubai, property consultation Dubai, luxury real estate contact, Dubai property experts",
     });
   },
   methods: {

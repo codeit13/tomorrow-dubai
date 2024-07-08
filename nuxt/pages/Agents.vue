@@ -50,6 +50,8 @@ export default {
       ogTitle: "Agents | Tomorrow Luxury Property",
       description: "Explore properties at amazing neighborhoods in Dubai.",
       ogDescription: "Explore properties at amazing neighborhoods in Dubai.",
+      keywords:
+        "top real estate agents Dubai, find real estate agent Dubai, luxury property experts, Tomorrow Luxury Property agents, property consultants Dubai",
     });
   },
   methods: {

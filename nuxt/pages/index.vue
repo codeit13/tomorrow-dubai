@@ -397,6 +397,7 @@ import "vue3-carousel/dist/carousel.css";
 import { mapState } from "vuex";
 
 import { cn } from "../lib/utils";
+import { useRoute } from "vue-router";
 
 export default {
   data() {
@@ -515,15 +516,34 @@ export default {
     },
   },
   setup() {
-    useSeoMeta({
-      title: "Real Estate in Dubai, Homes for Sale | Tomorrow Luxury Property",
-      ogTitle:
-        "Real Estate in Dubai, Homes for Sale | Tomorrow Luxury Property",
-      description:
-        "Explore, buy, sell, or rent with Tomorrow Luxury Property. Collaborate with our expert real estate agents to discover the perfect luxury home or apartment for you.",
-      ogDescription:
-        "Explore, buy, sell, or rent with Tomorrow Luxury Property. Collaborate with our expert real estate agents to discover the perfect luxury home or apartment for you.",
-    });
+    const route = useRoute();
+    if (route.path == "/buy") {
+      useSeoMeta({
+        title:
+          "Browse Dubai's Luxury Homes for Sale | Tomorrow Luxury Property",
+        ogTitle:
+          "Browse Dubai's Luxury Homes for Sale | Tomorrow Luxury Property",
+        description:
+          "Browse our curated selection of luxury homes for sale in Dubai. Let Tomorrow Luxury Property guide you to the perfect investment and lifestyle choice.",
+        ogDescription:
+          "Browse our curated selection of luxury homes for sale in Dubai. Let Tomorrow Luxury Property guide you to the perfect investment and lifestyle choice.",
+        keywords:
+          "luxury homes for sale Dubai, high-end properties Dubai, premier real estate Dubai, real estate investment Dubai, Dubai property market, exclusive real estate Dubai, Tomorrow Luxury Property, Jumeirah Bay Island property for sale, Palm Jebel Ali villa for sale, Palm Jumeirah villa for sale, Bluewater Island apartment for sale, Emaar Beachfront properties, Downtown Dubai real estate, Dubai Marina properties, Arabian Ranches homes, Business Bay real estate, DIFC apartments, JBR properties, City Walk Dubai real estate, Al Barari villas, Emirates Hills properties, MBR City homes, Dubai Creek Harbour properties",
+      });
+    } else {
+      useSeoMeta({
+        title:
+          "Real Estate in Dubai, Homes for Sale | Tomorrow Luxury Property",
+        ogTitle:
+          "Real Estate in Dubai, Homes for Sale | Tomorrow Luxury Property",
+        description:
+          "Explore, buy, sell, or rent with Tomorrow Luxury Property. Collaborate with our expert real estate agents to discover the perfect luxury home or apartment for you.",
+        ogDescription:
+          "Explore, buy, sell, or rent with Tomorrow Luxury Property. Collaborate with our expert real estate agents to discover the perfect luxury home or apartment for you.",
+        keywords:
+          "luxury real estate Dubai, Dubai luxury homes, high-end properties Dubai, premier real estate Dubai, buy luxury homes Dubai, Dubai luxury apartments, real estate investment Dubai, Dubai property market, exclusive real estate Dubai, Tomorrow Luxury Property, Jumeirah Bay Island property for sale, Palm Jebel Ali villa for sale, Palm Jumeirah villa for sale, Bluewater Island apartment for sale, Emaar Beachfront properties, Downtown Dubai real estate, Dubai Marina properties, Arabian Ranches homes, Business Bay real estate, DIFC apartments, JBR properties, City Walk Dubai real estate, Al Barari villas, Emirates Hills properties, MBR City homes, Dubai Creek Harbour properties",
+      });
+    }
   },
   mounted() {
     this.router = useRouter();

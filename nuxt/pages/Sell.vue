@@ -229,6 +229,8 @@ export default {
         "Maximize your property's value with Tomorrow Luxury Property. Our expert agents provide tailored strategies for a seamless and profitable sale.",
       ogDescription:
         "Maximize your property's value with Tomorrow Luxury Property. Our expert agents provide tailored strategies for a seamless and profitable sale.",
+      keywords:
+        "sell luxury property Dubai, Dubai real estate selling, high-end property sales, luxury home selling experts, Tomorrow Luxury Property selling",
     });
   },
   methods: {

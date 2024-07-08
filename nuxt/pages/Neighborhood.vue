@@ -51,6 +51,8 @@ export default {
         "Discover Dubai's most sought-after neighborhoods with Tomorrow Luxury Property. Find luxury homes in Dubai Islands, Palm Jumeirah, Downtown, Jumeira Bay Island,  Palm Jebel Ali and more.",
       ogDescription:
         "Discover Dubai's most sought-after neighborhoods with Tomorrow Luxury Property. Find luxury homes in Dubai Islands, Palm Jumeirah, Downtown, Jumeira Bay Island,  Palm Jebel Ali and more.",
+      keywords:
+        "Dubai premier neighborhoods, luxury real estate Dubai, Dubai Islands properties, Palm Jumeirah homes, Downtown Dubai real estate",
     });
   },
   methods: {

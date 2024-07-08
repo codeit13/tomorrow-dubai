@@ -700,6 +700,8 @@ export default {
         "Join Tomorrow Luxury Property and transform your real estate career with Dubai's first subscription-based real estate jobs. Refer a client and earn 80% commission on every successful transaction.",
       ogDescription:
         "Join Tomorrow Luxury Property and transform your real estate career with Dubai's first subscription-based real estate jobs. Refer a client and earn 80% commission on every successful transaction.",
+      keywords:
+        "partner with Tomorrow Luxury Property, subscription-based real estate jobs, Dubai real estate careers, refer a client, 80% commission, real estate agent opportunities, luxury property Dubai, real estate job subscription, high commission real estate, real estate partnerships Dubai",
     });
   },
   data() {

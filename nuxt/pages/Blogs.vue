@@ -60,6 +60,8 @@ export default {
         ogTitle: `Dubai Real Estate News & Insights | Tomorrow Luxury Property`,
         description: `Stay informed with the latest updates and trends in Dubai's real estate market. Get expert analysis and insights from Tomorrow Luxury Property.`,
         ogDescription: `Stay informed with the latest updates and trends in Dubai's real estate market. Get expert analysis and insights from Tomorrow Luxury Property.`,
+        keywords:
+          "Dubai real estate news, property market updates, luxury real estate trends, Tomorrow Luxury Property news, real estate insights Dubai",
       });
     });
   },

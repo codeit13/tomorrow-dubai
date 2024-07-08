@@ -85,6 +85,8 @@ export default {
         " Learn about Tomorrow Luxury Property, Dubai's leading luxury real estate firm. Discover our mission, vision, and meet the team dedicated to your success.",
       ogDescription:
         " Learn about Tomorrow Luxury Property, Dubai's leading luxury real estate firm. Discover our mission, vision, and meet the team dedicated to your success.",
+      keywords:
+        "about Tomorrow Luxury Property, luxury real estate firm Dubai, Dubai real estate experts, Tomorrow Luxury Property team, company information",
     });
   },
   computed: {},
