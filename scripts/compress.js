@@ -46,10 +46,17 @@ const uploadToFirebaseStorage = async (filePath, fileName) => {
         await Promise.all(
           images.map(async (url) => {
             return new Promise((resolve) => {
-              tinify.fromUrl(url)._url.then((url) => {
+              try {
+                console.log("Compressing::", url);
+                tinify.fromUrl(url)._url.then((compressedUrl) => {
+                  json[_id].push(compressedUrl);
+                  resolve(compressedUrl);
+                });
+              } catch (error) {
+                console.log(error);
                 json[_id].push(url);
-                resolve(url);
-              });
+                resolve("EMPTY");
+              }
             });
           })
         );
