@@ -32,7 +32,7 @@ tinify.key = "P6LG99zZGvW7YfSzwZ7WcJsvST8GpqJT";
             const compressedUrl = await tinify.fromUrl(url)._url;
             json[_id].push(compressedUrl);
             resolve(compressedUrl);
-          } catch (error) {
+          } catch (e) {
             console.log(e.message);
             console.log("JSON:\n", json);
             json[_id].push(url);
