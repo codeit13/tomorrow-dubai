@@ -42,6 +42,9 @@ const uploadToFirebaseStorage = async (filePath, fileName) => {
       return new Promise(async (r) => {
         const { _id, images } = listing;
 
+        // sleep for 500ms
+        await new Promise((resolve) => setTimeout(resolve, 500));
+
         json[_id] = [];
         await Promise.all(
           images.map(async (url) => {
@@ -54,6 +57,7 @@ const uploadToFirebaseStorage = async (filePath, fileName) => {
                 });
               } catch (error) {
                 console.log(error);
+                console.log("JSON:\n", json);
                 json[_id].push(url);
                 resolve("EMPTY");
               }
