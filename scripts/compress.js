@@ -48,7 +48,8 @@ const uploadToFirebaseStorage = async (filePath, fileName) => {
 
     json[_id] = [];
     await Promise.all(
-      images.map(async (url) => {
+      images.map(async (url, i) => {
+        console.log(i);
         return new Promise((resolve) => {
           try {
             console.log("Compressing::", url);
