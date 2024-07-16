@@ -14,8 +14,10 @@ tinify.key = "P6LG99zZGvW7YfSzwZ7WcJsvST8GpqJT";
   const listings = await listingDB.find();
 
   let json = {};
-
+  let counter = 0;
   for (const listing of listings) {
+    counter++;
+    console.log("****************** ", counter, " ******************");
     const { _id, images } = listing;
 
     // sleep for 500ms
@@ -24,13 +26,12 @@ tinify.key = "P6LG99zZGvW7YfSzwZ7WcJsvST8GpqJT";
     json[_id] = [];
     await Promise.all(
       images.map(async (url, i) => {
-        return new Promise((resolve) => {
+        return new Promise(async (resolve) => {
           try {
-            console.log(i, ". Compressing::", url);
-            tinify.fromUrl(url)._url.then((compressedUrl) => {
-              json[_id].push(compressedUrl);
-              resolve(compressedUrl);
-            });
+            console.log(i + 1, " Compressing::", url);
+            const compressedUrl = await tinify.fromUrl(url)._url;
+            json[_id].push(compressedUrl);
+            resolve(compressedUrl);
           } catch (error) {
             console.log(e.message);
             console.log("JSON:\n", json);
