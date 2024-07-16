@@ -58,7 +58,7 @@ const uploadToFirebaseStorage = async (filePath, fileName) => {
 
       // await listingDB.updateOne({ _id }, { $set: { images: newImages } });
     })
-
-    // console.log(json);
   );
+
+  console.log(json);
 })();
