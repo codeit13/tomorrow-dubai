@@ -37,39 +37,41 @@ const uploadToFirebaseStorage = async (filePath, fileName) => {
 
   let json = {};
 
-  await Promise.all(
-    listings.map(async (listing) => {
-      return new Promise(async (r) => {
-        const { _id, images } = listing;
+  // await Promise.all(
+  // listings.map(async (listing) => {
+  //   return new Promise(async (r) => {
+  for (const listing of listings) {
+    const { _id, images } = listing;
 
-        // sleep for 500ms
-        await new Promise((resolve) => setTimeout(resolve, 500));
+    // sleep for 500ms
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
-        json[_id] = [];
-        await Promise.all(
-          images.map(async (url) => {
-            return new Promise((resolve) => {
-              try {
-                console.log("Compressing::", url);
-                tinify.fromUrl(url)._url.then((compressedUrl) => {
-                  json[_id].push(compressedUrl);
-                  resolve(compressedUrl);
-                });
-              } catch (error) {
-                console.log(error);
-                console.log("JSON:\n", json);
-                json[_id].push(url);
-                resolve("EMPTY");
-              }
+    json[_id] = [];
+    await Promise.all(
+      images.map(async (url) => {
+        return new Promise((resolve) => {
+          try {
+            console.log("Compressing::", url);
+            tinify.fromUrl(url)._url.then((compressedUrl) => {
+              json[_id].push(compressedUrl);
+              resolve(compressedUrl);
             });
-          })
-        );
-        r();
-      });
+          } catch (error) {
+            console.log(error);
+            console.log("JSON:\n", json);
+            json[_id].push(url);
+            resolve("EMPTY");
+          }
+        });
+      })
+    );
+  }
+  // r();
+  // });
 
-      // await listingDB.updateOne({ _id }, { $set: { images: newImages } });
-    })
-  );
+  // await listingDB.updateOne({ _id }, { $set: { images: newImages } });
+  // })
+  // );
 
-  console.log(json);
+  console.log("\n\n\n\n", json);
 })();
