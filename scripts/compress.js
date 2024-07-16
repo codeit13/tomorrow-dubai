@@ -39,34 +39,26 @@ const uploadToFirebaseStorage = async (filePath, fileName) => {
 
   await Promise.all(
     listings.map(async (listing) => {
-      const { _id, images } = listing;
+      return new Promise(async (r) => {
+        const { _id, images } = listing;
 
-      //   await listingDB.updateOne(
-      //     { _id },
-      //     {
-      //       $set: {
-      //         images: [
-      //           "https://firebasestorage.googleapis.com/v0/b/sellanyhome-66c20.appspot.com/o/Exterioir%20(2).jpg?alt=media&token=af19761d-d57d-48db-983b-3321e7fd2190",
-      //         ],
-      //       },
-      //     }
-      //   );
-
-      json[_id] = [];
-      await Promise.all(
-        images.map(async (url) => {
-          return new Promise((resolve) => {
-            tinify.fromUrl(url)._url.then((url) => {
-              json[_id].push(url);
-              resolve(url);
+        json[_id] = [];
+        await Promise.all(
+          images.map(async (url) => {
+            return new Promise((resolve) => {
+              tinify.fromUrl(url)._url.then((url) => {
+                json[_id].push(url);
+                resolve(url);
+              });
             });
-          });
-        })
-      );
-
-      console.log(json);
+          })
+        );
+        r();
+      });
 
       // await listingDB.updateOne({ _id }, { $set: { images: newImages } });
     })
+
+    // console.log(json);
   );
 })();
