@@ -113,7 +113,7 @@ export default {
               property.subtitle = property.price
                 ? `STARTING PRICE - AED ${property.details["Price Range"]}`
                 : "Exclusive Prices";
-              property.image = property.img1 || property.images[0];
+              property.image = property.images[0];
               property.completionText = `Completion ${property.details["Completion Date"]}`;
 
               // property.features = `${property.bed} BEDS | ${property.bath} BATHS | ${property.sqFt} SQ FT`;

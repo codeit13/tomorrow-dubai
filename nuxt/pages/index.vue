@@ -475,7 +475,7 @@ export default {
       return listings
         ? listings
             .map((property) => {
-              property.image = property.img1 || property.images[0];
+              property.image = property.images[0];
               property.buttonText = `${property.homeType.toUpperCase()} FOR SALE`;
               // property.tag = "Exclusive";
               property.features = `${property.bed} BEDS | ${property.bath} BATHS | ${property.sqFt} SQ FT`;
@@ -497,7 +497,7 @@ export default {
                 property.heading = property.price
                   ? `STARTING PRICE - AED ${property.details["Price Range"]}`
                   : "Exclusive Prices";
-                property.image = property.img1 || property.images[0];
+                property.image = property.images[0];
                 property.completionText = `Completion ${property.details["Completion Date"]}`;
               }
               return property;

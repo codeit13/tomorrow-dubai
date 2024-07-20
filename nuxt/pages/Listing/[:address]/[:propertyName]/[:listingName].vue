@@ -100,7 +100,7 @@
               Property Descriptions
             </h2>
             <p
-              class="text-sm md:text-lg text-justify"
+              class="text-sm md:text-[1rem] text-justify"
               v-html="shortDescription"
             ></p>
             <p
@@ -688,7 +688,7 @@ export default {
               ? `AED ${property.price?.toLocaleString("en-us")}`
               : "Amazing Prices";
             property.locationText = `${property.propertyName}, ${property.address}`;
-            property.image = property.img1 || property.images[0];
+            property.image = property.images[0];
             property.buttonText = `${property.homeType.toUpperCase()} FOR SALE`;
             // property.tag = property.isOffPlan ? "Off Plan" : "Exclusive";
             property.featureText = `${property.bed} BEDS | ${property.bath} BATHS | ${property.sqFt} SQ FT`;
@@ -735,7 +735,7 @@ export default {
 
           this.featureText = `${property.homeType} | ${property.bed} Beds | ${property.bath} Baths | ${property.sqFt} Sq Ft`;
           this.startingPrice = property.price;
-          this.propertyImage = property.img1 || property.images[0];
+          this.propertyImage = property.images[0];
           this.propertyImages = property.images;
           this.description = property.description;
           this.shortDescription = property.description.slice(0, 1000) + "...";
