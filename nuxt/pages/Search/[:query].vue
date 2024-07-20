@@ -548,10 +548,14 @@ export default {
   },
   methods: {
     onPaginationClick(page) {
-      this.paginatedProperties = this.filteredProperties.slice(
-        (page - 1) * 9,
-        page * 9
-      );
+      this.paginatedProperties = [];
+      const _this = this;
+      setTimeout(() => {
+        _this.paginatedProperties = _this.filteredProperties.slice(
+          (page - 1) * 9,
+          page * 9
+        );
+      }, 250);
     },
     searchTextChange() {
       if (this.searchText) {

@@ -198,8 +198,11 @@ const { listingDB } = require("../model/listing");
   for (let key of array) {
     let images = json[key];
     // { $set: { images } }
-    const listing = await listingDB.findOne({ _id: key });
+    const listing = await listingDB.updateOne(
+      { _id: key },
+      { $set: { images: images } }
+    );
 
-    console.log("Found", listing);
+    console.log("Found", listing._id);
   }
 })();

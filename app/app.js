@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-
+const axios = require("axios");
 const path = require("path");
 
 const session = require("express-session");
@@ -129,6 +129,25 @@ app.post("/api/logout", (req, res, next) => {
       res.send(); // send to the client
     });
   });
+});
+
+app.get("/fetch-image/:url", async (req, res) => {
+  const { url: imageUrl } = req.params;
+  console.log(imageUrl);
+
+  if (!imageUrl) {
+    return res.status(400).send("URL is required");
+  }
+
+  try {
+    const response = await axios.get(imageUrl, { responseType: "arraybuffer" });
+    const contentType = response.headers["content-type"];
+    res.setHeader("Content-Type", contentType);
+    res.send(response.data);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Error fetching image");
+  }
 });
 
 // This middleware catches all other routes and returns a 404 error

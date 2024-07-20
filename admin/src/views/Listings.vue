@@ -1,3 +1,4 @@
+run
 <template>
   <div>
     <div
@@ -529,12 +530,6 @@
             >
               {{ buttonText }}
             </button>
-            <!-- <button
-              @click="isModalOpen = false"
-              class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-boxdark dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
-            >
-              Delete
-            </button> -->
           </div>
         </div>
       </div>
@@ -557,6 +552,13 @@
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             CREATE
+          </button>
+
+          <button
+            @click="compress"
+            class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-boxdark dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+          >
+            Compress
           </button>
 
           <nav>
@@ -724,6 +726,191 @@ import { storage } from "@/utils/Firebase";
 export default {
   data() {
     return {
+      json: {
+        "652118add1aa1e2cd26e164d": [
+          "https://api.tinify.com/output/xa4zeqm7eh09b92z0z6emfhkm58r3wmr",
+          "https://api.tinify.com/output/s2qvsnrm0qzmbk5ccjbqn36mheemcvfr",
+          "https://firebasestorage.googleapis.com/v0/b/sellanyhome-66c20.appspot.com/o/PJA%20Payment%20Plan%20-%20Villa%20Plots%20v3.pdf?alt=media&token=d130a712-1fa2-41d0-921a-4d6d2c8dee23",
+        ],
+        "658c2ddbd0a0a338b29181ce": [],
+        "658c2e1ad0a0a338b29181d0": [],
+        "65ab843860ea7db136118c62": [],
+        "65ab844860ea7db136118c64": [],
+        "65c071e2b4a3938730e7ace3": [],
+        "65c202926faa6122faccb3f6": [
+          "https://api.tinify.com/output/jh44ypnq99gv31kz20k5bj2cwzey4f6b",
+          "https://api.tinify.com/output/wfkxhq7zp8dgq7r9b5ebkhra3dy07x3m",
+          "https://api.tinify.com/output/7jepx7eww3b8x7wpn9ec27mq64gnnra0",
+        ],
+        "65c229cb6faa6122faccb464": [
+          "https://api.tinify.com/output/a8wx394xh9me99j0c8wyvgw2hakmfn4q",
+          "https://api.tinify.com/output/hw7h51hybesfvay4x94qs2tjraxz2mh4",
+          "https://api.tinify.com/output/wtfw0152cfvzkq5bek0gspg2230eeqk7",
+          "https://api.tinify.com/output/v36c8m069fjyknf7ydqc1cs5n48rrzhj",
+        ],
+        "65c27b296faa6122faccb4a1": [
+          "https://api.tinify.com/output/134hgz3yej021fx8j936yh72k2qxmmnb",
+          "https://api.tinify.com/output/mywfmz2bkw4eqp76j6nzt5r1x2v87wrd",
+          "https://api.tinify.com/output/mtnjbepd0ex51pe4d56ydx6vhng06aks",
+          "https://api.tinify.com/output/p7gfw2zfpzwk11xjr0srkspjrv8t35wq",
+          "https://api.tinify.com/output/za8ggvxsaq9mh9pcj9jakdn3t5ag5dm9",
+          "https://api.tinify.com/output/fkz9ff14d9myten5zq7g6enwcqrxe325",
+          "https://api.tinify.com/output/esqed4pv09vpjbkke2yx7fcteqc3k2b5",
+          "https://api.tinify.com/output/rr644znrfwt68x0paa424z1rbvh7ebta",
+          "https://api.tinify.com/output/repykbv0e3epatbkfh8rb02evvme2j2j",
+          "https://api.tinify.com/output/rza3y1cqqjckyh17h3v1nvw778pqzxw1",
+          "https://api.tinify.com/output/vqfvh1hpda7xaanbr6cp72w1pwvhpemj",
+          "https://api.tinify.com/output/cg0y1nejsy19g7h9qdybj4ah0xcg85x5",
+          "https://api.tinify.com/output/e3b1w2tphht9rdcb49eq8w1p4fv9nkf0",
+          "https://api.tinify.com/output/fkz9ff14d9myten5zq7g6enwcqrxe325",
+        ],
+        "65c284bc6faa6122faccb4c5": [
+          "https://api.tinify.com/output/yscxwz9t9kzqfdmwa0xjd45er0xx19fk",
+          "https://api.tinify.com/output/5s1pfyacfpz8yt2b7c86pncg5e52hwdg",
+          "https://api.tinify.com/output/3nh2ve4k19w65fn2pb2wvpsa7td7t9a0",
+          "https://api.tinify.com/output/5ccyffkaqjevxg7699y6mj6gvxg2n9vq",
+          "https://api.tinify.com/output/4s5e59d7srzbwpjbp3wv00sfvq71wsqt",
+          "https://api.tinify.com/output/cy0vykv1eyedtc94qe01fnpx7tkm307k",
+          "https://api.tinify.com/output/mfgvnxyfkn1w6fg672destymahek9t97",
+        ],
+        "65d339a6f29eecd0901c84c9": [
+          "https://api.tinify.com/output/mcvc07z5r8dfrcvrym65tgnrgvyvgxyp",
+          "https://api.tinify.com/output/bcjrs0qh11ky1hdzkkmdj6t2kgjq1r2t",
+          "https://api.tinify.com/output/vv3k0qn95ww5vjbksvz9e7py1n82sxfc",
+          "https://api.tinify.com/output/mgwg1xddabkptjxztv4f4ayhba05fg69",
+          "https://api.tinify.com/output/yss7vqmmbsrtv4nvcvzqhrzj2v1rwttd",
+          "https://api.tinify.com/output/8t9mj0pbscwg2t8mfcccyb38j4kqa2dh",
+          "https://api.tinify.com/output/m0z1z25yj6tpjg5jg7eh978kse02s1gx",
+        ],
+        "65d59b1acc1d87f1dd8d376b": [],
+        "65db4ba2b8dc9858055e546a": [
+          "https://api.tinify.com/output/esqed4pv09vpjbkke2yx7fcteqc3k2b5",
+          "https://api.tinify.com/output/zcw2wa0086ncjg2h6wq69g4q95cq4ttv",
+          "https://api.tinify.com/output/mtnjbepd0ex51pe4d56ydx6vhng06aks",
+          "https://api.tinify.com/output/mywfmz2bkw4eqp76j6nzt5r1x2v87wrd",
+          "https://api.tinify.com/output/vqfvh1hpda7xaanbr6cp72w1pwvhpemj",
+          "https://api.tinify.com/output/5ve48rbw98mywa1369gdvxj309kemadj",
+          "https://api.tinify.com/output/p7gfw2zfpzwk11xjr0srkspjrv8t35wq",
+          "https://api.tinify.com/output/fkz9ff14d9myten5zq7g6enwcqrxe325",
+          "https://api.tinify.com/output/za8ggvxsaq9mh9pcj9jakdn3t5ag5dm9",
+          "https://api.tinify.com/output/rr644znrfwt68x0paa424z1rbvh7ebta",
+          "https://api.tinify.com/output/repykbv0e3epatbkfh8rb02evvme2j2j",
+        ],
+        "66050a6499eebdddf48832fe": [
+          "https://api.tinify.com/output/5ccyffkaqjevxg7699y6mj6gvxg2n9vq",
+          "https://api.tinify.com/output/r5gg1waee1qj02kjq56a3ee248n3p7ym",
+          "https://api.tinify.com/output/aptm2pvg5h95tj09ek0mv57fb68qgm8q",
+          "https://api.tinify.com/output/a6gxpgean9cmwrxts85e8w6gkg70fvbe",
+          "https://api.tinify.com/output/1xhy74jeb5xzt6wpbr9zg2qrw3d7yp1j",
+          "https://api.tinify.com/output/haqfepq7khh1xtpm4wmth36gj0q04yy6",
+          "https://api.tinify.com/output/4s5e59d7srzbwpjbp3wv00sfvq71wsqt",
+        ],
+        "660536da99eebdddf488332a": [
+          "https://api.tinify.com/output/tg7x06c0r3kc97rjvvap1dgzer8v2fh5",
+          "https://api.tinify.com/output/1h6mv4aaef0yxs0dgrjm4ybmk3harg7n",
+          "https://api.tinify.com/output/6qdpt0mape2c7bs7a0p7wx06hyw2d41y",
+          "https://api.tinify.com/output/y643dj3pr0pzhas6dqd9qjxr72pnbkk4",
+          "https://api.tinify.com/output/r5gg1waee1qj02kjq56a3ee248n3p7ym",
+          "https://api.tinify.com/output/xj387aa8zzc4m75gvd5bag3fe7psrr9w",
+        ],
+        "661b7cfd099dd60d040af6d2": [],
+        "6625ced1a667b63378c27918": [],
+        "66489061fbf468b4e2e9449b": [
+          "https://api.tinify.com/output/n0y8zjzrxbr39qnf5bqd9tv947ws988m",
+          "https://api.tinify.com/output/sg1483wmgdc92a10ehc7y16z0p5fan8d",
+          "https://api.tinify.com/output/hc4s3x4jbk398j72p07rm88kpkmxs168",
+          "https://api.tinify.com/output/0vfkc7phbnkg8c6dc8fsvqhsr5xkg6wg",
+        ],
+        "6659e46bfbf468b4e2e94af2": [
+          "https://api.tinify.com/output/efw77njam6shgrvv7agwn8acb6qtq64k",
+          "https://api.tinify.com/output/rmgdjbkyce56ve8961vgdfp372vh85hk",
+          "https://api.tinify.com/output/z3x3w8rakm07mfjqnd754b5kp98n3rwk",
+          "https://api.tinify.com/output/qrkqsnmnnaxg89q5n7vb9068npkcrmsg",
+          "https://api.tinify.com/output/vxbswrxfb8pcssz936pxn1v9rnrmye93",
+          "https://api.tinify.com/output/1bm0kgkxn04zxr12t6cr91hjx5yc6pvs",
+          "https://api.tinify.com/output/hpc34srzd3b8asyp9v60maryesnjearj",
+          "https://api.tinify.com/output/npsqt883y54s081nbznv0sd5ct74ezt7",
+          "https://api.tinify.com/output/wndxxkwcz5nd18x805eba0yjm0c4a2b9",
+        ],
+        "6661a005fbf468b4e2e94e74": [
+          "https://api.tinify.com/output/18fzbncaqj4mt7bjsbgeah46hebseda0",
+          "https://api.tinify.com/output/y813shx7gnr9nz1abz5qvjz126rcrdz8",
+          "https://api.tinify.com/output/4em122adx306gz041gv0emfsmj03ctys",
+          "https://api.tinify.com/output/h41emkfqac76tj17c30xrpabygb0m4ve",
+        ],
+        "6661a2b2fbf468b4e2e94eac": [
+          "https://api.tinify.com/output/689g8dpfkgnqz5dnwe9wdgtr4w17zskk",
+          "https://api.tinify.com/output/gjxpxs8pn55yn51c9rhmn63v4kks243b",
+          "https://api.tinify.com/output/x4p7bsa63dnfkwptmkh0mrrzgdx05cft",
+          "https://api.tinify.com/output/a49nabrgrrr4cemwhjg3wsc6dmh3e587",
+          "https://api.tinify.com/output/zc31kjhssekzzrf0zf4zfynhn5t89rtv",
+          "https://api.tinify.com/output/nkd5sdvfn8k7ars8kbjc1wfbjyvbymqc",
+          "https://api.tinify.com/output/pmescbtxbxmwc6b1kady2t7kg0022wwb",
+          "https://api.tinify.com/output/z018a0azdrt4xcnn8neawxjkcz4dba60",
+          "https://api.tinify.com/output/206p8wnk7ca0ham7m48ak5860pdpww39",
+          "https://api.tinify.com/output/ac1zb9d1beqvwnksaspma3c9009vfs8a",
+        ],
+        "6662ba4efbf468b4e2e94f09": [
+          "https://api.tinify.com/output/9wwpphsvysvpwgt7qrgwd99kb9fmsqxp",
+          "https://api.tinify.com/output/215pcv8e7nfjqyzzd114bvvb180cwk01",
+          "https://api.tinify.com/output/8ggz57cyzyywdnr2hx6t2ew3y6eyvb8c",
+          "https://api.tinify.com/output/qnnvzhx4nkgxm79vqm95zpm0mxbgqf2k",
+        ],
+        "6662cc11fbf468b4e2e94f48": [
+          "https://api.tinify.com/output/5981tzzz8jdmswdn0mt477by0x4355w7",
+          "https://api.tinify.com/output/j9pds17z6gts98ap6y0paj0ydkjtx0c9",
+          "https://api.tinify.com/output/dte0t1t6n3hgs4cpjh4edyzfjkd1r7eq",
+          "https://api.tinify.com/output/1sve90551x8m3ktdd0mwcn47qqn6zvvp",
+          "https://api.tinify.com/output/8q45yrpjq9tdgrq0181ayv2fx1hbvb9y",
+          "https://api.tinify.com/output/ksyjtnaa1n6q36gyg2akec7tkkjc5ye8",
+          "https://api.tinify.com/output/43gskfjbjw7krqs7vyehv84cegvc228x",
+          "https://api.tinify.com/output/n78hqa2140m5x5hww76qhbdvmv7m42x3",
+          "https://api.tinify.com/output/80b5skjk8z3bxttvvs6n6900fthatqt5",
+        ],
+        "6662cd49fbf468b4e2e94f53": [
+          "https://api.tinify.com/output/j9pds17z6gts98ap6y0paj0ydkjtx0c9",
+          "https://api.tinify.com/output/1sve90551x8m3ktdd0mwcn47qqn6zvvp",
+          "https://api.tinify.com/output/ksyjtnaa1n6q36gyg2akec7tkkjc5ye8",
+          "https://api.tinify.com/output/80b5skjk8z3bxttvvs6n6900fthatqt5",
+          "https://api.tinify.com/output/43gskfjbjw7krqs7vyehv84cegvc228x",
+        ],
+        "666408d3fbf468b4e2e94fd5": [
+          "https://api.tinify.com/output/dexrksb2dd4zdt8pkx0kq85vw8aptz4z",
+          "https://api.tinify.com/output/mrd1chdg8vbjh4ambrj12bgyaa2sm58r",
+          "https://api.tinify.com/output/qphy2bmv9mpvabn3wva3sfsnj4mrsnmv",
+          "https://api.tinify.com/output/kk3tn5v5b9648h5admgkqhgcez3y7kfb",
+        ],
+        "666c2b1bfbf468b4e2e952ee": [
+          "https://api.tinify.com/output/mkptqvnkkzdt4413cf6ksfpa4pw229w8",
+        ],
+        "66806baefbf468b4e2e9585e": [
+          "https://api.tinify.com/output/48esjk198hcrq6dzzs9kytx809qapeb1",
+          "https://api.tinify.com/output/2r7sh1vy22fwvdvxc2kyvfa2qb4yq7na",
+          "https://api.tinify.com/output/ybvmvffy4t3hthgdh1fg7904h1rv64wp",
+          "https://api.tinify.com/output/aa3fererpe57feda702kdxyerx80g6gn",
+          "https://api.tinify.com/output/rvxant1yqp16vx0z5yz0ye5k4cx32xan",
+          "https://api.tinify.com/output/anab8rgxjjyg3dpgcyekf183rj8yvn9q",
+          "https://api.tinify.com/output/nta69dg53g00k1qr2knaaer15atvgeyw",
+          "https://api.tinify.com/output/ye20xk3d30vey7rcz1hgxqvt7brsdtjc",
+          "https://api.tinify.com/output/a8yv6zqp9f8666sb35ge9ykte76h1804",
+          "https://api.tinify.com/output/bqyn3jcwryky9tr4t7j0vnmjnw52k654",
+          "https://api.tinify.com/output/h2jvdbrnreynsb9vred751xhbt6rg87r",
+        ],
+        "668854e5fbf468b4e2e95afc": [
+          "https://api.tinify.com/output/jmstwxbbrbe7vspgtrcs20q2cchhbcz7",
+          "https://api.tinify.com/output/4xwa32hvx0j15e96q5hwjfkvnypx8m8n",
+          "https://api.tinify.com/output/7pzhq4sm241jtsb0ted0jw52zn07t3hd",
+          "https://api.tinify.com/output/8qwkhkgsqj4yshxj6ja7g35xsfg92vhs",
+          "https://api.tinify.com/output/vtepzteazdzw8e2g2jshhcp3q8s9nkwn",
+          "https://api.tinify.com/output/kdtfws70y21hpj1md5df0tykykvkve5e",
+          "https://api.tinify.com/output/m1w1fw3r06j06ccd7z8y5j3t8s3g7ezc",
+          "https://api.tinify.com/output/2br2szja68xwjg83ybv37w5jn62jed3f",
+          "https://api.tinify.com/output/eqm7mmgecs6wfpe01fhagcnffma06gxx",
+          "https://api.tinify.com/output/c790q21zjfseaykyaaf4q66zy3ab2ycs",
+          "https://api.tinify.com/output/1ab6hwz2rqjk9pytmay1j345gnp990cr",
+          "https://api.tinify.com/output/kv27t96bqed6eb3mqywy0h0pss7781d0",
+        ],
+      },
       isModalOpen: false,
       homeTypes: [
         "Villa",
@@ -974,6 +1161,59 @@ export default {
     this.filteredProperties = this.properties;
   },
   methods: {
+    async fetchImageBlob(imageUrl) {
+      // Construct the URL for the backend endpoint with the image URL as a query parameter
+      const backendUrl = `http://localhost:5000/fetch-image/${encodeURIComponent(
+        imageUrl
+      )}`;
+
+      // Fetch the image from the backend
+      const response = await fetch(backendUrl);
+
+      // Check if the response is OK
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      // Convert the response to a blob
+      const blob = await response.blob();
+      return blob;
+    },
+    async compress() {
+      let array = Object.keys(this.json);
+      for (let key in array) {
+        let images = this.json[array[key]];
+        for (let i = 0; i < images.length; i++) {
+          let imageUrl = images[i];
+
+          const blob = await this.fetchImageBlob(imageUrl); // Fetch the image from the URL
+          // const blob = await response.blob(); // Convert the image to a blob
+          const fileName = imageUrl.split("/").pop(); // Extract the file name from the URL
+          const storageRef = ref(storage, fileName); // Create a reference to the storage location
+
+          await uploadBytes(storageRef, blob); // Upload the blob to the storage location
+          const uploadedImageUrl = await getDownloadURL(storageRef);
+          images[i] = uploadedImageUrl;
+        }
+      }
+
+      // this.listings.map(async (listing, i) => {
+      // const timestamp = Date.now();
+      // const compressedFilePath = path.join(__dirname, `${timestamp}.png`);
+
+      // ***************
+      //     const response = await fetch(imageUrl); // Fetch the image from the URL
+      // const blob = await response.blob(); // Convert the image to a blob
+      // const fileName = imageUrl.split('/').pop(); // Extract the file name from the URL
+      // const storageRef = ref(storage, fileName); // Create a reference to the storage location
+
+      // await uploadBytes(storageRef, blob); // Upload the blob to the storage location
+      // const uploadedImageUrl = await getDownloadURL(storageRef); // Get the download URL of the uploaded image
+
+      // this.images.push(uploadedImageUrl);
+
+      //****************/
+    },
     updateAmmenities(item) {
       this.ammenities.map((i) => {
         if (i.name == item.name) {
@@ -1208,7 +1448,6 @@ export default {
       //   // dataList.currentvalue;
       // }, 500);
     },
-
     resetPopupModal() {
       this.isModalOpen = true;
       this.buttonText = "CREATE";
@@ -1247,7 +1486,6 @@ export default {
         this.paymentPlans[`${i}`] = "";
       });
     },
-
     async createListing() {
       console.log(this.quillEditor.root.innerHTML);
       this.listingSlug = String(parseInt(Date.now()));
@@ -1303,7 +1541,6 @@ export default {
         });
       }
     },
-
     async updateListing() {
       if (
         this.listingSlug &&
@@ -1361,7 +1598,6 @@ export default {
         });
       }
     },
-
     async deleteListing(listing) {
       const status = confirm("Are you sure? You want to delete this listing?");
       if (status) {
@@ -1370,7 +1606,6 @@ export default {
         });
       }
     },
-
     async handleImageUpload(event) {
       const file = event.target.files[0];
       if (file) {
@@ -1381,7 +1616,6 @@ export default {
         this.images.push(imageUrl);
       }
     },
-
     propertyNameArrowClicked() {
       this.propertyNameListOpened = true;
     },
