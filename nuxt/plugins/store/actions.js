@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://tomorrowluxuryproperty.com/api";
+const BASE_URL = "https://api.tomorrowluxuryproperty.com";
 // const BASE_URL = "http://localhost:5000/api";
 
 export const actions = {

@@ -106,21 +106,21 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/api/categories", categoryRoutes);
-app.use("/api/listing", listingRoutes);
-app.use("/api/property", propertyRoutes);
-app.use("/api/search", listingSearchRoutes);
-app.use("/api/newsletter", subscriberRoutes);
-app.use("/api/neighbour", neighbourRoutes);
-app.use("/api/exclusive", exclusiveRoutes);
-app.use("/api/contact", contactRoutes);
-app.use("/api/agent", agentRoutes);
-// app.use("/api/logout", logoutRoutes);
-app.use("/api", loginRoutes);
-app.use("/api/user", userRoutes);
-app.use("/api/blogs", blogRoutes);
+app.use("/categories", categoryRoutes);
+app.use("/listing", listingRoutes);
+app.use("/property", propertyRoutes);
+app.use("/search", listingSearchRoutes);
+app.use("/newsletter", subscriberRoutes);
+app.use("/neighbour", neighbourRoutes);
+app.use("/exclusive", exclusiveRoutes);
+app.use("/contact", contactRoutes);
+app.use("/agent", agentRoutes);
+// app.use("/logout", logoutRoutes);
+app.use("", loginRoutes);
+app.use("/user", userRoutes);
+app.use("/blogs", blogRoutes);
 
-app.post("/api/logout", (req, res, next) => {
+app.post("/logout", (req, res, next) => {
   res.clearCookie("connect.sid"); // clear the session cookie
   req.logout(function (err) {
     // logout of passport

@@ -1,4 +1,4 @@
-let BASE_URL = "https://tomorrowluxuryproperty.com/api";
+let BASE_URL = "https://api.tomorrowluxuryproperty.com";
 // let BASE_URL = "http://localhost:5000/api";
 
 let config = {};

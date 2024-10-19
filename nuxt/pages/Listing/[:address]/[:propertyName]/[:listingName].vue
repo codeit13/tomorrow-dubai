@@ -480,7 +480,7 @@ export default {
 
     try {
       $fetch(
-        `https://tomorrowluxuryproperty.com/api/search/${routeAddress}/${routePropertyName}/${routeListingName}`,
+        `https://tomorrowluxuryproperty.com/search/${routeAddress}/${routePropertyName}/${routeListingName}`,
         {
           server: true,
           immediate: true,
@@ -582,8 +582,8 @@ export default {
 
   //       axios
   //         .get(
-  //           `//tomorrowluxuryproperty.com/api/search/${address}/${propertyName}/${listingName}`
-  //           // "http://localhost:3000/api/hello"
+  //           `//tomorrowluxuryproperty.com/search/${address}/${propertyName}/${listingName}`
+  //           // "http://localhost:3000/hello"
   //         )
   //         .then((response) => {
   //           useSeoMeta({
